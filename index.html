@@ -119,6 +119,22 @@
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
         }
+        @keyframes badge-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(255, 90, 95, 0.3); }
+            50% { box-shadow: 0 0 15px rgba(255, 90, 95, 0.6), 0 0 25px rgba(255, 90, 95, 0.3); }
+        }
+        @keyframes star-twinkle {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.1); filter: brightness(1.2); }
+        }
+        @keyframes review-fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes review-fade-out {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-20px); }
+        }
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -134,14 +150,13 @@
         .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
         .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
 
-        /* Header with Logo */
+        /* Header with Logo - Dark version */
         .header {
-            background: var(--white);
+            background: var(--dark);
             padding: 1rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -159,78 +174,116 @@
             gap: 1rem;
         }
 
-        /* Photo Grid */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            grid-template-rows: 200px 200px;
-            gap: 8px;
-            padding: 8px;
-            background: var(--dark);
-        }
-        .photo-card {
+        /* Hero Photo */
+        .hero-photo {
             position: relative;
+            height: 70vh;
+            min-height: 500px;
             overflow: hidden;
-            border-radius: 12px;
+        }
+        .hero-photo-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.08); }
+        }
+        .hero-photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.1) 40%, rgba(26,26,26,0.6) 100%);
+        }
+        .hero-photo-content {
+            position: absolute;
+            bottom: 3rem;
+            left: 2rem;
+            right: 2rem;
+            color: white;
+            z-index: 2;
+        }
+        .hero-photo-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .hero-photo-sub {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        .hero-photo-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
             cursor: pointer;
         }
-        .photo-card:first-child {
-            grid-row: span 2;
+        .hero-photo-cta:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
         }
-        .photo-card img {
+
+        /* Photo Strip - Horizontal scroll */
+        .photo-strip {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            background: var(--dark);
+        }
+        .photo-strip::-webkit-scrollbar { display: none; }
+        .photo-thumb {
+            flex: 0 0 auto;
+            width: 200px;
+            height: 140px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            scroll-snap-align: start;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .photo-thumb:hover {
+            transform: scale(1.05) translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+        .photo-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.5s;
         }
-        .photo-card:hover img {
-            transform: scale(1.05);
+        .photo-thumb:hover img {
+            transform: scale(1.1);
         }
-        .photo-card::after {
-            content: '';
+        .photo-thumb-label {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.3) 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .photo-card:hover::after {
-            opacity: 1;
-        }
-        .photo-card-label {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 0.75rem 0.75rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
             color: white;
-            font-size: 0.85rem;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s;
-            z-index: 2;
-        }
-        .photo-card:hover .photo-card-label {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .photo-more {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            background: rgba(255,255,255,0.95);
-            color: var(--dark);
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
             font-size: 0.8rem;
             font-weight: 500;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s;
-            z-index: 2;
-        }
-        .photo-card:hover .photo-more {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Top Bar with badges */
@@ -256,22 +309,36 @@
         .badge-superhost {
             background: linear-gradient(135deg, var(--airbnb), #ff8a8c);
             color: var(--white);
+            animation: badge-glow 3s ease-in-out infinite;
         }
         .badge-top {
             background: linear-gradient(135deg, var(--nude), var(--nude-dark));
             color: var(--white);
         }
+        .badge-top5 {
+            background: linear-gradient(135deg, #ffd93d, #f0c420);
+            color: var(--dark);
+            font-weight: 600;
+        }
+        .rating-stars svg {
+            animation: star-twinkle 2s ease-in-out infinite;
+        }
+        .rating-stars svg:nth-child(2) { animation-delay: 0.2s; }
+        .rating-stars svg:nth-child(3) { animation-delay: 0.4s; }
+        .rating-stars svg:nth-child(4) { animation-delay: 0.6s; }
+        .rating-stars svg:nth-child(5) { animation-delay: 0.8s; }
         .rating {
             display: flex;
             align-items: center;
             gap: 0.3rem;
             font-weight: 500;
             font-size: 0.9rem;
+            color: var(--white);
         }
         .rating svg {
             width: 16px;
             height: 16px;
-            fill: var(--nude);
+            fill: #ffd93d;
         }
 
         /* Main Container */
@@ -692,7 +759,118 @@
             color: var(--text-light);
         }
 
-        /* Reviews */
+        /* Host Section */
+        .host-section {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+        }
+        .host-content {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        .host-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--nude-light);
+            box-shadow: 0 8px 24px rgba(196, 164, 137, 0.3);
+        }
+        .host-photo-placeholder {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--nude), var(--nude-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: var(--white);
+            border: 4px solid var(--nude-light);
+            box-shadow: 0 8px 24px rgba(196, 164, 137, 0.3);
+        }
+        .host-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            color: var(--dark);
+        }
+        .host-info h3 span {
+            color: var(--nude-dark);
+            font-style: italic;
+        }
+        .host-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        .host-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .host-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .host-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+        .host-badge.superhost {
+            background: linear-gradient(135deg, var(--airbnb), #ff8a8c);
+            color: white;
+            animation: badge-glow 3s ease-in-out infinite;
+        }
+        .host-badge.top5 {
+            background: linear-gradient(135deg, #ffd93d, #f0c420);
+            color: var(--dark);
+        }
+        .host-badge.verified {
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .host-bio {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .host-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        .host-stat {
+            text-align: center;
+        }
+        .host-stat-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        .host-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Reviews Carousel */
         .reviews {
             margin-bottom: 3rem;
         }
@@ -712,22 +890,35 @@
             gap: 0.4rem;
             font-weight: 500;
         }
+        .reviews-score .rating-stars {
+            display: flex;
+            gap: 0.2rem;
+        }
         .reviews-score svg {
             width: 18px;
             height: 18px;
-            fill: var(--nude);
+            fill: #ffd93d;
+        }
+        .reviews-carousel {
+            position: relative;
+            min-height: 180px;
         }
         .review {
             background: var(--white);
             padding: 1.5rem;
             border-radius: 16px;
-            margin-bottom: 1rem;
-            border-left: 3px solid transparent;
-            transition: all 0.3s;
+            border-left: 3px solid var(--nude);
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
-        .review:hover {
-            border-left-color: var(--nude);
-            transform: translateX(6px);
+        .review.active {
+            opacity: 1;
+            transform: translateY(0);
+            position: relative;
         }
         .review-top {
             display: flex;
@@ -736,8 +927,8 @@
             margin-bottom: 0.75rem;
         }
         .review-avatar {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, var(--nude), var(--nude-dark));
             border-radius: 50%;
             display: flex;
@@ -745,21 +936,97 @@
             justify-content: center;
             color: var(--white);
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 500;
+        }
+        .review-info {
+            flex: 1;
         }
         .review-name {
             font-weight: 500;
             font-size: 0.95rem;
         }
-        .review-date {
+        .review-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.75rem;
             color: var(--text-light);
         }
+        .review-stars {
+            display: flex;
+            gap: 0.1rem;
+        }
+        .review-stars svg {
+            width: 12px;
+            height: 12px;
+            fill: #ffd93d;
+        }
         .review p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text);
             line-height: 1.7;
+            font-style: italic;
+        }
+        .reviews-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        .reviews-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--nude-light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .reviews-dot.active {
+            background: var(--nude);
+            transform: scale(1.2);
+        }
+        .reviews-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--text);
+            transition: all 0.2s;
+            z-index: 2;
+        }
+        .reviews-nav:hover {
+            background: var(--nude);
+            color: white;
+            border-color: var(--nude);
+        }
+        .reviews-nav.prev { left: -18px; }
+        .reviews-nav.next { right: -18px; }
+
+        @media (max-width: 768px) {
+            .host-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .host-photo, .host-photo-placeholder {
+                margin: 0 auto;
+            }
+            .host-badges {
+                justify-content: center;
+            }
+            .host-stats {
+                justify-content: center;
+            }
+            .reviews-nav { display: none; }
         }
 
         /* Footer */
@@ -1057,35 +1324,60 @@
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 Superhost
             </span>
-            <span class="rating">
+            <span class="badge badge-top5">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/></svg>
+                Top 5%
+            </span>
+            <span class="rating rating-stars">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="#ffd93d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 5.0
             </span>
         </div>
     </header>
 
-    <!-- Photo Grid -->
-    <div class="photo-grid">
-        <div class="photo-card" onclick="openLB(0)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon avec jacuzzi">
-            <span class="photo-card-label">Salon & Jacuzzi</span>
+    <!-- Hero Photo -->
+    <div class="hero-photo">
+        <div class="hero-photo-bg" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg')"></div>
+        <div class="hero-photo-overlay"></div>
+        <div class="hero-photo-content">
+            <h1 class="hero-photo-title">Votre escapade parisienne</h1>
+            <p class="hero-photo-sub">Jacuzzi privatif · Home Cinéma · Paris 11e</p>
+            <span class="hero-photo-cta" onclick="openLB(0)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                Voir les photos
+            </span>
         </div>
-        <div class="photo-card" onclick="openLB(1)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Chambre">
-            <span class="photo-card-label">Chambre</span>
+    </div>
+
+    <!-- Photo Strip -->
+    <div class="photo-strip">
+        <div class="photo-thumb" onclick="openLB(0)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon">
+            <span class="photo-thumb-label">Salon</span>
         </div>
-        <div class="photo-card" onclick="openLB(2)">
+        <div class="photo-thumb" onclick="openLB(2)">
             <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Jacuzzi">
-            <span class="photo-card-label">Jacuzzi privatif</span>
+            <span class="photo-thumb-label">Jacuzzi</span>
         </div>
-        <div class="photo-card" onclick="openLB(5)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Home cinéma">
-            <span class="photo-card-label">Home Cinéma</span>
+        <div class="photo-thumb" onclick="openLB(1)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Chambre">
+            <span class="photo-thumb-label">Chambre</span>
         </div>
-        <div class="photo-card" onclick="openLB(3)">
+        <div class="photo-thumb" onclick="openLB(5)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Home Cinéma">
+            <span class="photo-thumb-label">Home Cinéma</span>
+        </div>
+        <div class="photo-thumb" onclick="openLB(3)">
             <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" alt="Salle de bain">
-            <span class="photo-card-label">Salle de bain</span>
-            <span class="photo-more">+4 photos</span>
+            <span class="photo-thumb-label">Salle de bain</span>
+        </div>
+        <div class="photo-thumb" onclick="openLB(6)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" alt="Cuisine">
+            <span class="photo-thumb-label">Cuisine</span>
+        </div>
+        <div class="photo-thumb" onclick="openLB(7)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" alt="Détails">
+            <span class="photo-thumb-label">Détails</span>
         </div>
     </div>
 
@@ -1194,49 +1486,227 @@
             </div>
         </section>
 
-        <!-- Reviews -->
+        <!-- Host Section -->
+        <section class="host-section animate">
+            <div class="host-content">
+                <img src="lea.jpg" alt="Léa, votre hôte Superhost à Paris" class="host-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="host-photo-placeholder" style="display:none;">L</div>
+                <div class="host-info">
+                    <h3>Votre hôte, <span>Léa</span></h3>
+                    <p class="host-subtitle">Superhost depuis 2024 · Paris 11e</p>
+                    <div class="host-badges">
+                        <span class="host-badge superhost">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            Superhost
+                        </span>
+                        <span class="host-badge top5">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/></svg>
+                            Top 5% Airbnb
+                        </span>
+                        <span class="host-badge verified">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                            Identité vérifiée
+                        </span>
+                    </div>
+                    <p class="host-bio">Passionnée par l'accueil et le design d'intérieur, j'ai créé cet appartement comme un véritable cocon parisien. Jacuzzi privatif, home cinéma, literie haut de gamme... Tout est pensé pour que votre séjour soit inoubliable. Je reste disponible 7j/7 pour répondre à vos questions !</p>
+                    <div class="host-stats">
+                        <div class="host-stat">
+                            <div class="host-stat-value">5.0</div>
+                            <div class="host-stat-label">Note</div>
+                        </div>
+                        <div class="host-stat">
+                            <div class="host-stat-value">50+</div>
+                            <div class="host-stat-label">Avis</div>
+                        </div>
+                        <div class="host-stat">
+                            <div class="host-stat-value">~5min</div>
+                            <div class="host-stat-label">Réponse</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Carousel -->
         <section class="reviews">
             <div class="reviews-header">
-                <h2>Avis clients - Location Paris 11e</h2>
+                <h2>Ce que disent nos voyageurs</h2>
                 <span class="reviews-score">
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    5.0
+                    <span class="rating-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </span>
+                    5.0 · 50+ avis
                 </span>
             </div>
-            <div class="review animate">
-                <div class="review-top">
-                    <div class="review-avatar">M</div>
-                    <div>
-                        <div class="review-name">Marie</div>
-                        <div class="review-date">Janvier 2026</div>
+            <div class="reviews-carousel" id="reviewsCarousel">
+                <button class="reviews-nav prev" onclick="prevReview()">‹</button>
+                <button class="reviews-nav next" onclick="nextReview()">›</button>
+
+                <div class="review active" data-index="0">
+                    <div class="review-top">
+                        <div class="review-avatar">O</div>
+                        <div class="review-info">
+                            <div class="review-name">Olivier</div>
+                            <div class="review-meta">
+                                <span class="review-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </span>
+                                Novembre 2025
+                            </div>
+                        </div>
                     </div>
+                    <p>"Séjour 5 étoiles ! L'appartement est super beau, très calme et encore mieux que sur les photos. Gros coup de cœur pour la baignoire balnéo à bulles et les toilettes japonaises. Le home cinéma est aussi top pour se détendre le soir. Léa a été adorable et très réactive. Merci encore, je recommande à 100% !"</p>
                 </div>
-                <p>"Appartement magnifique, le jacuzzi est un vrai plus ! Léa est très réactive et aux petits soins. On reviendra sans hésiter !"</p>
-            </div>
-            <div class="review animate">
-                <div class="review-top">
-                    <div class="review-avatar">T</div>
-                    <div>
-                        <div class="review-name">Thomas</div>
-                        <div class="review-date">Décembre 2025</div>
+
+                <div class="review" data-index="1">
+                    <div class="review-top">
+                        <div class="review-avatar">N</div>
+                        <div class="review-info">
+                            <div class="review-name">Noah</div>
+                            <div class="review-meta">
+                                <span class="review-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </span>
+                                Décembre 2025
+                            </div>
+                        </div>
                     </div>
+                    <p>"Tout a été vraiment formidable, le logement était très propre et la literie extrêmement confortable. L'atmosphère de l'appartement est géniale, encore meilleur que sur les photos. Léa a été très compréhensive du début à la fin et extrêmement agréable. Je recommande fortement !"</p>
                 </div>
-                <p>"Parfait pour un weekend en amoureux. Le home cinéma avec le système son est incroyable. Merci Léa pour l'accueil !"</p>
-            </div>
-            <div class="review animate">
-                <div class="review-top">
-                    <div class="review-avatar">S</div>
-                    <div>
-                        <div class="review-name">Sophie</div>
-                        <div class="review-date">Novembre 2025</div>
+
+                <div class="review" data-index="2">
+                    <div class="review-top">
+                        <div class="review-avatar">E</div>
+                        <div class="review-info">
+                            <div class="review-name">Emily</div>
+                            <div class="review-meta">
+                                <span class="review-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </span>
+                                Novembre 2025 · New Jersey
+                            </div>
+                        </div>
                     </div>
+                    <p>"Léa était une hôte fantastique. Nous avons réservé l'appartement à la dernière minute car nous avions un vol annulé, et elle a été extrêmement accommodante et réactive. Son logement était extrêmement propre, confortable et situé dans un quartier sûr et agréable. Je reviendrai certainement ici la prochaine fois que je serai à Paris !"</p>
                 </div>
-                <p>"Emplacement idéal dans le 11e, appartement impeccable et très bien équipé. Communication parfaite !"</p>
+
+                <div class="review" data-index="3">
+                    <div class="review-top">
+                        <div class="review-avatar">J</div>
+                        <div class="review-info">
+                            <div class="review-name">Jean-François</div>
+                            <div class="review-meta">
+                                <span class="review-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </span>
+                                Octobre 2025
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Excellent emplacement, proche de Bastille, du Marais, avec de nombreux restaurants et petites boutiques. Le logement est propre, cosy, parfait pour un séjour à Paris. Et Léa est adorable et a été arrangeante pour notre arrivée. Merci pour tout !"</p>
+                </div>
+
+                <div class="review" data-index="4">
+                    <div class="review-top">
+                        <div class="review-avatar">M</div>
+                        <div class="review-info">
+                            <div class="review-name">Maura</div>
+                            <div class="review-meta">
+                                <span class="review-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </span>
+                                Janvier 2026
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Endroit parfait avec de belles prestations ! Très bien placé pour passer un agréable séjour à Paris. Léa est très attentionnée et réactive."</p>
+                </div>
+
+                <div class="review" data-index="5">
+                    <div class="review-top">
+                        <div class="review-avatar">O</div>
+                        <div class="review-info">
+                            <div class="review-name">Olaf</div>
+                            <div class="review-meta">
+                                <span class="review-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </span>
+                                Janvier 2026
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Appartement vraiment agréable et magnifique. Entièrement équipé. Quartier silencieux. Je reviendrais à tout moment. J'ai passé un excellent séjour."</p>
+                </div>
+
+                <div class="review" data-index="6">
+                    <div class="review-top">
+                        <div class="review-avatar">E</div>
+                        <div class="review-info">
+                            <div class="review-name">Ekaterina</div>
+                            <div class="review-meta">
+                                <span class="review-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </span>
+                                Octobre 2025
+                            </div>
+                        </div>
+                    </div>
+                    <p>"J'ai apprécié le séjour. Appartement charmant, jacuzzi relaxant et meilleur emplacement. Hôte agréable, rapide à répondre."</p>
+                </div>
+
+                <div class="review" data-index="7">
+                    <div class="review-top">
+                        <div class="review-avatar">T</div>
+                        <div class="review-info">
+                            <div class="review-name">Tamas</div>
+                            <div class="review-meta">
+                                <span class="review-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </span>
+                                Octobre 2025
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Super appartement, silencieux, confortable et propre. Léa a été très réactive et nous a aidés pour toutes les questions pendant notre séjour."</p>
+                </div>
             </div>
+            <div class="reviews-dots" id="reviewsDots"></div>
         </section>
     </main>
 
@@ -1501,6 +1971,54 @@
         document.getElementById('lightbox').onclick = e => { if (e.target.id === 'lightbox') closeLB(); };
         document.onkeydown = e => { if (!document.getElementById('lightbox').classList.contains('on')) return; if (e.key === 'Escape') closeLB(); if (e.key === 'ArrowRight') nextImg(); if (e.key === 'ArrowLeft') prevImg(); };
 
+        // Reviews Carousel
+        let currentReview = 0;
+        const reviews = document.querySelectorAll('.review');
+        const totalReviews = reviews.length;
+        let reviewInterval;
+
+        function initReviewsDots() {
+            const dotsContainer = document.getElementById('reviewsDots');
+            for (let i = 0; i < totalReviews; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToReview(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateReviews() {
+            reviews.forEach((r, i) => {
+                r.classList.toggle('active', i === currentReview);
+            });
+            document.querySelectorAll('.reviews-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === currentReview);
+            });
+        }
+
+        function nextReview() {
+            currentReview = (currentReview + 1) % totalReviews;
+            updateReviews();
+            resetReviewInterval();
+        }
+
+        function prevReview() {
+            currentReview = (currentReview - 1 + totalReviews) % totalReviews;
+            updateReviews();
+            resetReviewInterval();
+        }
+
+        function goToReview(i) {
+            currentReview = i;
+            updateReviews();
+            resetReviewInterval();
+        }
+
+        function resetReviewInterval() {
+            clearInterval(reviewInterval);
+            reviewInterval = setInterval(nextReview, 6000);
+        }
+
         // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1515,6 +2033,8 @@
 
         // Init
         fetchBlocked();
+        initReviewsDots();
+        reviewInterval = setInterval(nextReview, 6000);
     </script>
 </body>
 </html>

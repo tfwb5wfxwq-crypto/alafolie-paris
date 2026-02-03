@@ -1,164 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 50">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 50">
   <defs>
-    <!-- Animated glow filters -->
-    <filter id="glow-red" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glow-orange" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glow-yellow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glow-green" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glow-purple" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glow-white" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="1.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff4d6a"/>
+      <stop offset="20%" style="stop-color:#ff8c42"/>
+      <stop offset="35%" style="stop-color:#ffd93d"/>
+      <stop offset="50%" style="stop-color:#6bcb77"/>
+      <stop offset="70%" style="stop-color:#4d96ff"/>
+      <stop offset="100%" style="stop-color:#9b5de5"/>
+    </linearGradient>
+    <linearGradient id="daisy-center" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd93d"/>
+      <stop offset="100%" style="stop-color:#f0c420"/>
+    </linearGradient>
   </defs>
 
   <style>
-    /* Neon pulse animation */
-    @keyframes neon-pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
-    }
-    @keyframes neon-flicker {
-      0%, 100% { opacity: 1; }
-      92% { opacity: 1; }
-      93% { opacity: 0.8; }
-      94% { opacity: 1; }
-      96% { opacity: 0.9; }
-      97% { opacity: 1; }
-    }
-    /* Daisy rotation */
     @keyframes daisy-spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    /* Daisy pulse */
-    @keyframes daisy-pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    @keyframes subtle-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.9; }
     }
 
-    .neon-text {
+    .logo-text {
       font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
-      font-size: 36px;
+      font-size: 34px;
       font-weight: bold;
-      fill: none;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .letter-a1 {
-      stroke: #ff4d6a;
-      filter: url(#glow-red);
-      animation: neon-pulse 2s ease-in-out infinite;
-    }
-    .letter-l1 {
-      stroke: #ff8c42;
-      filter: url(#glow-orange);
-      animation: neon-pulse 2s ease-in-out infinite 0.15s;
-    }
-    .letter-a2 {
-      stroke: #ffd93d;
-      filter: url(#glow-yellow);
-      animation: neon-pulse 2s ease-in-out infinite 0.3s;
-    }
-    .letter-f {
-      stroke: #6bcb77;
-      filter: url(#glow-green);
-      animation: neon-flicker 4s ease-in-out infinite;
-    }
-    .letter-l2 {
-      stroke: #4d96ff;
-      filter: url(#glow-blue);
-      animation: neon-pulse 2s ease-in-out infinite 0.6s;
-    }
-    .letter-i {
-      stroke: #9b5de5;
-      filter: url(#glow-purple);
-      animation: neon-pulse 2s ease-in-out infinite 0.75s;
-    }
-    .letter-e {
-      stroke: #c77dff;
-      filter: url(#glow-purple);
-      animation: neon-pulse 2s ease-in-out infinite 0.9s;
+      fill: url(#rainbow);
     }
 
     .daisy-group {
-      animation: daisy-pulse 3s ease-in-out infinite;
+      animation: subtle-pulse 3s ease-in-out infinite;
     }
     .daisy-petals {
-      animation: daisy-spin 20s linear infinite;
+      animation: daisy-spin 25s linear infinite;
       transform-origin: center;
     }
     .daisy-petal {
-      fill: #fff;
-      filter: url(#glow-white);
+      fill: #ffffff;
+      stroke: #f0f0f0;
+      stroke-width: 0.3;
     }
     .daisy-center {
-      fill: #ffd93d;
-      filter: url(#glow-yellow);
+      fill: url(#daisy-center);
     }
   </style>
 
-  <!-- À -->
-  <text x="8" y="38" class="neon-text letter-a1">À</text>
+  <!-- Text: À LA F -->
+  <text x="10" y="38" class="logo-text">À LA F</text>
 
-  <!-- L -->
-  <text x="43" y="38" class="neon-text letter-l1">L</text>
-
-  <!-- A -->
-  <text x="70" y="38" class="neon-text letter-a2">A</text>
-
-  <!-- F -->
-  <text x="118" y="38" class="neon-text letter-f">F</text>
-
-  <!-- Daisy (replaces O) -->
-  <g class="daisy-group" transform="translate(168, 25)">
+  <!-- Daisy (replaces O) - positioned after F -->
+  <g class="daisy-group" transform="translate(163, 26)">
     <g class="daisy-petals">
-      <!-- 12 petals -->
+      <!-- 10 petals -->
       <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(30)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(60)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(120)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(150)"/>
+      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(36)"/>
+      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(72)"/>
+      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(108)"/>
+      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(144)"/>
       <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(210)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(240)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(300)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(330)"/>
+      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(216)"/>
+      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(252)"/>
+      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(288)"/>
+      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(324)"/>
     </g>
     <!-- Yellow center -->
     <circle class="daisy-center" cx="0" cy="0" r="6"/>
   </g>
 
-  <!-- L -->
-  <text x="202" y="38" class="neon-text letter-l2">L</text>
-
-  <!-- I -->
-  <text x="230" y="38" class="neon-text letter-i">I</text>
-
-  <!-- E -->
-  <text x="250" y="38" class="neon-text letter-e">E</text>
+  <!-- Text: LIE -->
+  <text x="195" y="38" class="logo-text">LIE</text>
 </svg>
