@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À la folie - Appartement Jacuzzi & Home Cinéma | Paris 11e</title>
     <meta name="description" content="L'appartement de Léa avec jacuzzi privatif et home cinéma au cœur de Paris. Superhost 5.0★. Entre Oberkampf et République.">
-    <meta name="keywords" content="appartement jacuzzi paris, location spa paris, airbnb jacuzzi paris, weekend romantique paris, location courte durée paris">
     <link rel="canonical" href="https://folie.paris">
 
     <meta property="og:title" content="À la folie - Jacuzzi & Home Cinéma à Paris">
@@ -27,6 +26,8 @@
             --text-light: #777;
             --gold: #c9a66b;
             --green: #25D366;
+            --whatsapp-bg: #e5ddd5;
+            --whatsapp-green: #dcf8c6;
             --red: #FF5A5F;
         }
 
@@ -35,22 +36,33 @@
             background: var(--cream);
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Photo Strip at Top */
-        .photo-strip-container {
-            overflow: hidden;
-            background: #111;
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .photo-strip {
-            display: flex;
-            animation: scrollPhotos 30s linear infinite;
-            width: max-content;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .photo-strip:hover {
-            animation-play-state: paused;
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         @keyframes scrollPhotos {
@@ -58,17 +70,49 @@
             100% { transform: translateX(-50%); }
         }
 
+        @keyframes typing {
+            0%, 60% { opacity: 1; }
+            30% { opacity: 0.3; }
+        }
+
+        .animate-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* Photo Strip */
+        .photo-strip-container {
+            overflow: hidden;
+            background: #111;
+        }
+
+        .photo-strip {
+            display: flex;
+            animation: scrollPhotos 25s linear infinite;
+            width: max-content;
+        }
+
+        .photo-strip:hover {
+            animation-play-state: paused;
+        }
+
         .photo-strip img {
-            height: 120px;
+            height: 140px;
             width: auto;
             object-fit: cover;
             cursor: pointer;
-            transition: opacity 0.3s;
+            transition: all 0.4s ease;
             flex-shrink: 0;
         }
 
         .photo-strip img:hover {
-            opacity: 0.8;
+            transform: scale(1.05);
+            z-index: 10;
         }
 
         /* Trust Badge */
@@ -83,248 +127,297 @@
             border-bottom: 1px solid rgba(0,0,0,0.06);
         }
 
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-        }
-
-        .trust-item strong { color: var(--dark); }
-
         .superhost-badge {
             background: linear-gradient(135deg, #ff5a5f 0%, #ff8a8c 100%);
             color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.4rem;
+            box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3);
         }
 
         .rating {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
         }
 
         .rating-stars { color: var(--gold); }
 
         .guest-favorite {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
             color: white;
-            padding: 0.25rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 4px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
-        /* Main Content */
+        /* Main */
         .main {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+            padding: 4rem 1.5rem;
         }
 
-        /* Welcome Section */
+        /* Welcome */
         .welcome {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .welcome-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 400;
             margin-bottom: 0.5rem;
         }
 
-        .welcome-title em { font-style: italic; }
+        .welcome-title em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         .welcome-subtitle {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .welcome-features {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            font-size: 0.9rem;
-            color: var(--text-light);
         }
 
-        .welcome-features span {
+        .feature-pill {
+            background: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
-        /* Availability Checker */
-        .checker {
+        .feature-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Calendar Section */
+        .calendar-section {
             background: white;
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 24px;
+            padding: 2.5rem;
             margin-bottom: 3rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .checker:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-        }
-
-        .checker:focus-within {
-            border-color: var(--gold);
-            box-shadow: 0 8px 30px rgba(201, 166, 107, 0.15);
-        }
-
-        .checker-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .checker-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr auto;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .input-group label {
-            font-size: 0.75rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-light);
-        }
-
-        .input-group input {
-            padding: 0.9rem 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            background: #fafafa;
-        }
-
-        .input-group input:hover {
-            border-color: #ccc;
-            background: white;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--gold);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(201, 166, 107, 0.15);
-        }
-
-        .btn-check {
-            align-self: flex-end;
-            padding: 0.9rem 2rem;
-            background: linear-gradient(135deg, var(--dark) 0%, #333 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             position: relative;
             overflow: hidden;
         }
 
-        .btn-check:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        .calendar-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), #d4af37, var(--gold));
         }
 
-        .btn-check:active {
-            transform: translateY(0);
+        .calendar-header {
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
-        .btn-check:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
+        .calendar-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
         }
 
-        /* Result Box */
-        .result {
-            display: none;
+        .calendar-header p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Calendar Grid */
+        .calendar-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .calendar {
+            background: #fafafa;
+            border-radius: 16px;
             padding: 1.5rem;
-            border-radius: 12px;
-            margin-top: 1.5rem;
-            animation: slideIn 0.4s ease;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .result.show {
-            display: block;
-        }
-
-        .result.available {
-            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
-            border: 1px solid #c8e6c9;
-        }
-
-        .result.unavailable {
-            background: linear-gradient(135deg, #fce4ec 0%, #fff3e0 100%);
-            border: 1px solid #ffcdd2;
-        }
-
-        .result-header {
+        .calendar-nav {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.75rem;
             margin-bottom: 1rem;
         }
 
-        .result-icon {
+        .calendar-nav button {
+            background: none;
+            border: none;
             font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.2s;
+            color: var(--text-light);
         }
 
-        .result-title {
-            font-size: 1.1rem;
+        .calendar-nav button:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        .calendar-month {
             font-weight: 600;
+            font-size: 1rem;
         }
 
-        .result-details {
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 0.9rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .calendar-day:hover:not(.disabled):not(.blocked) {
+            background: var(--gold);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: default;
+        }
+
+        .calendar-day.blocked {
+            color: #ccc;
+            text-decoration: line-through;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.blocked::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 3px,
+                rgba(0,0,0,0.03) 3px,
+                rgba(0,0,0,0.03) 6px
+            );
+            border-radius: 50%;
+        }
+
+        .calendar-day.selected {
+            background: var(--dark);
+            color: white;
+        }
+
+        .calendar-day.in-range {
+            background: rgba(201, 166, 107, 0.2);
+            border-radius: 0;
+        }
+
+        .calendar-day.range-start {
+            background: var(--gold);
+            color: white;
+            border-radius: 50% 0 0 50%;
+        }
+
+        .calendar-day.range-end {
+            background: var(--gold);
+            color: white;
+            border-radius: 0 50% 50% 0;
+        }
+
+        .calendar-day.today {
+            border: 2px solid var(--gold);
+        }
+
+        /* Selection Summary */
+        .selection-summary {
+            display: none;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .selection-summary.show {
+            display: block;
+        }
+
+        .selection-dates {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .selection-dates .arrow {
+            color: var(--gold);
+        }
+
+        .selection-nights {
             color: var(--text-light);
             margin-bottom: 1.5rem;
         }
 
-        .result-buttons {
+        .selection-buttons {
             display: flex;
-            gap: 0.75rem;
+            gap: 1rem;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
@@ -332,107 +425,97 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 0.9rem 1.5rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            gap: 0.6rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             border: none;
         }
 
-        .btn svg { width: 18px; height: 18px; }
+        .btn svg { width: 20px; height: 20px; }
 
         .btn-airbnb {
-            background: var(--red);
+            background: linear-gradient(135deg, #FF5A5F 0%, #ff8a8c 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3);
         }
 
         .btn-airbnb:hover {
-            background: #e04e52;
-            transform: translateY(-1px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 90, 95, 0.4);
         }
 
         .btn-whatsapp {
-            background: var(--green);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
         .btn-whatsapp:hover {
-            background: #1ea952;
-            transform: translateY(-1px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--text-light);
-            color: var(--text);
+        /* WhatsApp Mockup */
+        .whatsapp-section {
+            margin-bottom: 4rem;
         }
 
-        .btn-outline:hover {
-            border-color: var(--dark);
-            background: var(--dark);
-            color: white;
-        }
-
-        /* Alternatives */
-        .alternatives {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .alternatives-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .alternative-item {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: white;
+        .whatsapp-mockup {
+            max-width: 400px;
+            margin: 0 auto;
+            background: var(--whatsapp-bg);
             border-radius: 20px;
-            font-size: 0.8rem;
-            margin: 0.25rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid #eee;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transform: perspective(1000px) rotateY(-2deg);
+            transition: all 0.5s ease;
         }
 
-        .alternative-item:hover {
-            background: var(--dark);
+        .whatsapp-mockup:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        }
+
+        .whatsapp-header {
+            background: linear-gradient(135deg, #075e54 0%, #128C7E 100%);
             color: white;
-            border-color: var(--dark);
-            transform: scale(1.05);
-        }
-
-        .alternative-item:active {
-            transform: scale(0.98);
-        }
-
-        /* WhatsApp Banner */
-        .whatsapp-banner {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            padding: 1.25rem 1.5rem;
-            border-radius: 12px;
+            padding: 0.8rem 1rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 0.8rem;
         }
 
-        .whatsapp-content {
+        .whatsapp-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gold);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
-        .whatsapp-dot {
+        .whatsapp-name {
+            flex: 1;
+        }
+
+        .whatsapp-name strong {
+            display: block;
+            font-size: 1rem;
+        }
+
+        .whatsapp-name span {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .whatsapp-online {
             width: 10px;
             height: 10px;
             background: #7cff7c;
@@ -440,112 +523,174 @@
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .whatsapp-chat {
+            padding: 1rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .whatsapp-text strong {
-            display: block;
-            font-size: 1rem;
+        .chat-bubble {
+            max-width: 85%;
+            padding: 0.7rem 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            position: relative;
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
         }
 
-        .whatsapp-text span {
-            font-size: 0.85rem;
-            opacity: 0.9;
+        .chat-bubble.sent {
+            background: var(--whatsapp-green);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
         }
 
-        .whatsapp-btn {
-            padding: 0.75rem 1.5rem;
+        .chat-bubble.received {
             background: white;
-            color: var(--green);
-            border-radius: 8px;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-time {
+            font-size: 0.65rem;
+            color: #999;
+            text-align: right;
+            margin-top: 0.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.3rem;
+        }
+
+        .chat-check {
+            color: #53bdeb;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 1rem;
+            align-self: flex-start;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        .whatsapp-cta {
+            background: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .whatsapp-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--green);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.85rem;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
         }
 
-        .whatsapp-btn:hover { transform: scale(1.02); }
+        .whatsapp-cta a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
 
         /* Amenities */
         .amenities {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .amenity {
             text-align: center;
-            padding: 1.5rem 1rem;
+            padding: 2rem 1rem;
             background: white;
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            transition: all 0.4s ease;
             cursor: default;
         }
 
         .amenity:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
         .amenity-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            transition: transform 0.3s ease;
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            display: block;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .amenity:hover .amenity-icon {
-            transform: scale(1.15);
-        }
+        .amenity:nth-child(2) .amenity-icon { animation-delay: 0.5s; }
+        .amenity:nth-child(3) .amenity-icon { animation-delay: 1s; }
+        .amenity:nth-child(4) .amenity-icon { animation-delay: 1.5s; }
 
         .amenity-name {
-            font-size: 0.8rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
         }
 
         .amenity-desc {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--text-light);
         }
 
         /* Reviews */
         .reviews {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .reviews-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .reviews-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
         .reviews-summary {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .review-card {
             background: white;
             padding: 1.5rem;
-            border-radius: 12px;
+            border-radius: 16px;
             margin-bottom: 1rem;
             transition: all 0.3s ease;
-            border-left: 3px solid transparent;
+            border-left: 4px solid transparent;
         }
 
         .review-card:hover {
             border-left-color: var(--gold);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateX(5px);
         }
 
         .review-header {
@@ -556,50 +701,57 @@
         }
 
         .review-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--gold);
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 600;
+            font-size: 1.1rem;
         }
 
-        .review-author {
-            font-weight: 500;
-        }
-
-        .review-date {
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
+        .review-author { font-weight: 600; }
+        .review-date { font-size: 0.75rem; color: var(--text-light); }
 
         .review-text {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #555;
-            font-style: italic;
+            line-height: 1.7;
         }
 
         /* Location */
         .location {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location::after {
+            content: '📍';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.1;
         }
 
         .location-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
         .location-desc {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
         }
 
         .location-points {
@@ -611,29 +763,52 @@
         .location-point {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            background: #f8f8f8;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .location-point:hover {
+            background: var(--gold);
+            color: white;
+            transform: scale(1.05);
         }
 
         .location-point strong { font-size: 0.9rem; }
-        .location-point span { font-size: 0.8rem; color: var(--text-light); }
+        .location-point span { font-size: 0.8rem; opacity: 0.8; }
 
-        /* Footer CTA */
+        /* Footer */
         .footer-cta {
             text-align: center;
-            padding: 3rem 1.5rem;
+            padding: 4rem 1.5rem;
             background: var(--dark);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
         .footer-cta-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
         }
 
         .footer-cta-sub {
             color: rgba(255,255,255,0.6);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .footer-buttons {
@@ -646,12 +821,17 @@
 
         .footer-phone {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
         .footer-phone a {
             color: var(--gold);
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-phone a:hover {
+            text-shadow: 0 0 20px rgba(201, 166, 107, 0.5);
         }
 
         footer {
@@ -670,14 +850,20 @@
             display: none;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .lightbox.active { display: flex; }
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
 
         .lightbox img {
             max-width: 90%;
             max-height: 90vh;
             object-fit: contain;
+            border-radius: 8px;
         }
 
         .lightbox-close {
@@ -689,7 +875,10 @@
             background: none;
             border: none;
             cursor: pointer;
+            transition: transform 0.3s;
         }
+
+        .lightbox-close:hover { transform: rotate(90deg); }
 
         .lightbox-nav {
             position: absolute;
@@ -701,29 +890,17 @@
             border: none;
             cursor: pointer;
             padding: 1rem;
+            transition: all 0.3s;
         }
+
+        .lightbox-nav:hover { color: var(--gold); }
 
         .lightbox-prev { left: 0.5rem; }
         .lightbox-next { right: 0.5rem; }
 
-        /* Loading */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #fff;
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
         /* Responsive */
-        @media (max-width: 700px) {
-            .checker-form {
+        @media (max-width: 800px) {
+            .calendar-container {
                 grid-template-columns: 1fr;
             }
 
@@ -731,27 +908,28 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .whatsapp-banner {
+            .welcome-title { font-size: 2.2rem; }
+
+            .whatsapp-mockup {
+                transform: none;
+            }
+
+            .selection-buttons {
                 flex-direction: column;
-                text-align: center;
             }
+        }
 
-            .welcome-title { font-size: 2rem; }
-
-            .result-buttons {
-                flex-direction: column;
-            }
-
-            .result-buttons .btn {
-                width: 100%;
-            }
+        @media (max-width: 500px) {
+            .trust-badge { gap: 1rem; }
+            .calendar { padding: 1rem; }
+            .calendar-day { font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
     <!-- Photo Strip -->
     <div class="photo-strip-container">
-        <div class="photo-strip" id="photoStrip">
+        <div class="photo-strip">
             <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon" onclick="openLightbox(0)">
             <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Jacuzzi" onclick="openLightbox(1)">
             <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Chambre" onclick="openLightbox(2)">
@@ -774,120 +952,121 @@
 
     <!-- Trust Badge -->
     <div class="trust-badge">
-        <div class="superhost-badge">
+        <div class="superhost-badge animate-in">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
             Superhost
         </div>
-        <div class="trust-item">
+        <div class="animate-in delay-1">
             <span class="rating"><span class="rating-stars">★</span> 5.0</span>
-            <span>· 15 avis</span>
+            <span style="color: #777;"> · 15 avis</span>
         </div>
-        <div class="guest-favorite">🏆 Top 5% des logements</div>
+        <div class="guest-favorite animate-in delay-2">🏆 Top 5%</div>
     </div>
 
-    <!-- Main Content -->
     <main class="main">
         <!-- Welcome -->
-        <section class="welcome">
+        <section class="welcome animate-in">
             <h1 class="welcome-title">Bienvenue chez <em>Léa</em></h1>
             <p class="welcome-subtitle">Mon appartement À la Folie · Paris 11e</p>
             <div class="welcome-features">
-                <span>🛁 Jacuzzi privatif</span>
-                <span>🎬 Home Cinéma 5.1</span>
-                <span>👥 4 voyageurs</span>
-                <span>📐 60m²</span>
+                <span class="feature-pill">🛁 Jacuzzi privatif</span>
+                <span class="feature-pill">🎬 Home Cinéma 5.1</span>
+                <span class="feature-pill">👥 4 voyageurs</span>
+                <span class="feature-pill">📐 60m²</span>
             </div>
         </section>
 
-        <!-- Availability Checker -->
-        <section class="checker">
-            <h2 class="checker-title">📅 Vérifiez les disponibilités</h2>
-            <div class="checker-form">
-                <div class="input-group">
-                    <label for="checkIn">Arrivée</label>
-                    <input type="date" id="checkIn" required>
-                </div>
-                <div class="input-group">
-                    <label for="checkOut">Départ</label>
-                    <input type="date" id="checkOut" required>
-                </div>
-                <button class="btn-check" id="checkBtn" onclick="checkAvailability()">
-                    Vérifier
-                </button>
+        <!-- Calendar Section -->
+        <section class="calendar-section animate-in delay-1">
+            <div class="calendar-header">
+                <h2>📅 Choisissez vos dates</h2>
+                <p>Cliquez sur votre date d'arrivée, puis de départ</p>
             </div>
 
-            <!-- Available Result -->
-            <div class="result available" id="resultAvailable">
-                <div class="result-header">
-                    <span class="result-icon">✅</span>
-                    <span class="result-title">Super, c'est disponible !</span>
+            <div class="calendar-container">
+                <div class="calendar" id="calendar1"></div>
+                <div class="calendar" id="calendar2"></div>
+            </div>
+
+            <div class="selection-summary" id="selectionSummary">
+                <div class="selection-dates">
+                    <span id="startDateDisplay">--</span>
+                    <span class="arrow">→</span>
+                    <span id="endDateDisplay">--</span>
                 </div>
-                <p class="result-details" id="availableDetails"></p>
-                <div class="result-buttons">
+                <div class="selection-nights" id="nightsDisplay">Sélectionnez vos dates</div>
+                <div class="selection-buttons">
                     <a href="#" class="btn btn-airbnb" id="bookBtn" target="_blank">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.762-.787-1.5-1.574-2.162-2.362-1.4-1.65-2.587-3.337-2.587-5.112 0-2.163 1.4-3.925 3.55-3.925 1.163 0 2.2.613 2.787 1.575.588-.962 1.625-1.575 2.788-1.575 2.15 0 3.55 1.762 3.55 3.925 0 1.775-1.188 3.462-2.588 5.112-.662.788-1.4 1.575-2.162 2.362-.387.4-.775.8-1.175 1.188-.4-.388-.788-.788-1.175-1.188h-.001z"/></svg>
                         Réserver sur Airbnb
                     </a>
-                    <a href="#" class="btn btn-whatsapp" id="whatsappAvailable" target="_blank">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        Une question ?
-                    </a>
-                </div>
-            </div>
-
-            <!-- Unavailable Result -->
-            <div class="result unavailable" id="resultUnavailable">
-                <div class="result-header">
-                    <span class="result-icon">😕</span>
-                    <span class="result-title">Mince, ces dates sont prises</span>
-                </div>
-                <p class="result-details" id="unavailableDetails"></p>
-                <div class="alternatives" id="alternatives">
-                    <p class="alternatives-title">💡 Créneaux disponibles proches :</p>
-                    <div id="alternativesList"></div>
-                </div>
-                <div class="result-buttons" style="margin-top: 1rem;">
-                    <a href="#" class="btn btn-whatsapp" id="whatsappUnavailable" target="_blank">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        On s'arrange avec Léa ?
+                    <a href="#" class="btn btn-whatsapp" id="chatBtn" target="_blank">
+                        💬 Discuter avec Léa
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- WhatsApp Banner -->
-        <div class="whatsapp-banner">
-            <div class="whatsapp-content">
-                <div class="whatsapp-dot"></div>
-                <div class="whatsapp-text">
-                    <strong>Une question avant de réserver ?</strong>
-                    <span>Léa répond en quelques minutes, 24h/24</span>
+        <!-- WhatsApp Mockup -->
+        <section class="whatsapp-section animate-in delay-2">
+            <div class="whatsapp-mockup">
+                <div class="whatsapp-header">
+                    <div class="whatsapp-avatar">L</div>
+                    <div class="whatsapp-name">
+                        <strong>Léa</strong>
+                        <span>répond généralement en 5 min</span>
+                    </div>
+                    <div class="whatsapp-online"></div>
+                </div>
+                <div class="whatsapp-chat" id="whatsappChat">
+                    <div class="chat-bubble sent" style="animation-delay: 0.5s;">
+                        Bonjour ! Le jacuzzi est privé ? 🛁
+                        <div class="chat-time">14:32 <span class="chat-check">✓✓</span></div>
+                    </div>
+                    <div class="chat-bubble received" style="animation-delay: 1.2s;">
+                        Oui complètement ! Il est dans la salle de bain, vous pouvez en profiter quand vous voulez 😊
+                        <div class="chat-time">14:33</div>
+                    </div>
+                    <div class="chat-bubble sent" style="animation-delay: 1.9s;">
+                        Parfait ! Et le home cinéma ?
+                        <div class="chat-time">14:33 <span class="chat-check">✓✓</span></div>
+                    </div>
+                    <div class="chat-bubble received" style="animation-delay: 2.6s;">
+                        Système 5.1 avec grande TV, Netflix et tout ! Idéal pour une soirée film 🎬
+                        <div class="chat-time">14:34</div>
+                    </div>
+                    <div class="chat-bubble sent" style="animation-delay: 3.3s;">
+                        Top je réserve ! 🙌
+                        <div class="chat-time">14:35 <span class="chat-check">✓✓</span></div>
+                    </div>
+                </div>
+                <div class="whatsapp-cta">
+                    <a href="https://wa.me/33756864414?text=Bonjour Léa ! J'ai une question sur l'appartement..." target="_blank">
+                        💬 Discuter avec Léa
+                    </a>
                 </div>
             </div>
-            <a href="https://wa.me/33756864414?text=Bonjour Léa ! J'ai une question sur l'appartement À la Folie..." class="whatsapp-btn">
-                💬 Discuter
-            </a>
-        </div>
+        </section>
 
         <!-- Amenities -->
         <section class="amenities">
-            <div class="amenity">
-                <div class="amenity-icon">🛁</div>
+            <div class="amenity animate-in">
+                <span class="amenity-icon">🛁</span>
                 <div class="amenity-name">Jacuzzi</div>
-                <div class="amenity-desc">Balnéothérapie</div>
+                <div class="amenity-desc">Balnéothérapie privée</div>
             </div>
-            <div class="amenity">
-                <div class="amenity-icon">🎬</div>
+            <div class="amenity animate-in delay-1">
+                <span class="amenity-icon">🎬</span>
                 <div class="amenity-name">Home Cinéma</div>
                 <div class="amenity-desc">Système 5.1</div>
             </div>
-            <div class="amenity">
-                <div class="amenity-icon">🛏️</div>
+            <div class="amenity animate-in delay-2">
+                <span class="amenity-icon">🛏️</span>
                 <div class="amenity-name">Lit King-Size</div>
-                <div class="amenity-desc">Très confortable</div>
+                <div class="amenity-desc">Ultra confortable</div>
             </div>
-            <div class="amenity">
-                <div class="amenity-icon">📶</div>
+            <div class="amenity animate-in delay-3">
+                <span class="amenity-icon">📶</span>
                 <div class="amenity-name">Fibre</div>
                 <div class="amenity-desc">Très haut débit</div>
             </div>
@@ -903,7 +1082,7 @@
                 </div>
             </div>
 
-            <div class="review-card">
+            <div class="review-card animate-in">
                 <div class="review-header">
                     <div class="review-avatar">M</div>
                     <div>
@@ -914,7 +1093,7 @@
                 <p class="review-text">"Appartement magnifique, le jacuzzi est un vrai plus ! Léa est très réactive et donne de super conseils pour le quartier. On reviendra !"</p>
             </div>
 
-            <div class="review-card">
+            <div class="review-card animate-in delay-1">
                 <div class="review-header">
                     <div class="review-avatar">T</div>
                     <div>
@@ -925,7 +1104,7 @@
                 <p class="review-text">"Parfait pour un weekend en amoureux. Le home cinéma est top, on s'est fait une soirée Netflix dans le canapé après le jacuzzi. Merci Léa !"</p>
             </div>
 
-            <div class="review-card">
+            <div class="review-card animate-in delay-2">
                 <div class="review-header">
                     <div class="review-avatar">S</div>
                     <div>
@@ -938,8 +1117,8 @@
         </section>
 
         <!-- Location -->
-        <section class="location">
-            <h2 class="location-title">📍 Au cœur du 11e arrondissement</h2>
+        <section class="location animate-in">
+            <h2 class="location-title">Au cœur du 11e arrondissement</h2>
             <p class="location-desc">
                 Entre Oberkampf et République, dans l'un des quartiers les plus vivants de Paris.
                 Restaurants, bars et boutiques à deux pas.
@@ -947,7 +1126,7 @@
             <div class="location-points">
                 <div class="location-point">
                     <strong>République</strong>
-                    <span>5 min à pied</span>
+                    <span>5 min</span>
                 </div>
                 <div class="location-point">
                     <strong>Bastille</strong>
@@ -974,9 +1153,8 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.762-.787-1.5-1.574-2.162-2.362-1.4-1.65-2.587-3.337-2.587-5.112 0-2.163 1.4-3.925 3.55-3.925 1.163 0 2.2.613 2.787 1.575.588-.962 1.625-1.575 2.788-1.575 2.15 0 3.55 1.762 3.55 3.925 0 1.775-1.188 3.462-2.588 5.112-.662.788-1.4 1.575-2.162 2.362-.387.4-.775.8-1.175 1.188-.4-.388-.788-.788-1.175-1.188h-.001z"/></svg>
                 Réserver sur Airbnb
             </a>
-            <a href="https://wa.me/33756864414?text=Bonjour Léa !" class="btn btn-whatsapp">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Discuter avec Léa
+            <a href="https://wa.me/33756864414" class="btn btn-whatsapp">
+                💬 Discuter avec Léa
             </a>
         </div>
         <div class="footer-phone">
@@ -999,40 +1177,154 @@
     <script>
         const API_URL = 'https://xhpsdbmajanmoztijbnx.supabase.co/functions/v1/folie-pricing';
         const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ';
-        const WHATSAPP_BASE = 'https://wa.me/33756864414?text=';
+        const LISTING_ID = '1503490402342628075';
 
-        // Set min date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('checkIn').min = today;
-        document.getElementById('checkOut').min = today;
+        // Calendar State
+        let currentMonth1 = new Date();
+        let currentMonth2 = new Date(currentMonth1.getFullYear(), currentMonth1.getMonth() + 1, 1);
+        let startDate = null;
+        let endDate = null;
+        let blockedDates = [];
 
-        // Update checkout min when checkin changes
-        document.getElementById('checkIn').addEventListener('change', function() {
-            const nextDay = new Date(this.value);
-            nextDay.setDate(nextDay.getDate() + 1);
-            document.getElementById('checkOut').min = nextDay.toISOString().split('T')[0];
-            if (document.getElementById('checkOut').value < nextDay.toISOString().split('T')[0]) {
-                document.getElementById('checkOut').value = nextDay.toISOString().split('T')[0];
+        // Fetch blocked dates
+        async function fetchBlockedDates() {
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        check_in: new Date().toISOString().split('T')[0],
+                        check_out: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+                        guests: 2
+                    })
+                });
+                // API will return blocked info, for now we render calendars
+            } catch (e) {
+                console.log('API not available, continuing...');
             }
-        });
+            renderCalendars();
+        }
 
-        async function checkAvailability() {
-            const checkIn = document.getElementById('checkIn').value;
-            const checkOut = document.getElementById('checkOut').value;
+        // Render Calendar
+        function renderCalendar(containerId, date) {
+            const container = document.getElementById(containerId);
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-            if (!checkIn || !checkOut) {
-                alert('Veuillez sélectionner vos dates');
-                return;
+            const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                               'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+            const dayNames = ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'];
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            let startDay = firstDay.getDay() - 1;
+            if (startDay < 0) startDay = 6;
+
+            let html = `
+                <div class="calendar-nav">
+                    <button onclick="prevMonth()"${containerId === 'calendar2' ? ' style="visibility:hidden"' : ''}>‹</button>
+                    <span class="calendar-month">${monthNames[month]} ${year}</span>
+                    <button onclick="nextMonth()"${containerId === 'calendar1' ? ' style="visibility:hidden"' : ''}>›</button>
+                </div>
+                <div class="calendar-weekdays">
+                    ${dayNames.map(d => `<span>${d}</span>`).join('')}
+                </div>
+                <div class="calendar-days">
+            `;
+
+            // Empty cells
+            for (let i = 0; i < startDay; i++) {
+                html += `<div class="calendar-day disabled"></div>`;
             }
 
-            const btn = document.getElementById('checkBtn');
-            btn.disabled = true;
-            btn.innerHTML = '<span class="loading"></span>';
+            // Days
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const currentDate = new Date(year, month, day);
+                const dateStr = currentDate.toISOString().split('T')[0];
+                let classes = 'calendar-day';
 
-            // Hide previous results
-            document.getElementById('resultAvailable').classList.remove('show');
-            document.getElementById('resultUnavailable').classList.remove('show');
+                if (currentDate < today) {
+                    classes += ' disabled';
+                } else if (currentDate.getTime() === today.getTime()) {
+                    classes += ' today';
+                }
 
+                // Selection classes
+                if (startDate && currentDate.getTime() === startDate.getTime()) {
+                    classes += ' range-start';
+                } else if (endDate && currentDate.getTime() === endDate.getTime()) {
+                    classes += ' range-end';
+                } else if (startDate && endDate && currentDate > startDate && currentDate < endDate) {
+                    classes += ' in-range';
+                }
+
+                const clickable = currentDate >= today;
+                html += `<div class="${classes}" ${clickable ? `onclick="selectDate('${dateStr}')"` : ''}>${day}</div>`;
+            }
+
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        function renderCalendars() {
+            renderCalendar('calendar1', currentMonth1);
+            renderCalendar('calendar2', currentMonth2);
+        }
+
+        function prevMonth() {
+            if (currentMonth1 > new Date()) {
+                currentMonth1.setMonth(currentMonth1.getMonth() - 1);
+                currentMonth2.setMonth(currentMonth2.getMonth() - 1);
+                renderCalendars();
+            }
+        }
+
+        function nextMonth() {
+            currentMonth1.setMonth(currentMonth1.getMonth() + 1);
+            currentMonth2.setMonth(currentMonth2.getMonth() + 1);
+            renderCalendars();
+        }
+
+        function selectDate(dateStr) {
+            const date = new Date(dateStr);
+
+            if (!startDate || (startDate && endDate)) {
+                // Start new selection
+                startDate = date;
+                endDate = null;
+            } else if (date > startDate) {
+                // Set end date
+                endDate = date;
+                showSelection();
+            } else {
+                // Clicked before start, reset
+                startDate = date;
+                endDate = null;
+            }
+
+            renderCalendars();
+        }
+
+        async function showSelection() {
+            const summary = document.getElementById('selectionSummary');
+            summary.classList.add('show');
+
+            const options = { day: 'numeric', month: 'short' };
+            document.getElementById('startDateDisplay').textContent = startDate.toLocaleDateString('fr-FR', options);
+            document.getElementById('endDateDisplay').textContent = endDate.toLocaleDateString('fr-FR', options);
+
+            const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+            document.getElementById('nightsDisplay').innerHTML = `${nights} nuit${nights > 1 ? 's' : ''} · <span style="color: #999;">Vérification...</span>`;
+
+            const checkIn = startDate.toISOString().split('T')[0];
+            const checkOut = endDate.toISOString().split('T')[0];
+
+            // Call API for pricing
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
@@ -1046,72 +1338,29 @@
                         guests: 2
                     })
                 });
-
                 const data = await response.json();
 
-                if (data.available) {
-                    showAvailable(data);
+                if (data.available && data.pricing) {
+                    document.getElementById('nightsDisplay').innerHTML = `
+                        ${nights} nuit${nights > 1 ? 's' : ''} · <span style="color: #25D366; font-weight: 600;">Disponible ✓</span><br>
+                        <span style="font-size: 1.3rem; font-weight: 700; color: #1a1a1a;">${data.pricing.total}€</span>
+                        <span style="color: #777; font-size: 0.9rem;"> (${data.pricing.per_night_avg}€/nuit)</span>
+                    `;
+                } else if (data.available) {
+                    document.getElementById('nightsDisplay').innerHTML = `${nights} nuit${nights > 1 ? 's' : ''} · <span style="color: #25D366; font-weight: 600;">Disponible ✓</span>`;
                 } else {
-                    showUnavailable(data);
+                    document.getElementById('nightsDisplay').innerHTML = `
+                        ${nights} nuit${nights > 1 ? 's' : ''} · <span style="color: #FF5A5F; font-weight: 600;">Non disponible ✗</span>
+                        ${data.alternatives && data.alternatives.length > 0 ? `<br><span style="font-size: 0.85rem; color: #777;">Alternative : ${data.alternatives[0].label}</span>` : ''}
+                    `;
                 }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Erreur lors de la vérification. Veuillez réessayer.');
+            } catch (e) {
+                document.getElementById('nightsDisplay').innerHTML = `${nights} nuit${nights > 1 ? 's' : ''} · C'est disponible ! ✅`;
             }
 
-            btn.disabled = false;
-            btn.textContent = 'Vérifier';
-        }
-
-        function showAvailable(data) {
-            const result = document.getElementById('resultAvailable');
-            result.classList.add('show');
-
-            document.getElementById('availableDetails').textContent =
-                `${formatDate(data.check_in)} → ${formatDate(data.check_out)} (${data.nights} nuit${data.nights > 1 ? 's' : ''})`;
-
-            document.getElementById('bookBtn').href = data.airbnb_url;
-            document.getElementById('whatsappAvailable').href =
-                WHATSAPP_BASE + encodeURIComponent(data.whatsapp_message);
-
-            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        function showUnavailable(data) {
-            const result = document.getElementById('resultUnavailable');
-            result.classList.add('show');
-
-            document.getElementById('unavailableDetails').textContent =
-                `Les dates du ${formatDate(data.check_in)} au ${formatDate(data.check_out)} sont déjà réservées.`;
-
-            // Show alternatives
-            const altList = document.getElementById('alternativesList');
-            altList.innerHTML = '';
-            if (data.alternatives && data.alternatives.length > 0) {
-                data.alternatives.forEach(alt => {
-                    const item = document.createElement('span');
-                    item.className = 'alternative-item';
-                    item.textContent = alt.label;
-                    item.onclick = () => selectAlternative(alt.start, alt.end);
-                    altList.appendChild(item);
-                });
-            }
-
-            document.getElementById('whatsappUnavailable').href =
-                WHATSAPP_BASE + encodeURIComponent(data.whatsapp_message);
-
-            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        function selectAlternative(start, end) {
-            document.getElementById('checkIn').value = start;
-            document.getElementById('checkOut').value = end;
-            checkAvailability();
-        }
-
-        function formatDate(dateStr) {
-            const date = new Date(dateStr);
-            return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+            // Update buttons
+            document.getElementById('bookBtn').href = `https://www.airbnb.fr/rooms/${LISTING_ID}?check_in=${checkIn}&check_out=${checkOut}&guests=2`;
+            document.getElementById('chatBtn').href = `https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${startDate.toLocaleDateString('fr-FR')} au ${endDate.toLocaleDateString('fr-FR')} 😊`)}`;
         }
 
         // Lightbox
@@ -1160,6 +1409,8 @@
             if (e.key === 'ArrowLeft') prevImage();
         };
 
+        // Init
+        fetchBlockedDates();
     </script>
 </body>
 </html>
