@@ -3,541 +3,583 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À la folie - Appartement avec Jacuzzi & Home Cinéma | Paris République</title>
-    <meta name="description" content="Appartement de standing avec jacuzzi privatif et home cinéma au cœur de Paris. 60m², 4 voyageurs, entre Oberkampf et République. Réservez votre séjour d'exception.">
-    <meta name="keywords" content="appartement jacuzzi paris, location spa paris, airbnb jacuzzi paris, weekend romantique paris, appartement republique paris, location courte durée paris">
+    <title>À la folie - Appartement Jacuzzi & Home Cinéma | Paris 11e</title>
+    <meta name="description" content="L'appartement de Léa avec jacuzzi privatif et home cinéma au cœur de Paris. Superhost 5.0★. Entre Oberkampf et République.">
+    <meta name="keywords" content="appartement jacuzzi paris, location spa paris, airbnb jacuzzi paris, weekend romantique paris, location courte durée paris">
     <link rel="canonical" href="https://folie.paris">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="À la folie - Jacuzzi & Home Cinéma à Paris">
-    <meta property="og:description" content="Appartement d'exception avec jacuzzi privatif au cœur de Paris">
+    <meta property="og:description" content="L'appartement de Léa avec jacuzzi privatif au cœur de Paris. Superhost ⭐ 5.0">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://folie.paris">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --gold: #b8956e;
-            --gold-light: #d4b896;
-            --cream: #f8f6f3;
-            --dark: #1a1815;
-            --text: #2d2a26;
-            --text-light: #6b6560;
-            --border: #e8e4df;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            --cream: #faf8f5;
+            --dark: #1a1a1a;
+            --text: #333;
+            --text-light: #777;
+            --gold: #c9a66b;
+            --green: #25D366;
+            --red: #FF5A5F;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background: var(--cream);
             color: var(--text);
-            line-height: 1.7;
-            font-weight: 300;
+            line-height: 1.6;
         }
 
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 1.5rem 3rem;
+        /* Photo Strip at Top */
+        .photo-strip {
+            height: 120px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--cream);
-            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--dark);
-            text-decoration: none;
+        .photo-strip::-webkit-scrollbar { display: none; }
+
+        .photo-strip img {
+            height: 100%;
+            min-width: 180px;
+            object-fit: cover;
+            scroll-snap-align: start;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .photo-strip img:hover { opacity: 0.9; }
+
+        /* Trust Badge */
+        .trust-badge {
+            background: white;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .trust-item strong { color: var(--dark); }
+
+        .superhost-badge {
+            background: linear-gradient(135deg, #ff5a5f 0%, #ff8a8c 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .rating {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .rating-stars { color: var(--gold); }
+
+        .guest-favorite {
+            background: var(--gold);
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
-        .header-cta {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
+        /* Main Content */
+        .main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
         }
 
-        .header-phone {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .header-phone:hover {
-            color: var(--gold);
-        }
-
-        .btn-header {
-            padding: 0.7rem 1.5rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            text-decoration: none;
-            border: 1px solid var(--dark);
-            color: var(--dark);
-            transition: all 0.3s;
-        }
-
-        .btn-header:hover {
-            background: var(--dark);
-            color: var(--cream);
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        /* Welcome Section */
+        .welcome {
             text-align: center;
-            padding: 8rem 2rem 4rem;
+            margin-bottom: 3rem;
         }
 
-        .hero-label {
-            font-size: 0.7rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeIn 1s ease 0.2s forwards;
-        }
-
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            opacity: 0;
-            animation: fadeIn 1s ease 0.4s forwards;
-        }
-
-        .hero-title em {
-            font-style: italic;
+        .welcome-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
             font-weight: 400;
-        }
-
-        .hero-subtitle {
-            font-size: 1rem;
-            color: var(--text-light);
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            margin-bottom: 4rem;
-            opacity: 0;
-            animation: fadeIn 1s ease 0.6s forwards;
-        }
-
-        .hero-features {
-            display: flex;
-            gap: 4rem;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeIn 1s ease 0.8s forwards;
-        }
-
-        .hero-feature {
-            text-align: center;
-        }
-
-        .hero-feature-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-light);
             margin-bottom: 0.5rem;
         }
 
-        .hero-feature-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--dark);
+        .welcome-title em { font-style: italic; }
+
+        .welcome-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
         }
 
-        .hero-cta {
+        .welcome-features {
             display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
             justify-content: center;
-            opacity: 0;
-            animation: fadeIn 1s ease 1s forwards;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        .welcome-features span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Availability Checker */
+        .checker {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .checker-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .checker-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .input-group label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+        }
+
+        .input-group input {
+            padding: 0.9rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .btn-check {
+            align-self: flex-end;
+            padding: 0.9rem 2rem;
+            background: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-check:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .btn-check:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Result Box */
+        .result {
+            display: none;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .result.available {
+            display: block;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border: 1px solid #c8e6c9;
+        }
+
+        .result.unavailable {
+            display: block;
+            background: linear-gradient(135deg, #fce4ec 0%, #fff3e0 100%);
+            border: 1px solid #ffcdd2;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-icon {
+            font-size: 1.5rem;
+        }
+
+        .result-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .result-details {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .result-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1.2rem 2.5rem;
-            font-size: 0.75rem;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
             font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
             text-decoration: none;
-            transition: all 0.4s ease;
             cursor: pointer;
+            transition: all 0.2s;
             border: none;
         }
 
-        .btn-primary {
-            background: var(--dark);
-            color: var(--cream);
-        }
-
-        .btn-primary:hover {
-            background: var(--gold);
-        }
+        .btn svg { width: 18px; height: 18px; }
 
         .btn-airbnb {
-            background: #FF5A5F;
+            background: var(--red);
             color: white;
         }
 
         .btn-airbnb:hover {
             background: #e04e52;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--dark);
-            border: 1px solid var(--dark);
-        }
-
-        .btn-outline:hover {
-            background: var(--dark);
-            color: var(--cream);
+            transform: translateY(-1px);
         }
 
         .btn-whatsapp {
-            background: #25D366;
+            background: var(--green);
             color: white;
         }
 
         .btn-whatsapp:hover {
             background: #1ea952;
+            transform: translateY(-1px);
         }
 
-        /* Scroll indicator */
-        .scroll-line {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 60px;
-            background: var(--border);
-            overflow: hidden;
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--text-light);
+            color: var(--text);
         }
 
-        .scroll-line::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: var(--gold);
-            animation: scrollLine 2s ease-in-out infinite;
+        .btn-outline:hover {
+            border-color: var(--dark);
+            background: var(--dark);
+            color: white;
         }
 
-        @keyframes scrollLine {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(200%); }
+        /* Alternatives */
+        .alternatives {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
 
-        /* Section */
-        section {
-            padding: 8rem 2rem;
+        .alternatives-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
-        .section-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 1rem;
+        .alternative-item {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 300;
-            text-align: center;
-            margin-bottom: 4rem;
-            color: var(--dark);
+        .alternative-item:hover {
+            background: var(--dark);
+            color: white;
         }
+
+        /* WhatsApp Banner */
+        .whatsapp-banner {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .whatsapp-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .whatsapp-dot {
+            width: 10px;
+            height: 10px;
+            background: #7cff7c;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .whatsapp-text strong {
+            display: block;
+            font-size: 1rem;
+        }
+
+        .whatsapp-text span {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .whatsapp-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            color: var(--green);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-btn:hover { transform: scale(1.02); }
 
         /* Amenities */
         .amenities {
-            background: var(--dark);
-            color: var(--cream);
-        }
-
-        .amenities .section-label {
-            color: var(--gold-light);
-        }
-
-        .amenities .section-title {
-            color: var(--cream);
-        }
-
-        .amenities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1px;
-            background: rgba(255,255,255,0.1);
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
         .amenity {
-            background: var(--dark);
-            padding: 3rem;
             text-align: center;
-            transition: background 0.4s;
-        }
-
-        .amenity:hover {
-            background: rgba(255,255,255,0.03);
+            padding: 1.5rem 1rem;
+            background: white;
+            border-radius: 12px;
         }
 
         .amenity-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
 
-        .amenity-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-bottom: 0.75rem;
-            color: var(--cream);
+        .amenity-name {
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         .amenity-desc {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-            line-height: 1.6;
+            font-size: 0.7rem;
+            color: var(--text-light);
         }
 
-        /* Gallery */
-        .gallery {
-            background: var(--cream);
+        /* Reviews */
+        .reviews {
+            margin-bottom: 3rem;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        .reviews-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .reviews-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .reviews-summary {
+            display: flex;
+            align-items: center;
             gap: 0.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
+            font-size: 0.9rem;
         }
 
-        .gallery-item {
-            aspect-ratio: 1;
-            overflow: hidden;
-            cursor: pointer;
+        .review-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(20%);
-            transition: all 0.5s ease;
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
         }
 
-        .gallery-item:hover img {
-            filter: grayscale(0%);
-            transform: scale(1.05);
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .review-author {
+            font-weight: 500;
+        }
+
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .review-text {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
         }
 
         /* Location */
         .location {
             background: white;
-            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
         }
 
-        .location-text {
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-
-        .location-badges {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .location-badge {
-            text-align: center;
-        }
-
-        .location-badge-name {
-            font-family: 'Cormorant Garamond', serif;
+        .location-title {
+            font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
-            color: var(--dark);
-            margin-bottom: 0.25rem;
-        }
-
-        .location-badge-time {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            letter-spacing: 0.1em;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: var(--dark);
-            color: var(--cream);
-            text-align: center;
-            padding: 6rem 2rem;
-        }
-
-        .cta-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 300;
             margin-bottom: 1rem;
         }
 
-        .cta-subtitle {
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 3rem;
+        .location-desc {
             font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
         }
 
-        .cta-buttons {
+        .location-points {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .location-point {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .location-point strong { font-size: 0.9rem; }
+        .location-point span { font-size: 0.8rem; color: var(--text-light); }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: var(--dark);
+            color: white;
+        }
+
+        .footer-cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-cta-sub {
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 2rem;
+        }
+
+        .footer-buttons {
+            display: flex;
             justify-content: center;
+            gap: 1rem;
             flex-wrap: wrap;
             margin-bottom: 2rem;
         }
 
-        .cta-section .btn-airbnb {
-            background: #FF5A5F;
-            color: white;
+        .footer-phone {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
         }
 
-        .cta-section .btn-airbnb:hover {
-            background: #e04e52;
-        }
-
-        .cta-section .btn-outline {
-            border-color: rgba(255,255,255,0.3);
-            color: var(--cream);
-        }
-
-        .cta-section .btn-outline:hover {
-            background: var(--cream);
-            color: var(--dark);
-            border-color: var(--cream);
-        }
-
-        .cta-phone {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            margin-top: 2rem;
-        }
-
-        .cta-phone a {
-            color: var(--gold-light);
+        .footer-phone a {
+            color: var(--gold);
             text-decoration: none;
-            transition: color 0.3s;
         }
 
-        .cta-phone a:hover {
-            color: var(--cream);
-        }
-
-        /* Footer */
         footer {
-            padding: 2rem;
             text-align: center;
-            background: var(--cream);
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
+            padding: 1.5rem;
             font-size: 0.75rem;
             color: var(--text-light);
-            text-decoration: none;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .copyright {
-            font-size: 0.7rem;
-            color: var(--text-light);
-        }
-
-        /* Language */
-        .lang-switch {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .lang-btn {
-            padding: 0.3rem 0.6rem;
-            font-size: 0.65rem;
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-light);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .lang-btn.active,
-        .lang-btn:hover {
-            border-color: var(--dark);
-            color: var(--dark);
         }
 
         /* Lightbox */
@@ -551,9 +593,7 @@
             justify-content: center;
         }
 
-        .lightbox.active {
-            display: flex;
-        }
+        .lightbox.active { display: flex; }
 
         .lightbox img {
             max-width: 90%;
@@ -563,9 +603,9 @@
 
         .lightbox-close {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
-            font-size: 1.5rem;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
             color: white;
             background: none;
             border: none;
@@ -576,7 +616,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2rem;
+            font-size: 3rem;
             color: white;
             background: none;
             border: none;
@@ -584,222 +624,278 @@
             padding: 1rem;
         }
 
-        .lightbox-prev { left: 1rem; }
-        .lightbox-next { right: 1rem; }
+        .lightbox-prev { left: 0.5rem; }
+        .lightbox-next { right: 0.5rem; }
+
+        /* Loading */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem 1.5rem;
+        @media (max-width: 700px) {
+            .checker-form {
+                grid-template-columns: 1fr;
             }
 
-            .header-phone {
-                display: none;
-            }
-
-            .hero {
-                padding: 7rem 1.5rem 3rem;
-            }
-
-            .hero-features {
-                gap: 2rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                width: 100%;
-                padding: 0 1rem;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .gallery-grid {
+            .amenities {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .location-badges {
-                gap: 2rem;
+            .whatsapp-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .welcome-title { font-size: 2rem; }
+
+            .result-buttons {
+                flex-direction: column;
+            }
+
+            .result-buttons .btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <a href="/" class="logo">À la folie</a>
-        <div class="header-cta">
-            <a href="tel:+33756864414" class="header-phone">07 56 86 44 14</a>
-            <div class="lang-switch">
-                <button class="lang-btn active" onclick="setLang('fr')">FR</button>
-                <button class="lang-btn" onclick="setLang('en')">EN</button>
-            </div>
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn-header" data-i18n="header-book">Réserver</a>
+    <!-- Photo Strip -->
+    <div class="photo-strip" id="photoStrip">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon" onclick="openLightbox(0)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Jacuzzi" onclick="openLightbox(1)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Chambre" onclick="openLightbox(2)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" alt="Salle de bain" onclick="openLightbox(3)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" alt="Cuisine" onclick="openLightbox(4)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Détails" onclick="openLightbox(5)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" alt="Ambiance" onclick="openLightbox(6)">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" alt="Vue" onclick="openLightbox(7)">
+    </div>
+
+    <!-- Trust Badge -->
+    <div class="trust-badge">
+        <div class="superhost-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            Superhost
         </div>
-    </header>
-
-    <section class="hero">
-        <p class="hero-label" data-i18n="hero-label">Appartement d'exception</p>
-        <h1 class="hero-title">À la <em>folie</em></h1>
-        <p class="hero-subtitle">Paris · République</p>
-
-        <div class="hero-features">
-            <div class="hero-feature">
-                <p class="hero-feature-label" data-i18n="f-label-space">Espace</p>
-                <p class="hero-feature-value">60 m²</p>
-            </div>
-            <div class="hero-feature">
-                <p class="hero-feature-label" data-i18n="f-label-guests">Voyageurs</p>
-                <p class="hero-feature-value">4</p>
-            </div>
-            <div class="hero-feature">
-                <p class="hero-feature-label" data-i18n="f-label-rating">Note</p>
-                <p class="hero-feature-value">5.0</p>
-            </div>
-            <div class="hero-feature">
-                <p class="hero-feature-label">Superhost</p>
-                <p class="hero-feature-value">✓</p>
-            </div>
+        <div class="trust-item">
+            <span class="rating"><span class="rating-stars">★</span> 5.0</span>
+            <span>· 15 avis</span>
         </div>
+        <div class="guest-favorite">🏆 Top 5% des logements</div>
+    </div>
 
-        <div class="hero-cta">
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb" data-i18n="cta-book">
-                Vérifier les disponibilités
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Welcome -->
+        <section class="welcome">
+            <h1 class="welcome-title">Bienvenue chez <em>Léa</em></h1>
+            <p class="welcome-subtitle">Mon appartement À la Folie · Paris 11e</p>
+            <div class="welcome-features">
+                <span>🛁 Jacuzzi privatif</span>
+                <span>🎬 Home Cinéma 5.1</span>
+                <span>👥 4 voyageurs</span>
+                <span>📐 60m²</span>
+            </div>
+        </section>
+
+        <!-- Availability Checker -->
+        <section class="checker">
+            <h2 class="checker-title">📅 Vérifiez les disponibilités</h2>
+            <div class="checker-form">
+                <div class="input-group">
+                    <label for="checkIn">Arrivée</label>
+                    <input type="date" id="checkIn" required>
+                </div>
+                <div class="input-group">
+                    <label for="checkOut">Départ</label>
+                    <input type="date" id="checkOut" required>
+                </div>
+                <button class="btn-check" id="checkBtn" onclick="checkAvailability()">
+                    Vérifier
+                </button>
+            </div>
+
+            <!-- Available Result -->
+            <div class="result available" id="resultAvailable">
+                <div class="result-header">
+                    <span class="result-icon">✅</span>
+                    <span class="result-title">Super, c'est disponible !</span>
+                </div>
+                <p class="result-details" id="availableDetails"></p>
+                <div class="result-buttons">
+                    <a href="#" class="btn btn-airbnb" id="bookBtn" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.762-.787-1.5-1.574-2.162-2.362-1.4-1.65-2.587-3.337-2.587-5.112 0-2.163 1.4-3.925 3.55-3.925 1.163 0 2.2.613 2.787 1.575.588-.962 1.625-1.575 2.788-1.575 2.15 0 3.55 1.762 3.55 3.925 0 1.775-1.188 3.462-2.588 5.112-.662.788-1.4 1.575-2.162 2.362-.387.4-.775.8-1.175 1.188-.4-.388-.788-.788-1.175-1.188h-.001z"/></svg>
+                        Réserver sur Airbnb
+                    </a>
+                    <a href="#" class="btn btn-whatsapp" id="whatsappAvailable" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Une question ?
+                    </a>
+                </div>
+            </div>
+
+            <!-- Unavailable Result -->
+            <div class="result unavailable" id="resultUnavailable">
+                <div class="result-header">
+                    <span class="result-icon">😕</span>
+                    <span class="result-title">Mince, ces dates sont prises</span>
+                </div>
+                <p class="result-details" id="unavailableDetails"></p>
+                <div class="alternatives" id="alternatives">
+                    <p class="alternatives-title">💡 Créneaux disponibles proches :</p>
+                    <div id="alternativesList"></div>
+                </div>
+                <div class="result-buttons" style="margin-top: 1rem;">
+                    <a href="#" class="btn btn-whatsapp" id="whatsappUnavailable" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        On s'arrange avec Léa ?
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- WhatsApp Banner -->
+        <div class="whatsapp-banner">
+            <div class="whatsapp-content">
+                <div class="whatsapp-dot"></div>
+                <div class="whatsapp-text">
+                    <strong>Une question avant de réserver ?</strong>
+                    <span>Léa répond en quelques minutes, 24h/24</span>
+                </div>
+            </div>
+            <a href="https://wa.me/33756864414?text=Bonjour Léa ! J'ai une question sur l'appartement À la Folie..." class="whatsapp-btn">
+                💬 Discuter
             </a>
-            <a href="https://wa.me/33756864414?text=Bonjour, je suis intéressé par l'appartement À la folie à Paris" class="btn btn-whatsapp">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                WhatsApp
-            </a>
         </div>
 
-        <div class="scroll-line"></div>
-    </section>
-
-    <section class="amenities">
-        <p class="section-label" data-i18n="amenities-label">Équipements</p>
-        <h2 class="section-title" data-i18n="amenities-title">Une expérience unique</h2>
-
-        <div class="amenities-grid">
+        <!-- Amenities -->
+        <section class="amenities">
             <div class="amenity">
                 <div class="amenity-icon">🛁</div>
-                <h3 class="amenity-title" data-i18n="a-jacuzzi-title">Jacuzzi privatif</h3>
-                <p class="amenity-desc" data-i18n="a-jacuzzi-desc">Jets massants et éclairage LED d'ambiance</p>
+                <div class="amenity-name">Jacuzzi</div>
+                <div class="amenity-desc">Balnéothérapie</div>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">🎬</div>
-                <h3 class="amenity-title" data-i18n="a-cinema-title">Home Cinéma</h3>
-                <p class="amenity-desc" data-i18n="a-cinema-desc">Son surround 5.1 et grand écran Smart TV</p>
+                <div class="amenity-name">Home Cinéma</div>
+                <div class="amenity-desc">Système 5.1</div>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">🛏️</div>
-                <h3 class="amenity-title" data-i18n="a-bed-title">Suite luxueuse</h3>
-                <p class="amenity-desc" data-i18n="a-bed-desc">Lit king-size avec literie premium</p>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">🚿</div>
-                <h3 class="amenity-title" data-i18n="a-bath-title">Salle de bain spa</h3>
-                <p class="amenity-desc" data-i18n="a-bath-desc">Toilettes japonaises et douche à effet pluie</p>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">☕</div>
-                <h3 class="amenity-title" data-i18n="a-kitchen-title">Cuisine équipée</h3>
-                <p class="amenity-desc" data-i18n="a-kitchen-desc">Nespresso et équipements complets</p>
+                <div class="amenity-name">Lit King-Size</div>
+                <div class="amenity-desc">Très confortable</div>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">📶</div>
-                <h3 class="amenity-title" data-i18n="a-wifi-title">WiFi Fibre</h3>
-                <p class="amenity-desc" data-i18n="a-wifi-desc">Connexion ultra-rapide et workspace</p>
+                <div class="amenity-name">Fibre</div>
+                <div class="amenity-desc">Très haut débit</div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="gallery">
-        <p class="section-label" data-i18n="gallery-label">Galerie</p>
-        <h2 class="section-title" data-i18n="gallery-title">Découvrir l'appartement</h2>
+        <!-- Reviews -->
+        <section class="reviews">
+            <div class="reviews-header">
+                <h2 class="reviews-title">Ce que disent mes voyageurs</h2>
+                <div class="reviews-summary">
+                    <span class="rating-stars">★★★★★</span>
+                    <span>5.0 · 15 avis</span>
+                </div>
+            </div>
 
-        <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox(0)">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon" loading="lazy">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">M</div>
+                    <div>
+                        <div class="review-author">Marie</div>
+                        <div class="review-date">Janvier 2026</div>
+                    </div>
+                </div>
+                <p class="review-text">"Appartement magnifique, le jacuzzi est un vrai plus ! Léa est très réactive et donne de super conseils pour le quartier. On reviendra !"</p>
             </div>
-            <div class="gallery-item" onclick="openLightbox(1)">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Jacuzzi" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openLightbox(2)">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Chambre" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openLightbox(3)">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" alt="Salle de bain" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openLightbox(4)">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" alt="Cuisine" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openLightbox(5)">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Détails" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openLightbox(6)">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" alt="Vue" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openLightbox(7)">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" alt="Ambiance" loading="lazy">
-            </div>
-        </div>
-    </section>
 
-    <section class="location">
-        <p class="section-label" data-i18n="location-label">Emplacement</p>
-        <h2 class="section-title" data-i18n="location-title">Au cœur de Paris</h2>
-
-        <p class="location-text" data-i18n="location-desc">
-            Entre Oberkampf et République, dans le vibrant 11ème arrondissement.
-            Restaurants, bars et boutiques à deux pas.
-        </p>
-
-        <div class="location-badges">
-            <div class="location-badge">
-                <p class="location-badge-name">République</p>
-                <p class="location-badge-time" data-i18n="walk-5">5 min</p>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">T</div>
+                    <div>
+                        <div class="review-author">Thomas</div>
+                        <div class="review-date">Décembre 2025</div>
+                    </div>
+                </div>
+                <p class="review-text">"Parfait pour un weekend en amoureux. Le home cinéma est top, on s'est fait une soirée Netflix dans le canapé après le jacuzzi. Merci Léa !"</p>
             </div>
-            <div class="location-badge">
-                <p class="location-badge-name">Bastille</p>
-                <p class="location-badge-time" data-i18n="walk-10">10 min</p>
-            </div>
-            <div class="location-badge">
-                <p class="location-badge-name">Le Marais</p>
-                <p class="location-badge-time" data-i18n="walk-15">15 min</p>
-            </div>
-            <div class="location-badge">
-                <p class="location-badge-name">Canal St-Martin</p>
-                <p class="location-badge-time" data-i18n="walk-12">12 min</p>
-            </div>
-        </div>
-    </section>
 
-    <section class="cta-section">
-        <h2 class="cta-title" data-i18n="cta-title">Réservez votre séjour</h2>
-        <p class="cta-subtitle" data-i18n="cta-subtitle">Escapade romantique ou weekend entre amis</p>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">S</div>
+                    <div>
+                        <div class="review-author">Sophie</div>
+                        <div class="review-date">Novembre 2025</div>
+                    </div>
+                </div>
+                <p class="review-text">"Emplacement idéal, appartement très propre et bien équipé. La communication avec Léa était parfaite du début à la fin."</p>
+            </div>
+        </section>
 
-        <div class="cta-buttons">
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb" data-i18n="cta-book">
-                Vérifier les disponibilités
+        <!-- Location -->
+        <section class="location">
+            <h2 class="location-title">📍 Au cœur du 11e arrondissement</h2>
+            <p class="location-desc">
+                Entre Oberkampf et République, dans l'un des quartiers les plus vivants de Paris.
+                Restaurants, bars et boutiques à deux pas.
+            </p>
+            <div class="location-points">
+                <div class="location-point">
+                    <strong>République</strong>
+                    <span>5 min à pied</span>
+                </div>
+                <div class="location-point">
+                    <strong>Bastille</strong>
+                    <span>10 min</span>
+                </div>
+                <div class="location-point">
+                    <strong>Le Marais</strong>
+                    <span>15 min</span>
+                </div>
+                <div class="location-point">
+                    <strong>Canal St-Martin</strong>
+                    <span>12 min</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <h2 class="footer-cta-title">Réservez votre séjour</h2>
+        <p class="footer-cta-sub">Escapade romantique ou weekend entre amis</p>
+        <div class="footer-buttons">
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.762-.787-1.5-1.574-2.162-2.362-1.4-1.65-2.587-3.337-2.587-5.112 0-2.163 1.4-3.925 3.55-3.925 1.163 0 2.2.613 2.787 1.575.588-.962 1.625-1.575 2.788-1.575 2.15 0 3.55 1.762 3.55 3.925 0 1.775-1.188 3.462-2.588 5.112-.662.788-1.4 1.575-2.162 2.362-.387.4-.775.8-1.175 1.188-.4-.388-.788-.788-1.175-1.188h-.001z"/></svg>
+                Réserver sur Airbnb
             </a>
-            <a href="https://wa.me/33756864414?text=Bonjour, je suis intéressé par l'appartement À la folie à Paris" class="btn btn-outline">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                WhatsApp
+            <a href="https://wa.me/33756864414?text=Bonjour Léa !" class="btn btn-whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Discuter avec Léa
             </a>
         </div>
-
-        <div class="cta-phone">
+        <div class="footer-phone">
             <a href="tel:+33756864414">07 56 86 44 14</a>
         </div>
     </section>
 
     <footer>
-        <div class="footer-links">
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank">Airbnb</a>
-            <a href="https://wa.me/33756864414" data-i18n="footer-contact">Contact</a>
-        </div>
-        <p class="copyright">© 2026 À la folie · Paris</p>
+        © 2026 À la folie · Paris · <a href="https://airbnb.fr/h/a-la-folie" style="color: inherit;">Voir sur Airbnb</a>
     </footer>
 
     <!-- Lightbox -->
@@ -811,7 +907,125 @@
     </div>
 
     <script>
-        const galleryImages = [
+        const API_URL = 'https://xhpsdbmajanmoztijbnx.supabase.co/functions/v1/folie-pricing';
+        const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ';
+        const WHATSAPP_BASE = 'https://wa.me/33756864414?text=';
+
+        // Set min date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkIn').min = today;
+        document.getElementById('checkOut').min = today;
+
+        // Update checkout min when checkin changes
+        document.getElementById('checkIn').addEventListener('change', function() {
+            const nextDay = new Date(this.value);
+            nextDay.setDate(nextDay.getDate() + 1);
+            document.getElementById('checkOut').min = nextDay.toISOString().split('T')[0];
+            if (document.getElementById('checkOut').value < nextDay.toISOString().split('T')[0]) {
+                document.getElementById('checkOut').value = nextDay.toISOString().split('T')[0];
+            }
+        });
+
+        async function checkAvailability() {
+            const checkIn = document.getElementById('checkIn').value;
+            const checkOut = document.getElementById('checkOut').value;
+
+            if (!checkIn || !checkOut) {
+                alert('Veuillez sélectionner vos dates');
+                return;
+            }
+
+            const btn = document.getElementById('checkBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span>';
+
+            // Hide previous results
+            document.getElementById('resultAvailable').style.display = 'none';
+            document.getElementById('resultUnavailable').style.display = 'none';
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        check_in: checkIn,
+                        check_out: checkOut,
+                        guests: 2
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.available) {
+                    showAvailable(data);
+                } else {
+                    showUnavailable(data);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Erreur lors de la vérification. Veuillez réessayer.');
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Vérifier';
+        }
+
+        function showAvailable(data) {
+            const result = document.getElementById('resultAvailable');
+            result.style.display = 'block';
+
+            document.getElementById('availableDetails').textContent =
+                `${formatDate(data.check_in)} → ${formatDate(data.check_out)} (${data.nights} nuit${data.nights > 1 ? 's' : ''})`;
+
+            document.getElementById('bookBtn').href = data.airbnb_url;
+            document.getElementById('whatsappAvailable').href =
+                WHATSAPP_BASE + encodeURIComponent(data.whatsapp_message);
+
+            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function showUnavailable(data) {
+            const result = document.getElementById('resultUnavailable');
+            result.style.display = 'block';
+
+            document.getElementById('unavailableDetails').textContent =
+                `Les dates du ${formatDate(data.check_in)} au ${formatDate(data.check_out)} sont déjà réservées.`;
+
+            // Show alternatives
+            const altList = document.getElementById('alternativesList');
+            altList.innerHTML = '';
+            if (data.alternatives && data.alternatives.length > 0) {
+                data.alternatives.forEach(alt => {
+                    const item = document.createElement('span');
+                    item.className = 'alternative-item';
+                    item.textContent = alt.label;
+                    item.onclick = () => selectAlternative(alt.start, alt.end);
+                    altList.appendChild(item);
+                });
+            }
+
+            document.getElementById('whatsappUnavailable').href =
+                WHATSAPP_BASE + encodeURIComponent(data.whatsapp_message);
+
+            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function selectAlternative(start, end) {
+            document.getElementById('checkIn').value = start;
+            document.getElementById('checkOut').value = end;
+            checkAvailability();
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+        }
+
+        // Lightbox
+        const images = [
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg',
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg',
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg',
@@ -821,11 +1035,11 @@
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg',
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg'
         ];
-        let currentImage = 0;
+        let currentImg = 0;
 
-        function openLightbox(index) {
-            currentImage = index;
-            document.getElementById('lightbox-img').src = galleryImages[index];
+        function openLightbox(i) {
+            currentImg = i;
+            document.getElementById('lightbox-img').src = images[i];
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -836,114 +1050,37 @@
         }
 
         function nextImage() {
-            currentImage = (currentImage + 1) % galleryImages.length;
-            document.getElementById('lightbox-img').src = galleryImages[currentImage];
+            currentImg = (currentImg + 1) % images.length;
+            document.getElementById('lightbox-img').src = images[currentImg];
         }
 
         function prevImage() {
-            currentImage = (currentImage - 1 + galleryImages.length) % galleryImages.length;
-            document.getElementById('lightbox-img').src = galleryImages[currentImage];
+            currentImg = (currentImg - 1 + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[currentImg];
         }
 
-        document.getElementById('lightbox').addEventListener('click', (e) => {
+        document.getElementById('lightbox').onclick = e => {
             if (e.target.id === 'lightbox') closeLightbox();
-        });
+        };
 
-        document.addEventListener('keydown', (e) => {
+        document.onkeydown = e => {
             if (!document.getElementById('lightbox').classList.contains('active')) return;
             if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowRight') nextImage();
             if (e.key === 'ArrowLeft') prevImage();
-        });
-
-        // i18n
-        const translations = {
-            fr: {
-                'header-book': 'Réserver',
-                'hero-label': "Appartement d'exception",
-                'f-label-space': 'Espace',
-                'f-label-guests': 'Voyageurs',
-                'f-label-rating': 'Note',
-                'cta-book': 'Vérifier les disponibilités',
-                'amenities-label': 'Équipements',
-                'amenities-title': 'Une expérience unique',
-                'a-jacuzzi-title': 'Jacuzzi privatif',
-                'a-jacuzzi-desc': "Jets massants et éclairage LED d'ambiance",
-                'a-cinema-title': 'Home Cinéma',
-                'a-cinema-desc': 'Son surround 5.1 et grand écran Smart TV',
-                'a-bed-title': 'Suite luxueuse',
-                'a-bed-desc': 'Lit king-size avec literie premium',
-                'a-bath-title': 'Salle de bain spa',
-                'a-bath-desc': 'Toilettes japonaises et douche à effet pluie',
-                'a-kitchen-title': 'Cuisine équipée',
-                'a-kitchen-desc': 'Nespresso et équipements complets',
-                'a-wifi-title': 'WiFi Fibre',
-                'a-wifi-desc': 'Connexion ultra-rapide et workspace',
-                'gallery-label': 'Galerie',
-                'gallery-title': "Découvrir l'appartement",
-                'location-label': 'Emplacement',
-                'location-title': 'Au cœur de Paris',
-                'location-desc': 'Entre Oberkampf et République, dans le vibrant 11ème arrondissement. Restaurants, bars et boutiques à deux pas.',
-                'walk-5': '5 min',
-                'walk-10': '10 min',
-                'walk-12': '12 min',
-                'walk-15': '15 min',
-                'cta-title': 'Réservez votre séjour',
-                'cta-subtitle': 'Escapade romantique ou weekend entre amis',
-                'footer-contact': 'Contact'
-            },
-            en: {
-                'header-book': 'Book',
-                'hero-label': 'Exceptional apartment',
-                'f-label-space': 'Space',
-                'f-label-guests': 'Guests',
-                'f-label-rating': 'Rating',
-                'cta-book': 'Check availability',
-                'amenities-label': 'Amenities',
-                'amenities-title': 'A unique experience',
-                'a-jacuzzi-title': 'Private Jacuzzi',
-                'a-jacuzzi-desc': 'Massage jets and LED mood lighting',
-                'a-cinema-title': 'Home Cinema',
-                'a-cinema-desc': '5.1 surround sound and large Smart TV',
-                'a-bed-title': 'Luxurious suite',
-                'a-bed-desc': 'King-size bed with premium bedding',
-                'a-bath-title': 'Spa bathroom',
-                'a-bath-desc': 'Japanese toilet and rain shower',
-                'a-kitchen-title': 'Equipped kitchen',
-                'a-kitchen-desc': 'Nespresso and full equipment',
-                'a-wifi-title': 'Fiber WiFi',
-                'a-wifi-desc': 'Ultra-fast connection and workspace',
-                'gallery-label': 'Gallery',
-                'gallery-title': 'Discover the apartment',
-                'location-label': 'Location',
-                'location-title': 'Heart of Paris',
-                'location-desc': 'Between Oberkampf and République, in the vibrant 11th arrondissement. Restaurants, bars and shops nearby.',
-                'walk-5': '5 min',
-                'walk-10': '10 min',
-                'walk-12': '12 min',
-                'walk-15': '15 min',
-                'cta-title': 'Book your stay',
-                'cta-subtitle': 'Romantic getaway or weekend with friends',
-                'footer-contact': 'Contact'
-            }
         };
 
-        function setLang(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
-            });
-            document.documentElement.lang = lang;
-            localStorage.setItem('lang', lang);
-        }
-
-        const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
-        setLang(savedLang);
+        // Auto-scroll photo strip
+        const photoStrip = document.getElementById('photoStrip');
+        let scrollDirection = 1;
+        setInterval(() => {
+            if (photoStrip.scrollLeft >= photoStrip.scrollWidth - photoStrip.clientWidth) {
+                scrollDirection = -1;
+            } else if (photoStrip.scrollLeft <= 0) {
+                scrollDirection = 1;
+            }
+            photoStrip.scrollBy({ left: scrollDirection * 1, behavior: 'auto' });
+        }, 30);
     </script>
 </body>
 </html>
