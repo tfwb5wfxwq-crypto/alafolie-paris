@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À la folie - Appartement avec Jacuzzi & Home Cinéma | Paris République</title>
+    <meta name="description" content="Appartement de standing avec jacuzzi privatif et home cinéma au cœur de Paris. 60m², 4 voyageurs, entre Oberkampf et République. Réservez votre séjour d'exception.">
+    <meta name="keywords" content="appartement jacuzzi paris, location spa paris, airbnb jacuzzi paris, weekend romantique paris, appartement republique paris">
+    <link rel="canonical" href="https://alafolie.paris">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="À la folie - Jacuzzi & Home Cinéma à Paris">
+    <meta property="og:description" content="Appartement d'exception avec jacuzzi privatif au cœur de Paris">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alafolie.paris">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #c9a962;
+            --gold-light: #e8d5a3;
+            --dark: #1a1a1a;
+            --darker: #0d0d0d;
+            --text: #f5f5f5;
+            --text-muted: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        .features {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--darker);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--text-muted);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Details Section */
+        .details {
+            padding: 6rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .amenities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .amenity {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .amenity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .amenity-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .amenity-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Location Section */
+        .location {
+            padding: 4rem 2rem;
+            background: var(--dark);
+            text-align: center;
+        }
+
+        .location p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+        }
+
+        .neighborhood {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .neighborhood-item {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .neighborhood-item strong {
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 100;
+        }
+
+        .lang-btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .features {
+                gap: 2rem;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+
+    <section class="hero">
+        <h1 class="logo">À la folie</h1>
+        <p class="tagline" data-i18n="tagline">Paris · République</p>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🛁</div>
+                <div class="feature-text" data-i18n="feature-jacuzzi">Jacuzzi privatif</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎬</div>
+                <div class="feature-text" data-i18n="feature-cinema">Home Cinéma</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <div class="feature-text" data-i18n="feature-guests">4 voyageurs</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📍</div>
+                <div class="feature-text" data-i18n="feature-location">Cœur de Paris</div>
+            </div>
+        </div>
+
+        <div class="cta-container">
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-primary" data-i18n="cta-book">
+                Réserver sur Airbnb
+            </a>
+            <a href="https://wa.me/33XXXXXXXXX?text=Bonjour, je suis intéressé par l'appartement À la folie" class="btn btn-secondary" data-i18n="cta-contact">
+                Une question ?
+            </a>
+        </div>
+    </section>
+
+    <section class="details">
+        <h2 class="section-title" data-i18n="amenities-title">L'appartement</h2>
+
+        <div class="amenities">
+            <div class="amenity">
+                <div class="amenity-icon">🛁</div>
+                <div class="amenity-title" data-i18n="amenity-spa-title">Jacuzzi privatif</div>
+                <div class="amenity-desc" data-i18n="amenity-spa-desc">Jets massants et éclairage LED d'ambiance</div>
+            </div>
+            <div class="amenity">
+                <div class="amenity-icon">🎬</div>
+                <div class="amenity-title" data-i18n="amenity-cinema-title">Home Cinéma</div>
+                <div class="amenity-desc" data-i18n="amenity-cinema-desc">Son surround 5.1 et grand écran Smart TV</div>
+            </div>
+            <div class="amenity">
+                <div class="amenity-icon">🛏️</div>
+                <div class="amenity-title" data-i18n="amenity-bed-title">Suite parentale</div>
+                <div class="amenity-desc" data-i18n="amenity-bed-desc">Lit king-size et literie haut de gamme</div>
+            </div>
+            <div class="amenity">
+                <div class="amenity-icon">☕</div>
+                <div class="amenity-title" data-i18n="amenity-kitchen-title">Cuisine équipée</div>
+                <div class="amenity-desc" data-i18n="amenity-kitchen-desc">Machine Nespresso et équipements complets</div>
+            </div>
+            <div class="amenity">
+                <div class="amenity-icon">🚿</div>
+                <div class="amenity-title" data-i18n="amenity-bathroom-title">Salle de bain</div>
+                <div class="amenity-desc" data-i18n="amenity-bathroom-desc">Toilettes japonaises avec fonction bidet</div>
+            </div>
+            <div class="amenity">
+                <div class="amenity-icon">📶</div>
+                <div class="amenity-title" data-i18n="amenity-wifi-title">WiFi Fibre</div>
+                <div class="amenity-desc" data-i18n="amenity-wifi-desc">Connexion ultra-rapide et espace de travail</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location">
+        <h2 class="section-title" data-i18n="location-title">Emplacement idéal</h2>
+        <p data-i18n="location-desc">
+            Situé dans le 11ème arrondissement, entre Oberkampf et République.
+            Quartier vivant avec restaurants, bars et commerces à deux pas.
+        </p>
+
+        <div class="neighborhood">
+            <div class="neighborhood-item">
+                <strong>Bastille</strong> · <span data-i18n="walk">10 min à pied</span>
+            </div>
+            <div class="neighborhood-item">
+                <strong>Canal Saint-Martin</strong> · <span data-i18n="walk">12 min à pied</span>
+            </div>
+            <div class="neighborhood-item">
+                <strong>Le Marais</strong> · <span data-i18n="walk">15 min à pied</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank">Airbnb</a>
+            <a href="https://wa.me/33XXXXXXXXX" data-i18n="footer-contact">Contact</a>
+        </div>
+        <p class="copyright">© 2026 À la folie · Paris</p>
+    </footer>
+
+    <script>
+        const translations = {
+            fr: {
+                'tagline': 'Paris · République',
+                'feature-jacuzzi': 'Jacuzzi privatif',
+                'feature-cinema': 'Home Cinéma',
+                'feature-guests': '4 voyageurs',
+                'feature-location': 'Cœur de Paris',
+                'cta-book': 'Réserver sur Airbnb',
+                'cta-contact': 'Une question ?',
+                'amenities-title': "L'appartement",
+                'amenity-spa-title': 'Jacuzzi privatif',
+                'amenity-spa-desc': "Jets massants et éclairage LED d'ambiance",
+                'amenity-cinema-title': 'Home Cinéma',
+                'amenity-cinema-desc': 'Son surround 5.1 et grand écran Smart TV',
+                'amenity-bed-title': 'Suite parentale',
+                'amenity-bed-desc': 'Lit king-size et literie haut de gamme',
+                'amenity-kitchen-title': 'Cuisine équipée',
+                'amenity-kitchen-desc': 'Machine Nespresso et équipements complets',
+                'amenity-bathroom-title': 'Salle de bain',
+                'amenity-bathroom-desc': 'Toilettes japonaises avec fonction bidet',
+                'amenity-wifi-title': 'WiFi Fibre',
+                'amenity-wifi-desc': 'Connexion ultra-rapide et espace de travail',
+                'location-title': 'Emplacement idéal',
+                'location-desc': 'Situé dans le 11ème arrondissement, entre Oberkampf et République. Quartier vivant avec restaurants, bars et commerces à deux pas.',
+                'walk': 'min à pied',
+                'footer-contact': 'Contact'
+            },
+            en: {
+                'tagline': 'Paris · République',
+                'feature-jacuzzi': 'Private Jacuzzi',
+                'feature-cinema': 'Home Cinema',
+                'feature-guests': '4 guests',
+                'feature-location': 'Heart of Paris',
+                'cta-book': 'Book on Airbnb',
+                'cta-contact': 'Any questions?',
+                'amenities-title': 'The apartment',
+                'amenity-spa-title': 'Private Jacuzzi',
+                'amenity-spa-desc': 'Massage jets and LED mood lighting',
+                'amenity-cinema-title': 'Home Cinema',
+                'amenity-cinema-desc': '5.1 surround sound and large Smart TV',
+                'amenity-bed-title': 'Master suite',
+                'amenity-bed-desc': 'King-size bed with premium bedding',
+                'amenity-kitchen-title': 'Equipped kitchen',
+                'amenity-kitchen-desc': 'Nespresso machine and full equipment',
+                'amenity-bathroom-title': 'Bathroom',
+                'amenity-bathroom-desc': 'Japanese toilet with bidet function',
+                'amenity-wifi-title': 'Fiber WiFi',
+                'amenity-wifi-desc': 'Ultra-fast connection and workspace',
+                'location-title': 'Perfect location',
+                'location-desc': 'Located in the 11th arrondissement, between Oberkampf and République. Vibrant neighborhood with restaurants, bars and shops nearby.',
+                'walk': 'min walk',
+                'footer-contact': 'Contact'
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+            });
+
+            document.documentElement.lang = lang;
+            localStorage.setItem('lang', lang);
+        }
+
+        // Init language
+        const savedLang = localStorage.getItem('lang') ||
+            (navigator.language.startsWith('fr') ? 'fr' : 'en');
+        setLang(savedLang);
+    </script>
+</body>
+</html>
