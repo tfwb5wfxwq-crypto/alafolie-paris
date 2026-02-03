@@ -38,29 +38,37 @@
         }
 
         /* Photo Strip at Top */
-        .photo-strip {
-            height: 120px;
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
+        .photo-strip-container {
+            overflow: hidden;
+            background: #111;
         }
 
-        .photo-strip::-webkit-scrollbar { display: none; }
+        .photo-strip {
+            display: flex;
+            animation: scrollPhotos 30s linear infinite;
+            width: max-content;
+        }
+
+        .photo-strip:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollPhotos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
         .photo-strip img {
-            height: 100%;
-            min-width: 180px;
+            height: 120px;
+            width: auto;
             object-fit: cover;
-            scroll-snap-align: start;
             cursor: pointer;
-            transition: all 0.4s ease;
-            filter: brightness(0.95);
+            transition: opacity 0.3s;
+            flex-shrink: 0;
         }
 
         .photo-strip img:hover {
-            filter: brightness(1.05);
-            transform: scale(1.02);
+            opacity: 0.8;
         }
 
         /* Trust Badge */
@@ -742,15 +750,26 @@
 </head>
 <body>
     <!-- Photo Strip -->
-    <div class="photo-strip" id="photoStrip">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon" onclick="openLightbox(0)">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Jacuzzi" onclick="openLightbox(1)">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Chambre" onclick="openLightbox(2)">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" alt="Salle de bain" onclick="openLightbox(3)">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" alt="Cuisine" onclick="openLightbox(4)">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Détails" onclick="openLightbox(5)">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" alt="Ambiance" onclick="openLightbox(6)">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" alt="Vue" onclick="openLightbox(7)">
+    <div class="photo-strip-container">
+        <div class="photo-strip" id="photoStrip">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon" onclick="openLightbox(0)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Jacuzzi" onclick="openLightbox(1)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Chambre" onclick="openLightbox(2)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" alt="Salle de bain" onclick="openLightbox(3)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" alt="Cuisine" onclick="openLightbox(4)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Détails" onclick="openLightbox(5)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" alt="Ambiance" onclick="openLightbox(6)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" alt="Vue" onclick="openLightbox(7)">
+            <!-- Duplicate for infinite loop -->
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon" onclick="openLightbox(0)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Jacuzzi" onclick="openLightbox(1)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Chambre" onclick="openLightbox(2)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" alt="Salle de bain" onclick="openLightbox(3)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" alt="Cuisine" onclick="openLightbox(4)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Détails" onclick="openLightbox(5)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" alt="Ambiance" onclick="openLightbox(6)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" alt="Vue" onclick="openLightbox(7)">
+        </div>
     </div>
 
     <!-- Trust Badge -->
@@ -1141,17 +1160,6 @@
             if (e.key === 'ArrowLeft') prevImage();
         };
 
-        // Auto-scroll photo strip
-        const photoStrip = document.getElementById('photoStrip');
-        let scrollDirection = 1;
-        setInterval(() => {
-            if (photoStrip.scrollLeft >= photoStrip.scrollWidth - photoStrip.clientWidth) {
-                scrollDirection = -1;
-            } else if (photoStrip.scrollLeft <= 0) {
-                scrollDirection = 1;
-            }
-            photoStrip.scrollBy({ left: scrollDirection * 1, behavior: 'auto' });
-        }, 30);
     </script>
 </body>
 </html>
