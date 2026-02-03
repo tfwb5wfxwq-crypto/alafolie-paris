@@ -8,13 +8,13 @@
     <link rel="canonical" href="https://folie.paris">
 
     <meta property="og:title" content="À la folie - Jacuzzi & Home Cinéma à Paris">
-    <meta property="og:description" content="L'appartement de Léa avec jacuzzi privatif au cœur de Paris. Superhost ⭐ 5.0">
+    <meta property="og:description" content="L'appartement de Léa avec jacuzzi privatif au cœur de Paris. Superhost 5.0">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://folie.paris">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,8 +23,9 @@
             --cream: #faf8f5;
             --dark: #1a1a1a;
             --text: #333;
-            --text-light: #777;
+            --text-light: #888;
             --gold: #c9a66b;
+            --gold-light: #f5e6c8;
             --green: #25D366;
             --whatsapp-bg: #e5ddd5;
             --whatsapp-green: #dcf8c6;
@@ -73,6 +74,22 @@
         @keyframes typing {
             0%, 60% { opacity: 1; }
             30% { opacity: 0.3; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes priceReveal {
+            0% { opacity: 0; transform: scale(0.8) translateY(10px); }
+            50% { transform: scale(1.05) translateY(-5px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes checkmark {
+            0% { stroke-dashoffset: 50; }
+            100% { stroke-dashoffset: 0; }
         }
 
         .animate-in {
@@ -216,83 +233,98 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        /* Calendar Section */
-        .calendar-section {
+        /* PREMIUM Calendar Section */
+        .booking-section {
             background: white;
-            border-radius: 24px;
-            padding: 2.5rem;
+            border-radius: 32px;
+            padding: 3rem;
             margin-bottom: 3rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
             position: relative;
             overflow: hidden;
         }
 
-        .calendar-section::before {
+        .booking-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--gold), #d4af37, var(--gold));
         }
 
-        .calendar-header {
+        .booking-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
-        .calendar-header h2 {
+        .booking-header h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
-        .calendar-header p {
+        .booking-header p {
             color: var(--text-light);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
-        /* Calendar Grid */
-        .calendar-container {
+        /* Calendar Container */
+        .calendar-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 2.5rem;
             margin-bottom: 2rem;
         }
 
         .calendar {
-            background: #fafafa;
-            border-radius: 16px;
+            background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
+            border-radius: 20px;
             padding: 1.5rem;
+            border: 1px solid rgba(0,0,0,0.04);
         }
 
         .calendar-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 0 0.5rem;
         }
 
         .calendar-nav button {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            transition: all 0.2s;
-            color: var(--text-light);
+            border: none;
+            background: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .calendar-nav button:hover {
             background: var(--gold);
             color: white;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(201, 166, 107, 0.4);
+        }
+
+        .calendar-nav button:disabled {
+            opacity: 0.3;
+            cursor: default;
+            transform: none;
+            box-shadow: none;
         }
 
         .calendar-month {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            color: var(--dark);
         }
 
         .calendar-weekdays {
@@ -301,14 +333,16 @@
             text-align: center;
             font-size: 0.75rem;
             color: var(--text-light);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .calendar-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
+            gap: 6px;
         }
 
         .calendar-day {
@@ -316,7 +350,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -326,98 +361,219 @@
         .calendar-day:hover:not(.disabled):not(.blocked) {
             background: var(--gold);
             color: white;
-            transform: scale(1.1);
+            transform: scale(1.15);
+            box-shadow: 0 4px 15px rgba(201, 166, 107, 0.4);
         }
 
         .calendar-day.disabled {
-            color: #ccc;
+            color: #ddd;
             cursor: default;
         }
 
         .calendar-day.blocked {
             color: #ccc;
-            text-decoration: line-through;
             cursor: not-allowed;
+            position: relative;
         }
 
-        .calendar-day.blocked::after {
+        .calendar-day.blocked::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 3px,
-                rgba(0,0,0,0.03) 3px,
-                rgba(0,0,0,0.03) 6px
-            );
-            border-radius: 50%;
-        }
-
-        .calendar-day.selected {
-            background: var(--dark);
-            color: white;
-        }
-
-        .calendar-day.in-range {
-            background: rgba(201, 166, 107, 0.2);
-            border-radius: 0;
-        }
-
-        .calendar-day.range-start {
-            background: var(--gold);
-            color: white;
-            border-radius: 50% 0 0 50%;
-        }
-
-        .calendar-day.range-end {
-            background: var(--gold);
-            color: white;
-            border-radius: 0 50% 50% 0;
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ddd, transparent);
+            transform: rotate(-45deg);
         }
 
         .calendar-day.today {
             border: 2px solid var(--gold);
+            font-weight: 700;
         }
 
-        /* Selection Summary */
-        .selection-summary {
-            display: none;
+        .calendar-day.range-start {
+            background: var(--dark);
+            color: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        .calendar-day.range-end {
+            background: var(--dark);
+            color: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        .calendar-day.in-range {
+            background: var(--gold-light);
+            border-radius: 0;
+            color: var(--dark);
+        }
+
+        .calendar-day.in-range:first-of-type,
+        .calendar-day.range-start + .in-range {
+            border-radius: 50% 0 0 50%;
+        }
+
+        /* Price Display */
+        .price-display {
             background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
-            border-radius: 16px;
-            padding: 1.5rem;
+            border-radius: 24px;
+            padding: 2rem;
             text-align: center;
-            animation: fadeInUp 0.4s ease;
+            border: 2px solid #eee;
+            transition: all 0.4s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .selection-summary.show {
-            display: block;
+        .price-display.has-selection {
+            border-color: var(--gold);
+            box-shadow: 0 10px 40px rgba(201, 166, 107, 0.15);
         }
 
-        .selection-dates {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .price-display.unavailable {
+            border-color: var(--red);
+        }
+
+        .price-placeholder {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .price-placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .selected-dates {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        .selection-dates .arrow {
-            color: var(--gold);
+        .date-box {
+            background: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
         }
 
-        .selection-nights {
+        .date-box .label {
+            font-size: 0.7rem;
             color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .date-box .value {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .date-arrow {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .nights-count {
+            color: var(--text-light);
+            font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
 
-        .selection-buttons {
+        .price-amount {
+            animation: priceReveal 0.5s ease forwards;
+        }
+
+        .price-total {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .price-total span {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .price-pernight {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        .price-loading {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .price-loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #eee;
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .availability-badge.available {
+            background: rgba(37, 211, 102, 0.1);
+            color: #1a9650;
+        }
+
+        .availability-badge.unavailable {
+            background: rgba(255, 90, 95, 0.1);
+            color: var(--red);
+        }
+
+        .alternative-dates {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8f8f8;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        .alternative-dates strong {
+            color: var(--dark);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
+            margin-top: 2rem;
             flex-wrap: wrap;
         }
 
@@ -426,9 +582,9 @@
             align-items: center;
             justify-content: center;
             gap: 0.6rem;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 0.95rem;
+            padding: 1.1rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
@@ -436,28 +592,34 @@
             border: none;
         }
 
-        .btn svg { width: 20px; height: 20px; }
+        .btn svg { width: 22px; height: 22px; }
 
-        .btn-airbnb {
-            background: linear-gradient(135deg, #FF5A5F 0%, #ff8a8c 100%);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--dark) 0%, #333 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        .btn-airbnb:hover {
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 90, 95, 0.4);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .btn-whatsapp {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
         }
 
         .btn-whatsapp:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
         }
 
         /* WhatsApp Mockup */
@@ -465,13 +627,20 @@
             margin-bottom: 4rem;
         }
 
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
         .whatsapp-mockup {
-            max-width: 400px;
+            max-width: 380px;
             margin: 0 auto;
             background: var(--whatsapp-bg);
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.15);
             transform: perspective(1000px) rotateY(-2deg);
             transition: all 0.5s ease;
         }
@@ -490,15 +659,15 @@
         }
 
         .whatsapp-avatar {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: var(--gold);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         .whatsapp-name {
@@ -525,16 +694,17 @@
 
         .whatsapp-chat {
             padding: 1rem;
-            min-height: 300px;
+            min-height: 280px;
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8+f9/PQMRgHFUIX0VAgBWTgf3cYBX5QAAAABJRU5ErkJggg==');
         }
 
         .chat-bubble {
             max-width: 85%;
-            padding: 0.7rem 1rem;
-            border-radius: 12px;
+            padding: 0.6rem 0.9rem;
+            border-radius: 10px;
             font-size: 0.9rem;
             position: relative;
             animation: slideIn 0.5s ease forwards;
@@ -557,34 +727,16 @@
             font-size: 0.65rem;
             color: #999;
             text-align: right;
-            margin-top: 0.3rem;
+            margin-top: 0.2rem;
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            gap: 0.3rem;
+            gap: 0.25rem;
         }
 
         .chat-check {
             color: #53bdeb;
         }
-
-        .typing-indicator {
-            display: flex;
-            gap: 4px;
-            padding: 1rem;
-            align-self: flex-start;
-        }
-
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: #999;
-            border-radius: 50%;
-            animation: typing 1.4s infinite;
-        }
-
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
         .whatsapp-cta {
             background: white;
@@ -598,10 +750,11 @@
             gap: 0.5rem;
             background: var(--green);
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.75rem 1.75rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
@@ -614,7 +767,7 @@
         .amenities {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            gap: 1.25rem;
             margin-bottom: 4rem;
         }
 
@@ -622,14 +775,14 @@
             text-align: center;
             padding: 2rem 1rem;
             background: white;
-            border-radius: 16px;
+            border-radius: 20px;
             transition: all 0.4s ease;
             cursor: default;
         }
 
         .amenity:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
 
         .amenity-icon {
@@ -644,13 +797,13 @@
         .amenity:nth-child(4) .amenity-icon { animation-delay: 1.5s; }
 
         .amenity-name {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 0.25rem;
         }
 
         .amenity-desc {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-light);
         }
 
@@ -681,7 +834,7 @@
         .review-card {
             background: white;
             padding: 1.5rem;
-            border-radius: 16px;
+            border-radius: 20px;
             margin-bottom: 1rem;
             transition: all 0.3s ease;
             border-left: 4px solid transparent;
@@ -689,8 +842,8 @@
 
         .review-card:hover {
             border-left-color: var(--gold);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transform: translateX(5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transform: translateX(8px);
         }
 
         .review-header {
@@ -701,8 +854,8 @@
         }
 
         .review-avatar {
-            width: 45px;
-            height: 45px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
             border-radius: 50%;
             display: flex;
@@ -710,7 +863,7 @@
             justify-content: center;
             color: white;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         .review-author { font-weight: 600; }
@@ -726,14 +879,14 @@
         .location {
             background: white;
             padding: 2.5rem;
-            border-radius: 20px;
+            border-radius: 24px;
             margin-bottom: 4rem;
             position: relative;
             overflow: hidden;
         }
 
         .location::after {
-            content: '📍';
+            content: '';
             position: absolute;
             top: 20px;
             right: 20px;
@@ -756,7 +909,7 @@
 
         .location-points {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
@@ -900,7 +1053,7 @@
 
         /* Responsive */
         @media (max-width: 800px) {
-            .calendar-container {
+            .calendar-wrapper {
                 grid-template-columns: 1fr;
             }
 
@@ -914,15 +1067,21 @@
                 transform: none;
             }
 
-            .selection-buttons {
-                flex-direction: column;
+            .price-total {
+                font-size: 2.5rem;
+            }
+
+            .booking-section {
+                padding: 2rem 1.5rem;
             }
         }
 
         @media (max-width: 500px) {
             .trust-badge { gap: 1rem; }
             .calendar { padding: 1rem; }
-            .calendar-day { font-size: 0.8rem; }
+            .calendar-day { font-size: 0.85rem; }
+            .selected-dates { flex-direction: column; gap: 0.5rem; }
+            .date-arrow { transform: rotate(90deg); }
         }
     </style>
 </head>
@@ -960,7 +1119,7 @@
             <span class="rating"><span class="rating-stars">★</span> 5.0</span>
             <span style="color: #777;"> · 15 avis</span>
         </div>
-        <div class="guest-favorite animate-in delay-2">🏆 Top 5%</div>
+        <div class="guest-favorite animate-in delay-2">Top 5%</div>
     </div>
 
     <main class="main">
@@ -976,66 +1135,66 @@
             </div>
         </section>
 
-        <!-- Calendar Section -->
-        <section class="calendar-section animate-in delay-1">
-            <div class="calendar-header">
-                <h2>📅 Choisissez vos dates</h2>
-                <p>Cliquez sur votre date d'arrivée, puis de départ</p>
+        <!-- BOOKING Section -->
+        <section class="booking-section animate-in delay-1">
+            <div class="booking-header">
+                <h2>Réservez votre séjour</h2>
+                <p>Sélectionnez vos dates d'arrivée et de départ</p>
             </div>
 
-            <div class="calendar-container">
+            <div class="calendar-wrapper">
                 <div class="calendar" id="calendar1"></div>
                 <div class="calendar" id="calendar2"></div>
             </div>
 
-            <div class="selection-summary" id="selectionSummary">
-                <div class="selection-dates">
-                    <span id="startDateDisplay">--</span>
-                    <span class="arrow">→</span>
-                    <span id="endDateDisplay">--</span>
+            <div class="price-display" id="priceDisplay">
+                <div class="price-placeholder">
+                    <div class="price-placeholder-icon">📅</div>
+                    <p>Sélectionnez vos dates pour voir le prix</p>
                 </div>
-                <div class="selection-nights" id="nightsDisplay">Sélectionnez vos dates</div>
-                <div class="selection-buttons">
-                    <a href="#" class="btn btn-airbnb" id="bookBtn" target="_blank">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.762-.787-1.5-1.574-2.162-2.362-1.4-1.65-2.587-3.337-2.587-5.112 0-2.163 1.4-3.925 3.55-3.925 1.163 0 2.2.613 2.787 1.575.588-.962 1.625-1.575 2.788-1.575 2.15 0 3.55 1.762 3.55 3.925 0 1.775-1.188 3.462-2.588 5.112-.662.788-1.4 1.575-2.162 2.362-.387.4-.775.8-1.175 1.188-.4-.388-.788-.788-1.175-1.188h-.001z"/></svg>
-                        Réserver sur Airbnb
-                    </a>
-                    <a href="#" class="btn btn-whatsapp" id="chatBtn" target="_blank">
-                        💬 Discuter avec Léa
-                    </a>
-                </div>
+            </div>
+
+            <div class="action-buttons" id="actionButtons" style="display: none;">
+                <a href="#" class="btn btn-primary" id="bookBtn" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.762-.787-1.5-1.574-2.162-2.362-1.4-1.65-2.587-3.337-2.587-5.112 0-2.163 1.4-3.925 3.55-3.925 1.163 0 2.2.613 2.787 1.575.588-.962 1.625-1.575 2.788-1.575 2.15 0 3.55 1.762 3.55 3.925 0 1.775-1.188 3.462-2.588 5.112-.662.788-1.4 1.575-2.162 2.362-.387.4-.775.8-1.175 1.188-.4-.388-.788-.788-1.175-1.188h-.001z"/></svg>
+                    Réserver sur Airbnb
+                </a>
+                <a href="#" class="btn btn-whatsapp" id="chatBtn" target="_blank">
+                    💬 Une question ?
+                </a>
             </div>
         </section>
 
         <!-- WhatsApp Mockup -->
         <section class="whatsapp-section animate-in delay-2">
+            <h3 class="section-title">Besoin d'un renseignement ?</h3>
             <div class="whatsapp-mockup">
                 <div class="whatsapp-header">
                     <div class="whatsapp-avatar">L</div>
                     <div class="whatsapp-name">
                         <strong>Léa</strong>
-                        <span>répond généralement en 5 min</span>
+                        <span>répond en ~5 min</span>
                     </div>
                     <div class="whatsapp-online"></div>
                 </div>
                 <div class="whatsapp-chat" id="whatsappChat">
-                    <div class="chat-bubble sent" style="animation-delay: 0.5s;">
+                    <div class="chat-bubble sent" style="animation-delay: 0.3s;">
                         Bonjour ! Le jacuzzi est privé ? 🛁
                         <div class="chat-time">14:32 <span class="chat-check">✓✓</span></div>
                     </div>
-                    <div class="chat-bubble received" style="animation-delay: 1.2s;">
+                    <div class="chat-bubble received" style="animation-delay: 1s;">
                         Oui complètement ! Il est dans la salle de bain, vous pouvez en profiter quand vous voulez 😊
                         <div class="chat-time">14:33</div>
                     </div>
-                    <div class="chat-bubble sent" style="animation-delay: 1.9s;">
+                    <div class="chat-bubble sent" style="animation-delay: 1.7s;">
                         Parfait ! Et le home cinéma ?
                         <div class="chat-time">14:33 <span class="chat-check">✓✓</span></div>
                     </div>
-                    <div class="chat-bubble received" style="animation-delay: 2.6s;">
+                    <div class="chat-bubble received" style="animation-delay: 2.4s;">
                         Système 5.1 avec grande TV, Netflix et tout ! Idéal pour une soirée film 🎬
                         <div class="chat-time">14:34</div>
                     </div>
-                    <div class="chat-bubble sent" style="animation-delay: 3.3s;">
+                    <div class="chat-bubble sent" style="animation-delay: 3.1s;">
                         Top je réserve ! 🙌
                         <div class="chat-time">14:35 <span class="chat-check">✓✓</span></div>
                     </div>
@@ -1149,7 +1308,7 @@
         <h2 class="footer-cta-title">Réservez votre séjour</h2>
         <p class="footer-cta-sub">Escapade romantique ou weekend entre amis</p>
         <div class="footer-buttons">
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-primary">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.762-.787-1.5-1.574-2.162-2.362-1.4-1.65-2.587-3.337-2.587-5.112 0-2.163 1.4-3.925 3.55-3.925 1.163 0 2.2.613 2.787 1.575.588-.962 1.625-1.575 2.788-1.575 2.15 0 3.55 1.762 3.55 3.925 0 1.775-1.188 3.462-2.588 5.112-.662.788-1.4 1.575-2.162 2.362-.387.4-.775.8-1.175 1.188-.4-.388-.788-.788-1.175-1.188h-.001z"/></svg>
                 Réserver sur Airbnb
             </a>
@@ -1179,14 +1338,14 @@
         const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ';
         const LISTING_ID = '1503490402342628075';
 
-        // Calendar State
+        // State
         let currentMonth1 = new Date();
         let currentMonth2 = new Date(currentMonth1.getFullYear(), currentMonth1.getMonth() + 1, 1);
         let startDate = null;
         let endDate = null;
         let blockedDates = [];
 
-        // Fetch blocked dates
+        // Fetch blocked dates on load
         async function fetchBlockedDates() {
             try {
                 const response = await fetch(API_URL, {
@@ -1195,21 +1354,31 @@
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${API_KEY}`
                     },
-                    body: JSON.stringify({
-                        check_in: new Date().toISOString().split('T')[0],
-                        check_out: new Date(Date.now() + 86400000).toISOString().split('T')[0],
-                        guests: 2
-                    })
+                    body: JSON.stringify({ get_calendar: true })
                 });
-                // API will return blocked info, for now we render calendars
+                const data = await response.json();
+                if (data.blocked) {
+                    blockedDates = data.blocked;
+                }
             } catch (e) {
-                console.log('API not available, continuing...');
+                console.log('Could not fetch blocked dates');
             }
             renderCalendars();
         }
 
+        // Check if date is blocked
+        function isDateBlocked(date) {
+            const dateStr = date.toISOString().split('T')[0];
+            for (const range of blockedDates) {
+                if (dateStr >= range.start && dateStr < range.end) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         // Render Calendar
-        function renderCalendar(containerId, date) {
+        function renderCalendar(containerId, date, isFirst) {
             const container = document.getElementById(containerId);
             const year = date.getFullYear();
             const month = date.getMonth();
@@ -1225,11 +1394,13 @@
             let startDay = firstDay.getDay() - 1;
             if (startDay < 0) startDay = 6;
 
+            const canGoPrev = isFirst && (new Date(year, month, 1) > new Date(today.getFullYear(), today.getMonth(), 1));
+
             let html = `
                 <div class="calendar-nav">
-                    <button onclick="prevMonth()"${containerId === 'calendar2' ? ' style="visibility:hidden"' : ''}>‹</button>
+                    <button onclick="prevMonth()" ${!canGoPrev ? 'disabled' : ''} ${!isFirst ? 'style="visibility:hidden"' : ''}>‹</button>
                     <span class="calendar-month">${monthNames[month]} ${year}</span>
-                    <button onclick="nextMonth()"${containerId === 'calendar1' ? ' style="visibility:hidden"' : ''}>›</button>
+                    <button onclick="nextMonth()" ${isFirst ? 'style="visibility:hidden"' : ''}>›</button>
                 </div>
                 <div class="calendar-weekdays">
                     ${dayNames.map(d => `<span>${d}</span>`).join('')}
@@ -1248,9 +1419,17 @@
                 const dateStr = currentDate.toISOString().split('T')[0];
                 let classes = 'calendar-day';
 
-                if (currentDate < today) {
+                const isPast = currentDate < today;
+                const blocked = isDateBlocked(currentDate);
+                const isToday = currentDate.getTime() === today.getTime();
+
+                if (isPast) {
                     classes += ' disabled';
-                } else if (currentDate.getTime() === today.getTime()) {
+                } else if (blocked) {
+                    classes += ' blocked';
+                }
+
+                if (isToday) {
                     classes += ' today';
                 }
 
@@ -1263,7 +1442,7 @@
                     classes += ' in-range';
                 }
 
-                const clickable = currentDate >= today;
+                const clickable = !isPast && !blocked;
                 html += `<div class="${classes}" ${clickable ? `onclick="selectDate('${dateStr}')"` : ''}>${day}</div>`;
             }
 
@@ -1272,16 +1451,14 @@
         }
 
         function renderCalendars() {
-            renderCalendar('calendar1', currentMonth1);
-            renderCalendar('calendar2', currentMonth2);
+            renderCalendar('calendar1', currentMonth1, true);
+            renderCalendar('calendar2', currentMonth2, false);
         }
 
         function prevMonth() {
-            if (currentMonth1 > new Date()) {
-                currentMonth1.setMonth(currentMonth1.getMonth() - 1);
-                currentMonth2.setMonth(currentMonth2.getMonth() - 1);
-                renderCalendars();
-            }
+            currentMonth1.setMonth(currentMonth1.getMonth() - 1);
+            currentMonth2.setMonth(currentMonth2.getMonth() - 1);
+            renderCalendars();
         }
 
         function nextMonth() {
@@ -1294,37 +1471,139 @@
             const date = new Date(dateStr);
 
             if (!startDate || (startDate && endDate)) {
-                // Start new selection
                 startDate = date;
                 endDate = null;
+                updatePriceDisplay('selecting');
             } else if (date > startDate) {
-                // Set end date
                 endDate = date;
-                showSelection();
+                fetchPricing();
             } else {
-                // Clicked before start, reset
                 startDate = date;
                 endDate = null;
+                updatePriceDisplay('selecting');
             }
 
             renderCalendars();
         }
 
-        async function showSelection() {
-            const summary = document.getElementById('selectionSummary');
-            summary.classList.add('show');
+        function updatePriceDisplay(state, data = null) {
+            const display = document.getElementById('priceDisplay');
+            const buttons = document.getElementById('actionButtons');
 
-            const options = { day: 'numeric', month: 'short' };
-            document.getElementById('startDateDisplay').textContent = startDate.toLocaleDateString('fr-FR', options);
-            document.getElementById('endDateDisplay').textContent = endDate.toLocaleDateString('fr-FR', options);
+            if (state === 'selecting') {
+                const options = { day: 'numeric', month: 'short' };
+                display.className = 'price-display has-selection';
+                display.innerHTML = `
+                    <div class="selected-dates">
+                        <div class="date-box">
+                            <div class="label">Arrivée</div>
+                            <div class="value">${startDate.toLocaleDateString('fr-FR', options)}</div>
+                        </div>
+                        <div class="date-arrow">→</div>
+                        <div class="date-box">
+                            <div class="label">Départ</div>
+                            <div class="value">...</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-light);">Sélectionnez votre date de départ</p>
+                `;
+                buttons.style.display = 'none';
+            } else if (state === 'loading') {
+                const options = { day: 'numeric', month: 'short' };
+                const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+                display.className = 'price-display has-selection';
+                display.innerHTML = `
+                    <div class="selected-dates">
+                        <div class="date-box">
+                            <div class="label">Arrivée</div>
+                            <div class="value">${startDate.toLocaleDateString('fr-FR', options)}</div>
+                        </div>
+                        <div class="date-arrow">→</div>
+                        <div class="date-box">
+                            <div class="label">Départ</div>
+                            <div class="value">${endDate.toLocaleDateString('fr-FR', options)}</div>
+                        </div>
+                    </div>
+                    <div class="nights-count">${nights} nuit${nights > 1 ? 's' : ''}</div>
+                    <div class="price-loading">
+                        <div class="price-loading-spinner"></div>
+                        Calcul du prix...
+                    </div>
+                `;
+                buttons.style.display = 'none';
+            } else if (state === 'available') {
+                const options = { day: 'numeric', month: 'short' };
+                const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+                display.className = 'price-display has-selection';
+                display.innerHTML = `
+                    <div class="selected-dates">
+                        <div class="date-box">
+                            <div class="label">Arrivée</div>
+                            <div class="value">${startDate.toLocaleDateString('fr-FR', options)}</div>
+                        </div>
+                        <div class="date-arrow">→</div>
+                        <div class="date-box">
+                            <div class="label">Départ</div>
+                            <div class="value">${endDate.toLocaleDateString('fr-FR', options)}</div>
+                        </div>
+                    </div>
+                    <div class="nights-count">${nights} nuit${nights > 1 ? 's' : ''}</div>
+                    <div class="availability-badge available">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Disponible
+                    </div>
+                    <div class="price-amount">
+                        <div class="price-total">${data.total}<span>€</span></div>
+                        <div class="price-pernight">${data.perNight}€ / nuit en moyenne</div>
+                    </div>
+                `;
+                buttons.style.display = 'flex';
 
-            const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
-            document.getElementById('nightsDisplay').innerHTML = `${nights} nuit${nights > 1 ? 's' : ''} · <span style="color: #999;">Vérification...</span>`;
+                const checkIn = startDate.toISOString().split('T')[0];
+                const checkOut = endDate.toISOString().split('T')[0];
+                document.getElementById('bookBtn').href = `https://www.airbnb.fr/rooms/${LISTING_ID}?check_in=${checkIn}&check_out=${checkOut}&guests=2`;
+                document.getElementById('chatBtn').href = `https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${startDate.toLocaleDateString('fr-FR')} au ${endDate.toLocaleDateString('fr-FR')} 😊`)}`;
+            } else if (state === 'unavailable') {
+                const options = { day: 'numeric', month: 'short' };
+                const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+                display.className = 'price-display has-selection unavailable';
+                let altHtml = '';
+                if (data.alternatives && data.alternatives.length > 0) {
+                    altHtml = `
+                        <div class="alternative-dates">
+                            <strong>Dates alternatives :</strong><br>
+                            ${data.alternatives.map(a => a.label).join('<br>')}
+                        </div>
+                    `;
+                }
+                display.innerHTML = `
+                    <div class="selected-dates">
+                        <div class="date-box">
+                            <div class="label">Arrivée</div>
+                            <div class="value">${startDate.toLocaleDateString('fr-FR', options)}</div>
+                        </div>
+                        <div class="date-arrow">→</div>
+                        <div class="date-box">
+                            <div class="label">Départ</div>
+                            <div class="value">${endDate.toLocaleDateString('fr-FR', options)}</div>
+                        </div>
+                    </div>
+                    <div class="nights-count">${nights} nuit${nights > 1 ? 's' : ''}</div>
+                    <div class="availability-badge unavailable">
+                        ✗ Non disponible
+                    </div>
+                    ${altHtml}
+                `;
+                buttons.style.display = 'none';
+            }
+        }
+
+        async function fetchPricing() {
+            updatePriceDisplay('loading');
 
             const checkIn = startDate.toISOString().split('T')[0];
             const checkOut = endDate.toISOString().split('T')[0];
 
-            // Call API for pricing
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
@@ -1340,27 +1619,19 @@
                 });
                 const data = await response.json();
 
-                if (data.available && data.pricing) {
-                    document.getElementById('nightsDisplay').innerHTML = `
-                        ${nights} nuit${nights > 1 ? 's' : ''} · <span style="color: #25D366; font-weight: 600;">Disponible ✓</span><br>
-                        <span style="font-size: 1.3rem; font-weight: 700; color: #1a1a1a;">${data.pricing.total}€</span>
-                        <span style="color: #777; font-size: 0.9rem;"> (${data.pricing.per_night_avg}€/nuit)</span>
-                    `;
-                } else if (data.available) {
-                    document.getElementById('nightsDisplay').innerHTML = `${nights} nuit${nights > 1 ? 's' : ''} · <span style="color: #25D366; font-weight: 600;">Disponible ✓</span>`;
+                if (data.available) {
+                    updatePriceDisplay('available', {
+                        total: data.pricing ? data.pricing.total : '—',
+                        perNight: data.pricing ? data.pricing.per_night_avg : '—'
+                    });
                 } else {
-                    document.getElementById('nightsDisplay').innerHTML = `
-                        ${nights} nuit${nights > 1 ? 's' : ''} · <span style="color: #FF5A5F; font-weight: 600;">Non disponible ✗</span>
-                        ${data.alternatives && data.alternatives.length > 0 ? `<br><span style="font-size: 0.85rem; color: #777;">Alternative : ${data.alternatives[0].label}</span>` : ''}
-                    `;
+                    updatePriceDisplay('unavailable', {
+                        alternatives: data.alternatives || []
+                    });
                 }
             } catch (e) {
-                document.getElementById('nightsDisplay').innerHTML = `${nights} nuit${nights > 1 ? 's' : ''} · C'est disponible ! ✅`;
+                updatePriceDisplay('available', { total: '—', perNight: '—' });
             }
-
-            // Update buttons
-            document.getElementById('bookBtn').href = `https://www.airbnb.fr/rooms/${LISTING_ID}?check_in=${checkIn}&check_out=${checkOut}&guests=2`;
-            document.getElementById('chatBtn').href = `https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${startDate.toLocaleDateString('fr-FR')} au ${endDate.toLocaleDateString('fr-FR')} 😊`)}`;
         }
 
         // Lightbox
