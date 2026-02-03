@@ -1888,7 +1888,7 @@
         const DAYS = ['Lu','Ma','Me','Je','Ve','Sa','Di'];
 
         let m1 = new Date(), m2 = new Date(m1.getFullYear(), m1.getMonth()+1, 1);
-        let start = null, end = null, blocked = [], hoveredDate = null;
+        let start = null, end = null, blocked = [];
         const tip = document.getElementById('cursorTip');
 
         // Fetch blocked dates
@@ -1937,11 +1937,9 @@
                 if (start && curr.getTime() === start.getTime()) c += ' start range';
                 else if (end && curr.getTime() === end.getTime()) c += ' end range';
                 else if (start && end && curr > start && curr < end) c += ' range';
-                else if (start && !end && hoveredDate && curr > start && curr < hoveredDate) c += ' preview';
-                else if (start && !end && hoveredDate && curr.getTime() === hoveredDate.getTime() && curr > start) c += ' preview-end';
                 const click = !past && !blk ? `onclick="pick('${ds}')"` : '';
                 const hover = !past && !blk ? `onmouseenter="hoverDay(event,'${ds}')" onmouseleave="leaveDay()"` : '';
-                html += `<div class="${c}" ${click} ${hover}>${d}</div>`;
+                html += `<div class="${c}" data-date="${ds}" ${click} ${hover}>${d}</div>`;
             }
             html += '</div>';
             el.innerHTML = html;
@@ -1951,13 +1949,26 @@
             const d = new Date(ds);
             const opts = { weekday: 'short', day: 'numeric', month: 'short' };
             let txt = d.toLocaleDateString('fr-FR', opts);
-            if (!start) txt = `Arrivée: ${txt}`;
-            else if (!end) {
-                txt = `Départ: ${txt}`;
-                // Show preview
-                if (d > start) {
-                    hoveredDate = d;
-                    render();
+
+            if (!start) {
+                txt = `Arrivée: ${txt}`;
+            } else if (!end) {
+                const nights = Math.round((d - start) / 864e5);
+                if (nights > 0) {
+                    txt = `Départ: ${txt} (${nights} nuit${nights > 1 ? 's' : ''})`;
+                    // Add preview classes without re-rendering
+                    document.querySelectorAll('.day').forEach(el => {
+                        const elDate = el.dataset.date;
+                        if (elDate) {
+                            const elD = new Date(elDate);
+                            el.classList.remove('preview', 'preview-end');
+                            if (elD > start && elD < d) {
+                                el.classList.add('preview');
+                            } else if (elD.getTime() === d.getTime()) {
+                                el.classList.add('preview-end');
+                            }
+                        }
+                    });
                 }
             }
             tip.textContent = txt;
@@ -1967,10 +1978,10 @@
 
         function leaveDay() {
             tip.classList.remove('show');
-            if (hoveredDate) {
-                hoveredDate = null;
-                render();
-            }
+            // Remove preview classes
+            document.querySelectorAll('.day.preview, .day.preview-end').forEach(el => {
+                el.classList.remove('preview', 'preview-end');
+            });
         }
 
         function moveTip(e) {
