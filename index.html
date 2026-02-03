@@ -3,1639 +3,527 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À la folie - Appartement Jacuzzi & Home Cinéma | Paris 11e</title>
-    <meta name="description" content="L'appartement de Léa avec jacuzzi privatif et home cinéma au cœur de Paris. Superhost 5.0★. Entre Oberkampf et République.">
+    <title>À la folie - Jacuzzi & Home Cinéma | Paris</title>
+    <meta name="description" content="Appartement avec jacuzzi privatif et home cinéma au cœur de Paris. Superhost 5.0★">
     <link rel="canonical" href="https://folie.paris">
-
-    <meta property="og:title" content="À la folie - Jacuzzi & Home Cinéma à Paris">
-    <meta property="og:description" content="L'appartement de Léa avec jacuzzi privatif au cœur de Paris. Superhost 5.0">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://folie.paris">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
             --cream: #faf8f5;
             --dark: #1a1a1a;
-            --text: #333;
-            --text-light: #888;
             --gold: #c9a66b;
             --gold-light: #f5e6c8;
-            --green: #25D366;
-            --whatsapp-bg: #e5ddd5;
-            --whatsapp-green: #dcf8c6;
-            --red: #FF5A5F;
+            --green: #22c55e;
+            --red: #ef4444;
+            --gray: #6b7280;
         }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--cream);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--dark); }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes scrollPhotos {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @keyframes typing {
-            0%, 60% { opacity: 1; }
-            30% { opacity: 0.3; }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        @keyframes priceReveal {
-            0% { opacity: 0; transform: scale(0.8) translateY(10px); }
-            50% { transform: scale(1.05) translateY(-5px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        @keyframes checkmark {
-            0% { stroke-dashoffset: 50; }
-            100% { stroke-dashoffset: 0; }
-        }
-
-        .animate-in {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes pop { 0% { transform: scale(0.8); opacity: 0; } 50% { transform: scale(1.05); } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+        .animate { animation: fadeIn 0.6s ease forwards; }
 
         /* Photo Strip */
-        .photo-strip-container {
-            overflow: hidden;
-            background: #111;
-        }
+        .photos { overflow: hidden; background: #111; }
+        .photos-inner { display: flex; animation: scroll 20s linear infinite; width: max-content; }
+        .photos-inner:hover { animation-play-state: paused; }
+        .photos img { height: 120px; cursor: pointer; transition: transform 0.3s; }
+        .photos img:hover { transform: scale(1.08); z-index: 2; }
 
-        .photo-strip {
-            display: flex;
-            animation: scrollPhotos 25s linear infinite;
-            width: max-content;
-        }
-
-        .photo-strip:hover {
-            animation-play-state: paused;
-        }
-
-        .photo-strip img {
-            height: 140px;
-            width: auto;
-            object-fit: cover;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            flex-shrink: 0;
-        }
-
-        .photo-strip img:hover {
-            transform: scale(1.05);
-            z-index: 10;
-        }
-
-        /* Trust Badge */
-        .trust-badge {
-            background: white;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-
-        .superhost-badge {
-            background: linear-gradient(135deg, #ff5a5f 0%, #ff8a8c 100%);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3);
-        }
-
-        .rating {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .rating-stars { color: var(--gold); }
-
-        .guest-favorite {
-            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        /* Header */
+        .header { background: #fff; padding: 1rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; border-bottom: 1px solid #eee; }
+        .badge { padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .badge-host { background: linear-gradient(135deg, #ff5a5f, #ff8a8c); color: #fff; }
+        .badge-top { background: linear-gradient(135deg, var(--gold), #d4af37); color: #fff; }
+        .rating { font-weight: 600; }
+        .rating span { color: var(--gold); }
 
         /* Main */
-        .main {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
-
-        /* Welcome */
-        .welcome {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .welcome-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-        }
-
-        .welcome-title em {
-            font-style: italic;
-            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .welcome-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .welcome-features {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .feature-pill {
-            background: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .feature-pill:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        /* PREMIUM Calendar Section */
-        .booking-section {
-            background: white;
-            border-radius: 32px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .booking-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--gold), #d4af37, var(--gold));
-        }
-
-        .booking-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .booking-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .booking-header p {
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-
-        /* Calendar Container */
-        .calendar-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .calendar {
-            background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
-            border-radius: 20px;
-            padding: 1.5rem;
-            border: 1px solid rgba(0,0,0,0.04);
-        }
-
-        .calendar-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 0 0.5rem;
-        }
-
-        .calendar-nav button {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--text);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .calendar-nav button:hover {
-            background: var(--gold);
-            color: white;
-            transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(201, 166, 107, 0.4);
-        }
-
-        .calendar-nav button:disabled {
-            opacity: 0.3;
-            cursor: default;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .calendar-month {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--dark);
-        }
-
-        .calendar-weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--text-light);
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .calendar-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-        }
-
-        .calendar-day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .calendar-day:hover:not(.disabled):not(.blocked) {
-            background: var(--gold);
-            color: white;
-            transform: scale(1.15);
-            box-shadow: 0 4px 15px rgba(201, 166, 107, 0.4);
-        }
-
-        .calendar-day.disabled {
-            color: #ddd;
-            cursor: default;
-        }
-
-        .calendar-day.blocked {
-            color: #ccc;
-            cursor: not-allowed;
-            position: relative;
-        }
-
-        .calendar-day.blocked::before {
-            content: '';
-            position: absolute;
-            width: 70%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #ddd, transparent);
-            transform: rotate(-45deg);
-        }
-
-        .calendar-day.today {
-            border: 2px solid var(--gold);
-            font-weight: 700;
-        }
-
-        .calendar-day.range-start {
-            background: var(--dark);
-            color: white;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 2;
-        }
-
-        .calendar-day.range-end {
-            background: var(--dark);
-            color: white;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 2;
-        }
-
-        .calendar-day.in-range {
-            background: var(--gold-light);
-            border-radius: 0;
-            color: var(--dark);
-        }
-
-        .calendar-day.in-range:first-of-type,
-        .calendar-day.range-start + .in-range {
-            border-radius: 50% 0 0 50%;
-        }
-
-        /* Price Display */
-        .price-display {
-            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
-            border-radius: 24px;
-            padding: 2rem;
-            text-align: center;
-            border: 2px solid #eee;
-            transition: all 0.4s ease;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .price-display.has-selection {
-            border-color: var(--gold);
-            box-shadow: 0 10px 40px rgba(201, 166, 107, 0.15);
-        }
-
-        .price-display.unavailable {
-            border-color: var(--red);
-        }
-
-        .price-placeholder {
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-
-        .price-placeholder-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.3;
-        }
-
-        .selected-dates {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .date-box {
-            background: white;
-            padding: 0.75rem 1.25rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-        }
-
-        .date-box .label {
-            font-size: 0.7rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.25rem;
-        }
-
-        .date-box .value {
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .date-arrow {
-            color: var(--gold);
-            font-size: 1.5rem;
-        }
-
-        .nights-count {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .price-amount {
-            animation: priceReveal 0.5s ease forwards;
-        }
-
-        .price-total {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 600;
-            color: var(--dark);
-            line-height: 1;
-        }
-
-        .price-total span {
-            font-size: 1.5rem;
-            font-weight: 400;
-        }
-
-        .price-pernight {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-top: 0.5rem;
-        }
-
-        .price-loading {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-light);
-        }
-
-        .price-loading-spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #eee;
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .availability-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .availability-badge.available {
-            background: rgba(37, 211, 102, 0.1);
-            color: #1a9650;
-        }
-
-        .availability-badge.unavailable {
-            background: rgba(255, 90, 95, 0.1);
-            color: var(--red);
-        }
-
-        .alternative-dates {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: #f8f8f8;
-            border-radius: 12px;
-            font-size: 0.9rem;
-        }
-
-        .alternative-dates strong {
-            color: var(--dark);
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 1.1rem 2.5rem;
-            border-radius: 60px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        .btn svg { width: 22px; height: 22px; }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--dark) 0%, #333 100%);
-            color: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-        }
-
-        .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
-        }
-
-        /* WhatsApp Mockup */
-        .whatsapp-section {
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .whatsapp-mockup {
-            max-width: 380px;
-            margin: 0 auto;
-            background: var(--whatsapp-bg);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.15);
-            transform: perspective(1000px) rotateY(-2deg);
-            transition: all 0.5s ease;
-        }
-
-        .whatsapp-mockup:hover {
-            transform: perspective(1000px) rotateY(0deg) scale(1.02);
-        }
-
-        .whatsapp-header {
-            background: linear-gradient(135deg, #075e54 0%, #128C7E 100%);
-            color: white;
-            padding: 0.8rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .whatsapp-avatar {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .whatsapp-name {
-            flex: 1;
-        }
-
-        .whatsapp-name strong {
-            display: block;
-            font-size: 1rem;
-        }
-
-        .whatsapp-name span {
-            font-size: 0.75rem;
-            opacity: 0.8;
-        }
-
-        .whatsapp-online {
-            width: 10px;
-            height: 10px;
-            background: #7cff7c;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-chat {
-            padding: 1rem;
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8+f9/PQMRgHFUIX0VAgBWTgf3cYBX5QAAAABJRU5ErkJggg==');
-        }
-
-        .chat-bubble {
-            max-width: 85%;
-            padding: 0.6rem 0.9rem;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            position: relative;
-            animation: slideIn 0.5s ease forwards;
-            opacity: 0;
-        }
-
-        .chat-bubble.sent {
-            background: var(--whatsapp-green);
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-
-        .chat-bubble.received {
-            background: white;
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-
-        .chat-time {
-            font-size: 0.65rem;
-            color: #999;
-            text-align: right;
-            margin-top: 0.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 0.25rem;
-        }
-
-        .chat-check {
-            color: #53bdeb;
-        }
-
-        .whatsapp-cta {
-            background: white;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .whatsapp-cta a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--green);
-            color: white;
-            padding: 0.75rem 1.75rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-cta a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-        }
+        .main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+
+        /* Hero */
+        .hero { text-align: center; margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 400; margin-bottom: 0.3rem; }
+        .hero h1 em { font-style: italic; color: var(--gold); }
+        .hero p { color: var(--gray); margin-bottom: 1rem; }
+        .pills { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
+        .pill { background: #fff; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+
+        /* BOOKING WIDGET */
+        .booking { background: #fff; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 3rem; }
+        .booking-inner { display: grid; grid-template-columns: 1fr 320px; }
+
+        /* Calendar Side */
+        .cal-side { padding: 1.5rem; border-right: 1px solid #f0f0f0; }
+        .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+        .cal-header h3 { font-size: 1rem; font-weight: 600; }
+        .cal-nav { display: flex; gap: 0.5rem; }
+        .cal-nav button { width: 32px; height: 32px; border: none; background: #f5f5f5; border-radius: 50%; cursor: pointer; font-size: 1rem; transition: all 0.2s; }
+        .cal-nav button:hover:not(:disabled) { background: var(--gold); color: #fff; }
+        .cal-nav button:disabled { opacity: 0.3; cursor: default; }
+
+        .calendars { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .cal { }
+        .cal-month { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.75rem; text-align: center; }
+        .cal-week { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: 0.7rem; color: var(--gray); margin-bottom: 0.5rem; font-weight: 600; }
+        .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+        .day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; border-radius: 50%; cursor: pointer; transition: all 0.15s; position: relative; font-weight: 500; }
+        .day:hover:not(.off):not(.blocked) { background: var(--gold); color: #fff; transform: scale(1.15); z-index: 2; }
+        .day.off { color: #ddd; cursor: default; }
+        .day.blocked { color: #ccc; cursor: not-allowed; background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px); }
+        .day.today { border: 2px solid var(--gold); }
+        .day.start, .day.end { background: var(--dark); color: #fff; z-index: 2; }
+        .day.range { background: var(--gold-light); border-radius: 0; }
+        .day.range.start { border-radius: 50% 0 0 50%; }
+        .day.range.end { border-radius: 0 50% 50% 0; }
+
+        /* Cursor Tooltip */
+        .cursor-tip { position: fixed; pointer-events: none; background: var(--dark); color: #fff; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600; z-index: 1000; opacity: 0; transition: opacity 0.15s; white-space: nowrap; }
+        .cursor-tip.show { opacity: 1; }
+
+        /* Price Side */
+        .price-side { padding: 1.5rem; background: linear-gradient(180deg, #fafafa, #fff); display: flex; flex-direction: column; }
+        .price-box { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+
+        .price-empty { color: var(--gray); }
+        .price-empty-icon { font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.3; }
+
+        .price-dates { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; font-size: 0.9rem; }
+        .price-date { background: #fff; padding: 0.5rem 0.75rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+        .price-date small { display: block; font-size: 0.65rem; color: var(--gray); text-transform: uppercase; }
+        .price-date strong { font-weight: 600; }
+        .price-arrow { color: var(--gold); }
+
+        .price-nights { font-size: 0.85rem; color: var(--gray); margin-bottom: 1rem; }
+
+        .price-status { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem; }
+        .price-status.ok { background: rgba(34,197,94,0.1); color: var(--green); }
+        .price-status.no { background: rgba(239,68,68,0.1); color: var(--red); }
+
+        .price-amount { animation: pop 0.4s ease; }
+        .price-total { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; line-height: 1; }
+        .price-total sup { font-size: 1.2rem; }
+        .price-avg { font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem; }
+
+        .price-loading { display: flex; align-items: center; gap: 0.5rem; color: var(--gray); font-size: 0.9rem; }
+        .spinner { width: 18px; height: 18px; border: 2px solid #eee; border-top-color: var(--gold); border-radius: 50%; animation: spin 0.6s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .price-alt { margin-top: 0.75rem; padding: 0.75rem; background: #f8f8f8; border-radius: 10px; font-size: 0.8rem; }
+        .price-alt strong { display: block; margin-bottom: 0.25rem; }
+
+        .price-actions { margin-top: auto; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.9rem 1.5rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; }
+        .btn-dark { background: var(--dark); color: #fff; }
+        .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .btn-green { background: var(--green); color: #fff; }
+        .btn-green:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.3); }
+        .btn svg { width: 18px; height: 18px; }
+
+        /* WhatsApp */
+        .wa-section { margin-bottom: 3rem; }
+        .wa-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; text-align: center; margin-bottom: 1.5rem; }
+        .wa-mock { max-width: 360px; margin: 0 auto; background: #e5ddd5; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.12); }
+        .wa-head { background: linear-gradient(135deg, #075e54, #128c7e); color: #fff; padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.6rem; }
+        .wa-avatar { width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+        .wa-name { flex: 1; }
+        .wa-name strong { display: block; font-size: 0.95rem; }
+        .wa-name span { font-size: 0.7rem; opacity: 0.8; }
+        .wa-online { width: 8px; height: 8px; background: #7cff7c; border-radius: 50%; animation: pulse 2s infinite; }
+        .wa-chat { padding: 0.75rem; min-height: 220px; display: flex; flex-direction: column; gap: 0.4rem; }
+        .bubble { max-width: 80%; padding: 0.5rem 0.7rem; border-radius: 8px; font-size: 0.85rem; animation: slideIn 0.4s ease forwards; opacity: 0; }
+        .bubble.out { background: #dcf8c6; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .bubble.in { background: #fff; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .bubble small { display: flex; justify-content: flex-end; gap: 0.2rem; font-size: 0.6rem; color: #999; margin-top: 0.15rem; }
+        .bubble small .vu { color: #53bdeb; }
+        .wa-cta { background: #fff; padding: 0.75rem; text-align: center; }
+        .wa-cta a { display: inline-flex; align-items: center; gap: 0.4rem; background: #25d366; color: #fff; padding: 0.6rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s; }
+        .wa-cta a:hover { transform: scale(1.05); }
 
         /* Amenities */
-        .amenities {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
-            margin-bottom: 4rem;
-        }
-
-        .amenity {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: white;
-            border-radius: 20px;
-            transition: all 0.4s ease;
-            cursor: default;
-        }
-
-        .amenity:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-
-        .amenity-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-            display: block;
-            animation: float 3s ease-in-out infinite;
-        }
-
+        .amenities { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 3rem; }
+        .amenity { text-align: center; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; transition: all 0.3s; }
+        .amenity:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .amenity-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; animation: float 3s ease-in-out infinite; }
         .amenity:nth-child(2) .amenity-icon { animation-delay: 0.5s; }
         .amenity:nth-child(3) .amenity-icon { animation-delay: 1s; }
         .amenity:nth-child(4) .amenity-icon { animation-delay: 1.5s; }
-
-        .amenity-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .amenity-desc {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
+        .amenity strong { display: block; font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .amenity span { font-size: 0.75rem; color: var(--gray); }
 
         /* Reviews */
-        .reviews {
-            margin-bottom: 4rem;
-        }
-
-        .reviews-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
-
-        .reviews-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-        }
-
-        .reviews-summary {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .review-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 20px;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-        }
-
-        .review-card:hover {
-            border-left-color: var(--gold);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            transform: translateX(8px);
-        }
-
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .review-avatar {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .review-author { font-weight: 600; }
-        .review-date { font-size: 0.75rem; color: var(--text-light); }
-
-        .review-text {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        /* Location */
-        .location {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 24px;
-            margin-bottom: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .location::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 3rem;
-            opacity: 0.1;
-        }
-
-        .location-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .location-desc {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .location-points {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .location-point {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1.25rem;
-            background: #f8f8f8;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-
-        .location-point:hover {
-            background: var(--gold);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .location-point strong { font-size: 0.9rem; }
-        .location-point span { font-size: 0.8rem; opacity: 0.8; }
+        .reviews { margin-bottom: 3rem; }
+        .reviews-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+        .reviews-head h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+        .review { background: #fff; padding: 1.25rem; border-radius: 14px; margin-bottom: 0.75rem; border-left: 3px solid transparent; transition: all 0.2s; }
+        .review:hover { border-left-color: var(--gold); transform: translateX(4px); }
+        .review-top { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+        .review-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, var(--gold), #d4af37); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; }
+        .review-name { font-weight: 600; font-size: 0.9rem; }
+        .review-date { font-size: 0.7rem; color: var(--gray); }
+        .review p { font-size: 0.9rem; color: #555; line-height: 1.6; }
 
         /* Footer */
-        .footer-cta {
-            text-align: center;
-            padding: 4rem 1.5rem;
-            background: var(--dark);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        .footer-cta-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-cta-sub {
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .footer-phone {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-        }
-
-        .footer-phone a {
-            color: var(--gold);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-phone a:hover {
-            text-shadow: 0 0 20px rgba(201, 166, 107, 0.5);
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
+        .foot { background: var(--dark); color: #fff; text-align: center; padding: 3rem 1rem; }
+        .foot h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 0.3rem; }
+        .foot p { color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
+        .foot-btns { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .foot-phone a { color: var(--gold); text-decoration: none; font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+        footer { text-align: center; padding: 1rem; font-size: 0.7rem; color: var(--gray); }
 
         /* Lightbox */
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 1000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .lightbox.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 2rem;
-            color: white;
-            background: none;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .lightbox-close:hover { transform: rotate(90deg); }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 3rem;
-            color: white;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 1rem;
-            transition: all 0.3s;
-        }
-
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; display: none; align-items: center; justify-content: center; }
+        .lightbox.on { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 90vh; border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: #fff; background: none; border: none; cursor: pointer; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); font-size: 2.5rem; color: #fff; background: none; border: none; cursor: pointer; padding: 1rem; }
         .lightbox-nav:hover { color: var(--gold); }
-
         .lightbox-prev { left: 0.5rem; }
         .lightbox-next { right: 0.5rem; }
 
         /* Responsive */
-        @media (max-width: 800px) {
-            .calendar-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .amenities {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .welcome-title { font-size: 2.2rem; }
-
-            .whatsapp-mockup {
-                transform: none;
-            }
-
-            .price-total {
-                font-size: 2.5rem;
-            }
-
-            .booking-section {
-                padding: 2rem 1.5rem;
-            }
+        @media (max-width: 900px) {
+            .booking-inner { grid-template-columns: 1fr; }
+            .cal-side { border-right: none; border-bottom: 1px solid #f0f0f0; }
+            .calendars { grid-template-columns: 1fr; }
         }
-
-        @media (max-width: 500px) {
-            .trust-badge { gap: 1rem; }
-            .calendar { padding: 1rem; }
-            .calendar-day { font-size: 0.85rem; }
-            .selected-dates { flex-direction: column; gap: 0.5rem; }
-            .date-arrow { transform: rotate(90deg); }
+        @media (max-width: 600px) {
+            .amenities { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 2rem; }
+            .price-total { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Photo Strip -->
-    <div class="photo-strip-container">
-        <div class="photo-strip">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon" onclick="openLightbox(0)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Jacuzzi" onclick="openLightbox(1)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Chambre" onclick="openLightbox(2)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" alt="Salle de bain" onclick="openLightbox(3)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" alt="Cuisine" onclick="openLightbox(4)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Détails" onclick="openLightbox(5)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" alt="Ambiance" onclick="openLightbox(6)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" alt="Vue" onclick="openLightbox(7)">
-            <!-- Duplicate for infinite loop -->
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon" onclick="openLightbox(0)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Jacuzzi" onclick="openLightbox(1)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Chambre" onclick="openLightbox(2)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" alt="Salle de bain" onclick="openLightbox(3)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" alt="Cuisine" onclick="openLightbox(4)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Détails" onclick="openLightbox(5)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" alt="Ambiance" onclick="openLightbox(6)">
-            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" alt="Vue" onclick="openLightbox(7)">
+    <!-- Photos -->
+    <div class="photos">
+        <div class="photos-inner">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" onclick="openLB(0)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" onclick="openLB(1)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" onclick="openLB(2)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" onclick="openLB(3)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" onclick="openLB(4)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" onclick="openLB(5)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" onclick="openLB(6)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" onclick="openLB(7)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" onclick="openLB(0)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" onclick="openLB(1)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" onclick="openLB(2)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" onclick="openLB(3)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" onclick="openLB(4)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" onclick="openLB(5)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" onclick="openLB(6)">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg" onclick="openLB(7)">
         </div>
     </div>
 
-    <!-- Trust Badge -->
-    <div class="trust-badge">
-        <div class="superhost-badge animate-in">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-            Superhost
-        </div>
-        <div class="animate-in delay-1">
-            <span class="rating"><span class="rating-stars">★</span> 5.0</span>
-            <span style="color: #777;"> · 15 avis</span>
-        </div>
-        <div class="guest-favorite animate-in delay-2">Top 5%</div>
+    <!-- Header -->
+    <div class="header">
+        <span class="badge badge-host">★ Superhost</span>
+        <span class="rating"><span>★</span> 5.0 · 15 avis</span>
+        <span class="badge badge-top">Top 5%</span>
     </div>
 
     <main class="main">
-        <!-- Welcome -->
-        <section class="welcome animate-in">
-            <h1 class="welcome-title">Bienvenue chez <em>Léa</em></h1>
-            <p class="welcome-subtitle">Mon appartement À la Folie · Paris 11e</p>
-            <div class="welcome-features">
-                <span class="feature-pill">🛁 Jacuzzi privatif</span>
-                <span class="feature-pill">🎬 Home Cinéma 5.1</span>
-                <span class="feature-pill">👥 4 voyageurs</span>
-                <span class="feature-pill">📐 60m²</span>
+        <!-- Hero -->
+        <section class="hero animate">
+            <h1>Bienvenue chez <em>Léa</em></h1>
+            <p>Appartement À la Folie · Paris 11e</p>
+            <div class="pills">
+                <span class="pill">🛁 Jacuzzi privatif</span>
+                <span class="pill">🎬 Home Cinéma</span>
+                <span class="pill">👥 4 voyageurs</span>
+                <span class="pill">📐 60m²</span>
             </div>
         </section>
 
-        <!-- BOOKING Section -->
-        <section class="booking-section animate-in delay-1">
-            <div class="booking-header">
-                <h2>Réservez votre séjour</h2>
-                <p>Sélectionnez vos dates d'arrivée et de départ</p>
-            </div>
-
-            <div class="calendar-wrapper">
-                <div class="calendar" id="calendar1"></div>
-                <div class="calendar" id="calendar2"></div>
-            </div>
-
-            <div class="price-display" id="priceDisplay">
-                <div class="price-placeholder">
-                    <div class="price-placeholder-icon">📅</div>
-                    <p>Sélectionnez vos dates pour voir le prix</p>
+        <!-- Booking Widget -->
+        <section class="booking animate">
+            <div class="booking-inner">
+                <div class="cal-side">
+                    <div class="cal-header">
+                        <h3>Sélectionnez vos dates</h3>
+                        <div class="cal-nav">
+                            <button id="prevBtn" onclick="prevMonth()">‹</button>
+                            <button id="nextBtn" onclick="nextMonth()">›</button>
+                        </div>
+                    </div>
+                    <div class="calendars">
+                        <div class="cal" id="cal1"></div>
+                        <div class="cal" id="cal2"></div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="action-buttons" id="actionButtons" style="display: none;">
-                <a href="#" class="btn btn-primary" id="bookBtn" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.762-.787-1.5-1.574-2.162-2.362-1.4-1.65-2.587-3.337-2.587-5.112 0-2.163 1.4-3.925 3.55-3.925 1.163 0 2.2.613 2.787 1.575.588-.962 1.625-1.575 2.788-1.575 2.15 0 3.55 1.762 3.55 3.925 0 1.775-1.188 3.462-2.588 5.112-.662.788-1.4 1.575-2.162 2.362-.387.4-.775.8-1.175 1.188-.4-.388-.788-.788-1.175-1.188h-.001z"/></svg>
-                    Réserver sur Airbnb
-                </a>
-                <a href="#" class="btn btn-whatsapp" id="chatBtn" target="_blank">
-                    💬 Une question ?
-                </a>
+                <div class="price-side">
+                    <div class="price-box" id="priceBox">
+                        <div class="price-empty">
+                            <div class="price-empty-icon">📅</div>
+                            <p>Choisissez vos dates<br>pour voir le prix</p>
+                        </div>
+                    </div>
+                    <div class="price-actions" id="priceActions" style="display:none;">
+                        <a href="#" class="btn btn-dark" id="bookBtn" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            Réserver sur Airbnb
+                        </a>
+                        <a href="#" class="btn btn-green" id="waBtn" target="_blank">💬 Contacter Léa</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- WhatsApp Mockup -->
-        <section class="whatsapp-section animate-in delay-2">
-            <h3 class="section-title">Besoin d'un renseignement ?</h3>
-            <div class="whatsapp-mockup">
-                <div class="whatsapp-header">
-                    <div class="whatsapp-avatar">L</div>
-                    <div class="whatsapp-name">
-                        <strong>Léa</strong>
-                        <span>répond en ~5 min</span>
-                    </div>
-                    <div class="whatsapp-online"></div>
+        <!-- WhatsApp -->
+        <section class="wa-section animate">
+            <h3 class="wa-title">Une question ?</h3>
+            <div class="wa-mock">
+                <div class="wa-head">
+                    <div class="wa-avatar">L</div>
+                    <div class="wa-name"><strong>Léa</strong><span>répond en ~5 min</span></div>
+                    <div class="wa-online"></div>
                 </div>
-                <div class="whatsapp-chat" id="whatsappChat">
-                    <div class="chat-bubble sent" style="animation-delay: 0.3s;">
-                        Bonjour ! Le jacuzzi est privé ? 🛁
-                        <div class="chat-time">14:32 <span class="chat-check">✓✓</span></div>
-                    </div>
-                    <div class="chat-bubble received" style="animation-delay: 1s;">
-                        Oui complètement ! Il est dans la salle de bain, vous pouvez en profiter quand vous voulez 😊
-                        <div class="chat-time">14:33</div>
-                    </div>
-                    <div class="chat-bubble sent" style="animation-delay: 1.7s;">
-                        Parfait ! Et le home cinéma ?
-                        <div class="chat-time">14:33 <span class="chat-check">✓✓</span></div>
-                    </div>
-                    <div class="chat-bubble received" style="animation-delay: 2.4s;">
-                        Système 5.1 avec grande TV, Netflix et tout ! Idéal pour une soirée film 🎬
-                        <div class="chat-time">14:34</div>
-                    </div>
-                    <div class="chat-bubble sent" style="animation-delay: 3.1s;">
-                        Top je réserve ! 🙌
-                        <div class="chat-time">14:35 <span class="chat-check">✓✓</span></div>
-                    </div>
+                <div class="wa-chat">
+                    <div class="bubble out" style="animation-delay:0.2s">Le jacuzzi est privé ? 🛁<small>14:32 <span class="vu">✓✓</span></small></div>
+                    <div class="bubble in" style="animation-delay:0.8s">Oui complètement ! Vous pouvez en profiter quand vous voulez 😊<small>14:33</small></div>
+                    <div class="bubble out" style="animation-delay:1.4s">Et le home cinéma ?<small>14:33 <span class="vu">✓✓</span></small></div>
+                    <div class="bubble in" style="animation-delay:2s">Système 5.1 avec Netflix ! Idéal pour une soirée film 🎬<small>14:34</small></div>
+                    <div class="bubble out" style="animation-delay:2.6s">Top je réserve ! 🙌<small>14:35 <span class="vu">✓✓</span></small></div>
                 </div>
-                <div class="whatsapp-cta">
-                    <a href="https://wa.me/33756864414?text=Bonjour Léa ! J'ai une question sur l'appartement..." target="_blank">
-                        💬 Discuter avec Léa
-                    </a>
+                <div class="wa-cta">
+                    <a href="https://wa.me/33756864414?text=Bonjour Léa ! J'ai une question..." target="_blank">💬 Discuter avec Léa</a>
                 </div>
             </div>
         </section>
 
         <!-- Amenities -->
         <section class="amenities">
-            <div class="amenity animate-in">
-                <span class="amenity-icon">🛁</span>
-                <div class="amenity-name">Jacuzzi</div>
-                <div class="amenity-desc">Balnéothérapie privée</div>
-            </div>
-            <div class="amenity animate-in delay-1">
-                <span class="amenity-icon">🎬</span>
-                <div class="amenity-name">Home Cinéma</div>
-                <div class="amenity-desc">Système 5.1</div>
-            </div>
-            <div class="amenity animate-in delay-2">
-                <span class="amenity-icon">🛏️</span>
-                <div class="amenity-name">Lit King-Size</div>
-                <div class="amenity-desc">Ultra confortable</div>
-            </div>
-            <div class="amenity animate-in delay-3">
-                <span class="amenity-icon">📶</span>
-                <div class="amenity-name">Fibre</div>
-                <div class="amenity-desc">Très haut débit</div>
-            </div>
+            <div class="amenity animate"><span class="amenity-icon">🛁</span><strong>Jacuzzi</strong><span>Balnéo privée</span></div>
+            <div class="amenity animate"><span class="amenity-icon">🎬</span><strong>Home Cinéma</strong><span>Système 5.1</span></div>
+            <div class="amenity animate"><span class="amenity-icon">🛏️</span><strong>King-Size</strong><span>Ultra confort</span></div>
+            <div class="amenity animate"><span class="amenity-icon">📶</span><strong>Fibre</strong><span>Très haut débit</span></div>
         </section>
 
         <!-- Reviews -->
         <section class="reviews">
-            <div class="reviews-header">
-                <h2 class="reviews-title">Ce que disent mes voyageurs</h2>
-                <div class="reviews-summary">
-                    <span class="rating-stars">★★★★★</span>
-                    <span>5.0 · 15 avis</span>
-                </div>
+            <div class="reviews-head">
+                <h2>Avis voyageurs</h2>
+                <span>★★★★★ 5.0</span>
             </div>
-
-            <div class="review-card animate-in">
-                <div class="review-header">
-                    <div class="review-avatar">M</div>
-                    <div>
-                        <div class="review-author">Marie</div>
-                        <div class="review-date">Janvier 2026</div>
-                    </div>
-                </div>
-                <p class="review-text">"Appartement magnifique, le jacuzzi est un vrai plus ! Léa est très réactive et donne de super conseils pour le quartier. On reviendra !"</p>
-            </div>
-
-            <div class="review-card animate-in delay-1">
-                <div class="review-header">
-                    <div class="review-avatar">T</div>
-                    <div>
-                        <div class="review-author">Thomas</div>
-                        <div class="review-date">Décembre 2025</div>
-                    </div>
-                </div>
-                <p class="review-text">"Parfait pour un weekend en amoureux. Le home cinéma est top, on s'est fait une soirée Netflix dans le canapé après le jacuzzi. Merci Léa !"</p>
-            </div>
-
-            <div class="review-card animate-in delay-2">
-                <div class="review-header">
-                    <div class="review-avatar">S</div>
-                    <div>
-                        <div class="review-author">Sophie</div>
-                        <div class="review-date">Novembre 2025</div>
-                    </div>
-                </div>
-                <p class="review-text">"Emplacement idéal, appartement très propre et bien équipé. La communication avec Léa était parfaite du début à la fin."</p>
-            </div>
-        </section>
-
-        <!-- Location -->
-        <section class="location animate-in">
-            <h2 class="location-title">Au cœur du 11e arrondissement</h2>
-            <p class="location-desc">
-                Entre Oberkampf et République, dans l'un des quartiers les plus vivants de Paris.
-                Restaurants, bars et boutiques à deux pas.
-            </p>
-            <div class="location-points">
-                <div class="location-point">
-                    <strong>République</strong>
-                    <span>5 min</span>
-                </div>
-                <div class="location-point">
-                    <strong>Bastille</strong>
-                    <span>10 min</span>
-                </div>
-                <div class="location-point">
-                    <strong>Le Marais</strong>
-                    <span>15 min</span>
-                </div>
-                <div class="location-point">
-                    <strong>Canal St-Martin</strong>
-                    <span>12 min</span>
-                </div>
-            </div>
+            <div class="review animate"><div class="review-top"><div class="review-avatar">M</div><div><div class="review-name">Marie</div><div class="review-date">Janvier 2026</div></div></div><p>"Appartement magnifique, le jacuzzi est un vrai plus ! Léa est très réactive. On reviendra !"</p></div>
+            <div class="review animate"><div class="review-top"><div class="review-avatar">T</div><div><div class="review-name">Thomas</div><div class="review-date">Décembre 2025</div></div></div><p>"Parfait pour un weekend en amoureux. Le home cinéma est top. Merci Léa !"</p></div>
+            <div class="review animate"><div class="review-top"><div class="review-avatar">S</div><div><div class="review-name">Sophie</div><div class="review-date">Novembre 2025</div></div></div><p>"Emplacement idéal, appartement très propre. Communication parfaite !"</p></div>
         </section>
     </main>
 
-    <!-- Footer CTA -->
-    <section class="footer-cta">
-        <h2 class="footer-cta-title">Réservez votre séjour</h2>
-        <p class="footer-cta-sub">Escapade romantique ou weekend entre amis</p>
-        <div class="footer-buttons">
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-primary">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.762-.787-1.5-1.574-2.162-2.362-1.4-1.65-2.587-3.337-2.587-5.112 0-2.163 1.4-3.925 3.55-3.925 1.163 0 2.2.613 2.787 1.575.588-.962 1.625-1.575 2.788-1.575 2.15 0 3.55 1.762 3.55 3.925 0 1.775-1.188 3.462-2.588 5.112-.662.788-1.4 1.575-2.162 2.362-.387.4-.775.8-1.175 1.188-.4-.388-.788-.788-1.175-1.188h-.001z"/></svg>
-                Réserver sur Airbnb
-            </a>
-            <a href="https://wa.me/33756864414" class="btn btn-whatsapp">
-                💬 Discuter avec Léa
-            </a>
+    <!-- Footer -->
+    <section class="foot">
+        <h2>Réservez votre séjour</h2>
+        <p>Escapade romantique ou weekend entre amis</p>
+        <div class="foot-btns">
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-dark">Réserver sur Airbnb</a>
+            <a href="https://wa.me/33756864414" class="btn btn-green">💬 Contacter Léa</a>
         </div>
-        <div class="footer-phone">
-            <a href="tel:+33756864414">07 56 86 44 14</a>
-        </div>
+        <div class="foot-phone"><a href="tel:+33756864414">07 56 86 44 14</a></div>
     </section>
+    <footer>© 2026 À la folie · Paris</footer>
 
-    <footer>
-        © 2026 À la folie · Paris · <a href="https://airbnb.fr/h/a-la-folie" style="color: inherit;">Voir sur Airbnb</a>
-    </footer>
+    <!-- Cursor Tooltip -->
+    <div class="cursor-tip" id="cursorTip"></div>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" onclick="closeLightbox()">×</button>
-        <button class="lightbox-nav lightbox-prev" onclick="prevImage()">‹</button>
-        <img src="" alt="" id="lightbox-img">
-        <button class="lightbox-nav lightbox-next" onclick="nextImage()">›</button>
+        <button class="lightbox-close" onclick="closeLB()">×</button>
+        <button class="lightbox-nav lightbox-prev" onclick="prevImg()">‹</button>
+        <img src="" id="lbImg">
+        <button class="lightbox-nav lightbox-next" onclick="nextImg()">›</button>
     </div>
 
     <script>
-        const API_URL = 'https://xhpsdbmajanmoztijbnx.supabase.co/functions/v1/folie-pricing';
-        const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ';
-        const LISTING_ID = '1503490402342628075';
+        const API = 'https://xhpsdbmajanmoztijbnx.supabase.co/functions/v1/folie-pricing';
+        const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ';
+        const LISTING = '1503490402342628075';
+        const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+        const DAYS = ['Lu','Ma','Me','Je','Ve','Sa','Di'];
 
-        // State
-        let currentMonth1 = new Date();
-        let currentMonth2 = new Date(currentMonth1.getFullYear(), currentMonth1.getMonth() + 1, 1);
-        let startDate = null;
-        let endDate = null;
-        let blockedDates = [];
+        let m1 = new Date(), m2 = new Date(m1.getFullYear(), m1.getMonth()+1, 1);
+        let start = null, end = null, blocked = [];
+        const tip = document.getElementById('cursorTip');
 
-        // Fetch blocked dates on load
-        async function fetchBlockedDates() {
+        // Fetch blocked dates
+        async function fetchBlocked() {
             try {
-                const response = await fetch(API_URL, {
+                const r = await fetch(API, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${API_KEY}`
-                    },
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${KEY}` },
                     body: JSON.stringify({ get_calendar: true })
                 });
-                const data = await response.json();
-                if (data.blocked) {
-                    blockedDates = data.blocked;
-                }
-            } catch (e) {
-                console.log('Could not fetch blocked dates');
+                const d = await r.json();
+                if (d.blocked) blocked = d.blocked;
+            } catch(e) {}
+            render();
+        }
+
+        function isBlocked(date) {
+            const s = date.toISOString().split('T')[0];
+            return blocked.some(b => s >= b.start && s < b.end);
+        }
+
+        function render() {
+            renderCal('cal1', m1);
+            renderCal('cal2', m2);
+            const today = new Date(); today.setHours(0,0,0,0);
+            document.getElementById('prevBtn').disabled = m1 <= today;
+        }
+
+        function renderCal(id, date) {
+            const el = document.getElementById(id);
+            const y = date.getFullYear(), m = date.getMonth();
+            const today = new Date(); today.setHours(0,0,0,0);
+            const first = new Date(y, m, 1), last = new Date(y, m+1, 0);
+            let sd = first.getDay() - 1; if (sd < 0) sd = 6;
+
+            let html = `<div class="cal-month">${MONTHS[m]} ${y}</div><div class="cal-week">${DAYS.map(d=>`<span>${d}</span>`).join('')}</div><div class="cal-days">`;
+            for (let i = 0; i < sd; i++) html += `<div class="day off"></div>`;
+            for (let d = 1; d <= last.getDate(); d++) {
+                const curr = new Date(y, m, d);
+                const ds = curr.toISOString().split('T')[0];
+                let c = 'day';
+                const past = curr < today, blk = isBlocked(curr), isToday = curr.getTime() === today.getTime();
+                if (past) c += ' off';
+                else if (blk) c += ' blocked';
+                if (isToday) c += ' today';
+                if (start && curr.getTime() === start.getTime()) c += ' start range';
+                else if (end && curr.getTime() === end.getTime()) c += ' end range';
+                else if (start && end && curr > start && curr < end) c += ' range';
+                const click = !past && !blk ? `onclick="pick('${ds}')"` : '';
+                const hover = !past && !blk ? `onmouseenter="showTip(event,'${ds}')" onmouseleave="hideTip()"` : '';
+                html += `<div class="${c}" ${click} ${hover}>${d}</div>`;
             }
-            renderCalendars();
+            html += '</div>';
+            el.innerHTML = html;
         }
 
-        // Check if date is blocked
-        function isDateBlocked(date) {
-            const dateStr = date.toISOString().split('T')[0];
-            for (const range of blockedDates) {
-                if (dateStr >= range.start && dateStr < range.end) {
-                    return true;
-                }
-            }
-            return false;
+        function showTip(e, ds) {
+            const d = new Date(ds);
+            const opts = { weekday: 'short', day: 'numeric', month: 'short' };
+            let txt = d.toLocaleDateString('fr-FR', opts);
+            if (!start) txt = `Arrivée: ${txt}`;
+            else if (!end) txt = `Départ: ${txt}`;
+            tip.textContent = txt;
+            tip.classList.add('show');
+            moveTip(e);
         }
 
-        // Render Calendar
-        function renderCalendar(containerId, date, isFirst) {
-            const container = document.getElementById(containerId);
-            const year = date.getFullYear();
-            const month = date.getMonth();
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-
-            const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-                               'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-            const dayNames = ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'];
-
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            let startDay = firstDay.getDay() - 1;
-            if (startDay < 0) startDay = 6;
-
-            const canGoPrev = isFirst && (new Date(year, month, 1) > new Date(today.getFullYear(), today.getMonth(), 1));
-
-            let html = `
-                <div class="calendar-nav">
-                    <button onclick="prevMonth()" ${!canGoPrev ? 'disabled' : ''} ${!isFirst ? 'style="visibility:hidden"' : ''}>‹</button>
-                    <span class="calendar-month">${monthNames[month]} ${year}</span>
-                    <button onclick="nextMonth()" ${isFirst ? 'style="visibility:hidden"' : ''}>›</button>
-                </div>
-                <div class="calendar-weekdays">
-                    ${dayNames.map(d => `<span>${d}</span>`).join('')}
-                </div>
-                <div class="calendar-days">
-            `;
-
-            // Empty cells
-            for (let i = 0; i < startDay; i++) {
-                html += `<div class="calendar-day disabled"></div>`;
-            }
-
-            // Days
-            for (let day = 1; day <= lastDay.getDate(); day++) {
-                const currentDate = new Date(year, month, day);
-                const dateStr = currentDate.toISOString().split('T')[0];
-                let classes = 'calendar-day';
-
-                const isPast = currentDate < today;
-                const blocked = isDateBlocked(currentDate);
-                const isToday = currentDate.getTime() === today.getTime();
-
-                if (isPast) {
-                    classes += ' disabled';
-                } else if (blocked) {
-                    classes += ' blocked';
-                }
-
-                if (isToday) {
-                    classes += ' today';
-                }
-
-                // Selection classes
-                if (startDate && currentDate.getTime() === startDate.getTime()) {
-                    classes += ' range-start';
-                } else if (endDate && currentDate.getTime() === endDate.getTime()) {
-                    classes += ' range-end';
-                } else if (startDate && endDate && currentDate > startDate && currentDate < endDate) {
-                    classes += ' in-range';
-                }
-
-                const clickable = !isPast && !blocked;
-                html += `<div class="${classes}" ${clickable ? `onclick="selectDate('${dateStr}')"` : ''}>${day}</div>`;
-            }
-
-            html += `</div>`;
-            container.innerHTML = html;
+        function moveTip(e) {
+            tip.style.left = (e.clientX + 15) + 'px';
+            tip.style.top = (e.clientY - 10) + 'px';
         }
 
-        function renderCalendars() {
-            renderCalendar('calendar1', currentMonth1, true);
-            renderCalendar('calendar2', currentMonth2, false);
+        function hideTip() { tip.classList.remove('show'); }
+
+        document.addEventListener('mousemove', e => { if (tip.classList.contains('show')) moveTip(e); });
+
+        function pick(ds) {
+            const d = new Date(ds);
+            if (!start || (start && end)) { start = d; end = null; updatePrice('picking'); }
+            else if (d > start) { end = d; fetchPrice(); }
+            else { start = d; end = null; updatePrice('picking'); }
+            render();
         }
 
-        function prevMonth() {
-            currentMonth1.setMonth(currentMonth1.getMonth() - 1);
-            currentMonth2.setMonth(currentMonth2.getMonth() - 1);
-            renderCalendars();
-        }
+        function updatePrice(state, data) {
+            const box = document.getElementById('priceBox');
+            const acts = document.getElementById('priceActions');
+            const opts = { day: 'numeric', month: 'short' };
 
-        function nextMonth() {
-            currentMonth1.setMonth(currentMonth1.getMonth() + 1);
-            currentMonth2.setMonth(currentMonth2.getMonth() + 1);
-            renderCalendars();
-        }
-
-        function selectDate(dateStr) {
-            const date = new Date(dateStr);
-
-            if (!startDate || (startDate && endDate)) {
-                startDate = date;
-                endDate = null;
-                updatePriceDisplay('selecting');
-            } else if (date > startDate) {
-                endDate = date;
-                fetchPricing();
-            } else {
-                startDate = date;
-                endDate = null;
-                updatePriceDisplay('selecting');
-            }
-
-            renderCalendars();
-        }
-
-        function updatePriceDisplay(state, data = null) {
-            const display = document.getElementById('priceDisplay');
-            const buttons = document.getElementById('actionButtons');
-
-            if (state === 'selecting') {
-                const options = { day: 'numeric', month: 'short' };
-                display.className = 'price-display has-selection';
-                display.innerHTML = `
-                    <div class="selected-dates">
-                        <div class="date-box">
-                            <div class="label">Arrivée</div>
-                            <div class="value">${startDate.toLocaleDateString('fr-FR', options)}</div>
-                        </div>
-                        <div class="date-arrow">→</div>
-                        <div class="date-box">
-                            <div class="label">Départ</div>
-                            <div class="value">...</div>
-                        </div>
+            if (state === 'picking') {
+                box.innerHTML = `
+                    <div class="price-dates">
+                        <div class="price-date"><small>Arrivée</small><strong>${start.toLocaleDateString('fr-FR', opts)}</strong></div>
+                        <span class="price-arrow">→</span>
+                        <div class="price-date"><small>Départ</small><strong>...</strong></div>
                     </div>
-                    <p style="color: var(--text-light);">Sélectionnez votre date de départ</p>
-                `;
-                buttons.style.display = 'none';
+                    <p style="color:var(--gray);font-size:0.9rem;">Sélectionnez le départ</p>`;
+                acts.style.display = 'none';
             } else if (state === 'loading') {
-                const options = { day: 'numeric', month: 'short' };
-                const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
-                display.className = 'price-display has-selection';
-                display.innerHTML = `
-                    <div class="selected-dates">
-                        <div class="date-box">
-                            <div class="label">Arrivée</div>
-                            <div class="value">${startDate.toLocaleDateString('fr-FR', options)}</div>
-                        </div>
-                        <div class="date-arrow">→</div>
-                        <div class="date-box">
-                            <div class="label">Départ</div>
-                            <div class="value">${endDate.toLocaleDateString('fr-FR', options)}</div>
-                        </div>
+                const n = Math.round((end - start) / 864e5);
+                box.innerHTML = `
+                    <div class="price-dates">
+                        <div class="price-date"><small>Arrivée</small><strong>${start.toLocaleDateString('fr-FR', opts)}</strong></div>
+                        <span class="price-arrow">→</span>
+                        <div class="price-date"><small>Départ</small><strong>${end.toLocaleDateString('fr-FR', opts)}</strong></div>
                     </div>
-                    <div class="nights-count">${nights} nuit${nights > 1 ? 's' : ''}</div>
-                    <div class="price-loading">
-                        <div class="price-loading-spinner"></div>
-                        Calcul du prix...
+                    <div class="price-nights">${n} nuit${n>1?'s':''}</div>
+                    <div class="price-loading"><div class="spinner"></div>Calcul...</div>`;
+                acts.style.display = 'none';
+            } else if (state === 'ok') {
+                const n = Math.round((end - start) / 864e5);
+                box.innerHTML = `
+                    <div class="price-dates">
+                        <div class="price-date"><small>Arrivée</small><strong>${start.toLocaleDateString('fr-FR', opts)}</strong></div>
+                        <span class="price-arrow">→</span>
+                        <div class="price-date"><small>Départ</small><strong>${end.toLocaleDateString('fr-FR', opts)}</strong></div>
                     </div>
-                `;
-                buttons.style.display = 'none';
-            } else if (state === 'available') {
-                const options = { day: 'numeric', month: 'short' };
-                const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
-                display.className = 'price-display has-selection';
-                display.innerHTML = `
-                    <div class="selected-dates">
-                        <div class="date-box">
-                            <div class="label">Arrivée</div>
-                            <div class="value">${startDate.toLocaleDateString('fr-FR', options)}</div>
-                        </div>
-                        <div class="date-arrow">→</div>
-                        <div class="date-box">
-                            <div class="label">Départ</div>
-                            <div class="value">${endDate.toLocaleDateString('fr-FR', options)}</div>
-                        </div>
-                    </div>
-                    <div class="nights-count">${nights} nuit${nights > 1 ? 's' : ''}</div>
-                    <div class="availability-badge available">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        Disponible
-                    </div>
+                    <div class="price-nights">${n} nuit${n>1?'s':''}</div>
+                    <div class="price-status ok">✓ Disponible</div>
                     <div class="price-amount">
-                        <div class="price-total">${data.total}<span>€</span></div>
-                        <div class="price-pernight">${data.perNight}€ / nuit en moyenne</div>
-                    </div>
-                `;
-                buttons.style.display = 'flex';
-
-                const checkIn = startDate.toISOString().split('T')[0];
-                const checkOut = endDate.toISOString().split('T')[0];
-                document.getElementById('bookBtn').href = `https://www.airbnb.fr/rooms/${LISTING_ID}?check_in=${checkIn}&check_out=${checkOut}&guests=2`;
-                document.getElementById('chatBtn').href = `https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${startDate.toLocaleDateString('fr-FR')} au ${endDate.toLocaleDateString('fr-FR')} 😊`)}`;
-            } else if (state === 'unavailable') {
-                const options = { day: 'numeric', month: 'short' };
-                const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
-                display.className = 'price-display has-selection unavailable';
-                let altHtml = '';
-                if (data.alternatives && data.alternatives.length > 0) {
-                    altHtml = `
-                        <div class="alternative-dates">
-                            <strong>Dates alternatives :</strong><br>
-                            ${data.alternatives.map(a => a.label).join('<br>')}
-                        </div>
-                    `;
+                        <div class="price-total">${data.total}<sup>€</sup></div>
+                        <div class="price-avg">${data.avg}€ / nuit</div>
+                    </div>`;
+                acts.style.display = 'flex';
+                const ci = start.toISOString().split('T')[0], co = end.toISOString().split('T')[0];
+                document.getElementById('bookBtn').href = `https://www.airbnb.fr/rooms/${LISTING}?check_in=${ci}&check_out=${co}&guests=2`;
+                document.getElementById('waBtn').href = `https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${start.toLocaleDateString('fr-FR')} au ${end.toLocaleDateString('fr-FR')} 😊`)}`;
+            } else if (state === 'no') {
+                const n = Math.round((end - start) / 864e5);
+                let alt = '';
+                if (data.alts && data.alts.length) {
+                    alt = `<div class="price-alt"><strong>Alternatives :</strong>${data.alts.map(a=>a.label).join('<br>')}</div>`;
                 }
-                display.innerHTML = `
-                    <div class="selected-dates">
-                        <div class="date-box">
-                            <div class="label">Arrivée</div>
-                            <div class="value">${startDate.toLocaleDateString('fr-FR', options)}</div>
-                        </div>
-                        <div class="date-arrow">→</div>
-                        <div class="date-box">
-                            <div class="label">Départ</div>
-                            <div class="value">${endDate.toLocaleDateString('fr-FR', options)}</div>
-                        </div>
+                box.innerHTML = `
+                    <div class="price-dates">
+                        <div class="price-date"><small>Arrivée</small><strong>${start.toLocaleDateString('fr-FR', opts)}</strong></div>
+                        <span class="price-arrow">→</span>
+                        <div class="price-date"><small>Départ</small><strong>${end.toLocaleDateString('fr-FR', opts)}</strong></div>
                     </div>
-                    <div class="nights-count">${nights} nuit${nights > 1 ? 's' : ''}</div>
-                    <div class="availability-badge unavailable">
-                        ✗ Non disponible
-                    </div>
-                    ${altHtml}
-                `;
-                buttons.style.display = 'none';
+                    <div class="price-nights">${n} nuit${n>1?'s':''}</div>
+                    <div class="price-status no">✗ Non disponible</div>
+                    ${alt}`;
+                acts.style.display = 'none';
             }
         }
 
-        async function fetchPricing() {
-            updatePriceDisplay('loading');
-
-            const checkIn = startDate.toISOString().split('T')[0];
-            const checkOut = endDate.toISOString().split('T')[0];
-
+        async function fetchPrice() {
+            updatePrice('loading');
+            const ci = start.toISOString().split('T')[0], co = end.toISOString().split('T')[0];
             try {
-                const response = await fetch(API_URL, {
+                const r = await fetch(API, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${API_KEY}`
-                    },
-                    body: JSON.stringify({
-                        check_in: checkIn,
-                        check_out: checkOut,
-                        guests: 2
-                    })
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${KEY}` },
+                    body: JSON.stringify({ check_in: ci, check_out: co, guests: 2 })
                 });
-                const data = await response.json();
-
-                if (data.available) {
-                    updatePriceDisplay('available', {
-                        total: data.pricing ? data.pricing.total : '—',
-                        perNight: data.pricing ? data.pricing.per_night_avg : '—'
-                    });
+                const d = await r.json();
+                if (d.available) {
+                    updatePrice('ok', { total: d.pricing?.total || '—', avg: d.pricing?.per_night_avg || '—' });
                 } else {
-                    updatePriceDisplay('unavailable', {
-                        alternatives: data.alternatives || []
-                    });
+                    updatePrice('no', { alts: d.alternatives || [] });
                 }
-            } catch (e) {
-                updatePriceDisplay('available', { total: '—', perNight: '—' });
+            } catch(e) {
+                updatePrice('ok', { total: '—', avg: '—' });
             }
         }
+
+        function prevMonth() { m1.setMonth(m1.getMonth()-1); m2.setMonth(m2.getMonth()-1); render(); }
+        function nextMonth() { m1.setMonth(m1.getMonth()+1); m2.setMonth(m2.getMonth()+1); render(); }
 
         // Lightbox
-        const images = [
+        const imgs = [
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg',
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg',
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg',
@@ -1645,43 +533,15 @@
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg',
             'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/50129862-f599-45a0-b1a7-328d6187d2a6.jpeg'
         ];
-        let currentImg = 0;
+        let ci = 0;
+        function openLB(i) { ci = i; document.getElementById('lbImg').src = imgs[i]; document.getElementById('lightbox').classList.add('on'); document.body.style.overflow = 'hidden'; }
+        function closeLB() { document.getElementById('lightbox').classList.remove('on'); document.body.style.overflow = ''; }
+        function nextImg() { ci = (ci + 1) % imgs.length; document.getElementById('lbImg').src = imgs[ci]; }
+        function prevImg() { ci = (ci - 1 + imgs.length) % imgs.length; document.getElementById('lbImg').src = imgs[ci]; }
+        document.getElementById('lightbox').onclick = e => { if (e.target.id === 'lightbox') closeLB(); };
+        document.onkeydown = e => { if (!document.getElementById('lightbox').classList.contains('on')) return; if (e.key === 'Escape') closeLB(); if (e.key === 'ArrowRight') nextImg(); if (e.key === 'ArrowLeft') prevImg(); };
 
-        function openLightbox(i) {
-            currentImg = i;
-            document.getElementById('lightbox-img').src = images[i];
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function nextImage() {
-            currentImg = (currentImg + 1) % images.length;
-            document.getElementById('lightbox-img').src = images[currentImg];
-        }
-
-        function prevImage() {
-            currentImg = (currentImg - 1 + images.length) % images.length;
-            document.getElementById('lightbox-img').src = images[currentImg];
-        }
-
-        document.getElementById('lightbox').onclick = e => {
-            if (e.target.id === 'lightbox') closeLightbox();
-        };
-
-        document.onkeydown = e => {
-            if (!document.getElementById('lightbox').classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowRight') nextImage();
-            if (e.key === 'ArrowLeft') prevImage();
-        };
-
-        // Init
-        fetchBlockedDates();
+        fetchBlocked();
     </script>
 </body>
 </html>
