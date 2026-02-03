@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À la folie - Appartement avec Jacuzzi & Home Cinéma | Paris République</title>
     <meta name="description" content="Appartement de standing avec jacuzzi privatif et home cinéma au cœur de Paris. 60m², 4 voyageurs, entre Oberkampf et République. Réservez votre séjour d'exception.">
-    <meta name="keywords" content="appartement jacuzzi paris, location spa paris, airbnb jacuzzi paris, weekend romantique paris, appartement republique paris">
+    <meta name="keywords" content="appartement jacuzzi paris, location spa paris, airbnb jacuzzi paris, weekend romantique paris, appartement republique paris, location courte durée paris">
     <link rel="canonical" href="https://folie.paris">
 
     <!-- Open Graph -->
     <meta property="og:title" content="À la folie - Jacuzzi & Home Cinéma à Paris">
     <meta property="og:description" content="Appartement d'exception avec jacuzzi privatif au cœur de Paris">
+    <meta property="og:image" content="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://folie.paris">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -26,12 +27,16 @@
         }
 
         :root {
-            --gold: #c9a962;
-            --gold-light: #e8d5a3;
-            --dark: #1a1a1a;
-            --darker: #0d0d0d;
-            --text: #f5f5f5;
-            --text-muted: #a0a0a0;
+            --gold: #d4af37;
+            --gold-light: #f4e4bc;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --text: #ffffff;
+            --text-muted: #888888;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -39,76 +44,155 @@
             background: var(--darker);
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
-            position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .hero-bg {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
         }
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 400;
-            letter-spacing: 0.1em;
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            transform: scale(1.05);
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.3) 0%,
+                rgba(0,0,0,0.5) 50%,
+                rgba(0,0,0,0.8) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--gold);
             color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            font-size: 0.75rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.5s ease-out 0.2s both;
         }
 
-        .features {
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12vw, 8rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1.5s ease-out 0.4s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.5s ease-out 0.6s both;
+        }
+
+        .hero-features {
             display: flex;
             gap: 3rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
             justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.5s ease-out 0.8s both;
         }
 
-        .feature {
+        .hero-feature {
             text-align: center;
         }
 
-        .feature-icon {
+        .hero-feature-icon {
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
 
-        .feature-text {
-            font-size: 0.85rem;
+        .hero-feature-text {
+            font-size: 0.8rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.15em;
         }
 
+        /* CTA Buttons */
         .cta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            animation: fadeInUp 1.5s ease-out 1s both;
+        }
+
+        .cta-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
@@ -118,134 +202,306 @@
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2.5rem;
+            gap: 0.75rem;
+            padding: 1.2rem 2.5rem;
             font-size: 0.9rem;
             font-weight: 500;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            border-radius: 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             cursor: pointer;
+            border: none;
         }
 
         .btn-primary {
             background: var(--gold);
             color: var(--darker);
-            border: 2px solid var(--gold);
         }
 
         .btn-primary:hover {
-            background: transparent;
-            color: var(--gold);
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
         }
 
-        .btn-secondary {
-            background: transparent;
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.3);
+        }
+
+        .phone-number {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
             color: var(--text);
-            border: 1px solid var(--text-muted);
         }
 
-        .btn-secondary:hover {
-            border-color: var(--gold);
+        .phone-number a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .phone-number a:hover {
             color: var(--gold);
         }
 
-        /* Details Section */
-        .details {
-            padding: 6rem 2rem;
-            max-width: 900px;
-            margin: 0 auto;
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--text-muted);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: scrollDown 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        @keyframes scrollDown {
+            0% { opacity: 1; top: 8px; }
+            100% { opacity: 0; top: 30px; }
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 8rem 2rem;
+            background: var(--dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 400;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .amenities {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .amenity {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .amenity-icon {
-            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .amenity-title {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+        .section-line {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto;
         }
 
-        .amenity-desc {
-            font-size: 0.85rem;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            background: var(--darker);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         /* Location Section */
         .location {
-            padding: 4rem 2rem;
+            padding: 8rem 2rem;
             background: var(--dark);
             text-align: center;
         }
 
-        .location p {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            color: var(--text-muted);
+        .location-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .neighborhood {
+        .location-text {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .location-badges {
             display: flex;
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
 
-        .neighborhood-item {
-            font-size: 0.9rem;
+        .location-badge {
+            padding: 1rem 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .location-badge strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .location-badge span {
             color: var(--text-muted);
+            font-size: 0.85rem;
         }
 
-        .neighborhood-item strong {
-            color: var(--text);
+        /* CTA Section */
+        .cta-section {
+            padding: 10rem 2rem;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg') center/cover fixed;
+            text-align: center;
+        }
+
+        .cta-section .section-title {
+            margin-bottom: 2rem;
+        }
+
+        .cta-section .cta-buttons {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-phone {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+        }
+
+        .cta-phone a {
+            color: var(--gold);
+            text-decoration: none;
         }
 
         /* Footer */
         footer {
             padding: 3rem 2rem;
             text-align: center;
+            background: var(--darker);
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 3rem;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
         }
 
         .footer-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             transition: color 0.3s;
         }
 
@@ -254,26 +510,27 @@
         }
 
         .copyright {
-            font-size: 0.8rem;
             color: var(--text-muted);
+            font-size: 0.8rem;
         }
 
         /* Language Switcher */
         .lang-switch {
             position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
+            top: 2rem;
+            right: 2rem;
+            z-index: 100;
             display: flex;
             gap: 0.5rem;
-            z-index: 100;
         }
 
         .lang-btn {
-            padding: 0.4rem 0.8rem;
+            padding: 0.5rem 1rem;
             font-size: 0.75rem;
-            background: transparent;
-            border: 1px solid var(--text-muted);
-            color: var(--text-muted);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text);
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -284,13 +541,89 @@
             color: var(--gold);
         }
 
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 1rem;
+            transition: color 0.3s;
+        }
+
+        .lightbox-nav:hover {
+            color: var(--gold);
+        }
+
+        .lightbox-prev { left: 1rem; }
+        .lightbox-next { right: 1rem; }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Responsive */
-        @media (max-width: 600px) {
-            .features {
-                gap: 2rem;
+        @media (max-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .cta-container {
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-features {
+                gap: 1.5rem;
+            }
+
+            .cta-buttons {
                 flex-direction: column;
                 width: 100%;
                 padding: 0 1rem;
@@ -299,6 +632,18 @@
             .btn {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+            }
+
+            .phone-number, .cta-phone {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -309,157 +654,341 @@
         <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <h1 class="logo">À la folie</h1>
-        <p class="tagline" data-i18n="tagline">Paris · République</p>
+        <div class="hero-bg">
+            <div class="hero-slide active" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg')"></div>
+        </div>
+        <div class="hero-overlay"></div>
 
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🛁</div>
-                <div class="feature-text" data-i18n="feature-jacuzzi">Jacuzzi privatif</div>
+        <div class="hero-content">
+            <div class="hero-badge" data-i18n="badge">Coup de cœur voyageurs</div>
+            <h1 class="hero-title">À la folie</h1>
+            <p class="hero-subtitle">Paris · République</p>
+
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">🛁</div>
+                    <div class="hero-feature-text" data-i18n="f-jacuzzi">Jacuzzi privatif</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">🎬</div>
+                    <div class="hero-feature-text" data-i18n="f-cinema">Home Cinéma 5.1</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">👥</div>
+                    <div class="hero-feature-text" data-i18n="f-guests">4 voyageurs</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">✨</div>
+                    <div class="hero-feature-text" data-i18n="f-rating">5.0 · Superhost</div>
+                </div>
             </div>
-            <div class="feature">
-                <div class="feature-icon">🎬</div>
-                <div class="feature-text" data-i18n="feature-cinema">Home Cinéma</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">👥</div>
-                <div class="feature-text" data-i18n="feature-guests">4 voyageurs</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📍</div>
-                <div class="feature-text" data-i18n="feature-location">Cœur de Paris</div>
+
+            <div class="cta-container">
+                <div class="cta-buttons">
+                    <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-primary" data-i18n="cta-book">
+                        Réserver sur Airbnb
+                    </a>
+                    <a href="https://wa.me/33756864414?text=Bonjour, je suis intéressé par l'appartement À la folie à Paris" class="btn btn-whatsapp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+                <div class="phone-number">
+                    <a href="tel:+33756864414">07 56 86 44 14</a>
+                </div>
             </div>
         </div>
 
-        <div class="cta-container">
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="section-header fade-in">
+            <h2 class="section-title" data-i18n="gallery-title">Découvrez l'appartement</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in" onclick="openLightbox(0)">
+                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg" alt="Salon avec home cinéma" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in" onclick="openLightbox(1)">
+                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg" alt="Jacuzzi privatif" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in" onclick="openLightbox(2)">
+                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg" alt="Chambre" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in" onclick="openLightbox(3)">
+                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg" alt="Salle de bain" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in" onclick="openLightbox(4)">
+                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg" alt="Cuisine équipée" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in" onclick="openLightbox(5)">
+                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg" alt="Détails" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in" onclick="openLightbox(6)">
+                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg" alt="Vue" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-header fade-in">
+            <h2 class="section-title" data-i18n="features-title">Équipements premium</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🛁</div>
+                <h3 class="feature-title" data-i18n="eq-jacuzzi-title">Jacuzzi privatif</h3>
+                <p class="feature-desc" data-i18n="eq-jacuzzi-desc">Jets massants et éclairage LED d'ambiance pour des moments de détente absolue</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎬</div>
+                <h3 class="feature-title" data-i18n="eq-cinema-title">Home Cinéma</h3>
+                <p class="feature-desc" data-i18n="eq-cinema-desc">Système son surround 5.1 et grand écran Smart TV pour vos soirées films</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🛏️</div>
+                <h3 class="feature-title" data-i18n="eq-bed-title">Suite luxueuse</h3>
+                <p class="feature-desc" data-i18n="eq-bed-desc">Lit king-size avec literie haut de gamme pour un sommeil réparateur</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🚿</div>
+                <h3 class="feature-title" data-i18n="eq-bath-title">Salle de bain spa</h3>
+                <p class="feature-desc" data-i18n="eq-bath-desc">Toilettes japonaises avec fonction bidet et douche à effet pluie</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">☕</div>
+                <h3 class="feature-title" data-i18n="eq-kitchen-title">Cuisine équipée</h3>
+                <p class="feature-desc" data-i18n="eq-kitchen-desc">Machine Nespresso, four, plaques et tous les équipements nécessaires</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">📶</div>
+                <h3 class="feature-title" data-i18n="eq-wifi-title">WiFi Fibre</h3>
+                <p class="feature-desc" data-i18n="eq-wifi-desc">Connexion ultra-rapide et espace de travail dédié</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location">
+        <div class="section-header fade-in">
+            <h2 class="section-title" data-i18n="location-title">Emplacement idéal</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="location-content fade-in">
+            <p class="location-text" data-i18n="location-desc">
+                Situé au cœur du 11ème arrondissement, entre Oberkampf et République.
+                Profitez d'un quartier vivant avec ses restaurants branchés, bars à cocktails
+                et boutiques indépendantes. À quelques pas du Canal Saint-Martin et du Marais.
+            </p>
+
+            <div class="location-badges">
+                <div class="location-badge">
+                    <strong>Bastille</strong>
+                    <span data-i18n="walk">10 min à pied</span>
+                </div>
+                <div class="location-badge">
+                    <strong>Canal Saint-Martin</strong>
+                    <span data-i18n="walk">12 min à pied</span>
+                </div>
+                <div class="location-badge">
+                    <strong>Le Marais</strong>
+                    <span data-i18n="walk">15 min à pied</span>
+                </div>
+                <div class="location-badge">
+                    <strong>Métro République</strong>
+                    <span data-i18n="walk2">5 min à pied</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="cta-title">Réservez votre séjour</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="cta-buttons">
             <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-primary" data-i18n="cta-book">
                 Réserver sur Airbnb
             </a>
-            <a href="https://wa.me/33756864414?text=Bonjour, je suis intéressé par l'appartement À la folie" class="btn btn-secondary" data-i18n="cta-contact">
-                Une question ?
+            <a href="https://wa.me/33756864414?text=Bonjour, je suis intéressé par l'appartement À la folie à Paris" class="btn btn-whatsapp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
             </a>
         </div>
-    </section>
 
-    <section class="details">
-        <h2 class="section-title" data-i18n="amenities-title">L'appartement</h2>
-
-        <div class="amenities">
-            <div class="amenity">
-                <div class="amenity-icon">🛁</div>
-                <div class="amenity-title" data-i18n="amenity-spa-title">Jacuzzi privatif</div>
-                <div class="amenity-desc" data-i18n="amenity-spa-desc">Jets massants et éclairage LED d'ambiance</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">🎬</div>
-                <div class="amenity-title" data-i18n="amenity-cinema-title">Home Cinéma</div>
-                <div class="amenity-desc" data-i18n="amenity-cinema-desc">Son surround 5.1 et grand écran Smart TV</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">🛏️</div>
-                <div class="amenity-title" data-i18n="amenity-bed-title">Suite parentale</div>
-                <div class="amenity-desc" data-i18n="amenity-bed-desc">Lit king-size et literie haut de gamme</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">☕</div>
-                <div class="amenity-title" data-i18n="amenity-kitchen-title">Cuisine équipée</div>
-                <div class="amenity-desc" data-i18n="amenity-kitchen-desc">Machine Nespresso et équipements complets</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">🚿</div>
-                <div class="amenity-title" data-i18n="amenity-bathroom-title">Salle de bain</div>
-                <div class="amenity-desc" data-i18n="amenity-bathroom-desc">Toilettes japonaises avec fonction bidet</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">📶</div>
-                <div class="amenity-title" data-i18n="amenity-wifi-title">WiFi Fibre</div>
-                <div class="amenity-desc" data-i18n="amenity-wifi-desc">Connexion ultra-rapide et espace de travail</div>
-            </div>
+        <div class="cta-phone">
+            <a href="tel:+33756864414">07 56 86 44 14</a>
         </div>
     </section>
 
-    <section class="location">
-        <h2 class="section-title" data-i18n="location-title">Emplacement idéal</h2>
-        <p data-i18n="location-desc">
-            Situé dans le 11ème arrondissement, entre Oberkampf et République.
-            Quartier vivant avec restaurants, bars et commerces à deux pas.
-        </p>
-
-        <div class="neighborhood">
-            <div class="neighborhood-item">
-                <strong>Bastille</strong> · <span data-i18n="walk">10 min à pied</span>
-            </div>
-            <div class="neighborhood-item">
-                <strong>Canal Saint-Martin</strong> · <span data-i18n="walk">12 min à pied</span>
-            </div>
-            <div class="neighborhood-item">
-                <strong>Le Marais</strong> · <span data-i18n="walk">15 min à pied</span>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
         <div class="footer-links">
             <a href="https://airbnb.fr/h/a-la-folie" target="_blank">Airbnb</a>
             <a href="https://wa.me/33756864414" data-i18n="footer-contact">Contact</a>
         </div>
-        <p class="copyright">© 2026 À la folie · Paris</p>
+        <p class="copyright">© 2026 À la folie · Paris · <span data-i18n="footer-rights">Tous droits réservés</span></p>
     </footer>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <button class="lightbox-nav lightbox-prev" onclick="prevImage()">‹</button>
+        <img src="" alt="" id="lightbox-img">
+        <button class="lightbox-nav lightbox-next" onclick="nextImage()">›</button>
+    </div>
+
     <script>
+        // Image slideshow
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 5000);
+
+        // Lightbox
+        const galleryImages = [
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/20be2940-2895-4ebb-8e0f-0ffa31c83ad6.jpeg',
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/6ceb129d-abf1-4528-8203-bf3b956d82bb.jpeg',
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/9c9cb37c-0c82-4cb9-b6bf-288744d87944.jpeg',
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fdd3ef2f-b296-4dcb-8fb4-64dd8a344243.jpeg',
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/fcf68a11-4233-462f-bbdf-c1f12c7dbb69.jpeg',
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/dd1a2cfc-8146-4a29-9bfc-7dd9d611b35e.jpeg',
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-1503490402342628075/original/25d5dd8e-ce0f-4f14-b1ab-98bddd050ddd.jpeg'
+        ];
+        let currentImage = 0;
+
+        function openLightbox(index) {
+            currentImage = index;
+            document.getElementById('lightbox-img').src = galleryImages[index];
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextImage() {
+            currentImage = (currentImage + 1) % galleryImages.length;
+            document.getElementById('lightbox-img').src = galleryImages[currentImage];
+        }
+
+        function prevImage() {
+            currentImage = (currentImage - 1 + galleryImages.length) % galleryImages.length;
+            document.getElementById('lightbox-img').src = galleryImages[currentImage];
+        }
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // i18n
         const translations = {
             fr: {
-                'tagline': 'Paris · République',
-                'feature-jacuzzi': 'Jacuzzi privatif',
-                'feature-cinema': 'Home Cinéma',
-                'feature-guests': '4 voyageurs',
-                'feature-location': 'Cœur de Paris',
+                'badge': 'Coup de cœur voyageurs',
+                'f-jacuzzi': 'Jacuzzi privatif',
+                'f-cinema': 'Home Cinéma 5.1',
+                'f-guests': '4 voyageurs',
+                'f-rating': '5.0 · Superhost',
                 'cta-book': 'Réserver sur Airbnb',
-                'cta-contact': 'Une question ?',
-                'amenities-title': "L'appartement",
-                'amenity-spa-title': 'Jacuzzi privatif',
-                'amenity-spa-desc': "Jets massants et éclairage LED d'ambiance",
-                'amenity-cinema-title': 'Home Cinéma',
-                'amenity-cinema-desc': 'Son surround 5.1 et grand écran Smart TV',
-                'amenity-bed-title': 'Suite parentale',
-                'amenity-bed-desc': 'Lit king-size et literie haut de gamme',
-                'amenity-kitchen-title': 'Cuisine équipée',
-                'amenity-kitchen-desc': 'Machine Nespresso et équipements complets',
-                'amenity-bathroom-title': 'Salle de bain',
-                'amenity-bathroom-desc': 'Toilettes japonaises avec fonction bidet',
-                'amenity-wifi-title': 'WiFi Fibre',
-                'amenity-wifi-desc': 'Connexion ultra-rapide et espace de travail',
+                'gallery-title': "Découvrez l'appartement",
+                'features-title': 'Équipements premium',
+                'eq-jacuzzi-title': 'Jacuzzi privatif',
+                'eq-jacuzzi-desc': "Jets massants et éclairage LED d'ambiance pour des moments de détente absolue",
+                'eq-cinema-title': 'Home Cinéma',
+                'eq-cinema-desc': 'Système son surround 5.1 et grand écran Smart TV pour vos soirées films',
+                'eq-bed-title': 'Suite luxueuse',
+                'eq-bed-desc': 'Lit king-size avec literie haut de gamme pour un sommeil réparateur',
+                'eq-bath-title': 'Salle de bain spa',
+                'eq-bath-desc': 'Toilettes japonaises avec fonction bidet et douche à effet pluie',
+                'eq-kitchen-title': 'Cuisine équipée',
+                'eq-kitchen-desc': 'Machine Nespresso, four, plaques et tous les équipements nécessaires',
+                'eq-wifi-title': 'WiFi Fibre',
+                'eq-wifi-desc': 'Connexion ultra-rapide et espace de travail dédié',
                 'location-title': 'Emplacement idéal',
-                'location-desc': 'Situé dans le 11ème arrondissement, entre Oberkampf et République. Quartier vivant avec restaurants, bars et commerces à deux pas.',
+                'location-desc': "Situé au cœur du 11ème arrondissement, entre Oberkampf et République. Profitez d'un quartier vivant avec ses restaurants branchés, bars à cocktails et boutiques indépendantes. À quelques pas du Canal Saint-Martin et du Marais.",
                 'walk': 'min à pied',
-                'footer-contact': 'Contact'
+                'walk2': '5 min à pied',
+                'cta-title': 'Réservez votre séjour',
+                'footer-contact': 'Contact',
+                'footer-rights': 'Tous droits réservés'
             },
             en: {
-                'tagline': 'Paris · République',
-                'feature-jacuzzi': 'Private Jacuzzi',
-                'feature-cinema': 'Home Cinema',
-                'feature-guests': '4 guests',
-                'feature-location': 'Heart of Paris',
+                'badge': 'Guest favorite',
+                'f-jacuzzi': 'Private Jacuzzi',
+                'f-cinema': 'Home Cinema 5.1',
+                'f-guests': '4 guests',
+                'f-rating': '5.0 · Superhost',
                 'cta-book': 'Book on Airbnb',
-                'cta-contact': 'Any questions?',
-                'amenities-title': 'The apartment',
-                'amenity-spa-title': 'Private Jacuzzi',
-                'amenity-spa-desc': 'Massage jets and LED mood lighting',
-                'amenity-cinema-title': 'Home Cinema',
-                'amenity-cinema-desc': '5.1 surround sound and large Smart TV',
-                'amenity-bed-title': 'Master suite',
-                'amenity-bed-desc': 'King-size bed with premium bedding',
-                'amenity-kitchen-title': 'Equipped kitchen',
-                'amenity-kitchen-desc': 'Nespresso machine and full equipment',
-                'amenity-bathroom-title': 'Bathroom',
-                'amenity-bathroom-desc': 'Japanese toilet with bidet function',
-                'amenity-wifi-title': 'Fiber WiFi',
-                'amenity-wifi-desc': 'Ultra-fast connection and workspace',
+                'gallery-title': 'Discover the apartment',
+                'features-title': 'Premium amenities',
+                'eq-jacuzzi-title': 'Private Jacuzzi',
+                'eq-jacuzzi-desc': 'Massage jets and LED mood lighting for absolute relaxation',
+                'eq-cinema-title': 'Home Cinema',
+                'eq-cinema-desc': '5.1 surround sound system and large Smart TV for movie nights',
+                'eq-bed-title': 'Luxurious suite',
+                'eq-bed-desc': 'King-size bed with premium bedding for a restful sleep',
+                'eq-bath-title': 'Spa bathroom',
+                'eq-bath-desc': 'Japanese toilet with bidet function and rain shower',
+                'eq-kitchen-title': 'Equipped kitchen',
+                'eq-kitchen-desc': 'Nespresso machine, oven, stove and all necessary equipment',
+                'eq-wifi-title': 'Fiber WiFi',
+                'eq-wifi-desc': 'Ultra-fast connection and dedicated workspace',
                 'location-title': 'Perfect location',
-                'location-desc': 'Located in the 11th arrondissement, between Oberkampf and République. Vibrant neighborhood with restaurants, bars and shops nearby.',
+                'location-desc': 'Located in the heart of the 11th arrondissement, between Oberkampf and République. Enjoy a vibrant neighborhood with trendy restaurants, cocktail bars and independent boutiques. Steps away from Canal Saint-Martin and Le Marais.',
                 'walk': 'min walk',
-                'footer-contact': 'Contact'
+                'walk2': '5 min walk',
+                'cta-title': 'Book your stay',
+                'footer-contact': 'Contact',
+                'footer-rights': 'All rights reserved'
             }
         };
 
