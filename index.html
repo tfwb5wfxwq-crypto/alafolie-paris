@@ -54,10 +54,14 @@
             object-fit: cover;
             scroll-snap-align: start;
             cursor: pointer;
-            transition: opacity 0.3s;
+            transition: all 0.4s ease;
+            filter: brightness(0.95);
         }
 
-        .photo-strip img:hover { opacity: 0.9; }
+        .photo-strip img:hover {
+            filter: brightness(1.05);
+            transform: scale(1.02);
+        }
 
         /* Trust Badge */
         .trust-badge {
@@ -160,6 +164,17 @@
             padding: 2rem;
             margin-bottom: 3rem;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .checker:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .checker:focus-within {
+            border-color: var(--gold);
+            box-shadow: 0 8px 30px rgba(201, 166, 107, 0.15);
         }
 
         .checker-title {
@@ -192,39 +207,55 @@
 
         .input-group input {
             padding: 0.9rem 1rem;
-            border: 1px solid #e0e0e0;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1rem;
             font-family: inherit;
-            transition: border-color 0.2s;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .input-group input:hover {
+            border-color: #ccc;
+            background: white;
         }
 
         .input-group input:focus {
             outline: none;
             border-color: var(--gold);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(201, 166, 107, 0.15);
         }
 
         .btn-check {
             align-self: flex-end;
             padding: 0.9rem 2rem;
-            background: var(--dark);
+            background: linear-gradient(135deg, var(--dark) 0%, #333 100%);
             color: white;
             border: none;
             border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-check:hover {
-            background: #333;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-check:active {
+            transform: translateY(0);
         }
 
         .btn-check:disabled {
             background: #ccc;
             cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         /* Result Box */
@@ -233,16 +264,30 @@
             padding: 1.5rem;
             border-radius: 12px;
             margin-top: 1.5rem;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result.show {
+            display: block;
         }
 
         .result.available {
-            display: block;
             background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
             border: 1px solid #c8e6c9;
         }
 
         .result.unavailable {
-            display: block;
             background: linear-gradient(135deg, #fce4ec 0%, #fff3e0 100%);
             border: 1px solid #ffcdd2;
         }
@@ -345,12 +390,19 @@
             font-size: 0.8rem;
             margin: 0.25rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
         }
 
         .alternative-item:hover {
             background: var(--dark);
             color: white;
+            border-color: var(--dark);
+            transform: scale(1.05);
+        }
+
+        .alternative-item:active {
+            transform: scale(0.98);
         }
 
         /* WhatsApp Banner */
@@ -421,11 +473,23 @@
             padding: 1.5rem 1rem;
             background: white;
             border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .amenity:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
 
         .amenity-icon {
             font-size: 2rem;
             margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .amenity:hover .amenity-icon {
+            transform: scale(1.15);
         }
 
         .amenity-name {
@@ -467,6 +531,13 @@
             padding: 1.5rem;
             border-radius: 12px;
             margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .review-card:hover {
+            border-left-color: var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .review-header {
@@ -940,8 +1011,8 @@
             btn.innerHTML = '<span class="loading"></span>';
 
             // Hide previous results
-            document.getElementById('resultAvailable').style.display = 'none';
-            document.getElementById('resultUnavailable').style.display = 'none';
+            document.getElementById('resultAvailable').classList.remove('show');
+            document.getElementById('resultUnavailable').classList.remove('show');
 
             try {
                 const response = await fetch(API_URL, {
@@ -975,7 +1046,7 @@
 
         function showAvailable(data) {
             const result = document.getElementById('resultAvailable');
-            result.style.display = 'block';
+            result.classList.add('show');
 
             document.getElementById('availableDetails').textContent =
                 `${formatDate(data.check_in)} → ${formatDate(data.check_out)} (${data.nights} nuit${data.nights > 1 ? 's' : ''})`;
@@ -989,7 +1060,7 @@
 
         function showUnavailable(data) {
             const result = document.getElementById('resultUnavailable');
-            result.style.display = 'block';
+            result.classList.add('show');
 
             document.getElementById('unavailableDetails').textContent =
                 `Les dates du ${formatDate(data.check_in)} au ${formatDate(data.check_out)} sont déjà réservées.`;
