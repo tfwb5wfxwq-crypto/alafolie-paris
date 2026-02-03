@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 50">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 50">
   <defs>
     <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#ff4d6a"/>
@@ -9,10 +9,6 @@
       <stop offset="70%" style="stop-color:#4d96ff"/>
       <stop offset="100%" style="stop-color:#9b5de5"/>
     </linearGradient>
-    <linearGradient id="daisy-center" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ffd93d"/>
-      <stop offset="100%" style="stop-color:#f0c420"/>
-    </linearGradient>
   </defs>
 
   <style>
@@ -20,57 +16,54 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    @keyframes subtle-pulse {
+    @keyframes petal-glow {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.9; }
+      50% { opacity: 0.7; }
     }
 
     .logo-text {
       font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
-      font-size: 34px;
+      font-size: 32px;
       font-weight: bold;
       fill: url(#rainbow);
     }
 
-    .daisy-group {
-      animation: subtle-pulse 3s ease-in-out infinite;
-    }
     .daisy-petals {
-      animation: daisy-spin 25s linear infinite;
+      animation: daisy-spin 8s linear infinite;
       transform-origin: center;
     }
-    .daisy-petal {
-      fill: #ffffff;
-      stroke: #f0f0f0;
-      stroke-width: 0.3;
-    }
+    .petal-red { fill: #ff4d6a; animation: petal-glow 2s ease-in-out infinite; }
+    .petal-orange { fill: #ff8c42; animation: petal-glow 2s ease-in-out infinite 0.15s; }
+    .petal-yellow { fill: #ffd93d; animation: petal-glow 2s ease-in-out infinite 0.3s; }
+    .petal-green { fill: #6bcb77; animation: petal-glow 2s ease-in-out infinite 0.45s; }
+    .petal-blue { fill: #4d96ff; animation: petal-glow 2s ease-in-out infinite 0.6s; }
+    .petal-purple { fill: #9b5de5; animation: petal-glow 2s ease-in-out infinite 0.75s; }
+    .petal-pink { fill: #c77dff; animation: petal-glow 2s ease-in-out infinite 0.9s; }
+    .petal-coral { fill: #ff6b6b; animation: petal-glow 2s ease-in-out infinite 1.05s; }
     .daisy-center {
-      fill: url(#daisy-center);
+      fill: #ffd93d;
     }
   </style>
 
   <!-- Text: À LA F -->
-  <text x="10" y="38" class="logo-text">À LA F</text>
+  <text x="10" y="36" class="logo-text">À LA F</text>
 
-  <!-- Daisy (replaces O) - positioned after F -->
-  <g class="daisy-group" transform="translate(163, 26)">
+  <!-- Colorful Daisy - bigger and more visible -->
+  <g transform="translate(160, 25)">
     <g class="daisy-petals">
-      <!-- 10 petals -->
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(36)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(72)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(108)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(144)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(216)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(252)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(288)"/>
-      <ellipse class="daisy-petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(324)"/>
+      <ellipse class="petal-red" cx="0" cy="-14" rx="5" ry="12"/>
+      <ellipse class="petal-orange" cx="0" cy="-14" rx="5" ry="12" transform="rotate(45)"/>
+      <ellipse class="petal-yellow" cx="0" cy="-14" rx="5" ry="12" transform="rotate(90)"/>
+      <ellipse class="petal-green" cx="0" cy="-14" rx="5" ry="12" transform="rotate(135)"/>
+      <ellipse class="petal-blue" cx="0" cy="-14" rx="5" ry="12" transform="rotate(180)"/>
+      <ellipse class="petal-purple" cx="0" cy="-14" rx="5" ry="12" transform="rotate(225)"/>
+      <ellipse class="petal-pink" cx="0" cy="-14" rx="5" ry="12" transform="rotate(270)"/>
+      <ellipse class="petal-coral" cx="0" cy="-14" rx="5" ry="12" transform="rotate(315)"/>
     </g>
     <!-- Yellow center -->
-    <circle class="daisy-center" cx="0" cy="0" r="6"/>
+    <circle class="daisy-center" cx="0" cy="0" r="8"/>
   </g>
 
   <!-- Text: LIE -->
-  <text x="195" y="38" class="logo-text">LIE</text>
+  <text x="200" y="36" class="logo-text">LIE</text>
 </svg>
