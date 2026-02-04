@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Logo - À LA FOLIE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #0f0f0f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px;
+            gap: 50px;
+        }
+        .container {
+            background: #1a1a1a;
+            padding: 40px 60px;
+            border-radius: 12px;
+        }
+        .label {
+            color: #666;
+            font-family: sans-serif;
+            font-size: 12px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        h2 {
+            color: #888;
+            font-family: sans-serif;
+            font-weight: 300;
+            margin: 30px 0 10px 0;
+        }
+        .flower-hitbox {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Logo avec couleurs néon (comme la ref)</h2>
+
+    <!-- FLEUR 1: Marguerite blanche -->
+    <div class="container">
+        <div class="label">Marguerite blanche</div>
+        <svg viewBox="0 0 118 40" style="height:55px;" class="logo" data-id="1">
+            <style>
+                @keyframes spin1 { to { transform: rotate(360deg); } }
+                @keyframes glowPulse1 { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+                @keyframes sparkle { 0% { filter: brightness(1); } 20% { filter: brightness(1.8); } 40% { filter: brightness(1.2); } 60% { filter: brightness(2); } 80% { filter: brightness(1.4); } 100% { filter: brightness(1); } }
+                .flower1 { animation: spin1 30s linear infinite; transform-origin: 71px 21px; }
+                .glow1 { opacity: 0.15; transition: all 0.4s ease; }
+                .petals1 { opacity: 0.9; transition: all 0.4s ease; }
+                .letter1 { transition: all 0.4s ease; filter: brightness(0.85); }
+                .logo[data-id="1"].hovered .glow1 { opacity: 0.6; animation: glowPulse1 1.5s ease-in-out infinite; }
+                .logo[data-id="1"].hovered .petals1 { opacity: 1; }
+                .logo[data-id="1"].hovered .letter1 { filter: brightness(1.2); }
+                .logo[data-id="1"].hovered .flower1 { animation-duration: 6s; }
+                .logo[data-id="1"].clicked .letter1 { animation: sparkle 0.8s ease-in-out; }
+            </style>
+            <defs>
+                <filter id="gl1" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="4"/></filter>
+                <filter id="neo1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="0.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Lettres -->
+            <text class="letter1" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
+            <text class="letter1" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
+            <text class="letter1" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
+            <text class="letter1" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
+            <!-- Glow -->
+            <g class="glow1" filter="url(#gl1)"><circle fill="#fff" cx="71" cy="21" r="7"/></g>
+            <!-- Fleur -->
+            <g class="flower1 petals1" filter="url(#neo1)">
+                <g transform="translate(71,21)">
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                    <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
+                </g>
+            </g>
+            <!-- Zone cliquable fleur -->
+            <circle class="flower-hitbox" cx="71" cy="21" r="10" fill="transparent"/>
+            <!-- LIE -->
+            <text class="letter1" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
+            <text class="letter1" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
+            <text class="letter1" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
+        </svg>
+    </div>
+
+    <!-- FLEUR 2: Rainbow -->
+    <div class="container">
+        <div class="label">Rainbow (multicolore)</div>
+        <svg viewBox="0 0 118 40" style="height:55px;" class="logo" data-id="2">
+            <style>
+                @keyframes spin2 { to { transform: rotate(360deg); } }
+                @keyframes glowPulse2 { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.6; } }
+                .flower2 { animation: spin2 30s linear infinite; transform-origin: 71px 21px; }
+                .glow2 { opacity: 0.12; transition: all 0.4s ease; }
+                .petals2 { opacity: 0.85; transition: all 0.4s ease; }
+                .letter2 { transition: all 0.4s ease; filter: brightness(0.85); }
+                .logo[data-id="2"].hovered .glow2 { opacity: 0.55; animation: glowPulse2 1.5s ease-in-out infinite; }
+                .logo[data-id="2"].hovered .petals2 { opacity: 1; }
+                .logo[data-id="2"].hovered .letter2 { filter: brightness(1.2); }
+                .logo[data-id="2"].hovered .flower2 { animation-duration: 6s; }
+                .logo[data-id="2"].clicked .letter2 { animation: sparkle 0.8s ease-in-out; }
+            </style>
+            <defs>
+                <filter id="gl2" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="5"/></filter>
+                <filter id="neo2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="0.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <text class="letter2" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
+            <text class="letter2" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
+            <text class="letter2" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
+            <text class="letter2" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
+            <g class="glow2" filter="url(#gl2)">
+                <circle fill="#ff4d6a" cx="71" cy="17" r="3.5"/><circle fill="#ffd93d" cx="75" cy="21" r="3.5"/><circle fill="#4d96ff" cx="71" cy="25" r="3.5"/><circle fill="#9b5de5" cx="67" cy="21" r="3.5"/>
+            </g>
+            <g class="flower2 petals2" filter="url(#neo2)">
+                <g transform="translate(71,21)">
+                    <ellipse fill="#ff4d6a" stroke="#ff7a8a" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                    <ellipse fill="#ff8c42" stroke="#ffa060" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                    <ellipse fill="#ffd93d" stroke="#ffe066" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                    <ellipse fill="#6bcb77" stroke="#85d990" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                    <ellipse fill="#4d96ff" stroke="#70abff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                    <ellipse fill="#9b5de5" stroke="#b07aee" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                    <ellipse fill="#ff6b9d" stroke="#ff8ab3" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                    <ellipse fill="#00d4aa" stroke="#33e0be" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                    <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
+                </g>
+            </g>
+            <circle class="flower-hitbox" cx="71" cy="21" r="10" fill="transparent"/>
+            <text class="letter2" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
+            <text class="letter2" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
+            <text class="letter2" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
+        </svg>
+    </div>
+
+    <!-- FLEUR 3: Rose/Pink -->
+    <div class="container">
+        <div class="label">Rose / Pink</div>
+        <svg viewBox="0 0 118 40" style="height:55px;" class="logo" data-id="3">
+            <style>
+                @keyframes spin3 { to { transform: rotate(360deg); } }
+                @keyframes glowPulse3 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.65; } }
+                .flower3 { animation: spin3 30s linear infinite; transform-origin: 71px 21px; }
+                .glow3 { opacity: 0.15; transition: all 0.4s ease; }
+                .petals3 { opacity: 0.9; transition: all 0.4s ease; }
+                .letter3 { transition: all 0.4s ease; filter: brightness(0.85); }
+                .logo[data-id="3"].hovered .glow3 { opacity: 0.6; animation: glowPulse3 1.5s ease-in-out infinite; }
+                .logo[data-id="3"].hovered .petals3 { opacity: 1; }
+                .logo[data-id="3"].hovered .letter3 { filter: brightness(1.2); }
+                .logo[data-id="3"].hovered .flower3 { animation-duration: 6s; }
+                .logo[data-id="3"].clicked .letter3 { animation: sparkle 0.8s ease-in-out; }
+            </style>
+            <defs>
+                <filter id="gl3" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="4"/></filter>
+                <filter id="neo3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="0.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <text class="letter3" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
+            <text class="letter3" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
+            <text class="letter3" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
+            <text class="letter3" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
+            <g class="glow3" filter="url(#gl3)"><circle fill="#ff6b9d" cx="71" cy="21" r="7"/></g>
+            <g class="flower3 petals3" filter="url(#neo3)">
+                <g transform="translate(71,21)">
+                    <ellipse fill="#ff6b9d" stroke="#ff8ab3" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                    <ellipse fill="#ff85a8" stroke="#ff9fbd" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                    <ellipse fill="#ff6b9d" stroke="#ff8ab3" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                    <ellipse fill="#ff85a8" stroke="#ff9fbd" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                    <ellipse fill="#ff6b9d" stroke="#ff8ab3" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                    <ellipse fill="#ff85a8" stroke="#ff9fbd" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                    <ellipse fill="#ff6b9d" stroke="#ff8ab3" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                    <ellipse fill="#ff85a8" stroke="#ff9fbd" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                    <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
+                </g>
+            </g>
+            <circle class="flower-hitbox" cx="71" cy="21" r="10" fill="transparent"/>
+            <text class="letter3" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
+            <text class="letter3" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
+            <text class="letter3" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
+        </svg>
+    </div>
+
+    <!-- FLEUR 4: Pastel -->
+    <div class="container">
+        <div class="label">Pastel doux</div>
+        <svg viewBox="0 0 118 40" style="height:55px;" class="logo" data-id="4">
+            <style>
+                @keyframes spin4 { to { transform: rotate(360deg); } }
+                @keyframes glowPulse4 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.6; } }
+                .flower4 { animation: spin4 30s linear infinite; transform-origin: 71px 21px; }
+                .glow4 { opacity: 0.15; transition: all 0.4s ease; }
+                .petals4 { opacity: 0.9; transition: all 0.4s ease; }
+                .letter4 { transition: all 0.4s ease; filter: brightness(0.85); }
+                .logo[data-id="4"].hovered .glow4 { opacity: 0.55; animation: glowPulse4 1.5s ease-in-out infinite; }
+                .logo[data-id="4"].hovered .petals4 { opacity: 1; }
+                .logo[data-id="4"].hovered .letter4 { filter: brightness(1.2); }
+                .logo[data-id="4"].hovered .flower4 { animation-duration: 6s; }
+                .logo[data-id="4"].clicked .letter4 { animation: sparkle 0.8s ease-in-out; }
+            </style>
+            <defs>
+                <filter id="gl4" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="4"/></filter>
+                <filter id="neo4" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="0.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <text class="letter4" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
+            <text class="letter4" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
+            <text class="letter4" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
+            <text class="letter4" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
+            <g class="glow4" filter="url(#gl4)"><circle fill="#c9b3ff" cx="71" cy="21" r="7"/></g>
+            <g class="flower4 petals4" filter="url(#neo4)">
+                <g transform="translate(71,21)">
+                    <ellipse fill="#ffb3c6" stroke="#ffc9d6" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                    <ellipse fill="#ffd6a5" stroke="#ffe2bd" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                    <ellipse fill="#fdffb6" stroke="#feffcc" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                    <ellipse fill="#caffbf" stroke="#dfffcf" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                    <ellipse fill="#9bf6ff" stroke="#b5f9ff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                    <ellipse fill="#a0c4ff" stroke="#b8d4ff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                    <ellipse fill="#bdb2ff" stroke="#cfc6ff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                    <ellipse fill="#ffc6ff" stroke="#ffd6ff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                    <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
+                </g>
+            </g>
+            <circle class="flower-hitbox" cx="71" cy="21" r="10" fill="transparent"/>
+            <text class="letter4" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
+            <text class="letter4" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
+            <text class="letter4" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
+        </svg>
+    </div>
+
+    <!-- FLEUR 5: Néon vif -->
+    <div class="container">
+        <div class="label">Néon vif</div>
+        <svg viewBox="0 0 118 40" style="height:55px;" class="logo" data-id="5">
+            <style>
+                @keyframes spin5 { to { transform: rotate(360deg); } }
+                @keyframes glowPulse5 { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+                .flower5 { animation: spin5 30s linear infinite; transform-origin: 71px 21px; }
+                .glow5 { opacity: 0.2; transition: all 0.4s ease; }
+                .petals5 { opacity: 0.95; transition: all 0.4s ease; }
+                .letter5 { transition: all 0.4s ease; filter: brightness(0.85); }
+                .logo[data-id="5"].hovered .glow5 { opacity: 0.65; animation: glowPulse5 1.5s ease-in-out infinite; }
+                .logo[data-id="5"].hovered .petals5 { opacity: 1; }
+                .logo[data-id="5"].hovered .letter5 { filter: brightness(1.3); }
+                .logo[data-id="5"].hovered .flower5 { animation-duration: 6s; }
+                .logo[data-id="5"].clicked .letter5 { animation: sparkle 0.8s ease-in-out; }
+            </style>
+            <defs>
+                <filter id="gl5" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="5"/></filter>
+                <filter id="neo5" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <text class="letter5" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
+            <text class="letter5" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
+            <text class="letter5" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
+            <text class="letter5" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
+            <g class="glow5" filter="url(#gl5)">
+                <circle fill="#00ff88" cx="71" cy="17" r="4"/><circle fill="#ff00ff" cx="75" cy="21" r="4"/><circle fill="#00ffff" cx="71" cy="25" r="4"/><circle fill="#ffff00" cx="67" cy="21" r="4"/>
+            </g>
+            <g class="flower5 petals5" filter="url(#neo5)">
+                <g transform="translate(71,21)">
+                    <ellipse fill="#00ff88" stroke="#66ffbb" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                    <ellipse fill="#ff00ff" stroke="#ff66ff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                    <ellipse fill="#00ffff" stroke="#66ffff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                    <ellipse fill="#ff0066" stroke="#ff6699" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                    <ellipse fill="#ffff00" stroke="#ffff66" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                    <ellipse fill="#ff6600" stroke="#ff9944" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                    <ellipse fill="#00ff88" stroke="#66ffbb" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                    <ellipse fill="#ff00ff" stroke="#ff66ff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                    <circle fill="#fff" stroke="#fff" stroke-width="1" cx="0" cy="0" r="3.5"/>
+                </g>
+            </g>
+            <circle class="flower-hitbox" cx="71" cy="21" r="10" fill="transparent"/>
+            <text class="letter5" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
+            <text class="letter5" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
+            <text class="letter5" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
+        </svg>
+    </div>
+
+    <!-- FLEUR 6: Turquoise/Violet -->
+    <div class="container">
+        <div class="label">Turquoise / Violet</div>
+        <svg viewBox="0 0 118 40" style="height:55px;" class="logo" data-id="6">
+            <style>
+                @keyframes spin6 { to { transform: rotate(360deg); } }
+                @keyframes glowPulse6 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.6; } }
+                .flower6 { animation: spin6 30s linear infinite; transform-origin: 71px 21px; }
+                .glow6 { opacity: 0.15; transition: all 0.4s ease; }
+                .petals6 { opacity: 0.9; transition: all 0.4s ease; }
+                .letter6 { transition: all 0.4s ease; filter: brightness(0.85); }
+                .logo[data-id="6"].hovered .glow6 { opacity: 0.6; animation: glowPulse6 1.5s ease-in-out infinite; }
+                .logo[data-id="6"].hovered .petals6 { opacity: 1; }
+                .logo[data-id="6"].hovered .letter6 { filter: brightness(1.2); }
+                .logo[data-id="6"].hovered .flower6 { animation-duration: 6s; }
+                .logo[data-id="6"].clicked .letter6 { animation: sparkle 0.8s ease-in-out; }
+            </style>
+            <defs>
+                <filter id="gl6" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="4"/></filter>
+                <filter id="neo6" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="0.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <text class="letter6" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
+            <text class="letter6" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
+            <text class="letter6" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
+            <text class="letter6" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
+            <g class="glow6" filter="url(#gl6)"><circle fill="#00d4aa" cx="71" cy="21" r="7"/></g>
+            <g class="flower6 petals6" filter="url(#neo6)">
+                <g transform="translate(71,21)">
+                    <ellipse fill="#00d4aa" stroke="#33e0be" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                    <ellipse fill="#4d96ff" stroke="#70abff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                    <ellipse fill="#9b5de5" stroke="#b07aee" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                    <ellipse fill="#00d4aa" stroke="#33e0be" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                    <ellipse fill="#4d96ff" stroke="#70abff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                    <ellipse fill="#9b5de5" stroke="#b07aee" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                    <ellipse fill="#00d4aa" stroke="#33e0be" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                    <ellipse fill="#4d96ff" stroke="#70abff" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                    <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
+                </g>
+            </g>
+            <circle class="flower-hitbox" cx="71" cy="21" r="10" fill="transparent"/>
+            <text class="letter6" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
+            <text class="letter6" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
+            <text class="letter6" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
+        </svg>
+    </div>
+
+    <script>
+        // Hover et clic sur la fleur uniquement
+        document.querySelectorAll('.flower-hitbox').forEach(hitbox => {
+            const logo = hitbox.closest('.logo');
+
+            // Hover
+            hitbox.addEventListener('mouseenter', () => logo.classList.add('hovered'));
+            hitbox.addEventListener('mouseleave', () => logo.classList.remove('hovered'));
+
+            // Clic - scintillement
+            hitbox.addEventListener('click', () => {
+                logo.classList.remove('clicked');
+                void logo.offsetWidth; // Force reflow
+                logo.classList.add('clicked');
+                setTimeout(() => logo.classList.remove('clicked'), 800);
+            });
+        });
+    </script>
+
+</body>
+</html>

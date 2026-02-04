@@ -336,28 +336,45 @@
             transition: all 0.2s;
         }
 
-        .day:hover:not(.off):not(.blocked) {
-            background: linear-gradient(135deg, #ff4d6a, #ff8c42);
+        .day:hover:not(.off):not(.blocked):not(.invalid-end) {
+            background: linear-gradient(135deg, rgba(255,77,106,0.8), rgba(255,140,66,0.8));
             color: white;
             transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(255,77,106,0.4);
         }
 
         .day.off { color: #444; cursor: default; }
-        .day.blocked { color: #444; cursor: not-allowed; }
+        .day.blocked { color: #444; cursor: not-allowed; text-decoration: line-through; }
+        .day.invalid-end { color: #666; cursor: not-allowed; opacity: 0.5; }
         .day.today { border: 1px solid var(--accent); color: var(--accent); }
         .day.start {
             background: linear-gradient(135deg, #ff4d6a, #ff8c42);
             color: white;
+            box-shadow: 0 0 15px rgba(255,77,106,0.5);
         }
         .day.end {
             background: linear-gradient(135deg, #4d96ff, #9b5de5);
             color: white;
+            box-shadow: 0 0 15px rgba(77,150,255,0.5);
         }
-        .day.range { background: rgba(255,141,66,0.2); border-radius: 0; }
+        .day.range { background: rgba(255,217,61,0.15); border-radius: 0; }
         .day.range.start { border-radius: 50% 0 0 50%; }
         .day.range.end { border-radius: 0 50% 50% 0; }
-        .day.preview { background: rgba(255,141,66,0.1); border-radius: 0; }
-        .day.preview-end { background: rgba(77,150,255,0.2); border-radius: 0 50% 50% 0; }
+        .day.preview { background: rgba(255,217,61,0.1); border-radius: 0; }
+        .day.preview-end { background: rgba(77,150,255,0.25); border-radius: 0 50% 50% 0; }
+        .day.preview-invalid { background: rgba(255,77,106,0.1); border-radius: 0; cursor: not-allowed; }
+
+        /* Skeleton loading */
+        .cal-days.loading .day {
+            background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+            background-size: 200% 100%;
+            animation: skeleton-pulse 1.5s infinite;
+            color: transparent;
+        }
+        @keyframes skeleton-pulse {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
 
         /* Price Panel */
         .price-section {
@@ -726,22 +743,46 @@
         .lightbox-prev { left: 1rem; }
         .lightbox-next { right: 1rem; }
 
-        /* Cursor Tip */
+        /* Cursor Tip - desktop follows cursor, mobile fixed position */
         .cursor-tip {
             position: fixed;
             pointer-events: none;
-            background: white;
-            color: var(--bg);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
+            background: linear-gradient(135deg, #ff4d6a, #ff8c42);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 500;
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.15s;
+            transition: opacity 0.2s, transform 0.2s;
+            transform: translateY(5px);
+            box-shadow: 0 4px 15px rgba(255,77,106,0.3);
         }
 
-        .cursor-tip.show { opacity: 1; }
+        .cursor-tip.show { opacity: 1; transform: translateY(0); }
+        .cursor-tip.invalid { background: linear-gradient(135deg, #666, #444); }
+
+        /* Mobile: fixed tooltip under calendar */
+        @media (max-width: 900px) {
+            .cursor-tip {
+                position: relative;
+                display: block;
+                text-align: center;
+                margin: 1rem auto 0;
+                width: fit-content;
+            }
+            .cursor-tip:not(.show) { display: none; }
+        }
+
+        /* Mobile tooltip container */
+        .mobile-tip-container {
+            display: none;
+            min-height: 40px;
+        }
+        @media (max-width: 900px) {
+            .mobile-tip-container { display: block; }
+        }
 
         /* Responsive */
         @media (max-width: 900px) {
@@ -855,6 +896,7 @@
                     <div class="cal" id="cal1"></div>
                     <div class="cal" id="cal2"></div>
                 </div>
+                <div class="mobile-tip-container" id="mobileTipContainer"></div>
             </div>
             <div class="price-section">
                 <div class="price-box" id="priceBox">
@@ -948,7 +990,9 @@
 
         let m1 = new Date(), m2 = new Date(m1.getFullYear(), m1.getMonth()+1, 1);
         let start = null, end = null, blocked = [];
+        let calendarLoaded = false;
         const tip = document.getElementById('cursorTip');
+        const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
         // Reviews - 3 visible at once, fading together
         const reviews = [
@@ -1017,6 +1061,8 @@
 
         // Calendar
         async function fetchBlocked() {
+            // Show skeleton while loading
+            render(true);
             try {
                 const r = await fetch(API, {
                     method: 'POST',
@@ -1026,7 +1072,25 @@
                 const d = await r.json();
                 if (d.blocked) blocked = d.blocked;
             } catch(e) {}
-            render();
+            calendarLoaded = true;
+            render(false);
+        }
+
+        // Check if any blocked date exists between two dates
+        function hasBlockedInRange(startDate, endDate) {
+            const s = new Date(startDate);
+            const e = new Date(endDate);
+            for (let d = new Date(s); d < e; d.setDate(d.getDate() + 1)) {
+                if (isBlocked(d)) return true;
+            }
+            return false;
+        }
+
+        // Check if a date would be a valid end date (no blocked dates in range)
+        function isValidEndDate(date) {
+            if (!start) return true;
+            if (date <= start) return false;
+            return !hasBlockedInRange(start, date);
         }
 
         function isBlocked(date) {
@@ -1034,35 +1098,43 @@
             return blocked.some(b => s >= b.start && s < b.end);
         }
 
-        function render() {
-            renderCal('cal1', m1);
-            renderCal('cal2', m2);
+        function render(loading = false) {
+            renderCal('cal1', m1, loading);
+            renderCal('cal2', m2, loading);
             const today = new Date(); today.setHours(0,0,0,0);
             document.getElementById('prevBtn').disabled = m1 <= today;
         }
 
-        function renderCal(id, date) {
+        function renderCal(id, date, loading = false) {
             const el = document.getElementById(id);
             const y = date.getFullYear(), m = date.getMonth();
             const today = new Date(); today.setHours(0,0,0,0);
             const first = new Date(y, m, 1), last = new Date(y, m+1, 0);
             let sd = first.getDay() - 1; if (sd < 0) sd = 6;
 
-            let html = `<div class="cal-month">${MONTHS[m]} ${y}</div><div class="cal-week">${DAYS.map(d=>`<span>${d}</span>`).join('')}</div><div class="cal-days">`;
+            const loadingClass = loading ? ' loading' : '';
+            let html = `<div class="cal-month">${MONTHS[m]} ${y}</div><div class="cal-week">${DAYS.map(d=>`<span>${d}</span>`).join('')}</div><div class="cal-days${loadingClass}">`;
             for (let i = 0; i < sd; i++) html += `<div class="day off"></div>`;
             for (let d = 1; d <= last.getDate(); d++) {
                 const curr = new Date(y, m, d);
                 const ds = curr.toISOString().split('T')[0];
                 let c = 'day';
                 const past = curr < today, blk = isBlocked(curr), isToday = curr.getTime() === today.getTime();
+
+                // Check if this date would be invalid as end date (blocked dates in range)
+                const invalidEnd = start && !end && !past && !blk && curr > start && hasBlockedInRange(start, curr);
+
                 if (past) c += ' off';
                 else if (blk) c += ' blocked';
+                else if (invalidEnd) c += ' invalid-end';
                 if (isToday) c += ' today';
                 if (start && curr.getTime() === start.getTime()) c += ' start range';
                 else if (end && curr.getTime() === end.getTime()) c += ' end range';
                 else if (start && end && curr > start && curr < end) c += ' range';
-                const click = !past && !blk ? `onclick="pick('${ds}')"` : '';
-                const hover = !past && !blk ? `onmouseenter="hoverDay(event,'${ds}')" onmouseleave="leaveDay()"` : '';
+
+                const clickable = !past && !blk && !invalidEnd;
+                const click = clickable ? `onclick="pick('${ds}')"` : '';
+                const hover = !past ? `onmouseenter="hoverDay(event,'${ds}')" onmouseleave="leaveDay()"` : '';
                 html += `<div class="${c}" data-date="${ds}" ${click} ${hover}>${d}</div>`;
             }
             html += '</div>';
@@ -1073,46 +1145,126 @@
             const d = new Date(ds);
             const opts = { weekday: 'short', day: 'numeric', month: 'short' };
             let txt = d.toLocaleDateString('fr-FR', opts);
-            if (!start) {
-                txt = `Arrivée: ${txt}`;
+            let isInvalid = false;
+
+            if (isBlocked(d)) {
+                txt = `${txt} — Indisponible`;
+                isInvalid = true;
+            } else if (!start) {
+                txt = `Arrivée : ${txt}`;
             } else if (!end) {
                 const nights = Math.round((d - start) / 864e5);
                 if (nights > 0) {
-                    txt = `Départ: ${txt} (${nights} nuit${nights > 1 ? 's' : ''})`;
-                    document.querySelectorAll('.day').forEach(el => {
-                        const elDate = el.dataset.date;
-                        if (elDate) {
-                            const elD = new Date(elDate);
-                            el.classList.remove('preview', 'preview-end');
-                            if (elD > start && elD < d) el.classList.add('preview');
-                            else if (elD.getTime() === d.getTime()) el.classList.add('preview-end');
-                        }
-                    });
+                    // Check if there are blocked dates in range
+                    const hasBlocked = hasBlockedInRange(start, d);
+                    if (hasBlocked) {
+                        txt = `${nights} nuit${nights > 1 ? 's' : ''} — Dates indisponibles dans la période`;
+                        isInvalid = true;
+                        // Show invalid preview
+                        document.querySelectorAll('.day').forEach(el => {
+                            const elDate = el.dataset.date;
+                            if (elDate) {
+                                const elD = new Date(elDate);
+                                el.classList.remove('preview', 'preview-end', 'preview-invalid');
+                                if (elD > start && elD < d) el.classList.add('preview-invalid');
+                            }
+                        });
+                    } else {
+                        txt = `Départ : ${txt} (${nights} nuit${nights > 1 ? 's' : ''})`;
+                        document.querySelectorAll('.day').forEach(el => {
+                            const elDate = el.dataset.date;
+                            if (elDate) {
+                                const elD = new Date(elDate);
+                                el.classList.remove('preview', 'preview-end', 'preview-invalid');
+                                if (elD > start && elD < d) el.classList.add('preview');
+                                else if (elD.getTime() === d.getTime()) el.classList.add('preview-end');
+                            }
+                        });
+                    }
+                } else if (nights === 0) {
+                    txt = `Cliquez pour annuler`;
+                } else {
+                    txt = `Arrivée : ${txt}`;
+                }
+            } else {
+                // Both dates selected - show info about clicking to reset
+                if (d.getTime() === start.getTime() || d.getTime() === end.getTime()) {
+                    txt = `Cliquez pour modifier`;
+                } else {
+                    txt = `Arrivée : ${txt}`;
                 }
             }
+
             tip.textContent = txt;
+            tip.classList.toggle('invalid', isInvalid);
             tip.classList.add('show');
-            tip.style.left = (e.clientX + 15) + 'px';
-            tip.style.top = (e.clientY - 10) + 'px';
-        }
 
-        function leaveDay() {
-            tip.classList.remove('show');
-            document.querySelectorAll('.day.preview, .day.preview-end').forEach(el => el.classList.remove('preview', 'preview-end'));
-        }
-
-        document.addEventListener('mousemove', e => {
-            if (tip.classList.contains('show')) {
+            // Position tooltip (desktop only, mobile uses CSS fixed positioning)
+            if (!isMobile) {
                 tip.style.left = (e.clientX + 15) + 'px';
                 tip.style.top = (e.clientY - 10) + 'px';
             }
-        });
+        }
+
+        function leaveDay() {
+            tip.classList.remove('show', 'invalid');
+            document.querySelectorAll('.day.preview, .day.preview-end, .day.preview-invalid').forEach(el => {
+                el.classList.remove('preview', 'preview-end', 'preview-invalid');
+            });
+        }
+
+        // Desktop: tooltip follows cursor
+        if (!isMobile) {
+            document.addEventListener('mousemove', e => {
+                if (tip.classList.contains('show')) {
+                    tip.style.left = (e.clientX + 15) + 'px';
+                    tip.style.top = (e.clientY - 10) + 'px';
+                }
+            });
+        } else {
+            // Mobile: move tooltip into calendar section
+            const mobileTipContainer = document.getElementById('mobileTipContainer');
+            if (mobileTipContainer) {
+                mobileTipContainer.appendChild(tip);
+            }
+        }
 
         function pick(ds) {
             const d = new Date(ds);
-            if (!start || (start && end)) { start = d; end = null; updatePrice('picking'); }
-            else if (d > start) { end = d; fetchPrice(); }
-            else { start = d; end = null; updatePrice('picking'); }
+
+            // Click on same date as start = deselect
+            if (start && d.getTime() === start.getTime()) {
+                start = null;
+                end = null;
+                updatePrice('empty');
+                render();
+                return;
+            }
+
+            // Click on same date as end = go back to picking end
+            if (end && d.getTime() === end.getTime()) {
+                end = null;
+                updatePrice('picking');
+                render();
+                return;
+            }
+
+            // Normal selection logic
+            if (!start || (start && end)) {
+                start = d;
+                end = null;
+                updatePrice('picking');
+            } else if (d > start) {
+                // Double-check no blocked dates in range (safety)
+                if (!hasBlockedInRange(start, d)) {
+                    end = d;
+                    fetchPrice();
+                }
+            } else {
+                start = d;
+                end = null;
+                updatePrice('picking');
+            }
             render();
         }
 
@@ -1121,7 +1273,10 @@
             const acts = document.getElementById('priceActions');
             const opts = { day: 'numeric', month: 'short' };
 
-            if (state === 'picking') {
+            if (state === 'empty') {
+                box.innerHTML = `<div class="price-empty">Choisissez vos dates<br>pour voir le prix</div>`;
+                acts.style.display = 'none';
+            } else if (state === 'picking') {
                 box.innerHTML = `
                     <div class="price-dates">
                         <div class="price-date"><small>Arrivée</small><strong>${start.toLocaleDateString('fr-FR', opts)}</strong></div>
