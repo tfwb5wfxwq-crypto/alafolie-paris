@@ -75,6 +75,16 @@
 
         .logo { height: 36px; }
 
+        @keyframes flower-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .flower-spin {
+            transform-origin: 0 0;
+            animation: flower-spin 20s linear infinite;
+        }
+
         .badges {
             display: flex;
             gap: 0.75rem;
@@ -755,7 +765,33 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <img src="logo.svg" alt="À la Folie" class="logo">
+        <svg class="logo" viewBox="0 0 300 45" style="height:36px;">
+            <defs>
+                <linearGradient id="petal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff4d6a">
+                        <animate attributeName="stop-color" values="#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" stop-color="#ff8c42">
+                        <animate attributeName="stop-color" values="#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                </linearGradient>
+            </defs>
+            <text x="10" y="32" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-weight:500;font-style:italic;fill:#fff;">À LA</text>
+            <g transform="translate(95,22)">
+                <g class="flower-spin">
+                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8"/>
+                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
+                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
+                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
+                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
+                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
+                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
+                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+                </g>
+                <circle fill="#ffd93d" cx="0" cy="0" r="5"/>
+            </g>
+            <text x="130" y="32" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-weight:500;font-style:italic;fill:#fff;">FOLIE</text>
+        </svg>
         <div class="badges">
             <span class="badge badge-superhost">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
