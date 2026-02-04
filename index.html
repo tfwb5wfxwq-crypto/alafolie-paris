@@ -31,23 +31,41 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #0f0f0f;
-            --bg-light: #1a1a1a;
+            --bg-dark: #0f0f0f;
+            --bg-dark-light: #1a1a1a;
+            --bg-light: #f8f7f4;
+            --bg-light-alt: #efeee9;
             --bg-card: #222;
+            --bg-card-light: #fff;
             --white: #ffffff;
-            --text: #e0e0e0;
-            --text-muted: #888;
+            --black: #0f0f0f;
+            --text-dark: #e0e0e0;
+            --text-light: #333;
+            --text-muted-dark: #888;
+            --text-muted-light: #777;
             --accent: #ffd93d;
             --airbnb: #FF5A5F;
             --whatsapp: #25D366;
         }
 
+        /* Section themes */
+        .section-dark {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        .section-light {
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
+        .section-light h2, .section-light h3 { color: var(--black); }
+        .section-light .text-muted { color: var(--text-muted-light); }
+
         html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background: var(--bg-dark);
+            color: var(--text-dark);
             font-weight: 300;
             line-height: 1.6;
         }
@@ -200,7 +218,7 @@
             display: inline-block;
             padding: 1rem 2rem;
             background: linear-gradient(135deg, #ff4d6a, #ff8c42, #ffd93d);
-            color: var(--bg);
+            color: var(--black);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
@@ -219,7 +237,7 @@
             justify-content: center;
             gap: 3rem;
             padding: 2rem;
-            background: var(--bg-light);
+            background: var(--bg-dark-light);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
@@ -238,7 +256,7 @@
 
         .feature-label {
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: var(--text-muted-dark);
         }
 
         /* Booking Section */
@@ -293,7 +311,7 @@
         .cal-nav button:hover:not(:disabled) {
             background: var(--accent);
             border-color: var(--accent);
-            color: var(--bg);
+            color: var(--black);
         }
 
         .cal-nav button:disabled {
@@ -320,7 +338,7 @@
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
             font-size: 0.65rem;
-            color: var(--text-muted);
+            color: var(--text-muted-dark);
             text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
@@ -399,7 +417,7 @@
         }
 
         .price-empty {
-            color: var(--text-muted);
+            color: var(--text-muted-dark);
             font-size: 0.9rem;
         }
 
@@ -420,7 +438,7 @@
         .price-date small {
             display: block;
             font-size: 0.6rem;
-            color: var(--text-muted);
+            color: var(--text-muted-dark);
             text-transform: uppercase;
         }
 
@@ -433,7 +451,7 @@
 
         .price-nights {
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: var(--text-muted-dark);
             margin-bottom: 1rem;
         }
 
@@ -459,7 +477,7 @@
 
         .price-avg {
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: var(--text-muted-dark);
         }
 
         .price-actions {
@@ -550,6 +568,11 @@
             transition: all 0.5s ease;
         }
 
+        .section-light .review-card {
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
         .review-card.fading {
             opacity: 0;
             transform: translateY(10px);
@@ -558,17 +581,25 @@
         .review-quote {
             font-size: 0.95rem;
             font-style: italic;
-            color: var(--text);
+            color: var(--text-dark);
             line-height: 1.7;
             margin-bottom: 1rem;
         }
 
+        .section-light .review-quote {
+            color: var(--text-light);
+        }
+
         .review-author {
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: var(--text-muted-dark);
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+
+        .section-light .review-author {
+            color: var(--text-muted-light);
         }
 
         .review-author::before {
@@ -594,10 +625,22 @@
             transition: all 0.3s;
         }
 
+        .section-light .reviews-dot {
+            background: rgba(0,0,0,0.15);
+        }
+
         .reviews-dot.active {
             background: var(--accent);
             width: 24px;
             border-radius: 4px;
+        }
+
+        .section-light .reviews-dot.active {
+            background: var(--airbnb);
+        }
+
+        .section-light .reviews-stars svg {
+            fill: var(--airbnb);
         }
 
         @media (max-width: 768px) {
@@ -637,9 +680,63 @@
             object-fit: cover;
         }
 
+        /* Meet Lea Section */
+        .meet-section {
+            padding: 5rem 2rem;
+        }
+        .meet-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .meet-video {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 9/12;
+            background: var(--bg-dark);
+        }
+        .meet-video video, .meet-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .meet-video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .meet-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .meet-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .meet-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--accent);
+        }
+        @media (max-width: 900px) {
+            .meet-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .meet-video { max-width: 400px; margin: 0 auto; }
+        }
+
         /* Footer */
         .footer {
-            background: var(--bg-light);
+            background: var(--bg-dark-light);
             text-align: center;
             padding: 3rem 2rem;
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -652,7 +749,7 @@
         }
 
         .footer-sub {
-            color: var(--text-muted);
+            color: var(--text-muted-dark);
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
@@ -674,7 +771,7 @@
         .copyright {
             margin-top: 2rem;
             font-size: 0.7rem;
-            color: var(--text-muted);
+            color: var(--text-muted-dark);
         }
 
         /* WhatsApp Widget */
@@ -872,7 +969,7 @@
     </section>
 
     <!-- Features -->
-    <div class="features">
+    <div class="features section-dark">
         <div class="feature">
             <svg class="feature-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
             <div class="feature-label">Jacuzzi privatif</div>
@@ -891,8 +988,26 @@
         </div>
     </div>
 
-    <!-- Booking -->
-    <section class="booking" id="booking">
+    <!-- Meet Lea - Section Claire -->
+    <section class="meet-section section-light">
+        <div class="meet-grid">
+            <div class="meet-video">
+                <!-- Placeholder pour vidéo Léa - remplacer par <video> quand dispo -->
+                <div class="meet-video-placeholder">
+                    <span>Vidéo de présentation<br>(bientôt)</span>
+                </div>
+            </div>
+            <div class="meet-content">
+                <h2>Bienvenue chez moi</h2>
+                <p>Je suis Léa, Superhost passionnée depuis plus de 3 ans. J'ai créé cet espace pour offrir une parenthèse enchantée au cœur de Paris : jacuzzi privatif, home cinéma, et tout le confort d'un cocon moderne.</p>
+                <p>Chaque détail a été pensé pour que votre séjour soit inoubliable. Je suis disponible 7j/7 pour vous conseiller les meilleures adresses du quartier.</p>
+                <span class="meet-signature">— Léa ✨</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking - Section Sombre -->
+    <section class="booking section-dark" id="booking">
         <div class="booking-grid">
             <div class="cal-section">
                 <div class="cal-header">
@@ -926,8 +1041,8 @@
         </div>
     </section>
 
-    <!-- Reviews -->
-    <section class="reviews-section">
+    <!-- Reviews - Section Claire -->
+    <section class="reviews-section section-light">
         <div class="reviews-header">
             <h3>Ce que disent nos voyageurs</h3>
             <div class="reviews-stars">
@@ -936,7 +1051,7 @@
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <span style="margin-left:0.5rem;color:var(--text-muted);font-size:0.85rem;">5.0 · 50+ avis</span>
+                <span class="text-muted" style="margin-left:0.5rem;font-size:0.85rem;">5.0 · 50+ avis</span>
             </div>
         </div>
         <div class="reviews-grid" id="reviewsGrid">
@@ -947,8 +1062,8 @@
         <div class="reviews-dots" id="reviewsDots"></div>
     </section>
 
-    <!-- Photo Strip -->
-    <div class="photo-strip">
+    <!-- Photo Strip - Section Sombre -->
+    <div class="photo-strip section-dark">
         <div class="photo-thumb" onclick="openLB(0)"><img src="01.jpg" alt="Salon"></div>
         <div class="photo-thumb" onclick="openLB(1)"><img src="02.jpg" alt="Jacuzzi"></div>
         <div class="photo-thumb" onclick="openLB(2)"><img src="03.jpg" alt="Chambre"></div>
@@ -1293,7 +1408,7 @@
                         <span class="price-arrow">→</span>
                         <div class="price-date"><small>Départ</small><strong>...</strong></div>
                     </div>
-                    <p style="color:var(--text-muted);font-size:0.85rem;">Sélectionnez le départ</p>`;
+                    <p style="color:var(--text-muted-dark);font-size:0.85rem;">Sélectionnez le départ</p>`;
                 acts.style.display = 'none';
             } else if (state === 'loading') {
                 const n = Math.round((end - start) / 864e5);
@@ -1304,7 +1419,7 @@
                         <div class="price-date"><small>Départ</small><strong>${end.toLocaleDateString('fr-FR', opts)}</strong></div>
                     </div>
                     <div class="price-nights">${n} nuit${n>1?'s':''}</div>
-                    <p style="color:var(--text-muted);">Calcul du prix...</p>`;
+                    <p style="color:var(--text-muted-dark);">Calcul du prix...</p>`;
                 acts.style.display = 'none';
             } else if (state === 'ok') {
                 const n = Math.round((end - start) / 864e5);
@@ -1332,7 +1447,7 @@
                     </div>
                     <div class="price-nights">${n} nuit${n>1?'s':''}</div>
                     <div class="price-status no">✗ Non disponible</div>
-                    <p style="color:var(--text-muted);font-size:0.85rem;">Essayez d'autres dates</p>`;
+                    <p style="color:var(--text-muted-dark);font-size:0.85rem;">Essayez d'autres dates</p>`;
                 acts.style.display = 'none';
             }
         }
