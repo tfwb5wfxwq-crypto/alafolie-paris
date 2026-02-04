@@ -151,6 +151,16 @@
             animation: logo-spin 20s linear infinite;
             transform-origin: 71px 21px;
         }
+        .logo {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 8px rgba(244,114,182,0.5));
+        }
+        .logo:hover .logo-flower {
+            animation-duration: 3s;
+        }
 
         .header-left {
             display: flex;
