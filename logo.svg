@@ -27,7 +27,6 @@
     }
 
     .flower {
-      transform-origin: center;
       animation: spin 20s linear infinite;
     }
 
@@ -40,24 +39,26 @@
     }
   </style>
 
-  <!-- Text -->
+  <!-- Text À LA -->
   <text x="10" y="32" class="logo-text">À LA</text>
 
-  <!-- Flower -->
+  <!-- Flower at position (95, 22) -->
   <g transform="translate(95, 22)">
     <g class="flower">
-      <ellipse class="petal" cx="0" cy="-12" rx="4" ry="9"/>
-      <ellipse class="petal" cx="8.5" cy="-8.5" rx="4" ry="9" transform="rotate(45)"/>
-      <ellipse class="petal" cx="12" cy="0" rx="4" ry="9" transform="rotate(90)"/>
-      <ellipse class="petal" cx="8.5" cy="8.5" rx="4" ry="9" transform="rotate(135)"/>
-      <ellipse class="petal" cx="0" cy="12" rx="4" ry="9" transform="rotate(180)"/>
-      <ellipse class="petal" cx="-8.5" cy="8.5" rx="4" ry="9" transform="rotate(225)"/>
-      <ellipse class="petal" cx="-12" cy="0" rx="4" ry="9" transform="rotate(270)"/>
-      <ellipse class="petal" cx="-8.5" cy="-8.5" rx="4" ry="9" transform="rotate(315)"/>
+      <!-- 8 petals, each in its own group rotated around center -->
+      <g transform="rotate(0)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+      <g transform="rotate(45)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+      <g transform="rotate(90)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+      <g transform="rotate(135)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+      <g transform="rotate(180)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+      <g transform="rotate(225)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+      <g transform="rotate(270)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+      <g transform="rotate(315)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
     </g>
-    <circle class="center" cx="0" cy="0" r="6"/>
+    <!-- Yellow center -->
+    <circle class="center" cx="0" cy="0" r="5"/>
   </g>
 
-  <!-- Text -->
+  <!-- Text FOLIE -->
   <text x="130" y="32" class="logo-text">FOLIE</text>
 </svg>
