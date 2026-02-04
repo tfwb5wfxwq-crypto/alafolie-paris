@@ -4,53 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Location Appartement Paris 11e avec Jacuzzi Privatif | À la Folie</title>
-    <meta name="description" content="Location appartement de charme Paris 11e arrondissement avec jacuzzi privatif et home cinéma. 60m², 4 voyageurs, Superhost 5.0★. Idéal weekend romantique ou entre amis. Réservez maintenant.">
-    <meta name="keywords" content="location appartement paris 11, appartement jacuzzi paris, location courte durée paris, airbnb paris 11e, appartement home cinema paris, weekend romantique paris, location vacances paris">
+    <meta name="description" content="Location appartement de charme Paris 11e arrondissement avec jacuzzi privatif et home cinéma. 60m², 4 voyageurs, Superhost 5.0★. Idéal weekend romantique. Réservez maintenant.">
+    <meta name="keywords" content="location appartement paris 11, appartement jacuzzi paris, location courte durée paris, airbnb paris 11e, weekend romantique paris">
     <link rel="canonical" href="https://folie.paris">
-
-    <!-- Open Graph -->
     <meta property="og:title" content="Location Appartement Paris 11e avec Jacuzzi Privatif">
     <meta property="og:description" content="Appartement de charme 60m² avec jacuzzi privatif et home cinéma au cœur de Paris 11e. Superhost 5.0★">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://folie.paris">
-    <meta property="og:locale" content="fr_FR">
-
-    <!-- Schema.org LodgingBusiness -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "LodgingBusiness",
         "name": "À la Folie - Appartement Paris 11e",
-        "description": "Location appartement de charme avec jacuzzi privatif et home cinéma au cœur de Paris 11e arrondissement",
+        "description": "Location appartement de charme avec jacuzzi privatif et home cinéma au cœur de Paris 11e",
         "url": "https://folie.paris",
         "telephone": "+33756864414",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Paris",
-            "addressRegion": "Île-de-France",
-            "postalCode": "75011",
-            "addressCountry": "FR"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "48.8566",
-            "longitude": "2.3522"
-        },
-        "starRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-        },
-        "amenityFeature": [
-            {"@type": "LocationFeatureSpecification", "name": "Jacuzzi privatif", "value": true},
-            {"@type": "LocationFeatureSpecification", "name": "Home Cinéma", "value": true},
-            {"@type": "LocationFeatureSpecification", "name": "WiFi Fibre", "value": true},
-            {"@type": "LocationFeatureSpecification", "name": "Lit King-Size", "value": true}
-        ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "15"
-        }
+        "address": {"@type": "PostalAddress", "addressLocality": "Paris", "postalCode": "75011", "addressCountry": "FR"},
+        "starRating": {"@type": "Rating", "ratingValue": "5"},
+        "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "50"}
     }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,474 +31,255 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #faf9f7;
-            --bg-warm: #f5f2ed;
+            --bg: #0f0f0f;
+            --bg-light: #1a1a1a;
+            --bg-card: #222;
             --white: #ffffff;
-            --dark: #1a1a1a;
-            --text: #2d2d2d;
-            --text-light: #6b6b6b;
-            --nude: #c4a489;
-            --nude-light: #e8ddd4;
-            --nude-dark: #a68b6a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #ffd93d;
             --airbnb: #FF5A5F;
-            --whatsapp: #128C7E;
-            --whatsapp-light: #25D366;
-            --green: #2d8a6e;
-            --red: #d64545;
+            --whatsapp: #25D366;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: linear-gradient(180deg, var(--bg) 0%, var(--white) 100%);
+            background: var(--bg);
             color: var(--text);
             font-weight: 300;
             line-height: 1.6;
-            min-height: 100vh;
         }
 
-        /* Typography */
         h1, h2, h3 {
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-weight: 400;
-            letter-spacing: -0.02em;
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        @keyframes badge-glow {
-            0%, 100% { box-shadow: 0 0 5px rgba(255, 90, 95, 0.3); }
-            50% { box-shadow: 0 0 15px rgba(255, 90, 95, 0.6), 0 0 25px rgba(255, 90, 95, 0.3); }
-        }
-        @keyframes star-twinkle {
-            0%, 100% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.1); filter: brightness(1.2); }
-        }
-        @keyframes review-fade-in {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes review-fade-out {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-20px); }
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes bubbleIn {
-            from { opacity: 0; transform: scale(0.8) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .animate { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
-
-        /* Header with Logo - Glass dark effect */
+        /* Header */
         .header {
-            background: rgba(20, 20, 20, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 0.75rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .logo-link {
-            text-decoration: none;
-        }
-        .logo {
-            height: 50px;
-            width: auto;
-        }
-        .header-badges {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Hero Section - Split Layout */
-        .hero-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            background: var(--dark);
-            min-height: 400px;
-        }
+        .logo { height: 36px; }
 
-        /* Left: Photo Carousel */
-        .photo-carousel {
-            position: relative;
-            overflow: hidden;
-        }
-        .photo-carousel-img {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-        .photo-carousel-img.active {
-            opacity: 1;
-        }
-        .photo-carousel-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: contrast(1.05) saturate(1.05);
-        }
-        .photo-carousel-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.3) 100%);
-            pointer-events: none;
-        }
-        .photo-carousel-dots {
-            position: absolute;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 2;
-        }
-        .photo-carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.4);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .photo-carousel-dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-        .photo-carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 2;
-        }
-        .photo-carousel-nav:hover {
-            background: rgba(255,255,255,0.2);
-        }
-        .photo-carousel-nav.prev { left: 12px; }
-        .photo-carousel-nav.next { right: 12px; }
-        .photo-carousel-count {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            z-index: 2;
-        }
-
-        /* Right: Host Intro */
-        .hero-host {
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(30,30,30,1) 0%, rgba(20,20,20,1) 100%);
-            color: white;
-        }
-        .hero-host-photo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255,255,255,0.2);
-            margin-bottom: 1.5rem;
-        }
-        .hero-host h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #ff4d6a, #ff8c42, #ffd93d, #6bcb77, #4d96ff, #9b5de5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero-host-sub {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-        .hero-host-badges {
+        .badges {
             display: flex;
             gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-        .hero-host-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        .hero-host-badge svg { width: 14px; height: 14px; }
-        .hero-host-badge.superhost {
-            background: linear-gradient(135deg, #ff4d6a, #ff8c42);
-            color: white;
-        }
-        .hero-host-badge.top5 {
-            background: linear-gradient(135deg, #ffd93d, #6bcb77);
-            color: var(--dark);
-        }
-        .hero-host-badge.stars {
-            background: rgba(255,255,255,0.1);
-            color: white;
-        }
-        .hero-host-bio {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 1.5rem;
-        }
-        .hero-host-stats {
-            display: flex;
-            gap: 2rem;
-        }
-        .hero-host-stat {
-            text-align: center;
-        }
-        .hero-host-stat-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
-            background: linear-gradient(90deg, #ffd93d, #ff8c42);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-host-stat-label {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
-        @media (max-width: 900px) {
-            .hero-split {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-            .photo-carousel {
-                height: 300px;
-            }
-            .hero-host {
-                padding: 2rem;
-            }
-        }
-
-        /* Top Bar with badges */
-        .topbar {
-            background: var(--bg);
-            padding: 0.75rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
         .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-        }
-        .badge-superhost {
-            background: linear-gradient(135deg, var(--airbnb), #ff8a8c);
-            color: var(--white);
-            animation: badge-glow 3s ease-in-out infinite;
-        }
-        .badge-top {
-            background: linear-gradient(135deg, var(--nude), var(--nude-dark));
-            color: var(--white);
-        }
-        .badge-top5 {
-            background: linear-gradient(135deg, #ffd93d, #f0c420);
-            color: var(--dark);
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
             font-weight: 600;
-        }
-        .rating-stars svg {
-            animation: star-twinkle 2s ease-in-out infinite;
-        }
-        .rating-stars svg:nth-child(2) { animation-delay: 0.2s; }
-        .rating-stars svg:nth-child(3) { animation-delay: 0.4s; }
-        .rating-stars svg:nth-child(4) { animation-delay: 0.6s; }
-        .rating-stars svg:nth-child(5) { animation-delay: 0.8s; }
-        .rating {
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: var(--white);
-        }
-        .rating svg {
-            width: 16px;
-            height: 16px;
-            fill: #ffd93d;
         }
 
-        /* Main Container */
-        .main {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
+        .badge svg { width: 12px; height: 12px; }
+
+        .badge-superhost {
+            background: linear-gradient(135deg, #ff4d6a, #ff8c42);
+            color: white;
         }
+
+        .badge-stars {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .badge-stars svg { fill: #ffd93d; }
 
         /* Hero */
         .hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        .hero h1 em {
-            font-style: italic;
-            color: var(--nude-dark);
-        }
-        .hero-sub {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-        .tags {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
             display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        .tag {
-            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: var(--white);
-            padding: 0.6rem 1.2rem;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: var(--text);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: white;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            cursor: pointer;
             transition: all 0.3s;
         }
-        .tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+
+        .play-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.1);
         }
-        .tag svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--nude-dark);
+
+        .play-btn svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+            margin-left: 4px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ff4d6a, #ff8c42, #ffd93d);
+            color: var(--bg);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 77, 106, 0.3);
+        }
+
+        /* Features */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 0.5rem;
+            stroke: var(--accent);
             fill: none;
             stroke-width: 1.5;
         }
 
-        /* Booking Widget */
-        .booking {
-            background: var(--white);
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
-            overflow: hidden;
-            margin-bottom: 3rem;
+        .feature-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
+
+        /* Booking Section */
+        .booking {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
         .booking-grid {
             display: grid;
-            grid-template-columns: 1fr 340px;
+            grid-template-columns: 1fr 320px;
+            gap: 2rem;
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
         }
 
         /* Calendar */
         .cal-section {
             padding: 2rem;
-            border-right: 1px solid rgba(0,0,0,0.05);
         }
+
         .cal-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 1.5rem;
         }
+
         .cal-header h3 {
-            font-size: 1.25rem;
-            color: var(--dark);
+            font-size: 1.2rem;
+            color: white;
         }
+
         .cal-nav {
             display: flex;
             gap: 0.5rem;
         }
+
         .cal-nav button {
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(0,0,0,0.1);
-            background: var(--white);
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
             border-radius: 50%;
+            color: white;
             cursor: pointer;
-            font-size: 1.1rem;
-            color: var(--text);
             transition: all 0.2s;
         }
+
         .cal-nav button:hover:not(:disabled) {
-            background: var(--nude);
-            border-color: var(--nude);
-            color: var(--white);
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg);
         }
+
         .cal-nav button:disabled {
             opacity: 0.3;
             cursor: not-allowed;
@@ -538,826 +290,385 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
+
         .cal-month {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-size: 1rem;
             text-align: center;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: white;
         }
+
         .cal-week {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--text-light);
+            font-size: 0.65rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
+
         .cal-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 3px;
+            gap: 2px;
         }
+
         .day {
             aspect-ratio: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 400;
+            font-size: 0.8rem;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
+            transition: all 0.2s;
         }
+
         .day:hover:not(.off):not(.blocked) {
             background: linear-gradient(135deg, #ff4d6a, #ff8c42);
-            color: var(--white);
-            transform: scale(1.15);
-            z-index: 2;
-            box-shadow: 0 4px 12px rgba(255, 77, 106, 0.3);
+            color: white;
+            transform: scale(1.1);
         }
-        .day.off { color: #ddd; cursor: default; }
-        .day.blocked {
-            color: #ccc;
-            cursor: not-allowed;
-            background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-        }
-        .day.today {
-            border: 2px solid #ff4d6a;
-            font-weight: 600;
-            color: #ff4d6a;
-        }
+
+        .day.off { color: #444; cursor: default; }
+        .day.blocked { color: #444; cursor: not-allowed; }
+        .day.today { border: 1px solid var(--accent); color: var(--accent); }
         .day.start {
             background: linear-gradient(135deg, #ff4d6a, #ff8c42);
-            color: var(--white);
-            z-index: 2;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(255, 77, 106, 0.4);
+            color: white;
         }
         .day.end {
             background: linear-gradient(135deg, #4d96ff, #9b5de5);
-            color: var(--white);
-            z-index: 2;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(77, 150, 255, 0.4);
+            color: white;
         }
-        .day.range {
-            background: linear-gradient(90deg, rgba(255,141,66,0.15), rgba(107,203,119,0.15));
-            border-radius: 0;
-        }
+        .day.range { background: rgba(255,141,66,0.2); border-radius: 0; }
         .day.range.start { border-radius: 50% 0 0 50%; }
         .day.range.end { border-radius: 0 50% 50% 0; }
-        .day.preview {
-            background: rgba(255,141,66,0.1);
-            border-radius: 0;
-        }
-        .day.preview-end {
-            background: linear-gradient(135deg, rgba(77,150,255,0.3), rgba(155,93,229,0.3));
-            border-radius: 0 50% 50% 0;
-        }
-
-        /* Cursor Tooltip */
-        .cursor-tip {
-            position: fixed;
-            pointer-events: none;
-            background: var(--dark);
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.15s;
-            white-space: nowrap;
-        }
-        .cursor-tip.show { opacity: 1; }
+        .day.preview { background: rgba(255,141,66,0.1); border-radius: 0; }
+        .day.preview-end { background: rgba(77,150,255,0.2); border-radius: 0 50% 50% 0; }
 
         /* Price Panel */
         .price-section {
             padding: 2rem;
-            background: linear-gradient(180deg, #fafafa 0%, var(--white) 100%);
+            background: var(--bg-light);
             display: flex;
             flex-direction: column;
         }
+
         .price-box {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
             text-align: center;
         }
+
         .price-empty {
-            color: var(--text-light);
-        }
-        .price-empty-icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 1rem;
-            stroke: var(--nude);
-            opacity: 0.5;
-        }
-        .price-empty p {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         .price-dates {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 1rem;
             margin-bottom: 1rem;
         }
+
         .price-date {
-            background: var(--white);
-            padding: 0.6rem 1rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .price-date small {
-            display: block;
-            font-size: 0.65rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.2rem;
-        }
-        .price-date strong {
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        .price-arrow {
-            color: var(--nude);
-            font-size: 1.2rem;
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
         }
 
-        .price-nights {
+        .price-date small {
+            display: block;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .price-date strong {
             font-size: 0.85rem;
-            color: var(--text-light);
+            color: white;
+        }
+
+        .price-arrow { color: var(--accent); }
+
+        .price-nights {
+            font-size: 0.8rem;
+            color: var(--text-muted);
             margin-bottom: 1rem;
         }
 
         .price-status {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
+            gap: 0.3rem;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
             font-weight: 500;
             margin-bottom: 1rem;
         }
-        .price-status.ok {
-            background: rgba(45, 138, 110, 0.1);
-            color: var(--green);
-        }
-        .price-status.no {
-            background: rgba(214, 69, 69, 0.1);
-            color: var(--red);
-        }
 
-        .price-amount {
-            animation: slideUp 0.4s ease;
-        }
+        .price-status.ok { background: rgba(107,203,119,0.2); color: #6bcb77; }
+        .price-status.no { background: rgba(255,77,106,0.2); color: #ff4d6a; }
+
         .price-total {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            font-weight: 500;
-            line-height: 1;
-            color: var(--dark);
+            font-size: 2.5rem;
+            color: white;
         }
-        .price-total sup {
-            font-size: 1.2rem;
-            font-weight: 400;
-        }
+
         .price-avg {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
-        .price-loading {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text-light);
-        }
-        .spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--nude-light);
-            border-top-color: var(--nude);
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-        }
-
-        /* Buttons */
         .price-actions {
             margin-top: auto;
-            padding-top: 1.5rem;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
         }
+
         .btn {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
-            padding: 1rem 1.5rem;
-            border-radius: 100px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            gap: 0.5rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
             text-decoration: none;
             border: none;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s;
         }
-        .btn svg {
-            width: 18px;
-            height: 18px;
-        }
+
+        .btn svg { width: 16px; height: 16px; }
+
         .btn-airbnb {
             background: var(--airbnb);
-            color: var(--white);
+            color: white;
         }
+
         .btn-airbnb:hover {
-            background: #e54d52;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 90, 95, 0.3);
+            box-shadow: 0 8px 20px rgba(255,90,95,0.3);
         }
-        .btn-airbnb::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        .btn-airbnb:hover::after {
-            left: 100%;
-        }
+
         .btn-whatsapp {
             background: var(--whatsapp);
-            color: var(--white);
-        }
-        .btn-whatsapp:hover {
-            background: #0d7a6d;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(18, 140, 126, 0.3);
-        }
-
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
-            margin-bottom: 3rem;
-        }
-        .feature {
-            text-align: center;
-            padding: 2rem 1.5rem;
-            background: var(--white);
-            border-radius: 20px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: default;
-        }
-        .feature:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 1rem;
-            stroke: var(--nude-dark);
-            fill: none;
-            stroke-width: 1.5;
-            animation: float 4s ease-in-out infinite;
-        }
-        .feature:nth-child(2) .feature-icon { animation-delay: 0.5s; }
-        .feature:nth-child(3) .feature-icon { animation-delay: 1s; }
-        .feature:nth-child(4) .feature-icon { animation-delay: 1.5s; }
-        .feature h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            margin-bottom: 0.3rem;
-            color: var(--dark);
-        }
-        .feature p {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* Host Section */
-        .host-section {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-        }
-        .host-content {
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-        .host-photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--nude-light);
-            box-shadow: 0 8px 24px rgba(196, 164, 137, 0.3);
-        }
-        .host-photo-placeholder {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--nude), var(--nude-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            color: var(--white);
-            border: 4px solid var(--nude-light);
-            box-shadow: 0 8px 24px rgba(196, 164, 137, 0.3);
-        }
-        .host-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
-            color: var(--dark);
-        }
-        .host-info h3 span {
-            color: var(--nude-dark);
-            font-style: italic;
-        }
-        .host-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-        .host-badges {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        .host-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 0.9rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        .host-badge svg {
-            width: 14px;
-            height: 14px;
-        }
-        .host-badge.superhost {
-            background: linear-gradient(135deg, var(--airbnb), #ff8a8c);
             color: white;
-            animation: badge-glow 3s ease-in-out infinite;
-        }
-        .host-badge.top5 {
-            background: linear-gradient(135deg, #ffd93d, #f0c420);
-            color: var(--dark);
-        }
-        .host-badge.verified {
-            background: var(--bg);
-            color: var(--text);
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-        .host-bio {
-            font-size: 0.95rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-        .host-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0,0,0,0.05);
-        }
-        .host-stat {
-            text-align: center;
-        }
-        .host-stat-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        .host-stat-label {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
-        /* Reviews Carousel - Colorful */
-        .reviews {
-            margin-bottom: 3rem;
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37,211,102,0.3);
         }
+
+        /* Reviews Grid */
+        .reviews-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
         .reviews-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .reviews-header h3 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .reviews-stars {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
+            justify-content: center;
+            gap: 0.25rem;
         }
-        .reviews-header h2 {
-            font-size: 1.75rem;
-            color: var(--dark);
-            background: linear-gradient(90deg, #ff4d6a, #ff8c42, #ffd93d, #6bcb77, #4d96ff, #9b5de5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .reviews-score {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        .reviews-score .rating-stars {
-            display: flex;
-            gap: 0.15rem;
-        }
-        .reviews-score svg {
+
+        .reviews-stars svg {
             width: 18px;
             height: 18px;
             fill: #ffd93d;
         }
-        .reviews-carousel {
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
             position: relative;
-            min-height: 200px;
         }
-        .review {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
-            backdrop-filter: blur(10px);
-            padding: 1.75rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.5);
-            position: absolute;
-            width: 100%;
+
+        .review-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .review-card.fading {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255,255,255,0.5);
+            transform: translateY(10px);
         }
-        .review.active {
-            opacity: 1;
-            transform: translateY(0);
-            position: relative;
-        }
-        .review-top {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+
+        .review-quote {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.7;
             margin-bottom: 1rem;
         }
-        .review-avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-        .review-avatar.av-1 { background: linear-gradient(135deg, #ff4d6a, #ff8c42); }
-        .review-avatar.av-2 { background: linear-gradient(135deg, #ff8c42, #ffd93d); }
-        .review-avatar.av-3 { background: linear-gradient(135deg, #ffd93d, #6bcb77); }
-        .review-avatar.av-4 { background: linear-gradient(135deg, #6bcb77, #4d96ff); }
-        .review-avatar.av-5 { background: linear-gradient(135deg, #4d96ff, #9b5de5); }
-        .review-avatar.av-6 { background: linear-gradient(135deg, #9b5de5, #c77dff); }
-        .review-avatar.av-7 { background: linear-gradient(135deg, #c77dff, #ff4d6a); }
-        .review-avatar.av-8 { background: linear-gradient(135deg, #ff6b6b, #ffd93d); }
-        .review-info {
-            flex: 1;
-        }
-        .review-name {
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--dark);
-        }
-        .review-meta {
+
+        .review-author {
+            font-size: 0.8rem;
+            color: var(--text-muted);
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-top: 0.2rem;
         }
-        .review-stars {
-            display: flex;
-            gap: 0.1rem;
+
+        .review-author::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--accent);
         }
-        .review-stars svg {
-            width: 14px;
-            height: 14px;
-            fill: #ffd93d;
-        }
-        .review-quote {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 3rem;
-            font-family: serif;
-            opacity: 0.1;
-            color: var(--dark);
-        }
-        .review p {
-            font-size: 1rem;
-            color: var(--text);
-            line-height: 1.8;
-            position: relative;
-        }
+
         .reviews-dots {
             display: flex;
             justify-content: center;
-            gap: 0.6rem;
-            margin-top: 1.5rem;
+            gap: 0.5rem;
+            margin-top: 2rem;
         }
+
         .reviews-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
+            background: rgba(255,255,255,0.2);
             cursor: pointer;
             transition: all 0.3s;
-            opacity: 0.4;
         }
-        .reviews-dot:nth-child(1) { background: #ff4d6a; }
-        .reviews-dot:nth-child(2) { background: #ff8c42; }
-        .reviews-dot:nth-child(3) { background: #ffd93d; }
-        .reviews-dot:nth-child(4) { background: #6bcb77; }
-        .reviews-dot:nth-child(5) { background: #4d96ff; }
-        .reviews-dot:nth-child(6) { background: #9b5de5; }
-        .reviews-dot:nth-child(7) { background: #c77dff; }
-        .reviews-dot:nth-child(8) { background: #ff6b6b; }
+
         .reviews-dot.active {
-            opacity: 1;
-            transform: scale(1.3);
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
         }
-        .reviews-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--dark);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: white;
-            transition: all 0.3s;
-            z-index: 2;
-        }
-        .reviews-nav:hover {
-            background: linear-gradient(135deg, #ff4d6a, #9b5de5);
-            transform: translateY(-50%) scale(1.1);
-        }
-        .reviews-nav.prev { left: -20px; }
-        .reviews-nav.next { right: -20px; }
 
         @media (max-width: 768px) {
-            .host-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .host-photo, .host-photo-placeholder {
-                margin: 0 auto;
-            }
-            .host-badges {
-                justify-content: center;
-            }
-            .host-stats {
-                justify-content: center;
-            }
-            .reviews-nav { display: none; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .review-card:nth-child(2),
+            .review-card:nth-child(3) { display: none; }
+        }
+
+        /* Photo Strip */
+        .photo-strip {
+            display: flex;
+            gap: 8px;
+            padding: 0 1rem 2rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .photo-strip::-webkit-scrollbar { display: none; }
+
+        .photo-thumb {
+            flex: 0 0 auto;
+            width: 140px;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .photo-thumb:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Footer */
         .footer {
-            background: var(--dark);
-            color: var(--white);
+            background: var(--bg-light);
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
+
         .footer h2 {
-            font-size: 2rem;
+            font-size: 1.5rem;
+            color: white;
             margin-bottom: 0.5rem;
         }
+
         .footer-sub {
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 2rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
+
         .footer-btns {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        .footer-phone a {
-            color: var(--nude);
-            text-decoration: none;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            transition: color 0.2s;
-        }
-        .footer-phone a:hover {
-            color: var(--nude-light);
-        }
-        .copyright {
-            margin-top: 2rem;
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.3);
+            margin-bottom: 1.5rem;
         }
 
-        /* WhatsApp Floating Widget */
-        .wa-widget {
+        .footer-phone a {
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* WhatsApp Widget */
+        .wa-btn {
             position: fixed;
             bottom: 24px;
             right: 24px;
-            z-index: 999;
-        }
-        .wa-bubble {
-            position: absolute;
-            bottom: 70px;
-            right: 0;
-            width: 320px;
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            overflow: hidden;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px) scale(0.95);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .wa-widget.open .wa-bubble {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-        .wa-bubble-header {
-            background: linear-gradient(135deg, var(--whatsapp), #0d7a6d);
-            color: var(--white);
-            padding: 1rem 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .wa-bubble-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--nude);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-        .wa-bubble-info {
-            flex: 1;
-        }
-        .wa-bubble-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        .wa-bubble-status {
-            font-size: 0.75rem;
-            opacity: 0.85;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        .wa-online-dot {
-            width: 6px;
-            height: 6px;
-            background: #7cff7c;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        .wa-bubble-close {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.3rem;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
-        .wa-bubble-close:hover { opacity: 1; }
-        .wa-bubble-chat {
-            background: #e5ddd5;
-            padding: 1rem;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        .wa-msg {
-            max-width: 85%;
-            padding: 0.6rem 0.9rem;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            animation: bubbleIn 0.4s ease forwards;
-            opacity: 0;
-        }
-        .wa-msg.out {
-            background: #dcf8c6;
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-        .wa-msg.in {
-            background: var(--white);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-        .wa-msg small {
-            display: flex;
-            justify-content: flex-end;
-            gap: 0.2rem;
-            font-size: 0.65rem;
-            color: #999;
-            margin-top: 0.2rem;
-        }
-        .wa-msg .check { color: #53bdeb; }
-        .wa-bubble-cta {
-            padding: 1rem;
-            background: var(--white);
-        }
-        .wa-bubble-cta a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: var(--whatsapp-light);
-            color: var(--white);
-            padding: 0.85rem 1.5rem;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-        .wa-bubble-cta a:hover {
+            width: 56px;
+            height: 56px;
             background: var(--whatsapp);
-            transform: scale(1.02);
-        }
-        .wa-trigger {
-            width: 60px;
-            height: 60px;
-            background: var(--whatsapp-light);
             border-radius: 50%;
-            border: none;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            z-index: 99;
+            transition: all 0.3s;
         }
-        .wa-trigger:hover {
+
+        .wa-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
         }
-        .wa-trigger svg {
+
+        .wa-btn svg {
             width: 28px;
             height: 28px;
-            fill: var(--white);
-        }
-        .wa-widget.open .wa-trigger {
-            transform: rotate(90deg);
+            fill: white;
         }
 
         /* Lightbox */
@@ -1365,510 +676,222 @@
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.95);
-            z-index: 1001;
+            z-index: 1000;
             display: none;
             align-items: center;
             justify-content: center;
         }
+
         .lightbox.on { display: flex; }
+
         .lightbox img {
             max-width: 90%;
             max-height: 90vh;
-            border-radius: 12px;
-            animation: fadeIn 0.3s ease;
+            border-radius: 10px;
         }
+
         .lightbox-close {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
             font-size: 2rem;
-            color: var(--white);
+            color: white;
             background: none;
             border: none;
             cursor: pointer;
-            opacity: 0.7;
-            transition: opacity 0.2s;
         }
-        .lightbox-close:hover { opacity: 1; }
+
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2.5rem;
-            color: var(--white);
+            font-size: 2rem;
+            color: white;
             background: none;
             border: none;
             cursor: pointer;
             padding: 1rem;
-            opacity: 0.7;
-            transition: all 0.2s;
         }
-        .lightbox-nav:hover { opacity: 1; color: var(--nude); }
+
         .lightbox-prev { left: 1rem; }
         .lightbox-next { right: 1rem; }
+
+        /* Cursor Tip */
+        .cursor-tip {
+            position: fixed;
+            pointer-events: none;
+            background: white;
+            color: var(--bg);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.15s;
+        }
+
+        .cursor-tip.show { opacity: 1; }
 
         /* Responsive */
         @media (max-width: 900px) {
             .booking-grid { grid-template-columns: 1fr; }
-            .cal-section { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); }
             .calendars { grid-template-columns: 1fr; }
-            .features { grid-template-columns: repeat(2, 1fr); }
-            .photo-grid {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 180px 180px 180px;
-            }
-            .photo-card:first-child {
-                grid-column: span 2;
-                grid-row: span 1;
-            }
         }
+
         @media (max-width: 600px) {
-            .main { padding: 2rem 1rem; }
             .header { padding: 0.75rem 1rem; }
             .logo { height: 28px; }
-            .header-badges { gap: 0.5rem; }
-            .badge { padding: 0.4rem 0.75rem; font-size: 0.7rem; }
-            .hero h1 { font-size: 2rem; }
-            .features { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-            .feature { padding: 1.25rem 1rem; }
-            .price-total { font-size: 2.5rem; }
-            .wa-bubble { width: 290px; right: -10px; }
-            .photo-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, 160px);
-            }
-            .photo-card:first-child {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            .photo-card:nth-child(n+4) { display: none; }
+            .badges { gap: 0.5rem; }
+            .badge { padding: 0.3rem 0.6rem; font-size: 0.65rem; }
+            .hero { height: 60vh; min-height: 400px; }
+            .hero h1 { font-size: 1.5rem; }
+            .features { gap: 1.5rem; flex-wrap: wrap; }
+            .play-btn { width: 60px; height: 60px; }
+            .play-btn svg { width: 24px; height: 24px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Logo -->
+    <!-- Header -->
     <header class="header">
-        <a href="/" class="logo-link">
-            <img src="logo.svg" alt="À la Folie" class="logo">
-        </a>
-        <div class="header-badges">
+        <img src="logo.svg" alt="À la Folie" class="logo">
+        <div class="badges">
             <span class="badge badge-superhost">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 Superhost
             </span>
-            <span class="badge badge-top5">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/></svg>
-                Top 5%
-            </span>
-            <span class="rating rating-stars">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="#ffd93d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span class="badge badge-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 5.0
             </span>
         </div>
     </header>
 
-    <!-- Hero Split: Photos + Host -->
-    <section class="hero-split">
-        <!-- Left: Photo Carousel -->
-        <div class="photo-carousel" id="photoCarousel">
-            <div class="photo-carousel-img active"><img src="01.jpg" alt="Location appartement Paris 11 - Salon lumineux"></div>
-            <div class="photo-carousel-img"><img src="02.jpg" alt="Jacuzzi privatif Paris - Balnéo de luxe"></div>
-            <div class="photo-carousel-img"><img src="03.jpg" alt="Chambre lit king-size Paris 11e"></div>
-            <div class="photo-carousel-img"><img src="04.jpg" alt="Salle de bain design appartement Paris"></div>
-            <div class="photo-carousel-img"><img src="07.jpg" alt="Home cinéma privé location Paris"></div>
-            <div class="photo-carousel-img"><img src="08.jpg" alt="Cuisine équipée appartement Paris 11"></div>
-            <div class="photo-carousel-img"><img src="09.jpg" alt="Décoration appartement de charme Paris"></div>
-            <div class="photo-carousel-img"><img src="10.png" alt="Ambiance cosy location courte durée Paris"></div>
-            <div class="photo-carousel-img"><img src="11.jpg" alt="Détails luxe appartement Airbnb Paris"></div>
-            <div class="photo-carousel-overlay"></div>
-            <button class="photo-carousel-nav prev" onclick="prevPhoto()">‹</button>
-            <button class="photo-carousel-nav next" onclick="nextPhoto()">›</button>
-            <div class="photo-carousel-count"><span id="photoCount">1</span>/9</div>
-            <div class="photo-carousel-dots" id="photoDots"></div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="01.jpg" alt="Location appartement Paris 11e avec jacuzzi">
         </div>
-
-        <!-- Right: Host Presentation (SEO optimized) -->
-        <div class="hero-host">
-            <img src="lea.png" alt="Léa, Superhost Airbnb Paris 11e arrondissement" class="hero-host-photo">
-            <h2>À la Folie</h2>
-            <p class="hero-host-sub">Location appartement Paris 11e · Votre hôte Léa</p>
-            <div class="hero-host-badges">
-                <span class="hero-host-badge superhost">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    Superhost
-                </span>
-                <span class="hero-host-badge top5">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/></svg>
-                    Top 5% Airbnb
-                </span>
-                <span class="hero-host-badge stars">
-                    <svg viewBox="0 0 24 24" fill="#ffd93d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    5.0 étoiles
-                </span>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="play-btn" onclick="openLB(0)">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
-            <p class="hero-host-bio">Bienvenue dans mon <strong>appartement de charme au cœur du 11e arrondissement de Paris</strong>. Profitez d'un <strong>jacuzzi privatif</strong>, d'un <strong>home cinéma</strong> avec système son surround, et d'une <strong>literie king-size</strong> ultra confortable. Idéal pour un <strong>weekend romantique à Paris</strong> ou un séjour entre amis. Je suis disponible 7j/7 pour rendre votre séjour inoubliable !</p>
-            <div class="hero-host-stats">
-                <div class="hero-host-stat">
-                    <div class="hero-host-stat-value">5.0</div>
-                    <div class="hero-host-stat-label">Note</div>
+            <h1>Location appartement Paris 11e avec jacuzzi privatif</h1>
+            <p class="hero-sub">60m² · Home cinéma · Literie king-size · Superhost 5.0★</p>
+            <a href="#booking" class="hero-cta">Réserver mon séjour</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <div class="features">
+        <div class="feature">
+            <svg class="feature-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+            <div class="feature-label">Jacuzzi privatif</div>
+        </div>
+        <div class="feature">
+            <svg class="feature-icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10,9 15,12 10,15"/></svg>
+            <div class="feature-label">Home cinéma</div>
+        </div>
+        <div class="feature">
+            <svg class="feature-icon" viewBox="0 0 24 24"><path d="M3 13h2v8H3zM19 13h2v8h-2zM5 13h14v2H5z"/><rect x="8" y="5" width="8" height="4" rx="1"/></svg>
+            <div class="feature-label">King-size</div>
+        </div>
+        <div class="feature">
+            <svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="feature-label">Fibre 1Gb</div>
+        </div>
+    </div>
+
+    <!-- Booking -->
+    <section class="booking" id="booking">
+        <div class="booking-grid">
+            <div class="cal-section">
+                <div class="cal-header">
+                    <h3>Sélectionnez vos dates</h3>
+                    <div class="cal-nav">
+                        <button id="prevBtn" onclick="prevMonth()">‹</button>
+                        <button id="nextBtn" onclick="nextMonth()">›</button>
+                    </div>
                 </div>
-                <div class="hero-host-stat">
-                    <div class="hero-host-stat-value">50+</div>
-                    <div class="hero-host-stat-label">Avis</div>
+                <div class="calendars">
+                    <div class="cal" id="cal1"></div>
+                    <div class="cal" id="cal2"></div>
                 </div>
-                <div class="hero-host-stat">
-                    <div class="hero-host-stat-value">60m²</div>
-                    <div class="hero-host-stat-label">Surface</div>
+            </div>
+            <div class="price-section">
+                <div class="price-box" id="priceBox">
+                    <div class="price-empty">Choisissez vos dates<br>pour voir le prix</div>
                 </div>
-                <div class="hero-host-stat">
-                    <div class="hero-host-stat-value">~5min</div>
-                    <div class="hero-host-stat-label">Réponse</div>
+                <div class="price-actions" id="priceActions" style="display:none;">
+                    <a href="#" class="btn btn-airbnb" id="bookBtn" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        Réserver sur Airbnb
+                    </a>
+                    <a href="#" class="btn btn-whatsapp" id="waBtn" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                        Contacter Léa
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="main">
-        <!-- Hero -->
-        <section class="hero animate">
-            <h1>Location Appartement <em>Paris 11e</em> avec Jacuzzi</h1>
-            <p class="hero-sub">À la Folie · Votre escapade au cœur de Paris</p>
-            <div class="tags">
-                <span class="tag">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    Jacuzzi privatif
-                </span>
-                <span class="tag">
-                    <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10,9 15,12 10,15"/></svg>
-                    Home Cinéma
-                </span>
-                <span class="tag">
-                    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-                    4 voyageurs
-                </span>
-                <span class="tag">
-                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M7 12h2v5H7zm4-3h2v8h-2zm4-3h2v11h-2z"/></svg>
-                    60m²
-                </span>
+    <!-- Reviews -->
+    <section class="reviews-section">
+        <div class="reviews-header">
+            <h3>Ce que disent nos voyageurs</h3>
+            <div class="reviews-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span style="margin-left:0.5rem;color:var(--text-muted);font-size:0.85rem;">5.0 · 50+ avis</span>
             </div>
-        </section>
+        </div>
+        <div class="reviews-grid" id="reviewsGrid">
+            <div class="review-card"><p class="review-quote"></p><p class="review-author"></p></div>
+            <div class="review-card"><p class="review-quote"></p><p class="review-author"></p></div>
+            <div class="review-card"><p class="review-quote"></p><p class="review-author"></p></div>
+        </div>
+        <div class="reviews-dots" id="reviewsDots"></div>
+    </section>
 
-        <!-- Booking Widget -->
-        <section class="booking animate animate-delay-1">
-            <div class="booking-grid">
-                <div class="cal-section">
-                    <div class="cal-header">
-                        <h3>Sélectionnez vos dates</h3>
-                        <div class="cal-nav">
-                            <button id="prevBtn" onclick="prevMonth()">‹</button>
-                            <button id="nextBtn" onclick="nextMonth()">›</button>
-                        </div>
-                    </div>
-                    <div class="calendars">
-                        <div class="cal" id="cal1"></div>
-                        <div class="cal" id="cal2"></div>
-                    </div>
-                </div>
-                <div class="price-section">
-                    <div class="price-box" id="priceBox">
-                        <div class="price-empty">
-                            <svg class="price-empty-icon" viewBox="0 0 24 24" stroke-width="1.5">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                <line x1="16" y1="2" x2="16" y2="6"/>
-                                <line x1="8" y1="2" x2="8" y2="6"/>
-                                <line x1="3" y1="10" x2="21" y2="10"/>
-                            </svg>
-                            <p>Choisissez vos dates<br>pour voir le prix</p>
-                        </div>
-                    </div>
-                    <div class="price-actions" id="priceActions" style="display:none;">
-                        <a href="#" class="btn btn-airbnb" id="bookBtn" target="_blank">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                            Réserver sur Airbnb
-                        </a>
-                        <a href="#" class="btn btn-whatsapp" id="waBtn" target="_blank">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            Contacter Léa
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features -->
-        <section class="features">
-            <div class="feature animate animate-delay-1">
-                <svg class="feature-icon" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                    <circle cx="12" cy="12" r="4"/>
-                    <path d="M12 6v2M12 16v2M6 12h2M16 12h2"/>
-                </svg>
-                <h4>Jacuzzi</h4>
-                <p>Balnéo privée</p>
-            </div>
-            <div class="feature animate animate-delay-2">
-                <svg class="feature-icon" viewBox="0 0 24 24">
-                    <rect x="2" y="4" width="20" height="16" rx="2"/>
-                    <polygon points="10,9 15,12 10,15"/>
-                </svg>
-                <h4>Home Cinéma</h4>
-                <p>Système 5.1 surround</p>
-            </div>
-            <div class="feature animate animate-delay-3">
-                <svg class="feature-icon" viewBox="0 0 24 24">
-                    <path d="M3 13h2v8H3zM19 13h2v8h-2zM5 13h14v2H5z"/>
-                    <path d="M5 9c0-1 1-2 2-2h10c1 0 2 1 2 2v4H5V9z"/>
-                    <rect x="8" y="5" width="8" height="4" rx="1"/>
-                </svg>
-                <h4>King-Size</h4>
-                <p>Literie ultra confort</p>
-            </div>
-            <div class="feature animate animate-delay-3">
-                <svg class="feature-icon" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-                <h4>Fibre 1Gb</h4>
-                <p>Très haut débit</p>
-            </div>
-        </section>
-
-        <!-- Reviews Carousel -->
-        <section class="reviews">
-            <div class="reviews-header">
-                <h2>Ce que disent nos voyageurs</h2>
-                <span class="reviews-score">
-                    <span class="rating-stars">
-                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </span>
-                    5.0 · 50+ avis
-                </span>
-            </div>
-            <div class="reviews-carousel" id="reviewsCarousel">
-                <button class="reviews-nav prev" onclick="prevReview()">‹</button>
-                <button class="reviews-nav next" onclick="nextReview()">›</button>
-
-                <div class="review active" data-index="0">
-                    <span class="review-quote">"</span>
-                    <div class="review-top">
-                        <div class="review-avatar av-1">O</div>
-                        <div class="review-info">
-                            <div class="review-name">Olivier</div>
-                            <div class="review-meta">
-                                <span class="review-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </span>
-                                Novembre 2025
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Séjour 5 étoiles ! L'appartement est super beau, très calme et encore mieux que sur les photos. Gros coup de cœur pour la baignoire balnéo à bulles et les toilettes japonaises. Le home cinéma est aussi top pour se détendre le soir. Léa a été adorable et très réactive. Merci encore, je recommande à 100% !"</p>
-                </div>
-
-                <div class="review" data-index="1">
-                    <div class="review-top">
-                        <div class="review-avatar av-2">N</div>
-                        <div class="review-info">
-                            <div class="review-name">Noah</div>
-                            <div class="review-meta">
-                                <span class="review-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </span>
-                                Décembre 2025
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Tout a été vraiment formidable, le logement était très propre et la literie extrêmement confortable. L'atmosphère de l'appartement est géniale, encore meilleur que sur les photos. Léa a été très compréhensive du début à la fin et extrêmement agréable. Je recommande fortement !"</p>
-                </div>
-
-                <div class="review" data-index="2">
-                    <div class="review-top">
-                        <div class="review-avatar av-3">E</div>
-                        <div class="review-info">
-                            <div class="review-name">Emily</div>
-                            <div class="review-meta">
-                                <span class="review-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </span>
-                                Novembre 2025 · New Jersey
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Léa était une hôte fantastique. Nous avons réservé l'appartement à la dernière minute car nous avions un vol annulé, et elle a été extrêmement accommodante et réactive. Son logement était extrêmement propre, confortable et situé dans un quartier sûr et agréable. Je reviendrai certainement ici la prochaine fois que je serai à Paris !"</p>
-                </div>
-
-                <div class="review" data-index="3">
-                    <div class="review-top">
-                        <div class="review-avatar av-4">J</div>
-                        <div class="review-info">
-                            <div class="review-name">Jean-François</div>
-                            <div class="review-meta">
-                                <span class="review-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </span>
-                                Octobre 2025
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Excellent emplacement, proche de Bastille, du Marais, avec de nombreux restaurants et petites boutiques. Le logement est propre, cosy, parfait pour un séjour à Paris. Et Léa est adorable et a été arrangeante pour notre arrivée. Merci pour tout !"</p>
-                </div>
-
-                <div class="review" data-index="4">
-                    <div class="review-top">
-                        <div class="review-avatar av-5">M</div>
-                        <div class="review-info">
-                            <div class="review-name">Maura</div>
-                            <div class="review-meta">
-                                <span class="review-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </span>
-                                Janvier 2026
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Endroit parfait avec de belles prestations ! Très bien placé pour passer un agréable séjour à Paris. Léa est très attentionnée et réactive."</p>
-                </div>
-
-                <div class="review" data-index="5">
-                    <div class="review-top">
-                        <div class="review-avatar av-6">O</div>
-                        <div class="review-info">
-                            <div class="review-name">Olaf</div>
-                            <div class="review-meta">
-                                <span class="review-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </span>
-                                Janvier 2026
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Appartement vraiment agréable et magnifique. Entièrement équipé. Quartier silencieux. Je reviendrais à tout moment. J'ai passé un excellent séjour."</p>
-                </div>
-
-                <div class="review" data-index="6">
-                    <div class="review-top">
-                        <div class="review-avatar av-3">E</div>
-                        <div class="review-info">
-                            <div class="review-name">Ekaterina</div>
-                            <div class="review-meta">
-                                <span class="review-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </span>
-                                Octobre 2025
-                            </div>
-                        </div>
-                    </div>
-                    <p>"J'ai apprécié le séjour. Appartement charmant, jacuzzi relaxant et meilleur emplacement. Hôte agréable, rapide à répondre."</p>
-                </div>
-
-                <div class="review" data-index="7">
-                    <div class="review-top">
-                        <div class="review-avatar av-7">T</div>
-                        <div class="review-info">
-                            <div class="review-name">Tamas</div>
-                            <div class="review-meta">
-                                <span class="review-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </span>
-                                Octobre 2025
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Super appartement, silencieux, confortable et propre. Léa a été très réactive et nous a aidés pour toutes les questions pendant notre séjour."</p>
-                </div>
-            </div>
-            <div class="reviews-dots" id="reviewsDots"></div>
-        </section>
-    </main>
+    <!-- Photo Strip -->
+    <div class="photo-strip">
+        <div class="photo-thumb" onclick="openLB(0)"><img src="01.jpg" alt="Salon"></div>
+        <div class="photo-thumb" onclick="openLB(1)"><img src="02.jpg" alt="Jacuzzi"></div>
+        <div class="photo-thumb" onclick="openLB(2)"><img src="03.jpg" alt="Chambre"></div>
+        <div class="photo-thumb" onclick="openLB(3)"><img src="04.jpg" alt="Salle de bain"></div>
+        <div class="photo-thumb" onclick="openLB(4)"><img src="07.jpg" alt="Home Cinéma"></div>
+        <div class="photo-thumb" onclick="openLB(5)"><img src="08.jpg" alt="Cuisine"></div>
+        <div class="photo-thumb" onclick="openLB(6)"><img src="09.jpg" alt="Détails"></div>
+        <div class="photo-thumb" onclick="openLB(7)"><img src="10.png" alt="Vue"></div>
+        <div class="photo-thumb" onclick="openLB(8)"><img src="11.jpg" alt="Ambiance"></div>
+    </div>
 
     <!-- Footer -->
-    <section class="footer">
-        <h2>Réservez votre location Paris 11e</h2>
-        <p class="footer-sub">Appartement avec jacuzzi privatif · Weekend romantique ou entre amis</p>
+    <footer class="footer">
+        <h2>Votre escapade parisienne commence ici</h2>
+        <p class="footer-sub">Weekend romantique · Séjour entre amis · Paris 11e</p>
         <div class="footer-btns">
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                Réserver sur Airbnb
-            </a>
-            <a href="https://wa.me/33756864414" target="_blank" class="btn btn-whatsapp">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Contacter Léa
-            </a>
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">Réserver sur Airbnb</a>
+            <a href="https://wa.me/33756864414" target="_blank" class="btn btn-whatsapp">Contacter Léa</a>
         </div>
         <div class="footer-phone">
             <a href="tel:+33756864414">07 56 86 44 14</a>
         </div>
-        <p class="copyright">© 2026 À la Folie · Location appartement Paris 11e arrondissement</p>
-    </section>
+        <p class="copyright">© 2026 À la Folie · Location appartement Paris 11e</p>
+    </footer>
 
-    <!-- WhatsApp Floating Widget -->
-    <div class="wa-widget" id="waWidget">
-        <div class="wa-bubble">
-            <div class="wa-bubble-header">
-                <div class="wa-bubble-avatar">L</div>
-                <div class="wa-bubble-info">
-                    <div class="wa-bubble-name">Léa</div>
-                    <div class="wa-bubble-status">
-                        <span class="wa-online-dot"></span>
-                        Répond en ~5 min
-                    </div>
-                </div>
-                <button class="wa-bubble-close" onclick="toggleWA()">&times;</button>
-            </div>
-            <div class="wa-bubble-chat">
-                <div class="wa-msg out" style="animation-delay: 0.1s">Le jacuzzi est vraiment privé ?<small>14:32 <span class="check">✓✓</span></small></div>
-                <div class="wa-msg in" style="animation-delay: 0.4s">Oui complètement ! Vous pouvez en profiter H24 <small>14:33</small></div>
-                <div class="wa-msg out" style="animation-delay: 0.7s">Parfait, je réserve !<small>14:35 <span class="check">✓✓</span></small></div>
-            </div>
-            <div class="wa-bubble-cta">
-                <a href="https://wa.me/33756864414?text=Bonjour Léa ! J'ai une question sur l'appartement..." target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    Discuter avec Léa
-                </a>
-            </div>
-        </div>
-        <button class="wa-trigger" onclick="toggleWA()">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </button>
-    </div>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/33756864414" target="_blank" class="wa-btn">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+    </a>
 
-    <!-- Cursor Tooltip -->
+    <!-- Cursor Tip -->
     <div class="cursor-tip" id="cursorTip"></div>
 
     <!-- Lightbox -->
@@ -1880,7 +903,7 @@
     </div>
 
     <script>
-        // API Config
+        // Config
         const API = 'https://xhpsdbmajanmoztijbnx.supabase.co/functions/v1/folie-pricing';
         const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ';
         const LISTING = '1503490402342628075';
@@ -1891,7 +914,72 @@
         let start = null, end = null, blocked = [];
         const tip = document.getElementById('cursorTip');
 
-        // Fetch blocked dates
+        // Reviews - 3 visible at once, fading together
+        const reviews = [
+            { text: "Séjour 5 étoiles ! L'appartement est super beau, très calme et encore mieux que sur les photos. Gros coup de cœur pour le jacuzzi et les toilettes japonaises.", author: "Olivier, novembre 2025" },
+            { text: "Tout a été vraiment formidable, le logement était très propre et la literie extrêmement confortable. L'atmosphère est géniale. Je recommande fortement !", author: "Noah, décembre 2025" },
+            { text: "Léa était une hôte fantastique. Son logement était extrêmement propre, confortable et situé dans un quartier sûr. Je reviendrai certainement !", author: "Emily, New Jersey" },
+            { text: "Excellent emplacement, proche de Bastille et du Marais. Le logement est propre, cosy, parfait pour un séjour à Paris. Léa est adorable !", author: "Jean-François, octobre 2025" },
+            { text: "Endroit parfait avec de belles prestations ! Très bien placé pour passer un agréable séjour à Paris. Léa est très attentionnée et réactive.", author: "Maura, janvier 2026" },
+            { text: "Appartement vraiment agréable et magnifique. Entièrement équipé. Quartier silencieux. J'ai passé un excellent séjour.", author: "Olaf, janvier 2026" }
+        ];
+
+        let reviewPage = 0;
+        const reviewsPerPage = 3;
+        const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+
+        function initReviews() {
+            const dots = document.getElementById('reviewsDots');
+            for (let i = 0; i < totalPages; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToPage(i);
+                dots.appendChild(dot);
+            }
+            updateReviews();
+        }
+
+        function updateReviews() {
+            const cards = document.querySelectorAll('.review-card');
+            const startIdx = reviewPage * reviewsPerPage;
+
+            cards.forEach((card, i) => {
+                const reviewIdx = startIdx + i;
+                const quote = card.querySelector('.review-quote');
+                const author = card.querySelector('.review-author');
+
+                if (reviewIdx < reviews.length) {
+                    quote.textContent = '"' + reviews[reviewIdx].text + '"';
+                    author.textContent = reviews[reviewIdx].author;
+                } else {
+                    // Wrap around for last page if not enough reviews
+                    const wrapIdx = reviewIdx % reviews.length;
+                    quote.textContent = '"' + reviews[wrapIdx].text + '"';
+                    author.textContent = reviews[wrapIdx].author;
+                }
+            });
+
+            document.querySelectorAll('.reviews-dot').forEach((d, i) => d.classList.toggle('active', i === reviewPage));
+        }
+
+        function goToPage(p) {
+            const cards = document.querySelectorAll('.review-card');
+            cards.forEach(c => c.classList.add('fading'));
+
+            setTimeout(() => {
+                reviewPage = p;
+                updateReviews();
+                cards.forEach(c => c.classList.remove('fading'));
+            }, 300);
+        }
+
+        function nextPage() {
+            goToPage((reviewPage + 1) % totalPages);
+        }
+
+        setInterval(nextPage, 6000);
+
+        // Calendar
         async function fetchBlocked() {
             try {
                 const r = await fetch(API, {
@@ -1949,49 +1037,40 @@
             const d = new Date(ds);
             const opts = { weekday: 'short', day: 'numeric', month: 'short' };
             let txt = d.toLocaleDateString('fr-FR', opts);
-
             if (!start) {
                 txt = `Arrivée: ${txt}`;
             } else if (!end) {
                 const nights = Math.round((d - start) / 864e5);
                 if (nights > 0) {
                     txt = `Départ: ${txt} (${nights} nuit${nights > 1 ? 's' : ''})`;
-                    // Add preview classes without re-rendering
                     document.querySelectorAll('.day').forEach(el => {
                         const elDate = el.dataset.date;
                         if (elDate) {
                             const elD = new Date(elDate);
                             el.classList.remove('preview', 'preview-end');
-                            if (elD > start && elD < d) {
-                                el.classList.add('preview');
-                            } else if (elD.getTime() === d.getTime()) {
-                                el.classList.add('preview-end');
-                            }
+                            if (elD > start && elD < d) el.classList.add('preview');
+                            else if (elD.getTime() === d.getTime()) el.classList.add('preview-end');
                         }
                     });
                 }
             }
             tip.textContent = txt;
             tip.classList.add('show');
-            moveTip(e);
-        }
-
-        function leaveDay() {
-            tip.classList.remove('show');
-            // Remove preview classes
-            document.querySelectorAll('.day.preview, .day.preview-end').forEach(el => {
-                el.classList.remove('preview', 'preview-end');
-            });
-        }
-
-        function moveTip(e) {
             tip.style.left = (e.clientX + 15) + 'px';
             tip.style.top = (e.clientY - 10) + 'px';
         }
 
-        function hideTip() { tip.classList.remove('show'); }
+        function leaveDay() {
+            tip.classList.remove('show');
+            document.querySelectorAll('.day.preview, .day.preview-end').forEach(el => el.classList.remove('preview', 'preview-end'));
+        }
 
-        document.addEventListener('mousemove', e => { if (tip.classList.contains('show')) moveTip(e); });
+        document.addEventListener('mousemove', e => {
+            if (tip.classList.contains('show')) {
+                tip.style.left = (e.clientX + 15) + 'px';
+                tip.style.top = (e.clientY - 10) + 'px';
+            }
+        });
 
         function pick(ds) {
             const d = new Date(ds);
@@ -2013,7 +1092,7 @@
                         <span class="price-arrow">→</span>
                         <div class="price-date"><small>Départ</small><strong>...</strong></div>
                     </div>
-                    <p style="color:var(--text-light);font-size:0.9rem;margin-top:1rem;">Sélectionnez le départ</p>`;
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Sélectionnez le départ</p>`;
                 acts.style.display = 'none';
             } else if (state === 'loading') {
                 const n = Math.round((end - start) / 864e5);
@@ -2024,7 +1103,7 @@
                         <div class="price-date"><small>Départ</small><strong>${end.toLocaleDateString('fr-FR', opts)}</strong></div>
                     </div>
                     <div class="price-nights">${n} nuit${n>1?'s':''}</div>
-                    <div class="price-loading"><div class="spinner"></div>Calcul du prix...</div>`;
+                    <p style="color:var(--text-muted);">Calcul du prix...</p>`;
                 acts.style.display = 'none';
             } else if (state === 'ok') {
                 const n = Math.round((end - start) / 864e5);
@@ -2036,14 +1115,12 @@
                     </div>
                     <div class="price-nights">${n} nuit${n>1?'s':''}</div>
                     <div class="price-status ok">✓ Disponible</div>
-                    <div class="price-amount">
-                        <div class="price-total">${data.total}<sup>€</sup></div>
-                        <div class="price-avg">${data.avg}€ / nuit en moyenne</div>
-                    </div>`;
+                    <div class="price-total">${data.total}€</div>
+                    <div class="price-avg">${data.avg}€ / nuit</div>`;
                 acts.style.display = 'flex';
                 const ci = start.toISOString().split('T')[0], co = end.toISOString().split('T')[0];
                 document.getElementById('bookBtn').href = `https://www.airbnb.fr/rooms/${LISTING}?check_in=${ci}&check_out=${co}&guests=2`;
-                document.getElementById('waBtn').href = `https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${start.toLocaleDateString('fr-FR')} au ${end.toLocaleDateString('fr-FR')} 😊`)}`;
+                document.getElementById('waBtn').href = `https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${start.toLocaleDateString('fr-FR')} au ${end.toLocaleDateString('fr-FR')}`)}`;
             } else if (state === 'no') {
                 const n = Math.round((end - start) / 864e5);
                 box.innerHTML = `
@@ -2054,7 +1131,7 @@
                     </div>
                     <div class="price-nights">${n} nuit${n>1?'s':''}</div>
                     <div class="price-status no">✗ Non disponible</div>
-                    <p style="color:var(--text-light);font-size:0.85rem;margin-top:0.5rem;">Essayez d'autres dates</p>`;
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Essayez d'autres dates</p>`;
                 acts.style.display = 'none';
             }
         }
@@ -2072,7 +1149,7 @@
                 if (d.available) {
                     updatePrice('ok', { total: d.pricing?.total || '—', avg: d.pricing?.per_night_avg || '—' });
                 } else {
-                    updatePrice('no', {});
+                    updatePrice('no');
                 }
             } catch(e) {
                 updatePrice('ok', { total: '—', avg: '—' });
@@ -2082,23 +1159,8 @@
         function prevMonth() { m1.setMonth(m1.getMonth()-1); m2.setMonth(m2.getMonth()-1); render(); }
         function nextMonth() { m1.setMonth(m1.getMonth()+1); m2.setMonth(m2.getMonth()+1); render(); }
 
-        // WhatsApp Widget
-        function toggleWA() {
-            document.getElementById('waWidget').classList.toggle('open');
-        }
-
         // Lightbox
-        const imgs = [
-            '01.jpg',
-            '02.jpg',
-            '03.jpg',
-            '04.jpg',
-            '07.jpg',
-            '08.jpg',
-            '09.jpg',
-            '10.png',
-            '11.jpg'
-        ];
+        const imgs = ['01.jpg','02.jpg','03.jpg','04.jpg','07.jpg','08.jpg','09.jpg','10.png','11.jpg'];
         let ci = 0;
         function openLB(i) { ci = i; document.getElementById('lbImg').src = imgs[i]; document.getElementById('lightbox').classList.add('on'); document.body.style.overflow = 'hidden'; }
         function closeLB() { document.getElementById('lightbox').classList.remove('on'); document.body.style.overflow = ''; }
@@ -2107,117 +1169,9 @@
         document.getElementById('lightbox').onclick = e => { if (e.target.id === 'lightbox') closeLB(); };
         document.onkeydown = e => { if (!document.getElementById('lightbox').classList.contains('on')) return; if (e.key === 'Escape') closeLB(); if (e.key === 'ArrowRight') nextImg(); if (e.key === 'ArrowLeft') prevImg(); };
 
-        // Reviews Carousel
-        let currentReview = 0;
-        const reviews = document.querySelectorAll('.review');
-        const totalReviews = reviews.length;
-        let reviewInterval;
-
-        function initReviewsDots() {
-            const dotsContainer = document.getElementById('reviewsDots');
-            for (let i = 0; i < totalReviews; i++) {
-                const dot = document.createElement('span');
-                dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
-                dot.onclick = () => goToReview(i);
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        function updateReviews() {
-            reviews.forEach((r, i) => {
-                r.classList.toggle('active', i === currentReview);
-            });
-            document.querySelectorAll('.reviews-dot').forEach((d, i) => {
-                d.classList.toggle('active', i === currentReview);
-            });
-        }
-
-        function nextReview() {
-            currentReview = (currentReview + 1) % totalReviews;
-            updateReviews();
-            resetReviewInterval();
-        }
-
-        function prevReview() {
-            currentReview = (currentReview - 1 + totalReviews) % totalReviews;
-            updateReviews();
-            resetReviewInterval();
-        }
-
-        function goToReview(i) {
-            currentReview = i;
-            updateReviews();
-            resetReviewInterval();
-        }
-
-        function resetReviewInterval() {
-            clearInterval(reviewInterval);
-            reviewInterval = setInterval(nextReview, 6000);
-        }
-
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
-
-        // Photo Carousel
-        let currentPhoto = 0;
-        const photos = document.querySelectorAll('.photo-carousel-img');
-        const totalPhotos = photos.length;
-        let photoInterval;
-
-        function initPhotoDots() {
-            const dotsContainer = document.getElementById('photoDots');
-            for (let i = 0; i < totalPhotos; i++) {
-                const dot = document.createElement('span');
-                dot.className = 'photo-carousel-dot' + (i === 0 ? ' active' : '');
-                dot.onclick = () => goToPhoto(i);
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        function updatePhotos() {
-            photos.forEach((p, i) => p.classList.toggle('active', i === currentPhoto));
-            document.querySelectorAll('.photo-carousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentPhoto));
-            document.getElementById('photoCount').textContent = currentPhoto + 1;
-        }
-
-        function nextPhoto() {
-            currentPhoto = (currentPhoto + 1) % totalPhotos;
-            updatePhotos();
-            resetPhotoInterval();
-        }
-
-        function prevPhoto() {
-            currentPhoto = (currentPhoto - 1 + totalPhotos) % totalPhotos;
-            updatePhotos();
-            resetPhotoInterval();
-        }
-
-        function goToPhoto(i) {
-            currentPhoto = i;
-            updatePhotos();
-            resetPhotoInterval();
-        }
-
-        function resetPhotoInterval() {
-            clearInterval(photoInterval);
-            photoInterval = setInterval(nextPhoto, 4000);
-        }
-
         // Init
         fetchBlocked();
-        initReviewsDots();
-        initPhotoDots();
-        reviewInterval = setInterval(nextReview, 6000);
-        photoInterval = setInterval(nextPhoto, 4000);
+        initReviews();
     </script>
 </body>
 </html>
