@@ -26,7 +26,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Tenor+Sans&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -73,17 +73,23 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo { height: 36px; }
+        .logo { height: 45px; cursor: pointer; }
 
-        @keyframes flower-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        /* Logo animations */
+        @keyframes logo-spin { to { transform: rotate(360deg); } }
+        @keyframes logo-glow-pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+        @keyframes logo-sparkle { 0% { filter: brightness(1); } 20% { filter: brightness(1.8); } 40% { filter: brightness(1.2); } 60% { filter: brightness(2); } 80% { filter: brightness(1.4); } 100% { filter: brightness(1); } }
 
-        .flower-spin {
-            transform-origin: 0 0;
-            animation: flower-spin 20s linear infinite;
-        }
+        .logo-flower { animation: logo-spin 30s linear infinite; transform-origin: 71px 21px; }
+        .logo-glow { opacity: 0.15; transition: all 0.4s ease; }
+        .logo-petals { opacity: 0.9; transition: all 0.4s ease; }
+        .logo-letter { transition: all 0.4s ease; filter: brightness(0.85); }
+
+        .logo:hover .logo-glow { opacity: 0.6; animation: logo-glow-pulse 1.5s ease-in-out infinite; }
+        .logo:hover .logo-petals { opacity: 1; }
+        .logo:hover .logo-letter { filter: brightness(1.2); }
+        .logo:hover .logo-flower { animation-duration: 6s; }
+        .logo.clicked .logo-letter { animation: logo-sparkle 0.8s ease-in-out; }
 
         .badges {
             display: flex;
@@ -806,32 +812,36 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <svg class="logo" viewBox="0 0 300 45" style="height:36px;">
+        <svg class="logo" viewBox="0 0 118 40" id="mainLogo">
             <defs>
-                <linearGradient id="petal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ff4d6a">
-                        <animate attributeName="stop-color" values="#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a" dur="8s" repeatCount="indefinite"/>
-                    </stop>
-                    <stop offset="100%" stop-color="#ff8c42">
-                        <animate attributeName="stop-color" values="#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42" dur="8s" repeatCount="indefinite"/>
-                    </stop>
-                </linearGradient>
+                <filter id="logo-gl" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="4"/></filter>
+                <filter id="logo-neo" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="0.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             </defs>
-            <text x="10" y="32" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-weight:500;font-style:italic;fill:#fff;">À LA</text>
-            <g transform="translate(95,22)">
-                <g class="flower-spin">
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+            <!-- Lettres néon -->
+            <text class="logo-letter" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
+            <text class="logo-letter" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
+            <text class="logo-letter" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
+            <text class="logo-letter" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
+            <!-- Glow -->
+            <g class="logo-glow" filter="url(#logo-gl)"><circle fill="#fff" cx="71" cy="21" r="7"/></g>
+            <!-- Marguerite blanche -->
+            <g class="logo-flower logo-petals" filter="url(#logo-neo)">
+                <g transform="translate(71,21)">
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                    <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
                 </g>
-                <circle fill="#ffd93d" cx="0" cy="0" r="5"/>
             </g>
-            <text x="130" y="32" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-weight:500;font-style:italic;fill:#fff;">FOLIE</text>
+            <!-- LIE -->
+            <text class="logo-letter" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
+            <text class="logo-letter" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
+            <text class="logo-letter" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
         </svg>
         <div class="badges">
             <span class="badge badge-superhost">
@@ -1359,6 +1369,15 @@
         function prevImg() { ci = (ci - 1 + imgs.length) % imgs.length; document.getElementById('lbImg').src = imgs[ci]; }
         document.getElementById('lightbox').onclick = e => { if (e.target.id === 'lightbox') closeLB(); };
         document.onkeydown = e => { if (!document.getElementById('lightbox').classList.contains('on')) return; if (e.key === 'Escape') closeLB(); if (e.key === 'ArrowRight') nextImg(); if (e.key === 'ArrowLeft') prevImg(); };
+
+        // Logo click effect
+        const mainLogo = document.getElementById('mainLogo');
+        mainLogo.addEventListener('click', () => {
+            mainLogo.classList.remove('clicked');
+            void mainLogo.offsetWidth;
+            mainLogo.classList.add('clicked');
+            setTimeout(() => mainLogo.classList.remove('clicked'), 800);
+        });
 
         // Init
         fetchBlocked();
