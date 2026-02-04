@@ -31,41 +31,28 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-dark: #0f0f0f;
-            --bg-dark-light: #1a1a1a;
-            --bg-light: #f8f7f4;
-            --bg-light-alt: #efeee9;
-            --bg-card: #222;
-            --bg-card-light: #fff;
+            --bg: #0a0a0a;
+            --bg-card: #151515;
+            --bg-card-hover: #1a1a1a;
             --white: #ffffff;
-            --black: #0f0f0f;
-            --text-dark: #e0e0e0;
-            --text-light: #333;
-            --text-muted-dark: #888;
-            --text-muted-light: #777;
+            --text: #e8e8e8;
+            --text-muted: #888;
             --accent: #ffd93d;
+            --pink: #f472b6;
+            --violet: #a78bfa;
+            --cyan: #22d3ee;
+            --orange: #fb923c;
+            --green: #4ade80;
             --airbnb: #FF5A5F;
             --whatsapp: #25D366;
         }
-
-        /* Section themes */
-        .section-dark {
-            background: var(--bg-dark);
-            color: var(--text-dark);
-        }
-        .section-light {
-            background: var(--bg-light);
-            color: var(--text-light);
-        }
-        .section-light h2, .section-light h3 { color: var(--black); }
-        .section-light .text-muted { color: var(--text-muted-light); }
 
         html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-dark);
+            background: var(--bg);
+            color: var(--text);
             font-weight: 300;
             line-height: 1.6;
         }
@@ -75,47 +62,73 @@
             font-weight: 400;
         }
 
-        /* Header */
+        /* ===== HEADER ===== */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(15, 15, 15, 0.8);
+            background: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
-        .logo { height: 45px; cursor: pointer; }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo { height: 40px; cursor: pointer; }
 
         /* Logo animations */
         @keyframes logo-spin { to { transform: rotate(360deg); } }
-        @keyframes logo-glow-pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
-        @keyframes logo-sparkle { 0% { filter: brightness(1); } 20% { filter: brightness(1.8); } 40% { filter: brightness(1.2); } 60% { filter: brightness(2); } 80% { filter: brightness(1.4); } 100% { filter: brightness(1); } }
+        @keyframes logo-glow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
 
         .logo-flower { animation: logo-spin 30s linear infinite; transform-origin: 71px 21px; }
-        .logo-glow { opacity: 0.15; transition: all 0.4s ease; }
-        .logo-petals { opacity: 0.9; transition: all 0.4s ease; }
-        .logo-letter { transition: all 0.4s ease; filter: brightness(0.85); }
+        .logo-glow { opacity: 0.15; transition: all 0.4s; }
+        .logo-petals { opacity: 0.9; transition: all 0.4s; }
+        .logo-letter { transition: all 0.4s; filter: brightness(0.85); }
 
-        .logo:hover .logo-glow { opacity: 0.6; animation: logo-glow-pulse 1.5s ease-in-out infinite; }
+        .logo:hover .logo-glow { opacity: 0.6; animation: logo-glow 1.5s ease-in-out infinite; }
         .logo:hover .logo-petals { opacity: 1; }
         .logo:hover .logo-letter { filter: brightness(1.2); }
         .logo:hover .logo-flower { animation-duration: 6s; }
-        .logo.clicked .logo-letter { animation: logo-sparkle 0.8s ease-in-out; }
 
-        .badges {
+        .header-phone {
             display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .header-phone:hover {
+            background: var(--pink);
+            color: var(--white);
+        }
+
+        .header-phone svg { width: 16px; height: 16px; fill: currentColor; }
+
+        .header-right {
+            display: flex;
+            align-items: center;
             gap: 0.75rem;
         }
 
         .badge {
-            padding: 0.4rem 0.9rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 50px;
             font-size: 0.7rem;
             font-weight: 600;
@@ -127,7 +140,7 @@
         .badge svg { width: 12px; height: 12px; }
 
         .badge-superhost {
-            background: linear-gradient(135deg, #ff4d6a, #ff8c42);
+            background: linear-gradient(135deg, var(--pink), var(--orange));
             color: white;
         }
 
@@ -136,22 +149,21 @@
             color: white;
         }
 
-        .badge-stars svg { fill: #ffd93d; }
+        .badge-stars svg { fill: var(--accent); }
 
-        /* Hero */
+        /* ===== HERO ===== */
         .hero {
             position: relative;
-            height: 70vh;
-            min-height: 500px;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            padding: 100px 2rem 3rem;
         }
 
         .hero-bg {
             position: absolute;
             inset: 0;
+            z-index: -1;
         }
 
         .hero-bg img {
@@ -160,110 +172,89 @@
             object-fit: cover;
         }
 
-        .hero-overlay {
+        .hero-bg::after {
+            content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.6) 100%);
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 2rem;
-            max-width: 700px;
+            max-width: 600px;
         }
 
         .hero h1 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: clamp(2rem, 5vw, 3.5rem);
             color: white;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        .hero-sub {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.8);
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
             margin-bottom: 2rem;
         }
 
-        .play-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
+        .hero-feature {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            cursor: pointer;
-            transition: all 0.3s;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
         }
 
-        .play-btn:hover {
-            background: rgba(255,255,255,0.25);
-            transform: scale(1.1);
-        }
-
-        .play-btn svg {
-            width: 30px;
-            height: 30px;
-            fill: white;
-            margin-left: 4px;
+        .hero-feature-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
         }
 
         .hero-cta {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, #ff4d6a, #ff8c42, #ffd93d);
-            color: var(--black);
+            background: linear-gradient(135deg, var(--pink), var(--violet));
+            color: white;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(244, 114, 182, 0.4);
         }
 
         .hero-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 77, 106, 0.3);
+            box-shadow: 0 8px 30px rgba(244, 114, 182, 0.5);
         }
 
-        /* Features */
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            padding: 2rem;
-            background: var(--bg-dark-light);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+        .hero-cta svg { width: 20px; height: 20px; fill: currentColor; }
 
-        .feature {
-            text-align: center;
-        }
-
-        .feature-icon {
-            width: 32px;
-            height: 32px;
-            margin: 0 auto 0.5rem;
-            stroke: var(--accent);
-            fill: none;
-            stroke-width: 1.5;
-        }
-
-        .feature-label {
-            font-size: 0.8rem;
-            color: var(--text-muted-dark);
-        }
-
-        /* Booking Section */
+        /* ===== BOOKING SECTION ===== */
         .booking {
+            padding: 4rem 1.5rem;
+            background: var(--bg);
+        }
+
+        .booking-container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+        }
+
+        .booking-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
         }
 
         .booking-grid {
@@ -271,14 +262,13 @@
             grid-template-columns: 1fr 320px;
             gap: 2rem;
             background: var(--bg-card);
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
         }
 
         /* Calendar */
-        .cal-section {
-            padding: 2rem;
-        }
+        .cal-section { padding: 2rem; }
 
         .cal-header {
             display: flex;
@@ -288,7 +278,7 @@
         }
 
         .cal-header h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: white;
         }
 
@@ -300,7 +290,7 @@
         .cal-nav button {
             width: 32px;
             height: 32px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.15);
             background: transparent;
             border-radius: 50%;
             color: white;
@@ -309,15 +299,11 @@
         }
 
         .cal-nav button:hover:not(:disabled) {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--black);
+            background: var(--pink);
+            border-color: var(--pink);
         }
 
-        .cal-nav button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
+        .cal-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
 
         .calendars {
             display: grid;
@@ -338,7 +324,7 @@
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
             font-size: 0.65rem;
-            color: var(--text-muted-dark);
+            color: var(--text-muted);
             text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
@@ -360,50 +346,25 @@
             transition: all 0.2s;
         }
 
-        .day:hover:not(.off):not(.blocked):not(.invalid-end) {
-            background: linear-gradient(135deg, rgba(255,77,106,0.8), rgba(255,140,66,0.8));
+        .day:hover:not(.off):not(.blocked) {
+            background: linear-gradient(135deg, var(--pink), var(--violet));
             color: white;
             transform: scale(1.1);
-            box-shadow: 0 0 12px rgba(255,77,106,0.4);
         }
 
-        .day.off { color: #444; cursor: default; }
-        .day.blocked { color: #444; cursor: not-allowed; text-decoration: line-through; }
-        .day.invalid-end { color: #666; cursor: not-allowed; opacity: 0.5; }
+        .day.off { color: #333; cursor: default; }
+        .day.blocked { color: #333; cursor: not-allowed; text-decoration: line-through; }
         .day.today { border: 1px solid var(--accent); color: var(--accent); }
-        .day.start {
-            background: linear-gradient(135deg, #ff4d6a, #ff8c42);
-            color: white;
-            box-shadow: 0 0 15px rgba(255,77,106,0.5);
-        }
-        .day.end {
-            background: linear-gradient(135deg, #4d96ff, #9b5de5);
-            color: white;
-            box-shadow: 0 0 15px rgba(77,150,255,0.5);
-        }
-        .day.range { background: rgba(255,217,61,0.15); border-radius: 0; }
+        .day.start { background: linear-gradient(135deg, var(--pink), var(--orange)); color: white; }
+        .day.end { background: linear-gradient(135deg, var(--cyan), var(--violet)); color: white; }
+        .day.range { background: rgba(244,114,182,0.15); border-radius: 0; }
         .day.range.start { border-radius: 50% 0 0 50%; }
         .day.range.end { border-radius: 0 50% 50% 0; }
-        .day.preview { background: rgba(255,217,61,0.1); border-radius: 0; }
-        .day.preview-end { background: rgba(77,150,255,0.25); border-radius: 0 50% 50% 0; }
-        .day.preview-invalid { background: rgba(255,77,106,0.1); border-radius: 0; cursor: not-allowed; }
-
-        /* Skeleton loading */
-        .cal-days.loading .day {
-            background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
-            background-size: 200% 100%;
-            animation: skeleton-pulse 1.5s infinite;
-            color: transparent;
-        }
-        @keyframes skeleton-pulse {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
 
         /* Price Panel */
         .price-section {
             padding: 2rem;
-            background: var(--bg-light);
+            background: var(--bg-card-hover);
             display: flex;
             flex-direction: column;
         }
@@ -416,44 +377,28 @@
             text-align: center;
         }
 
-        .price-empty {
-            color: var(--text-muted-dark);
-            font-size: 0.9rem;
-        }
+        .price-empty { color: var(--text-muted); font-size: 0.9rem; }
 
         .price-dates {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
+            gap: 0.75rem;
             margin-bottom: 1rem;
         }
 
         .price-date {
             background: var(--bg-card);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.75rem;
             border-radius: 10px;
         }
 
-        .price-date small {
-            display: block;
-            font-size: 0.6rem;
-            color: var(--text-muted-dark);
-            text-transform: uppercase;
-        }
+        .price-date small { display: block; font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; }
+        .price-date strong { font-size: 0.85rem; color: white; }
 
-        .price-date strong {
-            font-size: 0.85rem;
-            color: white;
-        }
+        .price-arrow { color: var(--pink); }
 
-        .price-arrow { color: var(--accent); }
-
-        .price-nights {
-            font-size: 0.8rem;
-            color: var(--text-muted-dark);
-            margin-bottom: 1rem;
-        }
+        .price-nights { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
 
         .price-status {
             display: inline-flex;
@@ -466,8 +411,8 @@
             margin-bottom: 1rem;
         }
 
-        .price-status.ok { background: rgba(107,203,119,0.2); color: #6bcb77; }
-        .price-status.no { background: rgba(255,77,106,0.2); color: #ff4d6a; }
+        .price-status.ok { background: rgba(74,222,128,0.2); color: var(--green); }
+        .price-status.no { background: rgba(255,90,95,0.2); color: var(--airbnb); }
 
         .price-total {
             font-family: 'Cormorant Garamond', serif;
@@ -475,10 +420,7 @@
             color: white;
         }
 
-        .price-avg {
-            font-size: 0.8rem;
-            color: var(--text-muted-dark);
-        }
+        .price-avg { font-size: 0.8rem; color: var(--text-muted); }
 
         .price-actions {
             margin-top: auto;
@@ -504,40 +446,81 @@
 
         .btn svg { width: 16px; height: 16px; }
 
-        .btn-airbnb {
-            background: var(--airbnb);
-            color: white;
+        .btn-airbnb { background: var(--airbnb); color: white; }
+        .btn-airbnb:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,90,95,0.3); }
+
+        .btn-whatsapp { background: var(--whatsapp); color: white; }
+        .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,0.3); }
+
+        /* ===== MEET LEA ===== */
+        .meet {
+            padding: 5rem 2rem;
+            background: var(--bg-card);
         }
 
-        .btn-airbnb:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255,90,95,0.3);
-        }
-
-        .btn-whatsapp {
-            background: var(--whatsapp);
-            color: white;
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37,211,102,0.3);
-        }
-
-        /* Reviews Grid */
-        .reviews-section {
+        .meet-container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 3rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .meet-video {
+            aspect-ratio: 9/16;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg), var(--bg-card-hover));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .meet-video-placeholder {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .meet-content h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .meet-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .meet-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--pink), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews {
+            padding: 4rem 2rem;
+            background: var(--bg);
         }
 
         .reviews-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .reviews-header h3 {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: white;
             margin-bottom: 0.5rem;
         }
@@ -548,234 +531,136 @@
             gap: 0.25rem;
         }
 
-        .reviews-stars svg {
-            width: 18px;
-            height: 18px;
-            fill: #ffd93d;
-        }
+        .reviews-stars svg { width: 20px; height: 20px; fill: var(--accent); }
+        .reviews-stars span { margin-left: 0.5rem; color: var(--text-muted); font-size: 0.9rem; }
 
         .reviews-grid {
+            max-width: 1000px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            position: relative;
         }
 
         .review-card {
             background: var(--bg-card);
             border-radius: 16px;
             padding: 1.5rem;
-            transition: all 0.5s ease;
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: all 0.3s;
         }
 
-        .section-light .review-card {
-            background: var(--white);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .review-card.fading {
-            opacity: 0;
-            transform: translateY(10px);
+        .review-card:hover {
+            border-color: rgba(244,114,182,0.2);
+            transform: translateY(-2px);
         }
 
         .review-quote {
             font-size: 0.95rem;
             font-style: italic;
-            color: var(--text-dark);
+            color: var(--text);
             line-height: 1.7;
             margin-bottom: 1rem;
         }
 
-        .section-light .review-quote {
-            color: var(--text-light);
-        }
-
         .review-author {
             font-size: 0.8rem;
-            color: var(--text-muted-dark);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-light .review-author {
-            color: var(--text-muted-light);
+            color: var(--text-muted);
         }
 
         .review-author::before {
-            content: '';
-            width: 20px;
-            height: 1px;
-            background: var(--accent);
+            content: '—';
+            margin-right: 0.5rem;
+            color: var(--pink);
         }
 
-        .reviews-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
+        /* ===== GALLERY ===== */
+        .gallery {
+            padding: 2rem 1rem;
+            background: var(--bg);
         }
 
-        .reviews-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .section-light .reviews-dot {
-            background: rgba(0,0,0,0.15);
-        }
-
-        .reviews-dot.active {
-            background: var(--accent);
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        .section-light .reviews-dot.active {
-            background: var(--airbnb);
-        }
-
-        .section-light .reviews-stars svg {
-            fill: var(--airbnb);
-        }
-
-        @media (max-width: 768px) {
-            .reviews-grid { grid-template-columns: 1fr; }
-            .review-card:nth-child(2),
-            .review-card:nth-child(3) { display: none; }
-        }
-
-        /* Photo Strip */
-        .photo-strip {
+        .gallery-strip {
             display: flex;
             gap: 8px;
-            padding: 0 1rem 2rem;
             overflow-x: auto;
             scrollbar-width: none;
+            padding-bottom: 1rem;
         }
 
-        .photo-strip::-webkit-scrollbar { display: none; }
+        .gallery-strip::-webkit-scrollbar { display: none; }
 
-        .photo-thumb {
+        .gallery-thumb {
             flex: 0 0 auto;
-            width: 140px;
-            height: 100px;
-            border-radius: 10px;
+            width: 160px;
+            height: 120px;
+            border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s;
         }
 
-        .photo-thumb:hover {
-            transform: scale(1.05);
-        }
+        .gallery-thumb:hover { transform: scale(1.05); }
 
-        .photo-thumb img {
+        .gallery-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* Meet Lea Section */
-        .meet-section {
-            padding: 5rem 2rem;
-        }
-        .meet-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        .meet-video {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            aspect-ratio: 9/12;
-            background: var(--bg-dark);
-        }
-        .meet-video video, .meet-video img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .meet-video-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .meet-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .meet-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-        .meet-signature {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--accent);
-        }
-        @media (max-width: 900px) {
-            .meet-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .meet-video { max-width: 400px; margin: 0 auto; }
-        }
-
-        /* Footer */
+        /* ===== FOOTER ===== */
         .footer {
-            background: var(--bg-dark-light);
+            background: var(--bg-card);
+            padding: 4rem 2rem;
             text-align: center;
-            padding: 3rem 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255,255,255,0.04);
         }
 
         .footer h2 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: white;
             margin-bottom: 0.5rem;
         }
 
         .footer-sub {
-            color: var(--text-muted-dark);
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
         }
 
-        .footer-btns {
+        .footer-contact {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
 
-        .footer-phone a {
-            color: var(--accent);
+        .footer-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50px;
+            color: white;
             text-decoration: none;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s;
         }
+
+        .footer-phone:hover { background: var(--pink); }
+
+        .footer-phone svg { width: 20px; height: 20px; fill: currentColor; }
 
         .copyright {
             margin-top: 2rem;
-            font-size: 0.7rem;
-            color: var(--text-muted-dark);
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
 
-        /* WhatsApp Widget */
-        .wa-btn {
+        /* ===== WHATSAPP FLOAT ===== */
+        .wa-float {
             position: fixed;
             bottom: 24px;
             right: 24px;
@@ -791,17 +676,11 @@
             transition: all 0.3s;
         }
 
-        .wa-btn:hover {
-            transform: scale(1.1);
-        }
+        .wa-float:hover { transform: scale(1.1); }
 
-        .wa-btn svg {
-            width: 28px;
-            height: 28px;
-            fill: white;
-        }
+        .wa-float svg { width: 28px; height: 28px; fill: white; }
 
-        /* Lightbox */
+        /* ===== LIGHTBOX ===== */
         .lightbox {
             position: fixed;
             inset: 0;
@@ -846,101 +725,66 @@
         .lightbox-prev { left: 1rem; }
         .lightbox-next { right: 1rem; }
 
-        /* Cursor Tip - desktop follows cursor, mobile fixed position */
-        .cursor-tip {
-            position: fixed;
-            pointer-events: none;
-            background: linear-gradient(135deg, #ff4d6a, #ff8c42);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.2s, transform 0.2s;
-            transform: translateY(5px);
-            box-shadow: 0 4px 15px rgba(255,77,106,0.3);
-        }
-
-        .cursor-tip.show { opacity: 1; transform: translateY(0); }
-        .cursor-tip.invalid { background: linear-gradient(135deg, #666, #444); }
-
-        /* Mobile: fixed tooltip under calendar */
-        @media (max-width: 900px) {
-            .cursor-tip {
-                position: relative;
-                display: block;
-                text-align: center;
-                margin: 1rem auto 0;
-                width: fit-content;
-            }
-            .cursor-tip:not(.show) { display: none; }
-        }
-
-        /* Mobile tooltip container */
-        .mobile-tip-container {
-            display: none;
-            min-height: 40px;
-        }
-        @media (max-width: 900px) {
-            .mobile-tip-container { display: block; }
-        }
-
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
             .booking-grid { grid-template-columns: 1fr; }
             .calendars { grid-template-columns: 1fr; }
+            .meet-container { grid-template-columns: 1fr; text-align: center; }
+            .meet-video { max-width: 280px; margin: 0 auto; }
+            .reviews-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 600px) {
-            .header { padding: 0.75rem 1rem; }
-            .logo { height: 28px; }
-            .badges { gap: 0.5rem; }
-            .badge { padding: 0.3rem 0.6rem; font-size: 0.65rem; }
-            .hero { height: 60vh; min-height: 400px; }
-            .hero h1 { font-size: 1.5rem; }
-            .features { gap: 1.5rem; flex-wrap: wrap; }
-            .play-btn { width: 60px; height: 60px; }
-            .play-btn svg { width: 24px; height: 24px; }
+            .header { padding: 0.6rem 1rem; }
+            .logo { height: 32px; }
+            .header-phone span { display: none; }
+            .badges { display: none; }
+            .hero { padding: 80px 1.5rem 2rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero-features { gap: 0.75rem; }
+            .booking { padding: 2rem 1rem; }
+            .meet { padding: 3rem 1.5rem; }
+            .meet-container { gap: 2rem; }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <svg class="logo" viewBox="0 0 118 40" id="mainLogo">
-            <defs>
-                <filter id="logo-gl" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="4"/></filter>
-                <filter id="logo-neo" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="0.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            </defs>
-            <!-- Lettres néon -->
-            <text class="logo-letter" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
-            <text class="logo-letter" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
-            <text class="logo-letter" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
-            <text class="logo-letter" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
-            <!-- Glow -->
-            <g class="logo-glow" filter="url(#logo-gl)"><circle fill="#fff" cx="71" cy="21" r="7"/></g>
-            <!-- Marguerite blanche -->
-            <g class="logo-flower logo-petals" filter="url(#logo-neo)">
-                <g transform="translate(71,21)">
-                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
-                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
-                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
-                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
-                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
-                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
-                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
-                    <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
-                    <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
+        <div class="header-left">
+            <svg class="logo" viewBox="0 0 118 40">
+                <defs>
+                    <filter id="logo-gl" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="4"/></filter>
+                    <filter id="logo-neo" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="0.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <text class="logo-letter" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
+                <text class="logo-letter" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
+                <text class="logo-letter" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
+                <text class="logo-letter" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
+                <g class="logo-glow" filter="url(#logo-gl)"><circle fill="#fff" cx="71" cy="21" r="7"/></g>
+                <g class="logo-flower logo-petals" filter="url(#logo-neo)">
+                    <g transform="translate(71,21)">
+                        <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                        <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                        <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                        <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                        <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                        <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                        <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                        <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                        <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
+                    </g>
                 </g>
-            </g>
-            <!-- LIE -->
-            <text class="logo-letter" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
-            <text class="logo-letter" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
-            <text class="logo-letter" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
-        </svg>
-        <div class="badges">
+                <text class="logo-letter" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
+                <text class="logo-letter" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
+                <text class="logo-letter" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
+            </svg>
+            <a href="tel:+33756864414" class="header-phone">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span>07 56 86 44 14</span>
+            </a>
+        </div>
+        <div class="header-right">
             <span class="badge badge-superhost">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 Superhost
@@ -955,147 +799,132 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-bg">
-            <img src="01.jpg" alt="Location appartement Paris 11e avec jacuzzi">
+            <img src="01.jpg" alt="Appartement Paris 11e avec jacuzzi privatif">
         </div>
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="play-btn" onclick="openLB(0)">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <h1>Votre parenthèse enchantée au cœur de Paris</h1>
+            <div class="hero-features">
+                <span class="hero-feature"><span class="hero-feature-dot" style="background:var(--cyan)"></span> Jacuzzi privatif</span>
+                <span class="hero-feature"><span class="hero-feature-dot" style="background:var(--pink)"></span> Home cinéma</span>
+                <span class="hero-feature"><span class="hero-feature-dot" style="background:var(--orange)"></span> 60m² · Paris 11e</span>
+                <span class="hero-feature"><span class="hero-feature-dot" style="background:var(--green)"></span> King-size</span>
             </div>
-            <h1>Location appartement Paris 11e avec jacuzzi privatif</h1>
-            <p class="hero-sub">60m² · Home cinéma · Literie king-size · Superhost 5.0★</p>
-            <a href="#booking" class="hero-cta">Réserver mon séjour</a>
+            <a href="#booking" class="hero-cta">
+                <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                Voir les disponibilités
+            </a>
         </div>
     </section>
 
-    <!-- Features -->
-    <div class="features section-dark">
-        <div class="feature">
-            <svg class="feature-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
-            <div class="feature-label">Jacuzzi privatif</div>
+    <!-- Booking -->
+    <section class="booking" id="booking">
+        <div class="booking-container">
+            <h2 class="booking-title">Réservez votre séjour</h2>
+            <p class="booking-subtitle">Sélectionnez vos dates pour voir le prix</p>
+            <div class="booking-grid">
+                <div class="cal-section">
+                    <div class="cal-header">
+                        <h3>Calendrier</h3>
+                        <div class="cal-nav">
+                            <button id="prevBtn" onclick="prevMonth()">‹</button>
+                            <button id="nextBtn" onclick="nextMonth()">›</button>
+                        </div>
+                    </div>
+                    <div class="calendars">
+                        <div class="cal" id="cal1"></div>
+                        <div class="cal" id="cal2"></div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <div class="price-box" id="priceBox">
+                        <div class="price-empty">Choisissez vos dates<br>pour voir le prix</div>
+                    </div>
+                    <div class="price-actions" id="priceActions" style="display:none;">
+                        <a href="#" class="btn btn-airbnb" id="bookBtn" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            Réserver sur Airbnb
+                        </a>
+                        <a href="#" class="btn btn-whatsapp" id="waBtn" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                            Contacter Léa
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="feature">
-            <svg class="feature-icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10,9 15,12 10,15"/></svg>
-            <div class="feature-label">Home cinéma</div>
-        </div>
-        <div class="feature">
-            <svg class="feature-icon" viewBox="0 0 24 24"><path d="M3 13h2v8H3zM19 13h2v8h-2zM5 13h14v2H5z"/><rect x="8" y="5" width="8" height="4" rx="1"/></svg>
-            <div class="feature-label">King-size</div>
-        </div>
-        <div class="feature">
-            <svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            <div class="feature-label">Fibre 1Gb</div>
-        </div>
-    </div>
+    </section>
 
-    <!-- Meet Lea - Section Claire -->
-    <section class="meet-section section-light">
-        <div class="meet-grid">
+    <!-- Meet Lea -->
+    <section class="meet">
+        <div class="meet-container">
             <div class="meet-video">
-                <!-- Placeholder pour vidéo Léa - remplacer par <video> quand dispo -->
                 <div class="meet-video-placeholder">
-                    <span>Vidéo de présentation<br>(bientôt)</span>
+                    Vidéo de présentation<br>(bientôt disponible)
                 </div>
             </div>
             <div class="meet-content">
                 <h2>Bienvenue chez moi</h2>
-                <p>Je suis Léa, Superhost passionnée depuis plus de 3 ans. J'ai créé cet espace pour offrir une parenthèse enchantée au cœur de Paris : jacuzzi privatif, home cinéma, et tout le confort d'un cocon moderne.</p>
-                <p>Chaque détail a été pensé pour que votre séjour soit inoubliable. Je suis disponible 7j/7 pour vous conseiller les meilleures adresses du quartier.</p>
+                <p>Je suis Léa, Superhost passionnée depuis plus de 3 ans. J'ai créé cet espace pour vous offrir une parenthèse enchantée au cœur de Paris.</p>
+                <p>Jacuzzi privatif, home cinéma, literie haut de gamme... Chaque détail a été pensé pour que votre séjour soit inoubliable.</p>
+                <p>Je suis disponible 7j/7 pour vous conseiller les meilleures adresses du quartier !</p>
                 <span class="meet-signature">— Léa ✨</span>
             </div>
         </div>
     </section>
 
-    <!-- Booking - Section Sombre -->
-    <section class="booking section-dark" id="booking">
-        <div class="booking-grid">
-            <div class="cal-section">
-                <div class="cal-header">
-                    <h3>Sélectionnez vos dates</h3>
-                    <div class="cal-nav">
-                        <button id="prevBtn" onclick="prevMonth()">‹</button>
-                        <button id="nextBtn" onclick="nextMonth()">›</button>
-                    </div>
-                </div>
-                <div class="calendars">
-                    <div class="cal" id="cal1"></div>
-                    <div class="cal" id="cal2"></div>
-                </div>
-                <div class="mobile-tip-container" id="mobileTipContainer"></div>
-            </div>
-            <div class="price-section">
-                <div class="price-box" id="priceBox">
-                    <div class="price-empty">Choisissez vos dates<br>pour voir le prix</div>
-                </div>
-                <div class="price-actions" id="priceActions" style="display:none;">
-                    <a href="#" class="btn btn-airbnb" id="bookBtn" target="_blank">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Réserver sur Airbnb
-                    </a>
-                    <a href="#" class="btn btn-whatsapp" id="waBtn" target="_blank">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-                        Contacter Léa
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews - Section Claire -->
-    <section class="reviews-section section-light">
+    <!-- Reviews -->
+    <section class="reviews">
         <div class="reviews-header">
-            <h3>Ce que disent nos voyageurs</h3>
+            <h3>Ce qu'ils en disent</h3>
             <div class="reviews-stars">
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <span class="text-muted" style="margin-left:0.5rem;font-size:0.85rem;">5.0 · 50+ avis</span>
+                <span>5.0 · 50+ avis</span>
             </div>
         </div>
-        <div class="reviews-grid" id="reviewsGrid">
-            <div class="review-card"><p class="review-quote"></p><p class="review-author"></p></div>
-            <div class="review-card"><p class="review-quote"></p><p class="review-author"></p></div>
-            <div class="review-card"><p class="review-quote"></p><p class="review-author"></p></div>
-        </div>
-        <div class="reviews-dots" id="reviewsDots"></div>
+        <div class="reviews-grid" id="reviewsGrid"></div>
     </section>
 
-    <!-- Photo Strip - Section Sombre -->
-    <div class="photo-strip section-dark">
-        <div class="photo-thumb" onclick="openLB(0)"><img src="01.jpg" alt="Salon"></div>
-        <div class="photo-thumb" onclick="openLB(1)"><img src="02.jpg" alt="Jacuzzi"></div>
-        <div class="photo-thumb" onclick="openLB(2)"><img src="03.jpg" alt="Chambre"></div>
-        <div class="photo-thumb" onclick="openLB(3)"><img src="04.jpg" alt="Salle de bain"></div>
-        <div class="photo-thumb" onclick="openLB(4)"><img src="07.jpg" alt="Home Cinéma"></div>
-        <div class="photo-thumb" onclick="openLB(5)"><img src="08.jpg" alt="Cuisine"></div>
-        <div class="photo-thumb" onclick="openLB(6)"><img src="09.jpg" alt="Détails"></div>
-        <div class="photo-thumb" onclick="openLB(7)"><img src="10.png" alt="Vue"></div>
-        <div class="photo-thumb" onclick="openLB(8)"><img src="11.jpg" alt="Ambiance"></div>
-    </div>
+    <!-- Gallery -->
+    <section class="gallery">
+        <div class="gallery-strip">
+            <div class="gallery-thumb" onclick="openLB(0)"><img src="01.jpg" alt="Salon"></div>
+            <div class="gallery-thumb" onclick="openLB(1)"><img src="02.jpg" alt="Jacuzzi"></div>
+            <div class="gallery-thumb" onclick="openLB(2)"><img src="03.jpg" alt="Chambre"></div>
+            <div class="gallery-thumb" onclick="openLB(3)"><img src="04.jpg" alt="Salle de bain"></div>
+            <div class="gallery-thumb" onclick="openLB(4)"><img src="07.jpg" alt="Home Cinéma"></div>
+            <div class="gallery-thumb" onclick="openLB(5)"><img src="08.jpg" alt="Cuisine"></div>
+            <div class="gallery-thumb" onclick="openLB(6)"><img src="09.jpg" alt="Détails"></div>
+            <div class="gallery-thumb" onclick="openLB(7)"><img src="10.png" alt="Vue"></div>
+            <div class="gallery-thumb" onclick="openLB(8)"><img src="11.jpg" alt="Ambiance"></div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <h2>Votre escapade parisienne commence ici</h2>
-        <p class="footer-sub">Weekend romantique · Séjour entre amis · Paris 11e</p>
-        <div class="footer-btns">
+        <h2>Prêt à vivre l'expérience ?</h2>
+        <p class="footer-sub">Weekend romantique · Séjour entre amis · Escapade parisienne</p>
+        <div class="footer-contact">
+            <a href="tel:+33756864414" class="footer-phone">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                07 56 86 44 14
+            </a>
+            <a href="https://wa.me/33756864414" target="_blank" class="btn btn-whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                WhatsApp
+            </a>
             <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">Réserver sur Airbnb</a>
-            <a href="https://wa.me/33756864414" target="_blank" class="btn btn-whatsapp">Contacter Léa</a>
         </div>
-        <div class="footer-phone">
-            <a href="tel:+33756864414">07 56 86 44 14</a>
-        </div>
-        <p class="copyright">© 2026 À la Folie · Location appartement Paris 11e</p>
+        <p class="copyright">© 2026 À la Folie · Paris 11e</p>
     </footer>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/33756864414" target="_blank" class="wa-btn">
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/33756864414" target="_blank" class="wa-float">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
     </a>
-
-    <!-- Cursor Tip -->
-    <div class="cursor-tip" id="cursorTip"></div>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
@@ -1115,79 +944,26 @@
 
         let m1 = new Date(), m2 = new Date(m1.getFullYear(), m1.getMonth()+1, 1);
         let start = null, end = null, blocked = [];
-        let calendarLoaded = false;
-        const tip = document.getElementById('cursorTip');
-        const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        // Reviews - 3 visible at once, fading together
+        // Reviews
         const reviews = [
-            { text: "Séjour 5 étoiles ! L'appartement est super beau, très calme et encore mieux que sur les photos. Gros coup de cœur pour le jacuzzi et les toilettes japonaises.", author: "Olivier, novembre 2025" },
-            { text: "Tout a été vraiment formidable, le logement était très propre et la literie extrêmement confortable. L'atmosphère est géniale. Je recommande fortement !", author: "Noah, décembre 2025" },
-            { text: "Léa était une hôte fantastique. Son logement était extrêmement propre, confortable et situé dans un quartier sûr. Je reviendrai certainement !", author: "Emily, New Jersey" },
-            { text: "Excellent emplacement, proche de Bastille et du Marais. Le logement est propre, cosy, parfait pour un séjour à Paris. Léa est adorable !", author: "Jean-François, octobre 2025" },
-            { text: "Endroit parfait avec de belles prestations ! Très bien placé pour passer un agréable séjour à Paris. Léa est très attentionnée et réactive.", author: "Maura, janvier 2026" },
-            { text: "Appartement vraiment agréable et magnifique. Entièrement équipé. Quartier silencieux. J'ai passé un excellent séjour.", author: "Olaf, janvier 2026" }
+            { text: "Séjour 5 étoiles ! L'appartement est super beau, très calme et encore mieux que sur les photos. Gros coup de cœur pour le jacuzzi et les toilettes japonaises.", author: "Olivier, nov. 2025" },
+            { text: "Tout a été vraiment formidable, le logement était très propre et la literie extrêmement confortable. L'atmosphère est géniale. Je recommande fortement !", author: "Noah, déc. 2025" },
+            { text: "Léa était une hôte fantastique. Son logement était extrêmement propre, confortable et situé dans un quartier sûr. Je reviendrai certainement !", author: "Emily, New Jersey" }
         ];
 
-        let reviewPage = 0;
-        const reviewsPerPage = 3;
-        const totalPages = Math.ceil(reviews.length / reviewsPerPage);
-
         function initReviews() {
-            const dots = document.getElementById('reviewsDots');
-            for (let i = 0; i < totalPages; i++) {
-                const dot = document.createElement('span');
-                dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
-                dot.onclick = () => goToPage(i);
-                dots.appendChild(dot);
-            }
-            updateReviews();
-        }
-
-        function updateReviews() {
-            const cards = document.querySelectorAll('.review-card');
-            const startIdx = reviewPage * reviewsPerPage;
-
-            cards.forEach((card, i) => {
-                const reviewIdx = startIdx + i;
-                const quote = card.querySelector('.review-quote');
-                const author = card.querySelector('.review-author');
-
-                if (reviewIdx < reviews.length) {
-                    quote.textContent = '"' + reviews[reviewIdx].text + '"';
-                    author.textContent = reviews[reviewIdx].author;
-                } else {
-                    // Wrap around for last page if not enough reviews
-                    const wrapIdx = reviewIdx % reviews.length;
-                    quote.textContent = '"' + reviews[wrapIdx].text + '"';
-                    author.textContent = reviews[wrapIdx].author;
-                }
+            const grid = document.getElementById('reviewsGrid');
+            reviews.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.innerHTML = `<p class="review-quote">"${r.text}"</p><p class="review-author">${r.author}</p>`;
+                grid.appendChild(card);
             });
-
-            document.querySelectorAll('.reviews-dot').forEach((d, i) => d.classList.toggle('active', i === reviewPage));
         }
-
-        function goToPage(p) {
-            const cards = document.querySelectorAll('.review-card');
-            cards.forEach(c => c.classList.add('fading'));
-
-            setTimeout(() => {
-                reviewPage = p;
-                updateReviews();
-                cards.forEach(c => c.classList.remove('fading'));
-            }, 300);
-        }
-
-        function nextPage() {
-            goToPage((reviewPage + 1) % totalPages);
-        }
-
-        setInterval(nextPage, 6000);
 
         // Calendar
         async function fetchBlocked() {
-            // Show skeleton while loading
-            render(true);
             try {
                 const r = await fetch(API, {
                     method: 'POST',
@@ -1197,25 +973,7 @@
                 const d = await r.json();
                 if (d.blocked) blocked = d.blocked;
             } catch(e) {}
-            calendarLoaded = true;
-            render(false);
-        }
-
-        // Check if any blocked date exists between two dates
-        function hasBlockedInRange(startDate, endDate) {
-            const s = new Date(startDate);
-            const e = new Date(endDate);
-            for (let d = new Date(s); d < e; d.setDate(d.getDate() + 1)) {
-                if (isBlocked(d)) return true;
-            }
-            return false;
-        }
-
-        // Check if a date would be a valid end date (no blocked dates in range)
-        function isValidEndDate(date) {
-            if (!start) return true;
-            if (date <= start) return false;
-            return !hasBlockedInRange(start, date);
+            render();
         }
 
         function isBlocked(date) {
@@ -1223,173 +981,45 @@
             return blocked.some(b => s >= b.start && s < b.end);
         }
 
-        function render(loading = false) {
-            renderCal('cal1', m1, loading);
-            renderCal('cal2', m2, loading);
+        function render() {
+            renderCal('cal1', m1);
+            renderCal('cal2', m2);
             const today = new Date(); today.setHours(0,0,0,0);
             document.getElementById('prevBtn').disabled = m1 <= today;
         }
 
-        function renderCal(id, date, loading = false) {
+        function renderCal(id, date) {
             const el = document.getElementById(id);
             const y = date.getFullYear(), m = date.getMonth();
             const today = new Date(); today.setHours(0,0,0,0);
             const first = new Date(y, m, 1), last = new Date(y, m+1, 0);
             let sd = first.getDay() - 1; if (sd < 0) sd = 6;
 
-            const loadingClass = loading ? ' loading' : '';
-            let html = `<div class="cal-month">${MONTHS[m]} ${y}</div><div class="cal-week">${DAYS.map(d=>`<span>${d}</span>`).join('')}</div><div class="cal-days${loadingClass}">`;
+            let html = `<div class="cal-month">${MONTHS[m]} ${y}</div><div class="cal-week">${DAYS.map(d=>`<span>${d}</span>`).join('')}</div><div class="cal-days">`;
             for (let i = 0; i < sd; i++) html += `<div class="day off"></div>`;
             for (let d = 1; d <= last.getDate(); d++) {
                 const curr = new Date(y, m, d);
                 const ds = curr.toISOString().split('T')[0];
                 let c = 'day';
                 const past = curr < today, blk = isBlocked(curr), isToday = curr.getTime() === today.getTime();
-
-                // Check if this date would be invalid as end date (blocked dates in range)
-                const invalidEnd = start && !end && !past && !blk && curr > start && hasBlockedInRange(start, curr);
-
                 if (past) c += ' off';
                 else if (blk) c += ' blocked';
-                else if (invalidEnd) c += ' invalid-end';
                 if (isToday) c += ' today';
                 if (start && curr.getTime() === start.getTime()) c += ' start range';
                 else if (end && curr.getTime() === end.getTime()) c += ' end range';
                 else if (start && end && curr > start && curr < end) c += ' range';
-
-                const clickable = !past && !blk && !invalidEnd;
-                const click = clickable ? `onclick="pick('${ds}')"` : '';
-                const hover = !past ? `onmouseenter="hoverDay(event,'${ds}')" onmouseleave="leaveDay()"` : '';
-                html += `<div class="${c}" data-date="${ds}" ${click} ${hover}>${d}</div>`;
+                const click = !past && !blk ? `onclick="pick('${ds}')"` : '';
+                html += `<div class="${c}" data-date="${ds}" ${click}>${d}</div>`;
             }
             html += '</div>';
             el.innerHTML = html;
         }
 
-        function hoverDay(e, ds) {
-            const d = new Date(ds);
-            const opts = { weekday: 'short', day: 'numeric', month: 'short' };
-            let txt = d.toLocaleDateString('fr-FR', opts);
-            let isInvalid = false;
-
-            if (isBlocked(d)) {
-                txt = `${txt} — Indisponible`;
-                isInvalid = true;
-            } else if (!start) {
-                txt = `Arrivée : ${txt}`;
-            } else if (!end) {
-                const nights = Math.round((d - start) / 864e5);
-                if (nights > 0) {
-                    // Check if there are blocked dates in range
-                    const hasBlocked = hasBlockedInRange(start, d);
-                    if (hasBlocked) {
-                        txt = `${nights} nuit${nights > 1 ? 's' : ''} — Dates indisponibles dans la période`;
-                        isInvalid = true;
-                        // Show invalid preview
-                        document.querySelectorAll('.day').forEach(el => {
-                            const elDate = el.dataset.date;
-                            if (elDate) {
-                                const elD = new Date(elDate);
-                                el.classList.remove('preview', 'preview-end', 'preview-invalid');
-                                if (elD > start && elD < d) el.classList.add('preview-invalid');
-                            }
-                        });
-                    } else {
-                        txt = `Départ : ${txt} (${nights} nuit${nights > 1 ? 's' : ''})`;
-                        document.querySelectorAll('.day').forEach(el => {
-                            const elDate = el.dataset.date;
-                            if (elDate) {
-                                const elD = new Date(elDate);
-                                el.classList.remove('preview', 'preview-end', 'preview-invalid');
-                                if (elD > start && elD < d) el.classList.add('preview');
-                                else if (elD.getTime() === d.getTime()) el.classList.add('preview-end');
-                            }
-                        });
-                    }
-                } else if (nights === 0) {
-                    txt = `Cliquez pour annuler`;
-                } else {
-                    txt = `Arrivée : ${txt}`;
-                }
-            } else {
-                // Both dates selected - show info about clicking to reset
-                if (d.getTime() === start.getTime() || d.getTime() === end.getTime()) {
-                    txt = `Cliquez pour modifier`;
-                } else {
-                    txt = `Arrivée : ${txt}`;
-                }
-            }
-
-            tip.textContent = txt;
-            tip.classList.toggle('invalid', isInvalid);
-            tip.classList.add('show');
-
-            // Position tooltip (desktop only, mobile uses CSS fixed positioning)
-            if (!isMobile) {
-                tip.style.left = (e.clientX + 15) + 'px';
-                tip.style.top = (e.clientY - 10) + 'px';
-            }
-        }
-
-        function leaveDay() {
-            tip.classList.remove('show', 'invalid');
-            document.querySelectorAll('.day.preview, .day.preview-end, .day.preview-invalid').forEach(el => {
-                el.classList.remove('preview', 'preview-end', 'preview-invalid');
-            });
-        }
-
-        // Desktop: tooltip follows cursor
-        if (!isMobile) {
-            document.addEventListener('mousemove', e => {
-                if (tip.classList.contains('show')) {
-                    tip.style.left = (e.clientX + 15) + 'px';
-                    tip.style.top = (e.clientY - 10) + 'px';
-                }
-            });
-        } else {
-            // Mobile: move tooltip into calendar section
-            const mobileTipContainer = document.getElementById('mobileTipContainer');
-            if (mobileTipContainer) {
-                mobileTipContainer.appendChild(tip);
-            }
-        }
-
         function pick(ds) {
             const d = new Date(ds);
-
-            // Click on same date as start = deselect
-            if (start && d.getTime() === start.getTime()) {
-                start = null;
-                end = null;
-                updatePrice('empty');
-                render();
-                return;
-            }
-
-            // Click on same date as end = go back to picking end
-            if (end && d.getTime() === end.getTime()) {
-                end = null;
-                updatePrice('picking');
-                render();
-                return;
-            }
-
-            // Normal selection logic
-            if (!start || (start && end)) {
-                start = d;
-                end = null;
-                updatePrice('picking');
-            } else if (d > start) {
-                // Double-check no blocked dates in range (safety)
-                if (!hasBlockedInRange(start, d)) {
-                    end = d;
-                    fetchPrice();
-                }
-            } else {
-                start = d;
-                end = null;
-                updatePrice('picking');
-            }
+            if (!start || (start && end)) { start = d; end = null; updatePrice('picking'); }
+            else if (d > start) { end = d; fetchPrice(); }
+            else { start = d; end = null; updatePrice('picking'); }
             render();
         }
 
@@ -1398,17 +1028,14 @@
             const acts = document.getElementById('priceActions');
             const opts = { day: 'numeric', month: 'short' };
 
-            if (state === 'empty') {
-                box.innerHTML = `<div class="price-empty">Choisissez vos dates<br>pour voir le prix</div>`;
-                acts.style.display = 'none';
-            } else if (state === 'picking') {
+            if (state === 'picking') {
                 box.innerHTML = `
                     <div class="price-dates">
                         <div class="price-date"><small>Arrivée</small><strong>${start.toLocaleDateString('fr-FR', opts)}</strong></div>
                         <span class="price-arrow">→</span>
                         <div class="price-date"><small>Départ</small><strong>...</strong></div>
                     </div>
-                    <p style="color:var(--text-muted-dark);font-size:0.85rem;">Sélectionnez le départ</p>`;
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Sélectionnez le départ</p>`;
                 acts.style.display = 'none';
             } else if (state === 'loading') {
                 const n = Math.round((end - start) / 864e5);
@@ -1419,7 +1046,7 @@
                         <div class="price-date"><small>Départ</small><strong>${end.toLocaleDateString('fr-FR', opts)}</strong></div>
                     </div>
                     <div class="price-nights">${n} nuit${n>1?'s':''}</div>
-                    <p style="color:var(--text-muted-dark);">Calcul du prix...</p>`;
+                    <p style="color:var(--text-muted);">Calcul du prix...</p>`;
                 acts.style.display = 'none';
             } else if (state === 'ok') {
                 const n = Math.round((end - start) / 864e5);
@@ -1447,7 +1074,7 @@
                     </div>
                     <div class="price-nights">${n} nuit${n>1?'s':''}</div>
                     <div class="price-status no">✗ Non disponible</div>
-                    <p style="color:var(--text-muted-dark);font-size:0.85rem;">Essayez d'autres dates</p>`;
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Essayez d'autres dates</p>`;
                 acts.style.display = 'none';
             }
         }
@@ -1484,15 +1111,6 @@
         function prevImg() { ci = (ci - 1 + imgs.length) % imgs.length; document.getElementById('lbImg').src = imgs[ci]; }
         document.getElementById('lightbox').onclick = e => { if (e.target.id === 'lightbox') closeLB(); };
         document.onkeydown = e => { if (!document.getElementById('lightbox').classList.contains('on')) return; if (e.key === 'Escape') closeLB(); if (e.key === 'ArrowRight') nextImg(); if (e.key === 'ArrowLeft') prevImg(); };
-
-        // Logo click effect
-        const mainLogo = document.getElementById('mainLogo');
-        mainLogo.addEventListener('click', () => {
-            mainLogo.classList.remove('clicked');
-            void mainLogo.offsetWidth;
-            mainLogo.classList.add('clicked');
-            setTimeout(() => mainLogo.classList.remove('clicked'), 800);
-        });
 
         // Init
         fetchBlocked();
