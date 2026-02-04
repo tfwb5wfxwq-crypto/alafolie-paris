@@ -109,6 +109,23 @@
             color: var(--black);
         }
 
+        /* ===== LIQUID GLASS ===== */
+        .glass {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+
+        .glass-dark {
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
         /* ===== HEADER ===== */
         .header {
             position: fixed;
@@ -120,9 +137,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.8);
         }
 
         .header-left {
@@ -163,10 +182,20 @@
             display: flex;
             align-items: center;
             gap: 0.25rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .badge svg { width: 10px; height: 10px; }
-        .badge-superhost { background: linear-gradient(135deg, var(--pink), var(--orange)); color: white; }
-        .badge-stars { background: var(--bg-alt); color: var(--text); }
+        .badge-superhost {
+            background: rgba(244,114,182,0.9);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .badge-stars {
+            background: rgba(255,255,255,0.6);
+            color: var(--text);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
         .badge-stars svg { fill: var(--accent); }
 
         /* ===== MAIN CONTENT ===== */
@@ -225,21 +254,16 @@
             position: absolute;
             bottom: 1rem;
             left: 1rem;
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             color: var(--black);
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 600;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .video-box:hover .video-badge {
-            background: linear-gradient(135deg, var(--pink), var(--violet));
-            color: white;
-            transform: scale(1.05);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
         }
 
         .intro-content {
@@ -275,10 +299,14 @@
             align-items: center;
             gap: 0.4rem;
             font-size: 0.85rem;
-            color: var(--text-light);
-            background: var(--bg-alt);
+            color: var(--text);
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 0.4rem 0.8rem;
             border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
         }
 
         .intro-feature-dot {
@@ -360,12 +388,14 @@
 
         /* ===== CALENDAR ===== */
         .booking-card {
-            background: var(--bg-card);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 24px;
             padding: 2rem;
             margin-bottom: 3rem;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.08);
-            border: 1px solid rgba(244,114,182,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+            border: 1px solid rgba(255,255,255,0.5);
             position: relative;
             overflow: hidden;
         }
@@ -376,8 +406,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--pink), var(--violet), var(--cyan), var(--green));
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink), var(--violet), var(--cyan));
         }
 
         .booking-grid {
@@ -548,25 +578,17 @@
 
         /* Price Panel */
         .price-section {
-            background: linear-gradient(180deg, var(--bg-alt) 0%, rgba(244,114,182,0.05) 100%);
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(244,114,182,0.1);
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 4px 20px rgba(0,0,0,0.05);
             position: relative;
             overflow: hidden;
-        }
-
-        .price-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(244,114,182,0.08) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .price-box {
@@ -809,12 +831,15 @@
         .reviews-section h3 svg { width: 18px; height: 18px; fill: var(--accent); }
 
         .review-card {
-            background: var(--bg-card);
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: 16px;
             padding: 1.4rem;
             margin-bottom: 0.85rem;
-            border: 1px solid rgba(244,114,182,0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -826,14 +851,14 @@
             left: 15px;
             font-size: 3rem;
             font-family: 'Cormorant Garamond', serif;
-            color: rgba(244,114,182,0.15);
+            color: rgba(0,0,0,0.06);
             line-height: 1;
         }
 
         .review-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(244,114,182,0.12);
-            border-color: rgba(244,114,182,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.8);
         }
 
         .review-quote {
@@ -1106,29 +1131,29 @@
                 <defs>
                     <filter id="logo-gl" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="3"/></filter>
                 </defs>
-                <!-- Couleurs foncées lisibles sur fond clair -->
-                <text class="logo-letter" x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#9333ea;font-weight:500;">À</text>
-                <text class="logo-letter" x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#db2777;font-weight:500;">L</text>
-                <text class="logo-letter" x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ea580c;font-weight:500;">A</text>
-                <text class="logo-letter" x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#16a34a;font-weight:500;">F</text>
-                <!-- Fleur avec glow doré -->
-                <g class="logo-glow" filter="url(#logo-gl)"><circle fill="#fbbf24" cx="71" cy="21" r="6"/></g>
+                <!-- Logo noir élégant -->
+                <text x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#1a1a1a;font-weight:400;">À</text>
+                <text x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#1a1a1a;font-weight:400;">L</text>
+                <text x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#1a1a1a;font-weight:400;">A</text>
+                <text x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#1a1a1a;font-weight:400;">F</text>
+                <!-- Marguerite blanche avec coeur jaune -->
+                <g class="logo-glow" filter="url(#logo-gl)"><circle fill="#fbbf24" cx="71" cy="21" r="5"/></g>
                 <g class="logo-flower">
                     <g transform="translate(71,21)">
-                        <ellipse fill="#fefefe" stroke="#e5e5e5" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="3.8"/>
-                        <ellipse fill="#fefefe" stroke="#e5e5e5" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="3.8" transform="rotate(45)"/>
-                        <ellipse fill="#fefefe" stroke="#e5e5e5" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="3.8" transform="rotate(90)"/>
-                        <ellipse fill="#fefefe" stroke="#e5e5e5" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="3.8" transform="rotate(135)"/>
-                        <ellipse fill="#fefefe" stroke="#e5e5e5" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="3.8" transform="rotate(180)"/>
-                        <ellipse fill="#fefefe" stroke="#e5e5e5" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="3.8" transform="rotate(225)"/>
-                        <ellipse fill="#fefefe" stroke="#e5e5e5" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="3.8" transform="rotate(270)"/>
-                        <ellipse fill="#fefefe" stroke="#e5e5e5" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="3.8" transform="rotate(315)"/>
-                        <circle fill="#fbbf24" stroke="#f59e0b" stroke-width="0.8" cx="0" cy="0" r="3.5"/>
+                        <ellipse fill="#fff" stroke="#ddd" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="4"/>
+                        <ellipse fill="#fff" stroke="#ddd" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(45)"/>
+                        <ellipse fill="#fff" stroke="#ddd" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(90)"/>
+                        <ellipse fill="#fff" stroke="#ddd" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(135)"/>
+                        <ellipse fill="#fff" stroke="#ddd" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(180)"/>
+                        <ellipse fill="#fff" stroke="#ddd" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(225)"/>
+                        <ellipse fill="#fff" stroke="#ddd" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(270)"/>
+                        <ellipse fill="#fff" stroke="#ddd" stroke-width="0.5" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(315)"/>
+                        <circle fill="#fbbf24" cx="0" cy="0" r="3"/>
                     </g>
                 </g>
-                <text class="logo-letter" x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#0891b2;font-weight:500;">L</text>
-                <text class="logo-letter" x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#7c3aed;font-weight:500;">I</text>
-                <text class="logo-letter" x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#be185d;font-weight:500;">E</text>
+                <text x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#1a1a1a;font-weight:400;">L</text>
+                <text x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#1a1a1a;font-weight:400;">I</text>
+                <text x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#1a1a1a;font-weight:400;">E</text>
             </svg>
             <a href="tel:+33756864414" class="header-phone">
                 <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
