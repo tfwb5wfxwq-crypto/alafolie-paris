@@ -962,44 +962,112 @@
 
         /* ===== FOOTER ===== */
         .footer {
-            background: var(--black);
+            background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 100%);
             color: white;
-            padding: 3rem 2rem;
+            padding: 3rem 2rem 2rem;
             text-align: center;
             margin: 0 -2rem -2rem;
         }
 
-        .footer h2 {
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 1.5rem;
+        .footer-brand {
+            margin-bottom: 2rem;
+        }
+        .footer-logo {
+            margin-bottom: 0.5rem;
+        }
+        .footer-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
         }
 
-        .footer-contact {
+        .footer-cta {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .footer-buttons {
             display: flex;
             justify-content: center;
             gap: 0.75rem;
             flex-wrap: wrap;
-            margin-bottom: 1.5rem;
         }
 
-        .footer-phone {
-            display: flex;
+        .footer-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            padding: 0.7rem 1.2rem;
-            background: rgba(255,255,255,0.1);
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
             border-radius: 50px;
-            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .footer-phone:hover { background: var(--pink); }
-        .footer-phone svg { width: 18px; height: 18px; fill: currentColor; }
+        .footer-btn svg { width: 18px; height: 18px; }
 
-        .copyright { font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 1.5rem; }
+        .footer-btn-wa {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+        }
+        .footer-btn-wa:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+        }
+
+        .footer-btn-airbnb {
+            background: linear-gradient(135deg, #FF5A5F, #e04347);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255,90,95,0.3);
+        }
+        .footer-btn-airbnb:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,90,95,0.4);
+        }
+
+        .footer-btn-phone {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .footer-btn-phone:hover {
+            background: linear-gradient(135deg, var(--pink), var(--violet));
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.75rem;
+        }
+        .footer-dot {
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+
+        .copyright { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
 
         /* ===== WHATSAPP FLOAT ===== */
         .wa-float-container {
@@ -1275,12 +1343,12 @@
 
         <!-- Amenities -->
         <div class="amenities animate-in delay-3">
+            <div class="amenity"><span class="amenity-icon">🛁</span> Jacuzzi privatif</div>
+            <div class="amenity"><span class="amenity-icon">🎬</span> Home Cinéma</div>
+            <div class="amenity"><span class="amenity-icon">🚽</span> WC japonais</div>
             <div class="amenity"><span class="amenity-icon">📶</span> WiFi fibre</div>
             <div class="amenity"><span class="amenity-icon">📺</span> Netflix</div>
-            <div class="amenity"><span class="amenity-icon">🛁</span> Jacuzzi</div>
-            <div class="amenity"><span class="amenity-icon">🎬</span> Home Cinéma</div>
             <div class="amenity"><span class="amenity-icon">❄️</span> Clim</div>
-            <div class="amenity"><span class="amenity-icon">🧺</span> Lave-linge</div>
             <div class="amenity"><span class="amenity-icon">☕</span> Nespresso</div>
             <div class="amenity"><span class="amenity-icon">🔐</span> Check-in auto</div>
         </div>
@@ -1316,8 +1384,8 @@
                     </div>
                     <div class="price-actions" id="priceActions" style="display:none;">
                         <a href="#" class="btn btn-airbnb" id="bookBtn" target="_blank">
-                            <!-- Airbnb Logo -->
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.208 0-.416-.052-.601-.156l-.052-.025c-1.012-.53-1.906-1.246-2.66-2.131-.824-.966-1.455-2.086-1.87-3.322-.364-1.09-.468-2.082-.311-2.946.156-.843.52-1.545 1.08-2.086.561-.54 1.268-.813 2.1-.813 1.22 0 2.235.636 2.775 1.695.01.02.02.03.04.03s.03-.01.04-.03c.54-1.06 1.555-1.695 2.775-1.695.832 0 1.54.273 2.1.813.56.54.925 1.243 1.08 2.086.156.864.053 1.856-.31 2.946-.416 1.236-1.047 2.356-1.87 3.322-.755.885-1.65 1.6-2.661 2.131l-.052.025c-.185.104-.393.156-.601.156h-.002zm-4.164-8.506c-.125.676-.042 1.48.248 2.387.364 1.084.913 2.066 1.632 2.91.635.744 1.385 1.355 2.231 1.82l.052.025c0 .001.002.001.002.001s.002 0 .002-.001l.052-.025c.846-.465 1.595-1.076 2.23-1.82.72-.845 1.27-1.826 1.633-2.91.29-.908.373-1.712.248-2.387-.104-.562-.338-1.013-.696-1.34-.353-.323-.81-.487-1.358-.487-.782 0-1.467.385-1.877 1.055-.177.289-.488.463-.824.463-.336 0-.647-.174-.824-.463-.41-.67-1.095-1.055-1.877-1.055-.549 0-1.005.164-1.358.487-.358.327-.592.778-.696 1.34h-.02zm4.164 12.231C5.383 22 0 16.617 0 10s5.383-10 12-10 12 5.383 12 10-5.383 12-12 12h.001zm0-21.818c-5.43 0-9.818 4.388-9.818 9.818s4.388 9.818 9.818 9.818 9.818-4.388 9.818-9.818S17.43.182 12 .182z"/></svg>
+                            <!-- Airbnb Bélo Logo -->
+                            <svg viewBox="0 0 32 32" fill="currentColor" width="20" height="20"><path d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.353c.667 1.591.91 2.472.91 3.379 0 2.744-2.218 5.138-5.08 5.138-2.297 0-4.267-1.312-6.11-3.836l-.11-.148-.029-.039-.01.014-.012.015c-1.739 2.533-3.623 3.994-6.13 3.994C8.974 29 6.75 26.606 6.75 23.862c0-.921.243-1.788.896-3.34l.173-.405c1.088-2.464 5.137-11.008 7.074-14.796l.538-1.052C16.513 1.963 17.968 1 16 1zm0 2.5c-.687 0-1.24.284-1.913 1.588l-.533 1.025-.013.025c-1.844 3.623-5.934 12.213-6.988 14.6l-.145.345c-.424.998-.608 1.593-.608 2.179 0 1.404 1.05 2.638 2.56 2.638 1.34 0 2.624-.928 4.101-3.144l.02-.028.007-.01.253-.358.354.502c1.457 1.997 2.798 3.038 4.179 3.038 1.514 0 2.56-1.234 2.56-2.638 0-.586-.184-1.181-.608-2.179l-.145-.345c-1.054-2.387-5.144-10.977-6.988-14.6l-.013-.025-.533-1.025C17.24 3.784 16.687 3.5 16 3.5z"/></svg>
                             Réserver sur Airbnb
                         </a>
                         <a href="#" class="btn btn-whatsapp" id="waBtn" target="_blank">
@@ -1354,22 +1422,52 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <h2>Une question ? Contactez Léa</h2>
-            <div class="footer-contact">
-                <a href="tel:+33756864414" class="footer-phone">
-                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    07 56 86 44 14
-                </a>
-                <a href="https://wa.me/33756864414" target="_blank" class="btn btn-whatsapp">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    WhatsApp
-                </a>
-                <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12.001 18.275c-.208 0-.416-.052-.601-.156l-.052-.025c-1.012-.53-1.906-1.246-2.66-2.131-.824-.966-1.455-2.086-1.87-3.322-.364-1.09-.468-2.082-.311-2.946.156-.843.52-1.545 1.08-2.086.561-.54 1.268-.813 2.1-.813 1.22 0 2.235.636 2.775 1.695.01.02.02.03.04.03s.03-.01.04-.03c.54-1.06 1.555-1.695 2.775-1.695.832 0 1.54.273 2.1.813.56.54.925 1.243 1.08 2.086.156.864.053 1.856-.31 2.946-.416 1.236-1.047 2.356-1.87 3.322-.755.885-1.65 1.6-2.661 2.131l-.052.025c-.185.104-.393.156-.601.156h-.002zm-4.164-8.506c-.125.676-.042 1.48.248 2.387.364 1.084.913 2.066 1.632 2.91.635.744 1.385 1.355 2.231 1.82l.052.025c0 .001.002.001.002.001s.002 0 .002-.001l.052-.025c.846-.465 1.595-1.076 2.23-1.82.72-.845 1.27-1.826 1.633-2.91.29-.908.373-1.712.248-2.387-.104-.562-.338-1.013-.696-1.34-.353-.323-.81-.487-1.358-.487-.782 0-1.467.385-1.877 1.055-.177.289-.488.463-.824.463-.336 0-.647-.174-.824-.463-.41-.67-1.095-1.055-1.877-1.055-.549 0-1.005.164-1.358.487-.358.327-.592.778-.696 1.34h-.02zm4.164 12.231C5.383 22 0 16.617 0 10s5.383-10 12-10 12 5.383 12 10-5.383 12-12 12h.001zm0-21.818c-5.43 0-9.818 4.388-9.818 9.818s4.388 9.818 9.818 9.818 9.818-4.388 9.818-9.818S17.43.182 12 .182z"/></svg>
-                    Airbnb
-                </a>
+            <div class="footer-brand">
+                <svg class="footer-logo" viewBox="0 0 118 40" height="32">
+                    <text x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
+                    <text x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
+                    <text x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
+                    <text x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
+                    <g transform="translate(71,21)">
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.5" ry="4"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(45)"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(90)"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.5" ry="4" transform="rotate(135)"/>
+                        <circle fill="#ffd93d" cx="0" cy="0" r="3"/>
+                    </g>
+                    <text x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;">L</text>
+                    <text x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;">I</text>
+                    <text x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;">E</text>
+                </svg>
+                <p class="footer-tagline">Votre parenthèse enchantée à Paris</p>
             </div>
-            <p class="copyright">© 2026 À la Folie · Paris 11e</p>
+            <div class="footer-cta">
+                <p class="footer-question">Une question ? Contactez Léa</p>
+                <div class="footer-buttons">
+                    <a href="https://wa.me/33756864414" target="_blank" class="footer-btn footer-btn-wa">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                    <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="footer-btn footer-btn-airbnb">
+                        <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.353c.667 1.591.91 2.472.91 3.379 0 2.744-2.218 5.138-5.08 5.138-2.297 0-4.267-1.312-6.11-3.836l-.11-.148-.029-.039-.01.014-.012.015c-1.739 2.533-3.623 3.994-6.13 3.994C8.974 29 6.75 26.606 6.75 23.862c0-.921.243-1.788.896-3.34l.173-.405c1.088-2.464 5.137-11.008 7.074-14.796l.538-1.052C16.513 1.963 17.968 1 16 1zm0 2.5c-.687 0-1.24.284-1.913 1.588l-.533 1.025-.013.025c-1.844 3.623-5.934 12.213-6.988 14.6l-.145.345c-.424.998-.608 1.593-.608 2.179 0 1.404 1.05 2.638 2.56 2.638 1.34 0 2.624-.928 4.101-3.144l.02-.028.007-.01.253-.358.354.502c1.457 1.997 2.798 3.038 4.179 3.038 1.514 0 2.56-1.234 2.56-2.638 0-.586-.184-1.181-.608-2.179l-.145-.345c-1.054-2.387-5.144-10.977-6.988-14.6l-.013-.025-.533-1.025C17.24 3.784 16.687 3.5 16 3.5z"/></svg>
+                        Airbnb
+                    </a>
+                    <a href="tel:+33756864414" class="footer-btn footer-btn-phone">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        07 56 86 44 14
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <span>Paris 11e</span>
+                    <span class="footer-dot"></span>
+                    <span>60m²</span>
+                    <span class="footer-dot"></span>
+                    <span>4 voyageurs</span>
+                </div>
+                <p class="copyright">© 2026 À la Folie</p>
+            </div>
         </footer>
     </div>
 
