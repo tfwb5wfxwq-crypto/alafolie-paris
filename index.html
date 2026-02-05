@@ -93,9 +93,9 @@
             0% { transform: scale(1); opacity: 0.4; }
             100% { transform: scale(1.5); opacity: 0; }
         }
-        @keyframes colorShift {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .animate-in { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
@@ -117,14 +117,6 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255,255,255,0.4);
             box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
-        }
-
-        .glass-dark {
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
         }
 
         /* ===== HEADER ===== */
@@ -169,9 +161,7 @@
         }
 
         .logo { height: 36px; cursor: pointer; }
-
         .logo-glow { opacity: 0.4; }
-        .logo-flower { transform-origin: 71px 21px; }
 
         .header-phone {
             display: flex;
@@ -213,6 +203,11 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
         .badge-stars svg { fill: var(--accent); }
+        .badge-response {
+            background: rgba(37,211,102,0.2);
+            color: #25D366;
+            border: 1px solid rgba(37,211,102,0.3);
+        }
 
         /* ===== MAIN CONTENT ===== */
         .main {
@@ -221,12 +216,65 @@
             padding: 80px 2rem 2rem;
         }
 
+        /* ===== SOCIAL PROOF BAR ===== */
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .proof-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            animation: countUp 0.6s ease-out forwards;
+        }
+        .proof-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .proof-icon.pink { background: rgba(244,114,182,0.15); }
+        .proof-icon.green { background: rgba(74,222,128,0.15); }
+        .proof-icon.violet { background: rgba(167,139,250,0.15); }
+        .proof-number {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--black);
+        }
+        .proof-live {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255,90,95,0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--airbnb);
+            font-weight: 600;
+        }
+        .proof-live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--airbnb);
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
         /* ===== HERO SECTION ===== */
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .video-box {
@@ -270,16 +318,27 @@
             position: absolute;
             bottom: 1rem;
             left: 1rem;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.9);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             color: var(--black);
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-badge-top {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--airbnb), #e04347);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255,90,95,0.4);
         }
 
         .intro-content {
@@ -318,7 +377,6 @@
             color: var(--text);
             background: rgba(255,255,255,0.6);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             padding: 0.4rem 0.8rem;
             border-radius: 50px;
             border: 1px solid rgba(255,255,255,0.5);
@@ -345,13 +403,42 @@
             color: var(--pink);
         }
 
+        /* ===== AMENITIES ===== */
+        .amenities {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .amenity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--text);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            transition: all 0.3s;
+        }
+        .amenity:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .amenity-icon {
+            font-size: 1.1rem;
+        }
+
         /* ===== CTA SECTION ===== */
         .cta-section {
             text-align: center;
             padding: 2rem 0;
             margin-bottom: 2rem;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
 
         .cta-text {
@@ -396,17 +483,12 @@
             box-shadow: 0 10px 35px rgba(244,114,182,0.45);
         }
 
-        .cta-btn:active {
-            transform: translateY(-1px) scale(0.98);
-        }
-
         .cta-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
         /* ===== CALENDAR ===== */
         .booking-card {
             background: rgba(255,255,255,0.7);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border-radius: 24px;
             padding: 2rem;
             margin-bottom: 3rem;
@@ -473,7 +555,6 @@
             transform: scale(1.1);
             box-shadow: 0 4px 15px rgba(244,114,182,0.3);
         }
-        .cal-nav button:active:not(:disabled) { transform: scale(0.95); }
         .cal-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
 
         .calendars { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -503,7 +584,6 @@
             text-transform: uppercase;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
         }
 
         .cal-days {
@@ -535,10 +615,6 @@
             z-index: 2;
         }
 
-        .day:active:not(.off):not(.blocked) {
-            transform: scale(0.95);
-        }
-
         .day.off { color: #ddd; cursor: default; }
         .day.blocked {
             color: #ccc;
@@ -550,7 +626,6 @@
             border: 2px solid var(--pink);
             color: var(--pink);
             font-weight: 700;
-            animation: pulse 2s ease-in-out infinite;
         }
         .day.start {
             background: linear-gradient(135deg, var(--pink), var(--orange));
@@ -570,17 +645,6 @@
         }
         .day.range.start { border-radius: 50% 0 0 50%; }
         .day.range.end { border-radius: 0 50% 50% 0; }
-
-        .day.clicked::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background: rgba(244,114,182,0.3);
-            animation: ripple 0.4s ease-out forwards;
-        }
-
-        /* Preview au hover */
         .day.preview {
             background: linear-gradient(90deg, rgba(244,114,182,0.08), rgba(167,139,250,0.08));
             border-radius: 0;
@@ -596,15 +660,12 @@
         .price-section {
             background: rgba(255,255,255,0.5);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
             border: 1px solid rgba(255,255,255,0.6);
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 4px 20px rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
         }
 
         .price-box {
@@ -613,8 +674,6 @@
             flex-direction: column;
             justify-content: center;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
         .price-empty {
@@ -640,11 +699,6 @@
             border-radius: 12px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             border: 1px solid rgba(244,114,182,0.2);
-            transition: all 0.3s;
-        }
-        .price-date:hover {
-            transform: scale(1.05);
-            border-color: var(--pink);
         }
         .price-date small {
             display: block;
@@ -652,13 +706,18 @@
             color: var(--pink);
             text-transform: uppercase;
             font-weight: 600;
-            letter-spacing: 0.5px;
         }
         .price-date strong { font-size: 0.85rem; color: var(--black); font-weight: 600; }
         .price-arrow {
             color: var(--pink);
             font-size: 1.2rem;
-            animation: float 2s ease-in-out infinite;
+        }
+        .price-date.active {
+            border-color: var(--pink);
+            background: linear-gradient(135deg, rgba(244,114,182,0.1), rgba(244,114,182,0.05));
+        }
+        .price-date.waiting {
+            border: 2px dashed rgba(167,139,250,0.4);
         }
 
         .price-nights {
@@ -669,7 +728,6 @@
             display: inline-block;
             padding: 0.3rem 0.8rem;
             border-radius: 50px;
-            font-weight: 500;
         }
 
         .price-status {
@@ -681,17 +739,14 @@
             font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
-            animation: fadeIn 0.4s ease-out;
         }
         .price-status.ok {
             background: linear-gradient(135deg, rgba(74,222,128,0.2), rgba(74,222,128,0.1));
             color: #16a34a;
-            box-shadow: 0 2px 10px rgba(74,222,128,0.2);
         }
         .price-status.no {
             background: linear-gradient(135deg, rgba(255,90,95,0.2), rgba(255,90,95,0.1));
             color: var(--airbnb);
-            box-shadow: 0 2px 10px rgba(255,90,95,0.2);
         }
 
         .price-total {
@@ -703,7 +758,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 0.4s ease-out;
             line-height: 1;
         }
         .price-total .currency {
@@ -712,40 +766,17 @@
             vertical-align: super;
         }
         .price-avg {
-            font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
             color: var(--text-light);
             margin-top: 0.5rem;
-            font-weight: 500;
         }
-        .price-avg span {
-            color: var(--pink);
-            font-weight: 600;
-        }
-
+        .price-avg span { color: var(--pink); font-weight: 600; }
         .price-hint {
             color: var(--text-muted);
             font-size: 0.8rem;
             margin-top: 0.5rem;
-            animation: pulse 2s ease-in-out infinite;
         }
 
-        .price-date.active {
-            border-color: var(--pink);
-            background: linear-gradient(135deg, rgba(244,114,182,0.1), rgba(244,114,182,0.05));
-        }
-
-        .price-date.waiting {
-            border: 2px dashed rgba(167,139,250,0.4);
-            background: transparent;
-        }
-
-        .price-date.waiting strong {
-            color: var(--violet);
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        /* Loader animation */
         .price-loader {
             display: flex;
             justify-content: center;
@@ -763,17 +794,11 @@
         .price-loader span:nth-child(2) { animation-delay: 0.2s; }
         .price-loader span:nth-child(3) { animation-delay: 0.4s; }
 
-        /* Smooth transitions for price box */
-        .price-box > * {
-            animation: fadeIn 0.3s ease-out;
-        }
-
         .price-actions {
             margin-top: 1.5rem;
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
-            animation: fadeInUp 0.5s ease-out 0.2s both;
         }
 
         .btn {
@@ -800,10 +825,8 @@
             transform: translateX(-100%);
             transition: transform 0.5s;
         }
-        .btn:hover::before {
-            transform: translateX(100%);
-        }
-        .btn svg { width: 16px; height: 16px; }
+        .btn:hover::before { transform: translateX(100%); }
+        .btn svg { width: 18px; height: 18px; }
 
         .btn-airbnb {
             background: linear-gradient(135deg, #FF5A5F, #e04347);
@@ -814,10 +837,9 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(255,90,95,0.4);
         }
-        .btn-airbnb:active { transform: translateY(-1px); }
 
         .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366, #20bd5a);
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             box-shadow: 0 4px 15px rgba(37,211,102,0.3);
         }
@@ -825,7 +847,6 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(37,211,102,0.4);
         }
-        .btn-whatsapp:active { transform: translateY(-1px); }
 
         /* ===== BOTTOM SECTION ===== */
         .bottom-grid {
@@ -843,64 +864,65 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .reviews-section h3 svg { width: 18px; height: 18px; fill: var(--accent); }
 
         .review-card {
             background: rgba(255,255,255,0.6);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             border-radius: 16px;
             padding: 1.4rem;
             margin-bottom: 0.85rem;
             border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.8);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .review-card::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 3rem;
-            font-family: 'Cormorant Garamond', serif;
-            color: rgba(0,0,0,0.06);
-            line-height: 1;
+            display: flex;
+            gap: 1rem;
         }
 
         .review-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(0,0,0,0.1);
-            background: rgba(255,255,255,0.8);
         }
 
-        .review-quote {
-            font-size: 0.9rem;
-            font-style: italic;
-            color: var(--text);
-            line-height: 1.7;
-            margin-bottom: 0.75rem;
-            position: relative;
-            z-index: 1;
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .review-content { flex: 1; }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
         }
 
         .review-author {
-            font-size: 0.8rem;
-            color: var(--pink);
+            font-size: 0.9rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
+            color: var(--black);
         }
 
-        .review-author::before {
-            content: '★★★★★';
-            font-size: 0.6rem;
+        .review-stars {
             color: var(--accent);
+            font-size: 0.7rem;
             letter-spacing: -1px;
+        }
+
+        .review-quote {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-style: italic;
         }
 
         /* Photos */
@@ -936,9 +958,7 @@
             transition: transform 0.3s;
         }
 
-        .photo-thumb:hover img {
-            transform: scale(1.05);
-        }
+        .photo-thumb:hover img { transform: scale(1.05); }
 
         /* ===== FOOTER ===== */
         .footer {
@@ -1035,32 +1055,17 @@
             animation: ripple 1.5s ease-out infinite;
         }
 
-        .wa-float::after {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            opacity: 0.15;
-            animation: ripple 1.5s ease-out infinite 0.5s;
-        }
-
         .wa-float:hover {
             transform: scale(1.15) rotate(10deg);
             box-shadow: 0 10px 40px rgba(37,211,102,0.6);
         }
 
-        .wa-float:active {
-            transform: scale(1.05);
-        }
-
         .wa-float svg {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             fill: white;
             position: relative;
             z-index: 1;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
         .wa-float-badge {
@@ -1080,6 +1085,37 @@
             border: 2px solid white;
             z-index: 2;
             animation: bounce 2s ease-in-out infinite;
+        }
+
+        /* ===== STICKY MOBILE PRICE ===== */
+        .sticky-price {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 98;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sticky-price-info {
+            font-size: 0.85rem;
+        }
+        .sticky-price-info strong {
+            font-size: 1.2rem;
+            color: var(--black);
+        }
+        .sticky-price-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--pink), var(--violet));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
         }
 
         /* ===== LIGHTBOX ===== */
@@ -1124,11 +1160,11 @@
             .booking-grid { grid-template-columns: 1fr; }
             .calendars { grid-template-columns: 1fr; }
             .bottom-grid { grid-template-columns: 1fr; }
-            .photos-grid { grid-template-columns: repeat(3, 1fr); }
+            .social-proof { gap: 1rem; }
         }
 
         @media (max-width: 600px) {
-            .main { padding: 70px 1rem 1rem; }
+            .main { padding: 70px 1rem 80px; }
             .header { padding: 0.5rem 1rem; }
             .logo { height: 30px; }
             .header-phone span { display: none; }
@@ -1136,6 +1172,10 @@
             .intro-title { font-size: 1.6rem; }
             .booking-card { padding: 1.5rem; }
             .footer { margin: 0 -1rem -1rem; }
+            .sticky-price { display: flex; }
+            .wa-float-container { bottom: 90px; }
+            .amenities { gap: 0.5rem; }
+            .amenity { padding: 0.4rem 0.6rem; font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -1147,12 +1187,10 @@
                 <defs>
                     <filter id="logo-gl" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur in="SourceGraphic" stdDeviation="4"/></filter>
                 </defs>
-                <!-- Logo couleurs néon sur fond noir -->
                 <text x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;">À</text>
                 <text x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;">L</text>
                 <text x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;">A</text>
                 <text x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;">F</text>
-                <!-- Marguerite blanche avec glow -->
                 <g class="logo-glow" filter="url(#logo-gl)"><circle fill="#fff" cx="71" cy="21" r="6"/></g>
                 <g class="logo-flower">
                     <g transform="translate(71,21)">
@@ -1177,6 +1215,7 @@
             </a>
         </div>
         <div class="header-right">
+            <span class="badge badge-response">⚡ Répond en -1h</span>
             <span class="badge badge-superhost">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 Superhost
@@ -1189,15 +1228,38 @@
     </header>
 
     <div class="main">
-        <!-- Hero Grid: Video + Description -->
+        <!-- Social Proof Bar -->
+        <div class="social-proof animate-in">
+            <div class="proof-item">
+                <div class="proof-icon pink">🏆</div>
+                <div>
+                    <span class="proof-number" id="bookingCount">47</span>
+                    <span>réservations</span>
+                </div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-icon green">💬</div>
+                <div>
+                    <span class="proof-number">50+</span>
+                    <span>avis 5 étoiles</span>
+                </div>
+            </div>
+            <div class="proof-live">
+                <span class="proof-live-dot"></span>
+                <span id="liveCount">6</span> personnes regardent
+            </div>
+        </div>
+
+        <!-- Hero Grid -->
         <div class="hero-grid">
-            <div class="video-box animate-in">
+            <div class="video-box animate-in delay-1">
                 <div class="video-placeholder">
-                    <img src="01.jpg" alt="Appartement À la Folie">
+                    <img src="01.jpg" alt="Appartement À la Folie Paris 11e">
                 </div>
                 <span class="video-badge">📍 Paris 11e</span>
+                <span class="video-badge-top">Coup de coeur</span>
             </div>
-            <div class="intro-content animate-in delay-1">
+            <div class="intro-content animate-in delay-2">
                 <span class="intro-label">Présentation du logement by Léa</span>
                 <h1 class="intro-title">Votre parenthèse enchantée au cœur de Paris</h1>
                 <div class="intro-features">
@@ -1211,8 +1273,20 @@
             </div>
         </div>
 
+        <!-- Amenities -->
+        <div class="amenities animate-in delay-3">
+            <div class="amenity"><span class="amenity-icon">📶</span> WiFi fibre</div>
+            <div class="amenity"><span class="amenity-icon">📺</span> Netflix</div>
+            <div class="amenity"><span class="amenity-icon">🛁</span> Jacuzzi</div>
+            <div class="amenity"><span class="amenity-icon">🎬</span> Home Cinéma</div>
+            <div class="amenity"><span class="amenity-icon">❄️</span> Clim</div>
+            <div class="amenity"><span class="amenity-icon">🧺</span> Lave-linge</div>
+            <div class="amenity"><span class="amenity-icon">☕</span> Nespresso</div>
+            <div class="amenity"><span class="amenity-icon">🔐</span> Check-in auto</div>
+        </div>
+
         <!-- CTA -->
-        <div class="cta-section animate-in delay-2">
+        <div class="cta-section animate-in delay-4">
             <p class="cta-text">Prêt à vivre l'expérience ?</p>
             <a href="#booking" class="cta-btn">
                 <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
@@ -1221,7 +1295,7 @@
         </div>
 
         <!-- Booking -->
-        <div class="booking-card animate-in delay-3" id="booking">
+        <div class="booking-card" id="booking">
             <div class="booking-grid">
                 <div class="cal-section">
                     <div class="cal-header">
@@ -1242,11 +1316,13 @@
                     </div>
                     <div class="price-actions" id="priceActions" style="display:none;">
                         <a href="#" class="btn btn-airbnb" id="bookBtn" target="_blank">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <!-- Airbnb Logo -->
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 18.275c-.208 0-.416-.052-.601-.156l-.052-.025c-1.012-.53-1.906-1.246-2.66-2.131-.824-.966-1.455-2.086-1.87-3.322-.364-1.09-.468-2.082-.311-2.946.156-.843.52-1.545 1.08-2.086.561-.54 1.268-.813 2.1-.813 1.22 0 2.235.636 2.775 1.695.01.02.02.03.04.03s.03-.01.04-.03c.54-1.06 1.555-1.695 2.775-1.695.832 0 1.54.273 2.1.813.56.54.925 1.243 1.08 2.086.156.864.053 1.856-.31 2.946-.416 1.236-1.047 2.356-1.87 3.322-.755.885-1.65 1.6-2.661 2.131l-.052.025c-.185.104-.393.156-.601.156h-.002zm-4.164-8.506c-.125.676-.042 1.48.248 2.387.364 1.084.913 2.066 1.632 2.91.635.744 1.385 1.355 2.231 1.82l.052.025c0 .001.002.001.002.001s.002 0 .002-.001l.052-.025c.846-.465 1.595-1.076 2.23-1.82.72-.845 1.27-1.826 1.633-2.91.29-.908.373-1.712.248-2.387-.104-.562-.338-1.013-.696-1.34-.353-.323-.81-.487-1.358-.487-.782 0-1.467.385-1.877 1.055-.177.289-.488.463-.824.463-.336 0-.647-.174-.824-.463-.41-.67-1.095-1.055-1.877-1.055-.549 0-1.005.164-1.358.487-.358.327-.592.778-.696 1.34h-.02zm4.164 12.231C5.383 22 0 16.617 0 10s5.383-10 12-10 12 5.383 12 10-5.383 12-12 12h.001zm0-21.818c-5.43 0-9.818 4.388-9.818 9.818s4.388 9.818 9.818 9.818 9.818-4.388 9.818-9.818S17.43.182 12 .182z"/></svg>
                             Réserver sur Airbnb
                         </a>
                         <a href="#" class="btn btn-whatsapp" id="waBtn" target="_blank">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                            <!-- WhatsApp Logo -->
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                             Contacter Léa
                         </a>
                     </div>
@@ -1284,8 +1360,14 @@
                     <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                     07 56 86 44 14
                 </a>
-                <a href="https://wa.me/33756864414" target="_blank" class="btn btn-whatsapp">WhatsApp</a>
-                <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">Airbnb</a>
+                <a href="https://wa.me/33756864414" target="_blank" class="btn btn-whatsapp">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12.001 18.275c-.208 0-.416-.052-.601-.156l-.052-.025c-1.012-.53-1.906-1.246-2.66-2.131-.824-.966-1.455-2.086-1.87-3.322-.364-1.09-.468-2.082-.311-2.946.156-.843.52-1.545 1.08-2.086.561-.54 1.268-.813 2.1-.813 1.22 0 2.235.636 2.775 1.695.01.02.02.03.04.03s.03-.01.04-.03c.54-1.06 1.555-1.695 2.775-1.695.832 0 1.54.273 2.1.813.56.54.925 1.243 1.08 2.086.156.864.053 1.856-.31 2.946-.416 1.236-1.047 2.356-1.87 3.322-.755.885-1.65 1.6-2.661 2.131l-.052.025c-.185.104-.393.156-.601.156h-.002zm-4.164-8.506c-.125.676-.042 1.48.248 2.387.364 1.084.913 2.066 1.632 2.91.635.744 1.385 1.355 2.231 1.82l.052.025c0 .001.002.001.002.001s.002 0 .002-.001l.052-.025c.846-.465 1.595-1.076 2.23-1.82.72-.845 1.27-1.826 1.633-2.91.29-.908.373-1.712.248-2.387-.104-.562-.338-1.013-.696-1.34-.353-.323-.81-.487-1.358-.487-.782 0-1.467.385-1.877 1.055-.177.289-.488.463-.824.463-.336 0-.647-.174-.824-.463-.41-.67-1.095-1.055-1.877-1.055-.549 0-1.005.164-1.358.487-.358.327-.592.778-.696 1.34h-.02zm4.164 12.231C5.383 22 0 16.617 0 10s5.383-10 12-10 12 5.383 12 10-5.383 12-12 12h.001zm0-21.818c-5.43 0-9.818 4.388-9.818 9.818s4.388 9.818 9.818 9.818 9.818-4.388 9.818-9.818S17.43.182 12 .182z"/></svg>
+                    Airbnb
+                </a>
             </div>
             <p class="copyright">© 2026 À la Folie · Paris 11e</p>
         </footer>
@@ -1296,8 +1378,16 @@
         <span class="wa-float-label">Discuter avec Léa</span>
         <a href="https://wa.me/33756864414" target="_blank" class="wa-float">
             <span class="wa-float-badge">1</span>
-            <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
+    </div>
+
+    <!-- Sticky Mobile Price -->
+    <div class="sticky-price" id="stickyPrice">
+        <div class="sticky-price-info">
+            À partir de <strong>139€</strong>/nuit
+        </div>
+        <a href="#booking" class="sticky-price-btn">Réserver</a>
     </div>
 
     <!-- Lightbox -->
@@ -1319,9 +1409,9 @@
         let start = null, end = null, hoverDate = null, blocked = [];
 
         const reviews = [
-            { text: "Séjour 5 étoiles ! L'appartement est super beau, très calme. Coup de cœur pour le jacuzzi !", author: "Olivier" },
-            { text: "Tout était formidable, très propre et literie ultra confortable. Je recommande !", author: "Noah" },
-            { text: "Léa est une hôte fantastique. Logement propre et quartier sûr.", author: "Emily" }
+            { text: "Séjour 5 étoiles ! L'appartement est super beau, très calme. Coup de cœur pour le jacuzzi !", author: "Olivier", color: "#f472b6" },
+            { text: "Tout était formidable, très propre et literie ultra confortable. Je recommande !", author: "Noah", color: "#a78bfa" },
+            { text: "Léa est une hôte fantastique. Logement propre et quartier sûr.", author: "Emily", color: "#22d3ee" }
         ];
 
         function initReviews() {
@@ -1329,9 +1419,27 @@
             reviews.forEach(r => {
                 const card = document.createElement('div');
                 card.className = 'review-card';
-                card.innerHTML = `<p class="review-quote">"${r.text}"</p><p class="review-author">— ${r.author}</p>`;
+                card.innerHTML = `
+                    <div class="review-avatar" style="background:${r.color}">${r.author[0]}</div>
+                    <div class="review-content">
+                        <div class="review-header">
+                            <span class="review-author">${r.author}</span>
+                            <span class="review-stars">★★★★★</span>
+                        </div>
+                        <p class="review-quote">"${r.text}"</p>
+                    </div>
+                `;
                 c.appendChild(card);
             });
+        }
+
+        // Live counter animation
+        function animateLiveCount() {
+            const el = document.getElementById('liveCount');
+            setInterval(() => {
+                const n = Math.floor(Math.random() * 5) + 4; // 4-8
+                el.textContent = n;
+            }, 8000);
         }
 
         async function fetchBlocked() {
@@ -1340,7 +1448,6 @@
                 const d = await r.json();
                 if (d.blocked) blocked = d.blocked;
             } catch(e) {}
-            // Forcer reconstruction avec les dates bloquées
             calBuilt.cal1 = null;
             calBuilt.cal2 = null;
             render();
@@ -1391,20 +1498,14 @@
                 const curr = new Date(ds);
                 const blk = isBlocked(curr);
                 if (dayEl.classList.contains('off') || blk) return;
-
-                // Reset dynamic classes
                 dayEl.classList.remove('start', 'end', 'range', 'preview', 'preview-end');
-
-                // Selection confirmée
                 if (start && curr.getTime() === start.getTime()) {
                     dayEl.classList.add('start', 'range');
                 } else if (end && curr.getTime() === end.getTime()) {
                     dayEl.classList.add('end', 'range');
                 } else if (start && end && curr > start && curr < end && !blk) {
                     dayEl.classList.add('range');
-                }
-                // Preview au hover
-                else if (start && !end && hoverDate && curr > start && curr < hoverDate && !blk) {
+                } else if (start && !end && hoverDate && curr > start && curr < hoverDate && !blk) {
                     dayEl.classList.add('preview');
                 } else if (start && !end && hoverDate && curr.getTime() === hoverDate.getTime() && !blk) {
                     dayEl.classList.add('preview-end');
@@ -1507,6 +1608,7 @@
 
         fetchBlocked();
         initReviews();
+        animateLiveCount();
     </script>
 </body>
 </html>
