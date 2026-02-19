@@ -3,1338 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À la Folie | Appartement d'exception Paris 11e</title>
-    <meta name="description" content="Vivez une expérience unique dans notre appartement avec jacuzzi privatif au cœur de Paris. 60m² de luxe, home cinéma, WC japonais.">
+    <title>À la Folie | Appartement Jacuzzi Privatif Paris 11e</title>
+    <meta name="description" content="À la Folie : appartement d'exception avec jacuzzi privatif, home cinéma 4K et literie king-size au cœur de Paris 11e. 60m², Superhost 5.0★.">
+    <meta property="og:title" content="À la Folie | Jacuzzi Privatif Paris 11e">
+    <meta property="og:description" content="Appartement de luxe avec jacuzzi privatif, home cinéma et literie king-size. Paris 11e, Superhost 5.0★.">
+    <meta property="og:image" content="https://folie.paris/01.jpg">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23ffd93d' cx='50' cy='50' r='12'/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--gold:#d4af37;--white:#fff;--gray:#aaa;--gray-d:#666;--airbnb:#FF5A5F;--glass:rgba(255,255,255,0.06);--gb:rgba(255,255,255,0.1)}
+        html,body{height:100%;overflow:hidden}
+        body{font-family:'Inter',-apple-system,sans-serif;color:var(--white);font-weight:300;line-height:1.5}
+        ::selection{background:var(--gold);color:#000}
 
-        :root {
-            --black: #0a0a0a;
-            --dark: #111;
-            --darker: #1a1a1a;
-            --gold: #d4af37;
-            --gold-light: #f4e4bc;
-            --white: #fff;
-            --gray: #999;
-            --gray-dark: #444;
-            --airbnb: #FF5A5F;
-        }
+        /* BG: dark + animated color blobs */
+        .bg{position:fixed;inset:0;background:#080810;z-index:0;overflow:hidden}
+        .blob{position:absolute;border-radius:50%;filter:blur(120px)}
+        .b1{width:50vmax;height:50vmax;background:rgba(255,77,106,0.13);top:-15%;left:-10%;animation:d1 25s ease-in-out infinite}
+        .b2{width:45vmax;height:45vmax;background:rgba(77,150,255,0.13);bottom:-15%;right:-10%;animation:d2 30s ease-in-out infinite}
+        .b3{width:35vmax;height:35vmax;background:rgba(0,200,180,0.1);top:35%;left:45%;animation:d3 22s ease-in-out infinite}
+        @keyframes d1{0%,100%{transform:translate(0,0)}33%{transform:translate(20vw,10vh)}66%{transform:translate(5vw,25vh)}}
+        @keyframes d2{0%,100%{transform:translate(0,0)}33%{transform:translate(-15vw,-10vh)}66%{transform:translate(-20vw,-5vh)}}
+        @keyframes d3{0%,100%{transform:translate(0,0)}33%{transform:translate(-15vw,8vh)}66%{transform:translate(10vw,-12vh)}}
 
-        html {
-            scroll-behavior: smooth;
-            scroll-snap-type: y proximity;
-        }
+        .page{position:relative;z-index:2;height:100vh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
 
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--black);
-            color: var(--white);
-            font-weight: 300;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        /* HEADER */
+        .hdr{display:flex;justify-content:space-between;align-items:center;padding:0.7rem 2rem;backdrop-filter:blur(20px);background:rgba(0,0,0,0.2);border-bottom:1px solid var(--gb)}
+        .logo-svg{width:clamp(140px,18vw,240px);height:auto;display:block}
+        .hdr-r{display:flex;align-items:center;gap:0.8rem}
+        .ab{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(0,0,0,0.3);backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:50px;padding:0.2rem 0.7rem 0.2rem 0.2rem;text-decoration:none;color:var(--white);font-size:0.65rem;transition:all 0.3s}
+        .ab:hover{border-color:rgba(255,90,95,0.4)}
+        .ab-i{width:22px;height:22px;border-radius:50%;overflow:hidden}
+        .ab-i img{width:100%;height:100%;object-fit:cover}
+        .ab strong{color:var(--gold)}
+        .btn-cal{display:flex;align-items:center;gap:0.35rem;padding:0.45rem 1rem;background:var(--gold);color:#000;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;border-radius:6px;transition:all 0.3s;cursor:pointer;border:none}
+        .btn-cal:hover{background:var(--white)}
+        .btn-cal svg{width:12px;height:12px}
 
-        ::selection {
-            background: var(--gold);
-            color: var(--black);
-        }
+        /* MAIN */
+        .mn{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;padding:1rem 2rem;overflow:hidden}
+        .col-l{display:flex;flex-direction:column;gap:0.7rem;overflow:hidden}
+        .col-r{display:flex;flex-direction:column;gap:0.7rem;overflow:hidden}
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 400;
-            letter-spacing: -0.02em;
-        }
+        /* Léa */
+        .lea{display:flex;gap:0.7rem;align-items:flex-start;background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:14px;padding:0.7rem}
+        .lea-pic{width:46px;height:46px;border-radius:12px;object-fit:cover;flex-shrink:0}
+        .lea-info{flex:1}
+        .lea-top{display:flex;align-items:center;gap:0.4rem;margin-bottom:0.1rem}
+        .lea-top strong{font-size:0.72rem;font-weight:500}
+        .lea-tag{font-size:0.48rem;color:var(--gold);background:rgba(212,175,55,0.12);padding:0.1rem 0.35rem;border-radius:8px}
+        .lea-txt{font-size:0.7rem;color:var(--gray);line-height:1.55}
+        .lea-txt b{color:var(--white);font-weight:400}
 
-        /* ===== CUSTOM CURSOR ===== */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 1px solid var(--gold);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.15s ease, opacity 0.15s ease;
-            mix-blend-mode: difference;
-        }
-        .cursor.hover { transform: scale(2.5); background: rgba(212,175,55,0.1); }
-        @media (max-width: 768px) { .cursor { display: none; } }
+        /* Pills */
+        .pp{display:flex;flex-wrap:wrap;gap:0.25rem}
+        .pp span{padding:0.15rem 0.5rem;border:1px solid rgba(255,255,255,0.12);border-radius:50px;font-size:0.55rem;color:var(--gray);background:rgba(255,255,255,0.03);cursor:default;transition:all 0.2s}
+        .pp span:hover{color:var(--white);border-color:rgba(255,255,255,0.25)}
 
-        /* ===== SCREEN 1 — SPLASH / IDENTITY ===== */
-        .splash {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            scroll-snap-align: start;
-        }
+        /* Photos */
+        .pg{flex:1;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:0.4rem;min-height:0;border-radius:12px;overflow:hidden}
+        .pg-big{grid-row:1/3;border-radius:10px;overflow:hidden;cursor:pointer;position:relative}
+        .pg-big img,.pg-sm img{width:100%;height:100%;object-fit:cover;transition:opacity 0.4s}
+        .pg-sm{border-radius:10px;overflow:hidden;cursor:pointer;position:relative}
+        .pg-lbl{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 0.5rem 0.3rem;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.7rem;color:rgba(255,255,255,0.8)}
+        .pg-c{position:absolute;top:0.3rem;right:0.3rem;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);border-radius:20px;padding:0.1rem 0.4rem;font-size:0.45rem;color:rgba(255,255,255,0.6)}
 
-        .splash-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-        .splash-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: scale(1.1);
-            transition: transform 10s ease-out;
-        }
-        .splash.loaded .splash-bg img {
-            transform: scale(1);
-        }
-        .splash-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.85) 100%);
-        }
+        /* CTA */
+        .cta-card{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:14px;padding:1.2rem;text-align:center}
+        .cta-price{font-family:'Cormorant Garamond',serif;font-size:2.4rem;margin-bottom:0.05rem}
+        .cta-price span{font-size:0.95rem;color:var(--gray)}
+        .cta-sub{font-size:0.65rem;color:var(--gray);margin-bottom:0.9rem}
+        .cta-btn{display:flex;align-items:center;justify-content:center;gap:0.4rem;width:100%;padding:0.65rem;background:var(--gold);color:#000;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;border-radius:10px;transition:all 0.3s;cursor:pointer;border:none;margin-bottom:0.45rem}
+        .cta-btn:hover{background:var(--white);transform:translateY(-1px)}
+        .cta-airbnb{display:flex;align-items:center;justify-content:center;gap:0.4rem;width:100%;padding:0.6rem;background:var(--airbnb);color:white;text-decoration:none;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;border-radius:10px;transition:all 0.3s;margin-bottom:0.35rem}
+        .cta-airbnb:hover{background:#e8494e;transform:translateY(-1px)}
+        .cta-airbnb img{width:14px;height:14px;border-radius:2px}
+        .cta-wa{display:flex;align-items:center;justify-content:center;gap:0.35rem;width:100%;padding:0.55rem;background:transparent;border:1px solid var(--gb);color:var(--white);text-decoration:none;font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;border-radius:10px;transition:all 0.3s}
+        .cta-wa:hover{border-color:#25D366;color:#25D366}
+        .cta-wa svg{width:12px;height:12px;fill:currentColor}
 
-        .splash-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 1.5rem;
-        }
+        /* Reviews */
+        .rv{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:12px;padding:0.6rem;overflow:hidden;flex:1}
+        .rv-l{font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.25rem}
+        .rv-s{position:relative;height:60px;overflow:hidden}
+        .rv-i{position:absolute;inset:0;opacity:0;transform:translateY(6px);transition:opacity 0.5s,transform 0.5s}
+        .rv-i.on{opacity:1;transform:translateY(0)}
+        .rv-t{font-size:0.62rem;color:var(--gray);font-style:italic;line-height:1.5;margin-bottom:0.15rem}
+        .rv-a{font-size:0.5rem;color:var(--gray-d)}
+        .rv-a strong{color:var(--white);font-weight:400}
+        .rv-d{display:flex;justify-content:center;gap:0.2rem;margin-top:0.15rem}
+        .rv-d span{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.1);transition:all 0.3s}
+        .rv-d span.on{background:var(--gold);width:12px;border-radius:3px}
 
-        /* Marguerite logo — big and animated */
-        .splash-flower {
-            width: 130px;
-            height: 130px;
-            opacity: 0;
-            transform: scale(0.5) rotate(-180deg);
-            animation: flowerIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
-        }
-        @keyframes flowerIn {
-            to { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
+        /* Footer */
+        .ft{padding:0.35rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(0,0,0,0.15);border-top:1px solid var(--gb)}
+        .ft a{color:var(--gray-d);text-decoration:none;font-size:0.5rem;transition:color 0.3s;margin-right:0.8rem}
+        .ft a:hover{color:var(--gold)}
+        .ft>span{color:rgba(255,255,255,0.12);font-size:0.45rem}
 
-        .splash-flower .flower-spin {
-            animation: spin 25s linear infinite;
-            transform-origin: center;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        /* Modal */
+        .modal{display:none;position:fixed;inset:0;z-index:500;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px)}
+        .modal.on{display:flex}
+        .modal-card{background:rgba(15,15,25,0.97);backdrop-filter:blur(40px);border:1px solid var(--gb);border-radius:20px;padding:2rem;max-width:700px;width:90vw;max-height:85vh;overflow-y:auto;position:relative}
+        .modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border:1px solid var(--gb);background:transparent;color:var(--white);font-size:1rem;cursor:pointer;border-radius:50%;transition:all 0.3s}
+        .modal-close:hover{border-color:var(--gold);color:var(--gold)}
+        .modal-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;margin-bottom:0.3rem}
+        .modal-sub{color:var(--gray);font-size:0.78rem;margin-bottom:1.5rem}
+        .m-cn{display:flex;justify-content:center;gap:0.6rem;margin-bottom:0.75rem}
+        .m-cn button{width:28px;height:28px;border:1px solid var(--gb);background:transparent;color:var(--white);cursor:pointer;border-radius:50%;font-size:0.75rem;transition:all 0.3s}
+        .m-cn button:hover:not(:disabled){border-color:var(--gold);color:var(--gold)}
+        .m-cn button:disabled{opacity:0.3;cursor:not-allowed}
+        .m-cg{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+        .cal-month{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;text-align:center;margin-bottom:0.4rem}
+        .cal-week{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:0.2rem}
+        .cal-week span{font-size:0.5rem;color:var(--gray-d);text-transform:uppercase}
+        .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+        .day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:0.82rem;border-radius:50%;cursor:pointer;transition:all 0.15s;color:var(--gray)}
+        .day:hover:not(.off):not(.blocked){background:var(--gold);color:#000}
+        .day.off{color:rgba(255,255,255,0.12);cursor:default}
+        .day.blocked{color:rgba(255,255,255,0.12);text-decoration:line-through;cursor:not-allowed}
+        .day.today{border:1px solid var(--gold);color:var(--gold)}
+        .day.start,.day.end{background:var(--gold);color:#000;font-weight:500}
+        .day.range{background:rgba(212,175,55,0.2);color:var(--white);border-radius:0}
+        .m-price{background:rgba(255,255,255,0.03);border:1px solid var(--gb);border-radius:12px;padding:1.25rem;text-align:center}
+        .m-price .price-label{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem}
+        .m-price .price-amount{font-family:'Cormorant Garamond',serif;font-size:2.2rem}
+        .m-price .price-amount span{font-size:0.95rem;color:var(--gray)}
+        .m-price .price-night{color:var(--gray);font-size:0.72rem;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--gb)}
+        .m-price .price-dates{margin-bottom:0.75rem}
+        .m-price .price-date-row{display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.03);font-size:0.72rem}
+        .m-price .price-date-row span:first-child{color:var(--gray)}
+        .m-btns{display:flex;gap:0.5rem;margin-top:1rem}
+        .m-btns a{flex:1;display:flex;align-items:center;justify-content:center;gap:0.35rem;padding:0.7rem;border-radius:10px;text-decoration:none;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:all 0.3s}
+        .m-bb{background:var(--airbnb);color:white}
+        .m-bb:hover{background:#e8494e}
+        .m-bb img{width:14px;height:14px;border-radius:2px}
+        .m-bw{background:transparent;border:1px solid var(--gb);color:var(--white)}
+        .m-bw:hover{border-color:#25D366;color:#25D366}
+        .m-bw svg{width:12px;height:12px;fill:currentColor}
 
-        .splash-title {
-            font-size: clamp(4rem, 10vw, 8rem);
-            line-height: 0.95;
-            font-style: italic;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: fadeUp 1s ease 0.6s forwards;
-        }
+        /* Lightbox */
+        .lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.95);align-items:center;justify-content:center}
+        .lb.on{display:flex}
+        .lb img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px}
+        .lb-x{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:white;font-size:1.2rem;cursor:pointer;border-radius:50%}
+        .lb-n{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.4);color:white;font-size:1.1rem;cursor:pointer;border-radius:50%}
+        .lb-p{left:1.5rem}.lb-nx{right:1.5rem}
+        .lb-t{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,0.5)}
 
-        .splash-tagline {
-            font-size: clamp(0.85rem, 1.5vw, 1.1rem);
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--gray);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s ease 1s forwards;
-        }
-        .splash-tagline span {
-            color: var(--gold);
-        }
-
-        /* Airbnb badge */
-        .airbnb-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50px;
-            padding: 0.6rem 1.5rem 0.6rem 0.6rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s ease 1.2s forwards;
-            text-decoration: none;
-            color: var(--white);
-            transition: all 0.3s;
-        }
-        .airbnb-badge:hover {
-            background: rgba(255,255,255,0.12);
-            border-color: rgba(255,90,95,0.4);
-            transform: translateY(-2px);
-        }
-        .airbnb-badge-logo {
-            width: 36px;
-            height: 36px;
-            background: var(--airbnb);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .airbnb-badge-logo svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-        .airbnb-badge-text {
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-        }
-        .airbnb-badge-text strong {
-            color: var(--gold);
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-            opacity: 0;
-            animation: fadeUp 0.6s ease 1.6s forwards;
-        }
-        .scroll-indicator span {
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gray);
-        }
-        .scroll-line {
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scaleY(1); }
-            50% { opacity: 0.4; transform: scaleY(0.6); }
-        }
-
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== SCREEN 2 — SPLIT ASYMMETRIC "L'EXPERIENCE" ===== */
-        .experience {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            scroll-snap-align: start;
-            position: relative;
-        }
-
-        .exp-image-side {
-            position: relative;
-            overflow: hidden;
-        }
-        .exp-image-side img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.1s linear;
-        }
-        .exp-image-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, transparent 60%, var(--black) 100%);
-        }
-
-        .exp-text-side {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 4rem 4rem 3rem;
-            position: relative;
-        }
-
-        .exp-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-        }
-
-        .exp-title {
-            font-size: clamp(2.5rem, 4vw, 3.5rem);
-            line-height: 1.15;
-            margin-bottom: 2rem;
-        }
-        .exp-title em {
-            font-style: italic;
-            color: var(--gold);
-        }
-
-        .exp-description {
-            font-size: 1rem;
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            max-width: 440px;
-        }
-
-        /* Floating pills */
-        .pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-        .pill {
-            padding: 0.5rem 1.25rem;
-            border: 1px solid var(--gold);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            letter-spacing: 0.08em;
-            color: var(--gold);
-            background: rgba(212,175,55,0.06);
-            transition: all 0.3s;
-            cursor: default;
-        }
-        .pill:hover {
-            background: var(--gold);
-            color: var(--black);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(212,175,55,0.25);
-        }
-
-        /* Léa host card */
-        .host-card {
-            margin-top: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.5rem;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px;
-            max-width: 320px;
-        }
-        .host-card img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .host-card-info {
-            font-size: 0.85rem;
-        }
-        .host-card-info strong {
-            display: block;
-            font-weight: 500;
-        }
-        .host-card-info span {
-            color: var(--gray);
-            font-size: 0.75rem;
-        }
-
-        /* ===== SCREEN 3 — GALLERY SNAP SCROLL ===== */
-        .gallery-section {
-            min-height: 100vh;
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 0;
-            position: relative;
-        }
-
-        .gallery-header {
-            padding: 0 4rem;
-            margin-bottom: 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-        .gallery-title {
-            font-size: clamp(2rem, 3.5vw, 3rem);
-            font-style: italic;
-        }
-
-        .gallery-nav {
-            display: flex;
-            gap: 0.5rem;
-        }
-        .gallery-nav button {
-            width: 50px;
-            height: 50px;
-            border: 1px solid var(--gray-dark);
-            background: transparent;
-            color: var(--white);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 50%;
-        }
-        .gallery-nav button:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            background: rgba(212,175,55,0.08);
-        }
-
-        .gallery-track {
-            display: flex;
-            gap: 1.5rem;
-            padding: 0 4rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        .gallery-track::-webkit-scrollbar { display: none; }
-
-        .gallery-item {
-            flex: 0 0 80vw;
-            max-width: 1100px;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            border-radius: 12px;
-            position: relative;
-            scroll-snap-align: center;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.25, 0, 0.25, 1);
-        }
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        .gallery-item-name {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 3rem 2.5rem 2rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-style: italic;
-            color: rgba(255,255,255,0.5);
-            pointer-events: none;
-        }
-
-        /* ===== SCREEN 4 — BOOKING + REVIEWS ===== */
-        .booking-section {
-            min-height: 100vh;
-            scroll-snap-align: start;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Blurred background image */
-        .booking-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-        .booking-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(30px) brightness(0.3);
-            transform: scale(1.1);
-        }
-
-        .booking-wrapper {
-            position: relative;
-            z-index: 2;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 5rem 3rem;
-            display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .booking-left {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-
-        .booking-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-style: italic;
-        }
-        .booking-subtitle {
-            color: var(--gray);
-            margin-top: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        /* Calendar glass card */
-        .cal-card {
-            background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(40px);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 2rem;
-        }
-
-        .cal-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .cal-nav button {
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: transparent;
-            color: var(--white);
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            border-radius: 50%;
-        }
-        .cal-nav button:hover:not(:disabled) {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-        .cal-nav button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .calendars {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-        .cal {
-            padding: 0.5rem;
-        }
-        .cal-month {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-        .cal-week {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-        .cal-week span {
-            font-size: 0.6rem;
-            color: var(--gray-dark);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .cal-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 2px;
-        }
-        .day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.82rem;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: var(--gray);
-        }
-        .day:hover:not(.off):not(.blocked) {
-            background: var(--gold);
-            color: var(--black);
-        }
-        .day.off { color: var(--gray-dark); cursor: default; }
-        .day.blocked {
-            color: var(--gray-dark);
-            text-decoration: line-through;
-            cursor: not-allowed;
-        }
-        .day.today {
-            border: 1px solid var(--gold);
-            color: var(--gold);
-        }
-        .day.start, .day.end {
-            background: var(--gold);
-            color: var(--black);
-            font-weight: 500;
-        }
-        .day.range {
-            background: rgba(212,175,55,0.2);
-            color: var(--white);
-            border-radius: 0;
-        }
-
-        /* Price panel — glass */
-        .price-panel {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(40px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            position: sticky;
-            top: 2rem;
-        }
-
-        .price-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
-        .price-amount {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 0.25rem;
-            transition: all 0.4s;
-        }
-        .price-amount span {
-            font-size: 1.3rem;
-            color: var(--gray);
-        }
-        .price-night {
-            color: var(--gray);
-            font-size: 0.85rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .price-dates {
-            margin-bottom: 1.5rem;
-        }
-        .price-date-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.85rem;
-        }
-        .price-date-row span:first-child {
-            color: var(--gray);
-        }
-
-        /* Book button with Airbnb logo */
-        .btn-book {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            width: 100%;
-            padding: 1rem;
-            background: var(--airbnb);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-size: 0.78rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 500;
-            border-radius: 12px;
-            transition: all 0.3s;
-            margin-bottom: 0.75rem;
-        }
-        .btn-book:hover {
-            background: #e8494e;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255,90,95,0.35);
-        }
-        .btn-book svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
-        }
-
-        .btn-whatsapp {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            padding: 1rem;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.12);
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.78rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            border-radius: 12px;
-            transition: all 0.3s;
-        }
-        .btn-whatsapp:hover {
-            border-color: #25D366;
-            color: #25D366;
-            background: rgba(37,211,102,0.06);
-        }
-        .btn-whatsapp svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-
-        /* Reviews horizontal mini-cards */
-        .reviews-strip {
-            padding: 0 3rem;
-        }
-        .reviews-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .reviews-title {
-            font-size: 1.5rem;
-            font-style: italic;
-        }
-        .reviews-score {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--gold);
-            font-size: 0.9rem;
-        }
-
-        .reviews-scroll {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            padding-bottom: 1rem;
-            scrollbar-width: none;
-        }
-        .reviews-scroll::-webkit-scrollbar { display: none; }
-
-        .review-mini {
-            flex: 0 0 300px;
-            background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s;
-        }
-        .review-mini:hover {
-            border-color: rgba(212,175,55,0.3);
-            transform: translateY(-3px);
-        }
-        .review-mini-stars {
-            color: var(--gold);
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.75rem;
-        }
-        .review-mini-text {
-            font-size: 0.85rem;
-            color: var(--gray);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-        .review-mini-author {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .review-mini-avatar {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--gold), #b8963a);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 0.85rem;
-            color: var(--black);
-        }
-        .review-mini-name {
-            font-size: 0.8rem;
-        }
-        .review-mini-date {
-            font-size: 0.65rem;
-            color: var(--gray-dark);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            padding: 3rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .footer-flower {
-            width: 28px;
-            height: 28px;
-        }
-        .footer-brand-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-        }
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        .footer-link {
-            color: var(--gray);
-            text-decoration: none;
-            font-size: 0.8rem;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .footer-link:hover { color: var(--gold); }
-        .footer-link svg { width: 16px; height: 16px; }
-        .footer-airbnb-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--airbnb);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .footer-airbnb-icon svg {
-            width: 14px;
-            height: 14px;
-            fill: white;
-        }
-        .footer-copy {
-            color: var(--gray-dark);
-            font-size: 0.7rem;
-        }
-
-        /* ===== WHATSAPP FLOAT ===== */
-        .wa-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 56px;
-            height: 56px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 90;
-            transition: all 0.3s;
-            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-            text-decoration: none;
-        }
-        .wa-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(37,211,102,0.5);
-        }
-        .wa-float svg {
-            width: 28px;
-            height: 28px;
-            fill: white;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .experience {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-            .exp-image-side {
-                height: 50vh;
-            }
-            .exp-image-overlay {
-                background: linear-gradient(to bottom, transparent 50%, var(--black) 100%);
-            }
-            .exp-text-side {
-                padding: 3rem 2rem;
-            }
-            .booking-wrapper {
-                grid-template-columns: 1fr;
-                padding: 4rem 2rem;
-            }
-            .price-panel { position: static; }
-            .gallery-item { flex: 0 0 85vw; }
-        }
-
-        @media (max-width: 768px) {
-            html { scroll-snap-type: none; }
-
-            .splash-flower { width: 90px; height: 90px; }
-            .splash-title { font-size: clamp(3rem, 12vw, 5rem); }
-
-            .experience { min-height: auto; }
-            .exp-image-side { height: 40vh; }
-            .exp-text-side { padding: 2rem 1.5rem; }
-            .pills { gap: 0.5rem; }
-            .pill { padding: 0.4rem 1rem; font-size: 0.7rem; }
-            .host-card { max-width: 100%; }
-
-            .gallery-section {
-                min-height: auto;
-                padding: 3rem 0;
-            }
-            .gallery-header { padding: 0 1.5rem; }
-            .gallery-track { padding: 0 1.5rem; gap: 1rem; }
-            .gallery-item {
-                flex: 0 0 85vw;
-                aspect-ratio: 4/5;
-            }
-            .gallery-item-name { font-size: 1.5rem; }
-
-            .booking-wrapper { padding: 3rem 1.5rem; }
-            .calendars { grid-template-columns: 1fr; }
-            .reviews-strip { padding: 0 1.5rem; }
-            .review-mini { flex: 0 0 260px; }
-
-            .footer { padding: 2rem 1.5rem; }
-            .footer-inner {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
-            }
-            .footer-links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+        @media(max-width:768px){
+            html,body{overflow:auto;height:auto}
+            .page{height:auto;min-height:100vh}
+            .hdr{padding:0.6rem 1rem}
+            .logo-svg{width:120px}
+            .mn{grid-template-columns:1fr;padding:0.5rem 1rem;overflow:visible}
+            .col-l,.col-r{overflow:visible}
+            .pg{min-height:220px;flex:none}
+            .ft{padding:0.35rem 1rem}
+            .ab{display:none}
+            .m-cg{grid-template-columns:1fr}
+            .m-btns{flex-direction:column}
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
+<div class="bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+</div>
 
-    <!-- ========== SCREEN 1 — SPLASH ========== -->
-    <section class="splash" id="splash">
-        <div class="splash-bg">
-            <img src="01.jpg" alt="À la Folie - Appartement Paris">
-            <div class="splash-overlay"></div>
-        </div>
-        <div class="splash-content">
-            <!-- Big animated marguerite -->
-            <svg class="splash-flower" viewBox="-25 -25 50 50">
-                <defs>
-                    <linearGradient id="petal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#ff4d6a">
-                            <animate attributeName="stop-color" values="#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a" dur="8s" repeatCount="indefinite"/>
-                        </stop>
-                        <stop offset="100%" style="stop-color:#ff8c42">
-                            <animate attributeName="stop-color" values="#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42" dur="8s" repeatCount="indefinite"/>
-                        </stop>
-                    </linearGradient>
-                </defs>
-                <g class="flower-spin">
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-12" rx="4.5" ry="10"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(45)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(90)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(135)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(180)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(225)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(270)"/>
-                    <ellipse fill="url(#petal-grad)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(315)"/>
-                </g>
-                <circle fill="#ffd93d" cx="0" cy="0" r="6"/>
-            </svg>
-
-            <h1 class="splash-title">À la Folie</h1>
-            <p class="splash-tagline">Jacuzzi privatif <span>·</span> Home cinéma <span>·</span> Paris 11e</p>
-
-            <!-- Airbnb badge -->
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="airbnb-badge">
-                <span class="airbnb-badge-logo">
-                    <!-- Airbnb Bélo icon -->
-                    <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.7 17.3c-.3.6-.8 1-1.4 1.2-.2.1-.5.1-.7.1-.3 0-.7-.1-1.1-.3-.5-.3-1-.7-1.6-1.3-.7-.7-1.4-1.6-2.1-2.7-.1-.2-.2-.3-.3-.5l-.5.8c-.5.9-1 1.6-1.5 2.1-.4.4-.8.7-1.2.9-.3.1-.6.2-.9.2-.3 0-.5 0-.8-.1-.6-.2-1.1-.7-1.4-1.2-.3-.5-.4-1.1-.4-1.8 0-1 .4-2.2 1.1-3.5.3-.5.6-1 .9-1.5.4-.5.7-1 1.1-1.4.8-.9 1.6-1.4 2.4-1.4.5 0 .9.2 1.3.5l.1.1.1-.1c.4-.3.8-.5 1.3-.5.8 0 1.6.5 2.4 1.4.4.4.8.9 1.1 1.4.3.5.6 1 .9 1.5.7 1.3 1.1 2.5 1.1 3.5 0 .7-.1 1.3-.4 1.8zM12 10.6c-.5.8-1 1.5-1.3 2.2-.4.7-.6 1.4-.6 1.9 0 .3 0 .5.1.7.1.2.2.3.4.4.1 0 .2.1.3.1.2 0 .4-.1.7-.3.3-.2.6-.6 1-1.1l.5-.8c-.4-.7-.7-1.4-1.1-2.1l-.2-.3.2-.3c.3-.6.7-1.2 1.1-1.8-.2-.2-.5-.3-.7-.3-.3 0-.7.3-1.2.9-.2.2-.4.5-.6.8l.4.7zm2.5 3.8c.1.2.2.3.4.4.1 0 .2.1.3.1.2 0 .4-.1.7-.3.3-.2.6-.6 1-1.1.3-.5.6-1 .8-1.5.3-.6.5-1.2.5-1.7 0-.3 0-.6-.1-.8-.1-.2-.2-.4-.4-.5-.1-.1-.3-.1-.4-.1-.3 0-.6.2-1 .5-.4.3-.8.8-1.2 1.3-.4.5-.7 1.1-1.1 1.7l-.5.8c.4.5.7 1 1 1.2z"/></svg>
-                </span>
-                <span class="airbnb-badge-text">Superhost <strong>★ 5.0</strong></span>
-            </a>
-        </div>
-
-        <div class="scroll-indicator">
-            <span>Découvrir</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- ========== SCREEN 2 — EXPERIENCE (SPLIT) ========== -->
-    <section class="experience" id="experience">
-        <div class="exp-image-side">
-            <img src="02.jpg" alt="Jacuzzi privatif" id="parallaxImg">
-            <div class="exp-image-overlay"></div>
-        </div>
-        <div class="exp-text-side">
-            <span class="exp-label">L'expérience</span>
-            <h2 class="exp-title">Un cocon pensé<br>pour <em>l'évasion</em></h2>
-            <p class="exp-description">Chaque détail a été pensé pour créer une atmosphère unique. Du jacuzzi privatif au home cinéma, en passant par la literie haut de gamme, tout est là pour faire de votre séjour un moment inoubliable.</p>
-            <div class="pills">
-                <span class="pill">Jacuzzi privatif</span>
-                <span class="pill">Home cinéma 4K</span>
-                <span class="pill">60m²</span>
-                <span class="pill">King-size</span>
-                <span class="pill">WC japonais</span>
-                <span class="pill">WiFi fibre</span>
-                <span class="pill">Netflix</span>
-                <span class="pill">Nespresso</span>
-                <span class="pill">Climatisation</span>
-            </div>
-            <div class="host-card">
-                <img src="lea.png" alt="Léa">
-                <div class="host-card-info">
-                    <strong>Léa, votre hôte</strong>
-                    <span>Superhost · Répond en -1h</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== SCREEN 3 — GALLERY SNAP ========== -->
-    <section class="gallery-section" id="gallery">
-        <div class="gallery-header">
-            <h2 class="gallery-title">Visite guidée</h2>
-            <div class="gallery-nav">
-                <button onclick="galleryPrev()" aria-label="Photo précédente">←</button>
-                <button onclick="galleryNext()" aria-label="Photo suivante">→</button>
-            </div>
-        </div>
-        <div class="gallery-track" id="galleryTrack">
-            <div class="gallery-item">
-                <img src="01.jpg" alt="Salon">
-                <div class="gallery-item-name">Le Salon</div>
-            </div>
-            <div class="gallery-item">
-                <img src="02.jpg" alt="Jacuzzi">
-                <div class="gallery-item-name">Le Jacuzzi</div>
-            </div>
-            <div class="gallery-item">
-                <img src="03.jpg" alt="Chambre">
-                <div class="gallery-item-name">La Chambre</div>
-            </div>
-            <div class="gallery-item">
-                <img src="04.jpg" alt="Salle de bain">
-                <div class="gallery-item-name">Salle de Bain</div>
-            </div>
-            <div class="gallery-item">
-                <img src="07.jpg" alt="Home Cinéma">
-                <div class="gallery-item-name">Home Cinéma</div>
-            </div>
-            <div class="gallery-item">
-                <img src="08.jpg" alt="Cuisine">
-                <div class="gallery-item-name">La Cuisine</div>
-            </div>
-            <div class="gallery-item">
-                <img src="09.jpg" alt="Détails">
-                <div class="gallery-item-name">Les Détails</div>
-            </div>
-            <div class="gallery-item">
-                <img src="11.jpg" alt="Ambiance">
-                <div class="gallery-item-name">L'Ambiance</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== SCREEN 4 — BOOKING + REVIEWS ========== -->
-    <section class="booking-section" id="booking">
-        <div class="booking-bg">
-            <img src="03.jpg" alt="">
-        </div>
-        <div class="booking-wrapper">
-            <div class="booking-left">
-                <div>
-                    <h2 class="booking-title">Réservez votre séjour</h2>
-                    <p class="booking-subtitle">Sélectionnez vos dates pour voir les disponibilités</p>
-                </div>
-                <div class="cal-card">
-                    <div class="cal-nav">
-                        <button id="prevBtn" onclick="prevMonth()" aria-label="Mois précédent">←</button>
-                        <button id="nextBtn" onclick="nextMonth()" aria-label="Mois suivant">→</button>
-                    </div>
-                    <div class="calendars">
-                        <div class="cal" id="cal1"></div>
-                        <div class="cal" id="cal2"></div>
-                    </div>
-                </div>
-
-                <!-- Reviews strip -->
-                <div class="reviews-strip">
-                    <div class="reviews-header">
-                        <h3 class="reviews-title">Avis</h3>
-                        <div class="reviews-score">★★★★★ <span>5.0</span></div>
-                    </div>
-                    <div class="reviews-scroll">
-                        <div class="review-mini">
-                            <div class="review-mini-stars">★★★★★</div>
-                            <p class="review-mini-text">"Séjour exceptionnel ! L'appartement est magnifique, très calme. Le jacuzzi est un vrai plus."</p>
-                            <div class="review-mini-author">
-                                <div class="review-mini-avatar">O</div>
-                                <div>
-                                    <div class="review-mini-name">Olivier</div>
-                                    <div class="review-mini-date">Janvier 2026</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="review-mini">
-                            <div class="review-mini-stars">★★★★★</div>
-                            <p class="review-mini-text">"Tout était parfait. Literie incroyable, propreté impeccable. Léa est une hôte formidable."</p>
-                            <div class="review-mini-author">
-                                <div class="review-mini-avatar">N</div>
-                                <div>
-                                    <div class="review-mini-name">Noah</div>
-                                    <div class="review-mini-date">Décembre 2025</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="review-mini">
-                            <div class="review-mini-stars">★★★★★</div>
-                            <p class="review-mini-text">"Une vraie parenthèse de luxe. Le home cinéma et le jacuzzi rendent ce lieu unique."</p>
-                            <div class="review-mini-author">
-                                <div class="review-mini-avatar">E</div>
-                                <div>
-                                    <div class="review-mini-name">Emily</div>
-                                    <div class="review-mini-date">Novembre 2025</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="review-mini">
-                            <div class="review-mini-stars">★★★★★</div>
-                            <p class="review-mini-text">"On s'est sentis comme chez nous. Merci Léa pour l'accueil et les petites attentions !"</p>
-                            <div class="review-mini-author">
-                                <div class="review-mini-avatar">S</div>
-                                <div>
-                                    <div class="review-mini-name">Sophie</div>
-                                    <div class="review-mini-date">Octobre 2025</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Price Panel -->
-            <div class="price-panel">
-                <div id="priceContent">
-                    <span class="price-label">À partir de</span>
-                    <div class="price-amount">139€ <span>/ nuit</span></div>
-                    <p class="price-night">Sélectionnez vos dates</p>
-                </div>
-                <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn-book" id="bookBtn">
-                    <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.7 17.3c-.3.6-.8 1-1.4 1.2-.2.1-.5.1-.7.1-.3 0-.7-.1-1.1-.3-.5-.3-1-.7-1.6-1.3-.7-.7-1.4-1.6-2.1-2.7-.1-.2-.2-.3-.3-.5l-.5.8c-.5.9-1 1.6-1.5 2.1-.4.4-.8.7-1.2.9-.3.1-.6.2-.9.2-.3 0-.5 0-.8-.1-.6-.2-1.1-.7-1.4-1.2-.3-.5-.4-1.1-.4-1.8 0-1 .4-2.2 1.1-3.5.3-.5.6-1 .9-1.5.4-.5.7-1 1.1-1.4.8-.9 1.6-1.4 2.4-1.4.5 0 .9.2 1.3.5l.1.1.1-.1c.4-.3.8-.5 1.3-.5.8 0 1.6.5 2.4 1.4.4.4.8.9 1.1 1.4.3.5.6 1 .9 1.5.7 1.3 1.1 2.5 1.1 3.5 0 .7-.1 1.3-.4 1.8zM12 10.6c-.5.8-1 1.5-1.3 2.2-.4.7-.6 1.4-.6 1.9 0 .3 0 .5.1.7.1.2.2.3.4.4.1 0 .2.1.3.1.2 0 .4-.1.7-.3.3-.2.6-.6 1-1.1l.5-.8c-.4-.7-.7-1.4-1.1-2.1l-.2-.3.2-.3c.3-.6.7-1.2 1.1-1.8-.2-.2-.5-.3-.7-.3-.3 0-.7.3-1.2.9-.2.2-.4.5-.6.8l.4.7zm2.5 3.8c.1.2.2.3.4.4.1 0 .2.1.3.1.2 0 .4-.1.7-.3.3-.2.6-.6 1-1.1.3-.5.6-1 .8-1.5.3-.6.5-1.2.5-1.7 0-.3 0-.6-.1-.8-.1-.2-.2-.4-.4-.5-.1-.1-.3-.1-.4-.1-.3 0-.6.2-1 .5-.4.3-.8.8-1.2 1.3-.4.5-.7 1.1-1.1 1.7l-.5.8c.4.5.7 1 1 1.2z"/></svg>
-                    Réserver sur Airbnb
-                </a>
-                <a href="https://wa.me/33756864414" target="_blank" class="btn-whatsapp" id="waBtn">
-                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    Contacter Léa
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <svg class="footer-flower" viewBox="-25 -25 50 50">
-                    <defs>
-                        <linearGradient id="petal-grad-f" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#ff4d6a">
-                                <animate attributeName="stop-color" values="#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a" dur="8s" repeatCount="indefinite"/>
-                            </stop>
-                            <stop offset="100%" style="stop-color:#ff8c42">
-                                <animate attributeName="stop-color" values="#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42" dur="8s" repeatCount="indefinite"/>
-                            </stop>
-                        </linearGradient>
-                    </defs>
-                    <g style="animation: spin 25s linear infinite; transform-origin: center;">
-                        <ellipse fill="url(#petal-grad-f)" cx="0" cy="-12" rx="4.5" ry="10"/>
-                        <ellipse fill="url(#petal-grad-f)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(45)"/>
-                        <ellipse fill="url(#petal-grad-f)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(90)"/>
-                        <ellipse fill="url(#petal-grad-f)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(135)"/>
-                        <ellipse fill="url(#petal-grad-f)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(180)"/>
-                        <ellipse fill="url(#petal-grad-f)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(225)"/>
-                        <ellipse fill="url(#petal-grad-f)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(270)"/>
-                        <ellipse fill="url(#petal-grad-f)" cx="0" cy="-12" rx="4.5" ry="10" transform="rotate(315)"/>
-                    </g>
-                    <circle fill="#ffd93d" cx="0" cy="0" r="6"/>
-                </svg>
-                <span class="footer-brand-text">À la Folie</span>
-            </div>
-            <div class="footer-links">
-                <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="footer-link">
-                    <span class="footer-airbnb-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.7 17.3c-.3.6-.8 1-1.4 1.2-.2.1-.5.1-.7.1-.3 0-.7-.1-1.1-.3-.5-.3-1-.7-1.6-1.3-.7-.7-1.4-1.6-2.1-2.7-.1-.2-.2-.3-.3-.5l-.5.8c-.5.9-1 1.6-1.5 2.1-.4.4-.8.7-1.2.9-.3.1-.6.2-.9.2-.3 0-.5 0-.8-.1-.6-.2-1.1-.7-1.4-1.2-.3-.5-.4-1.1-.4-1.8 0-1 .4-2.2 1.1-3.5.3-.5.6-1 .9-1.5.4-.5.7-1 1.1-1.4.8-.9 1.6-1.4 2.4-1.4.5 0 .9.2 1.3.5l.1.1.1-.1c.4-.3.8-.5 1.3-.5.8 0 1.6.5 2.4 1.4.4.4.8.9 1.1 1.4.3.5.6 1 .9 1.5.7 1.3 1.1 2.5 1.1 3.5 0 .7-.1 1.3-.4 1.8zM12 10.6c-.5.8-1 1.5-1.3 2.2-.4.7-.6 1.4-.6 1.9 0 .3 0 .5.1.7.1.2.2.3.4.4.1 0 .2.1.3.1.2 0 .4-.1.7-.3.3-.2.6-.6 1-1.1l.5-.8c-.4-.7-.7-1.4-1.1-2.1l-.2-.3.2-.3c.3-.6.7-1.2 1.1-1.8-.2-.2-.5-.3-.7-.3-.3 0-.7.3-1.2.9-.2.2-.4.5-.6.8l.4.7zm2.5 3.8c.1.2.2.3.4.4.1 0 .2.1.3.1.2 0 .4-.1.7-.3.3-.2.6-.6 1-1.1.3-.5.6-1 .8-1.5.3-.6.5-1.2.5-1.7 0-.3 0-.6-.1-.8-.1-.2-.2-.4-.4-.5-.1-.1-.3-.1-.4-.1-.3 0-.6.2-1 .5-.4.3-.8.8-1.2 1.3-.4.5-.7 1.1-1.1 1.7l-.5.8c.4.5.7 1 1 1.2z"/></svg>
-                    </span>
-                    Airbnb
-                </a>
-                <a href="https://wa.me/33756864414" target="_blank" class="footer-link">WhatsApp</a>
-                <a href="tel:+33756864414" class="footer-link">+33 7 56 86 44 14</a>
-            </div>
-            <span class="footer-copy">&copy; 2026 À la Folie &middot; Paris</span>
-        </div>
-    </footer>
-
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/33756864414" target="_blank" class="wa-float">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
-
-    <script>
-        // ===== CUSTOM CURSOR =====
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-        });
-        document.querySelectorAll('a, button, .pill, .gallery-item').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // ===== SPLASH LOADED =====
-        window.addEventListener('load', () => {
-            document.getElementById('splash').classList.add('loaded');
-        });
-
-        // ===== PARALLAX on experience image =====
-        const parallaxImg = document.getElementById('parallaxImg');
-        if (parallaxImg && window.innerWidth > 768) {
-            window.addEventListener('scroll', () => {
-                const rect = parallaxImg.closest('.experience').getBoundingClientRect();
-                const progress = -rect.top / window.innerHeight;
-                const translate = Math.max(-15, Math.min(15, progress * 30 - 15));
-                parallaxImg.style.transform = `translateY(${translate}%)`;
-            }, { passive: true });
-        }
-
-        // ===== GALLERY — snap scroll with arrows =====
-        const track = document.getElementById('galleryTrack');
-        function galleryNext() {
-            track.scrollBy({ left: track.offsetWidth * 0.85, behavior: 'smooth' });
-        }
-        function galleryPrev() {
-            track.scrollBy({ left: -track.offsetWidth * 0.85, behavior: 'smooth' });
-        }
-
-        // ===== CALENDAR (kept intact) =====
-        const API = 'https://xhpsdbmajanmoztijbnx.supabase.co/functions/v1/folie-pricing';
-        const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ';
-        const LISTING = '1503490402342628075';
-        const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-        const DAYS = ['Lu','Ma','Me','Je','Ve','Sa','Di'];
-
-        let m1 = new Date(), m2 = new Date(m1.getFullYear(), m1.getMonth()+1, 1);
-        let start = null, end = null, blocked = [];
-
-        async function fetchBlocked() {
-            try {
-                const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${KEY}` }, body: JSON.stringify({ get_calendar: true }) });
-                const d = await r.json();
-                if (d.blocked) blocked = d.blocked;
-            } catch(e) {}
-            render();
-        }
-
-        function isBlocked(date) {
-            const s = date.toISOString().split('T')[0];
-            return blocked.some(b => s >= b.start && s < b.end);
-        }
-
-        function render() {
-            renderCal('cal1', m1);
-            renderCal('cal2', m2);
-            const today = new Date(); today.setHours(0,0,0,0);
-            document.getElementById('prevBtn').disabled = m1 <= today;
-        }
-
-        function renderCal(id, date) {
-            const el = document.getElementById(id);
-            const y = date.getFullYear(), m = date.getMonth();
-            const today = new Date(); today.setHours(0,0,0,0);
-            const first = new Date(y, m, 1), last = new Date(y, m+1, 0);
-            let sd = first.getDay() - 1; if (sd < 0) sd = 6;
-
-            let html = `<div class="cal-month">${MONTHS[m]} ${y}</div><div class="cal-week">${DAYS.map(d=>`<span>${d}</span>`).join('')}</div><div class="cal-days">`;
-            for (let i = 0; i < sd; i++) html += `<div class="day off"></div>`;
-            for (let d = 1; d <= last.getDate(); d++) {
-                const curr = new Date(y, m, d);
-                const ds = curr.toISOString().split('T')[0];
-                const past = curr < today, blk = isBlocked(curr), isToday = curr.getTime() === today.getTime();
-                let cls = 'day';
-                if (past) cls += ' off';
-                else if (blk) cls += ' blocked';
-                if (isToday) cls += ' today';
-                if (start && curr.getTime() === start.getTime()) cls += ' start';
-                if (end && curr.getTime() === end.getTime()) cls += ' end';
-                if (start && end && curr > start && curr < end) cls += ' range';
-                const click = !past && !blk ? `onclick="pick('${ds}')"` : '';
-                html += `<div class="${cls}" ${click}>${d}</div>`;
-            }
-            html += '</div>';
-            el.innerHTML = html;
-        }
-
-        function pick(ds) {
-            const d = new Date(ds);
-            if (!start || (start && end)) { start = d; end = null; }
-            else if (d > start) { end = d; fetchPrice(); }
-            else { start = d; end = null; }
-            render();
-        }
-
-        async function fetchPrice() {
-            const ci = start.toISOString().split('T')[0], co = end.toISOString().split('T')[0];
-            const n = Math.round((end - start) / 864e5);
-            document.getElementById('priceContent').innerHTML = `<span class="price-label">Chargement...</span>`;
-            try {
-                const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${KEY}` }, body: JSON.stringify({ check_in: ci, check_out: co, guests: 2 }) });
-                const d = await r.json();
-                if (d.available) {
-                    document.getElementById('priceContent').innerHTML = `
-                        <span class="price-label">Total pour ${n} nuit${n>1?'s':''}</span>
-                        <div class="price-amount">${d.pricing?.total || '—'}€</div>
-                        <p class="price-night">${d.pricing?.per_night_avg || '—'}€ par nuit en moyenne</p>
-                        <div class="price-dates">
-                            <div class="price-date-row"><span>Arrivée</span><span>${start.toLocaleDateString('fr-FR')}</span></div>
-                            <div class="price-date-row"><span>Départ</span><span>${end.toLocaleDateString('fr-FR')}</span></div>
-                        </div>
-                    `;
-                    document.getElementById('bookBtn').href = `https://www.airbnb.fr/rooms/${LISTING}?check_in=${ci}&check_out=${co}&guests=2`;
-                    document.getElementById('waBtn').href = `https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${start.toLocaleDateString('fr-FR')} au ${end.toLocaleDateString('fr-FR')}`)}`;
-                } else {
-                    document.getElementById('priceContent').innerHTML = `<span class="price-label" style="color:#ff6b6b">Non disponible</span><p class="price-night">Ces dates sont déjà réservées</p>`;
+<div class="page">
+    <header class="hdr">
+        <!-- LOGO: copie exacte de logo.svg -->
+        <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 45">
+            <defs>
+                <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#ff4d6a">
+                        <animate attributeName="stop-color" values="#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="50%" style="stop-color:#6bcb77">
+                        <animate attributeName="stop-color" values="#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" style="stop-color:#4d96ff">
+                        <animate attributeName="stop-color" values="#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                </linearGradient>
+            </defs>
+            <style>
+                @keyframes spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
                 }
-            } catch(e) {
-                document.getElementById('priceContent').innerHTML = `<span class="price-label">Erreur</span>`;
-            }
-        }
+                .logo-text {
+                    font-family: 'Cormorant Garamond', Georgia, serif;
+                    font-size: 28px;
+                    font-weight: 500;
+                    font-style: italic;
+                    fill: url(#text-grad);
+                    letter-spacing: 1px;
+                }
+                .flower {
+                    animation: spin 20s linear infinite;
+                }
+                .petal {
+                    fill: #ffffff;
+                }
+                .center {
+                    fill: #ffd93d;
+                }
+            </style>
+            <text x="10" y="32" class="logo-text">À LA</text>
+            <g transform="translate(95, 22)">
+                <g class="flower">
+                    <g transform="rotate(0)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(45)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(90)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(135)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(180)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(225)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(270)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(315)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                </g>
+                <circle class="center" cx="0" cy="0" r="5"/>
+            </g>
+            <text x="130" y="32" class="logo-text">FOLIE</text>
+        </svg>
+        <div class="hdr-r">
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="ab"><span class="ab-i"><img src="https://cdn-icons-png.freepik.com/512/4494/4494647.png" alt="Airbnb"></span>Superhost <strong>★ 5.0</strong></a>
+            <button class="btn-cal" onclick="openModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Réserver</button>
+        </div>
+    </header>
 
-        function prevMonth() { m1.setMonth(m1.getMonth()-1); m2.setMonth(m2.getMonth()-1); render(); }
-        function nextMonth() { m1.setMonth(m1.getMonth()+1); m2.setMonth(m2.getMonth()+1); render(); }
+    <div class="mn">
+        <div class="col-l">
+            <div class="lea">
+                <img src="lea.png" alt="Léa" class="lea-pic">
+                <div class="lea-info">
+                    <div class="lea-top"><strong>Léa</strong><span class="lea-tag">Superhost</span></div>
+                    <p class="lea-txt">Bienvenue <b>À la Folie</b>, notre appartement avec <b>jacuzzi privatif</b> au cœur du <b>11e arrondissement de Paris</b>. Home cinéma 4K, literie king-size, WC japonais — chaque détail est pensé pour une <b>escapade romantique</b> inoubliable.</p>
+                </div>
+            </div>
+            <div class="pp">
+                <span>Jacuzzi privatif</span><span>Home cinéma 4K</span><span>60m²</span><span>King-size</span><span>WC japonais</span><span>WiFi fibre</span><span>Netflix</span><span>Nespresso</span><span>Climatisation</span>
+            </div>
+            <div class="pg" id="photoGrid">
+                <div class="pg-big" onclick="openLb(0)"><img id="ph0" src="01.jpg" alt="Salon jacuzzi Paris"><div class="pg-lbl" id="phl0">Le Salon</div><div class="pg-c" id="phc">1 / 8</div></div>
+                <div class="pg-sm" onclick="openLb(1)"><img id="ph1" src="02.jpg" alt="Jacuzzi privatif"><div class="pg-lbl" id="phl1">Le Jacuzzi</div></div>
+                <div class="pg-sm" onclick="openLb(2)"><img id="ph2" src="03.jpg" alt="Chambre king-size"><div class="pg-lbl" id="phl2">La Chambre</div></div>
+            </div>
+        </div>
 
-        fetchBlocked();
-    </script>
+        <div class="col-r">
+            <div class="cta-card">
+                <div class="cta-price">139€ <span>/ nuit</span></div>
+                <p class="cta-sub">Jacuzzi privatif · Paris 11e</p>
+                <button class="cta-btn" onclick="openModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Voir les disponibilités</button>
+                <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="cta-airbnb"><img src="https://cdn-icons-png.freepik.com/512/4494/4494647.png" alt="">Réserver sur Airbnb</a>
+                <a href="https://wa.me/33756864414" target="_blank" class="cta-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Contacter Léa</a>
+            </div>
+            <div class="rv">
+                <p class="rv-l">★★★★★ Avis 5.0</p>
+                <div class="rv-s">
+                    <div class="rv-i on"><p class="rv-t">"Séjour exceptionnel ! L'appartement est magnifique. Le jacuzzi est un vrai plus."</p><p class="rv-a"><strong>Olivier</strong> · Jan 2026</p></div>
+                    <div class="rv-i"><p class="rv-t">"Tout était parfait. Literie incroyable, propreté impeccable. Léa est formidable."</p><p class="rv-a"><strong>Noah</strong> · Déc 2025</p></div>
+                    <div class="rv-i"><p class="rv-t">"Une vraie parenthèse de luxe. Home cinéma et jacuzzi rendent ce lieu unique."</p><p class="rv-a"><strong>Emily</strong> · Nov 2025</p></div>
+                    <div class="rv-i"><p class="rv-t">"Emplacement parfait dans le 11e. Merci Léa pour les petites attentions !"</p><p class="rv-a"><strong>Sophie</strong> · Oct 2025</p></div>
+                </div>
+                <div class="rv-d"><span class="on"></span><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="ft">
+        <div><a href="https://airbnb.fr/h/a-la-folie" target="_blank">Airbnb</a><a href="https://wa.me/33756864414" target="_blank">WhatsApp</a><a href="tel:+33756864414">07 56 86 44 14</a></div>
+        <span>&copy; 2026 À la Folie · Paris</span>
+    </footer>
+</div>
+
+<!-- CALENDAR MODAL -->
+<div class="modal" id="calModal">
+    <div class="modal-card">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <h2 class="modal-title">Réservez votre séjour</h2>
+        <p class="modal-sub">Sélectionnez vos dates pour voir les disponibilités et le prix</p>
+        <div class="m-cn"><button id="prevBtn" onclick="prevMonth()">&#8592;</button><button id="nextBtn" onclick="nextMonth()">&#8594;</button></div>
+        <div class="m-cg"><div class="cal" id="cal1"></div><div class="cal" id="cal2"></div></div>
+        <div class="m-price" id="priceContent">
+            <span class="price-label">À partir de</span>
+            <div class="price-amount">139€ <span>/ nuit</span></div>
+            <p class="price-night">Sélectionnez vos dates ci-dessus</p>
+        </div>
+        <div class="m-btns">
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="m-bb" id="bookBtn"><img src="https://cdn-icons-png.freepik.com/512/4494/4494647.png" alt="">Réserver sur Airbnb</a>
+            <a href="https://wa.me/33756864414" target="_blank" class="m-bw" id="waBtn"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Contacter Léa</a>
+        </div>
+    </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+    <button class="lb-x" onclick="closeLb()">×</button>
+    <button class="lb-n lb-p" onclick="lbP()">&#8592;</button>
+    <button class="lb-n lb-nx" onclick="lbN()">&#8594;</button>
+    <img id="lbi" src="" alt="">
+    <div class="lb-t" id="lbt"></div>
+</div>
+
+<script>
+const P=[{s:'01.jpg',n:'Le Salon'},{s:'02.jpg',n:'Le Jacuzzi'},{s:'03.jpg',n:'La Chambre'},{s:'04.jpg',n:'Salle de Bain'},{s:'07.jpg',n:'Home Cinéma'},{s:'08.jpg',n:'La Cuisine'},{s:'09.jpg',n:'Les Détails'},{s:'11.jpg',n:"L'Ambiance"}];
+let li=0;
+function openLb(i){li=i;document.getElementById('lbi').src=P[i].s;document.getElementById('lbt').textContent=P[i].n;document.getElementById('lb').classList.add('on');}
+function closeLb(){document.getElementById('lb').classList.remove('on');}
+function lbN(){openLb((li+1)%P.length);}
+function lbP(){openLb((li-1+P.length)%P.length);}
+document.getElementById('lb').onclick=e=>{if(e.target===e.currentTarget)closeLb();};
+
+function openModal(){document.getElementById('calModal').classList.add('on');}
+function closeModal(){document.getElementById('calModal').classList.remove('on');}
+document.getElementById('calModal').onclick=e=>{if(e.target===e.currentTarget)closeModal();};
+
+document.onkeydown=e=>{
+    if(document.getElementById('lb').classList.contains('on')){if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')lbN();if(e.key==='ArrowLeft')lbP();}
+    if(document.getElementById('calModal').classList.contains('on')&&e.key==='Escape')closeModal();
+};
+
+let pi=0;const sets=[[0,1,2],[1,2,3],[2,3,4],[3,4,5],[4,5,6],[5,6,7],[6,7,0],[7,0,1]];
+function rotPh(){pi=(pi+1)%sets.length;const s=sets[pi];
+['ph0','ph1','ph2'].forEach((id,i)=>{const el=document.getElementById(id);el.style.opacity='0';setTimeout(()=>{el.src=P[s[i]].s;el.style.opacity='1';},300);});
+['phl0','phl1','phl2'].forEach((id,i)=>{document.getElementById(id).textContent=P[s[i]].n;});
+document.getElementById('phc').textContent=`${s[0]+1} / ${P.length}`;
+document.querySelector('.pg-big').onclick=()=>openLb(s[0]);document.querySelectorAll('.pg-sm')[0].onclick=()=>openLb(s[1]);document.querySelectorAll('.pg-sm')[1].onclick=()=>openLb(s[2]);}
+setInterval(rotPh,3500);
+
+let ri=0;const sl=document.querySelectorAll('.rv-i'),dt=document.querySelectorAll('.rv-d span');
+setInterval(()=>{sl[ri].classList.remove('on');dt[ri].classList.remove('on');ri=(ri+1)%sl.length;sl[ri].classList.add('on');dt[ri].classList.add('on');},4000);
+
+const API='https://xhpsdbmajanmoztijbnx.supabase.co/functions/v1/folie-pricing',KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ',LISTING='1503490402342628075',MO=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],DA=['Lu','Ma','Me','Je','Ve','Sa','Di'];
+let m1=new Date(),m2=new Date(m1.getFullYear(),m1.getMonth()+1,1),start=null,end=null,blocked=[];
+async function fetchBlocked(){try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${KEY}`},body:JSON.stringify({get_calendar:true})});const d=await r.json();if(d.blocked)blocked=d.blocked;}catch(e){}render();}
+function isBlocked(d){const s=d.toISOString().split('T')[0];return blocked.some(b=>s>=b.start&&s<b.end);}
+function render(){renderCal('cal1',m1);renderCal('cal2',m2);const t=new Date();t.setHours(0,0,0,0);document.getElementById('prevBtn').disabled=m1<=t;}
+function renderCal(id,date){const el=document.getElementById(id),y=date.getFullYear(),m=date.getMonth(),t=new Date();t.setHours(0,0,0,0);const f=new Date(y,m,1),l=new Date(y,m+1,0);let sd=f.getDay()-1;if(sd<0)sd=6;let h=`<div class="cal-month">${MO[m]} ${y}</div><div class="cal-week">${DA.map(d=>`<span>${d}</span>`).join('')}</div><div class="cal-days">`;for(let i=0;i<sd;i++)h+=`<div class="day off"></div>`;for(let d=1;d<=l.getDate();d++){const c=new Date(y,m,d),ds=c.toISOString().split('T')[0],p=c<t,b=isBlocked(c),it=c.getTime()===t.getTime();let cl='day';if(p)cl+=' off';else if(b)cl+=' blocked';if(it)cl+=' today';if(start&&c.getTime()===start.getTime())cl+=' start';if(end&&c.getTime()===end.getTime())cl+=' end';if(start&&end&&c>start&&c<end)cl+=' range';h+=`<div class="${cl}" ${!p&&!b?`onclick="pick('${ds}')"`:''}>${d}</div>`;}h+='</div>';el.innerHTML=h;}
+function pick(ds){const d=new Date(ds);if(!start||(start&&end)){start=d;end=null;}else if(d>start){end=d;fetchPrice();}else{start=d;end=null;}render();}
+async function fetchPrice(){const ci=start.toISOString().split('T')[0],co=end.toISOString().split('T')[0],n=Math.round((end-start)/864e5);document.getElementById('priceContent').innerHTML=`<span class="price-label">Chargement...</span>`;try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${KEY}`},body:JSON.stringify({check_in:ci,check_out:co,guests:2})});const d=await r.json();if(d.available){document.getElementById('priceContent').innerHTML=`<span class="price-label">Total pour ${n} nuit${n>1?'s':''}</span><div class="price-amount">${d.pricing?.total||'—'}€</div><p class="price-night">${d.pricing?.per_night_avg||'—'}€ par nuit en moyenne</p><div class="price-dates"><div class="price-date-row"><span>Arrivée</span><span>${start.toLocaleDateString('fr-FR')}</span></div><div class="price-date-row"><span>Départ</span><span>${end.toLocaleDateString('fr-FR')}</span></div></div>`;document.getElementById('bookBtn').href=`https://www.airbnb.fr/rooms/${LISTING}?check_in=${ci}&check_out=${co}&guests=2`;document.getElementById('waBtn').href=`https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${start.toLocaleDateString('fr-FR')} au ${end.toLocaleDateString('fr-FR')}`)}`;} else{document.getElementById('priceContent').innerHTML=`<span class="price-label" style="color:#ff6b6b">Non disponible</span><p class="price-night">Ces dates sont déjà réservées</p>`;}}catch(e){document.getElementById('priceContent').innerHTML=`<span class="price-label">Erreur</span>`;}}
+function prevMonth(){m1.setMonth(m1.getMonth()-1);m2.setMonth(m2.getMonth()-1);render();}
+function nextMonth(){m1.setMonth(m1.getMonth()+1);m2.setMonth(m2.getMonth()+1);render();}
+fetchBlocked();
+</script>
 </body>
 </html>

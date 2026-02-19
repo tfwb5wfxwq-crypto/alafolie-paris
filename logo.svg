@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 45">
   <defs>
-    <linearGradient id="petal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#ff4d6a">
         <animate attributeName="stop-color" values="#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a" dur="8s" repeatCount="indefinite"/>
       </stop>
-      <stop offset="100%" style="stop-color:#ff8c42">
-        <animate attributeName="stop-color" values="#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42" dur="8s" repeatCount="indefinite"/>
+      <stop offset="50%" style="stop-color:#6bcb77">
+        <animate attributeName="stop-color" values="#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" style="stop-color:#4d96ff">
+        <animate attributeName="stop-color" values="#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff" dur="8s" repeatCount="indefinite"/>
       </stop>
     </linearGradient>
   </defs>
@@ -22,7 +25,7 @@
       font-size: 28px;
       font-weight: 500;
       font-style: italic;
-      fill: #ffffff;
+      fill: url(#text-grad);
       letter-spacing: 1px;
     }
 
@@ -31,7 +34,7 @@
     }
 
     .petal {
-      fill: url(#petal-grad);
+      fill: #ffffff;
     }
 
     .center {
