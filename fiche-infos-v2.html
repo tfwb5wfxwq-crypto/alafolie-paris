@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À la Folie - Infos Pratiques</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .fiche {
+            width: 794px;
+            height: 1123px;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-container svg {
+            width: 300px;
+            height: auto;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .wifi-box {
+            background: #ec407a;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .wifi-box h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .wifi-box p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 24px;
+            color: #ec407a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ec407a;
+            border-radius: 50%;
+        }
+
+        .section p, .section ul {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        .section li::before {
+            content: '•';
+            color: #ec407a;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .alert-box {
+            background: #ec407a;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .alert-box strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .footer-logo {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .footer-logo svg {
+            width: 250px;
+            height: auto;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche">
+        <div class="logo-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 45">
+                <defs>
+                    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ff4d6a">
+                            <animate attributeName="stop-color" values="#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a" dur="8s" repeatCount="indefinite"/>
+                        </stop>
+                        <stop offset="50%" style="stop-color:#6bcb77">
+                            <animate attributeName="stop-color" values="#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77" dur="8s" repeatCount="indefinite"/>
+                        </stop>
+                        <stop offset="100%" style="stop-color:#4d96ff">
+                            <animate attributeName="stop-color" values="#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff" dur="8s" repeatCount="indefinite"/>
+                        </stop>
+                    </linearGradient>
+                </defs>
+                <style>
+                    @keyframes spin {
+                        from { transform: rotate(0deg); }
+                        to { transform: rotate(360deg); }
+                    }
+                    .logo-text {
+                        font-family: 'Cormorant Garamond', Georgia, serif;
+                        font-size: 28px;
+                        font-weight: 500;
+                        font-style: italic;
+                        fill: url(#text-grad);
+                        letter-spacing: 1px;
+                    }
+                    .flower { animation: spin 20s linear infinite; }
+                    .petal { fill: #ffffff; }
+                    .center { fill: #ffd93d; }
+                </style>
+                <text x="10" y="32" class="logo-text">À LA</text>
+                <g transform="translate(95, 22)">
+                    <g class="flower">
+                        <g transform="rotate(0)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(45)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(90)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(135)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(180)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(225)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(270)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(315)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    </g>
+                    <circle class="center" cx="0" cy="0" r="5"/>
+                </g>
+                <text x="130" y="32" class="logo-text">FOLIE</text>
+            </svg>
+        </div>
+
+        <h1>INFOS PRATIQUES</h1>
+        <p class="subtitle">Merci de bien lire cette fiche avant de commencer votre séjour à la folie</p>
+
+        <div class="wifi-box">
+            <h3>📶 WiFi</h3>
+            <p><strong>Réseau :</strong> A-la-folie-WIFI<br>
+            <strong>Code :</strong> welcomealafolie</p>
+        </div>
+
+        <div class="section">
+            <h2>🔑 Accès</h2>
+            <p><strong>Vigik vert</strong> ouvre le portail extérieur (code : 42D9)<br>
+            <strong>Porte du bâtiment :</strong> La porte est lourde ⚠️ attention aux doigts<br>
+            <strong>Interphone :</strong> Folie<br>
+            ⚠️ <strong>Ne laissez jamais les clés dans la serrure intérieure</strong> → cela bloque le mécanisme</p>
+        </div>
+
+        <div class="grid-2">
+            <div class="section">
+                <h2>🍽️ Lave-Vaisselle</h2>
+                <ul>
+                    <li>Mettre 1 pastille dans le compartiment</li>
+                    <li>Choisir le programme Éco 🌱</li>
+                    <li>Appuyer sur ▶️ Start puis fermer la porte</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>👕 Lave-linge & Sèche-linge</h2>
+                <ul>
+                    <li>Mettre le linge dans le tambour</li>
+                    <li>Lessive à droite + assouplissant à gauche</li>
+                    <li>Choisir le programme Éco 🌱</li>
+                    <li>Pour sécher : option Séchage + programme Lavage + Séchage</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>📺 Télévision & Son</h2>
+                <ul>
+                    <li><strong>Étape 1 :</strong> Allumer la TV (télécommande grise + bouton Power)</li>
+                    <li>Appuyer sur Home (maison)</li>
+                    <li>Choisir Orange TV, Netflix ou Prime directement</li>
+                    <li><strong>Étape 2 :</strong> Gérer le son (télécommande blanche + bouton Source + sélectionner TV)</li>
+                    <li>⚠️ Volume puissant + <strong>merci de rester modéré, surtout le soir</strong></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>💡 Lumière</h2>
+                <p><strong>Télécommande</strong> (sous le buffet de la cuisine) + contrôle salon + cuisine<br>
+                <strong>🔼 🔽</strong> allume toutes les lumières (5 ambiances possibles)<br>
+                <strong>↑ :</strong> + intensité<br>
+                <strong>↓ :</strong> - intensité<br>
+                <strong>O :</strong> éteindre</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌿 Plantes</h2>
+            <p>Si la terre est sèche, vous pouvez arroser légèrement 🌱<br>
+            Merci de les chouchouter 💧</p>
+        </div>
+
+        <div class="alert-box">
+            <strong>⚠️ Quelques attentions importantes</strong>
+            🚭 Pas de cigarette dans la maison<br>
+            🍳 En cuisine : utilisez la hotte ou ouvrez les fenêtres (sinon détecteur de fumée)<br>
+            🍷 Dans la chambre : évitez verres ou bouteilles sur le bureau<br>
+            • Le mur rose est peint à la chaux → une goutte peut laisser une trace
+        </div>
+
+        <div class="footer-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 45">
+                <defs>
+                    <linearGradient id="text-grad-footer" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ff4d6a">
+                            <animate attributeName="stop-color" values="#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a" dur="8s" repeatCount="indefinite"/>
+                        </stop>
+                        <stop offset="50%" style="stop-color:#6bcb77">
+                            <animate attributeName="stop-color" values="#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77" dur="8s" repeatCount="indefinite"/>
+                        </stop>
+                        <stop offset="100%" style="stop-color:#4d96ff">
+                            <animate attributeName="stop-color" values="#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff" dur="8s" repeatCount="indefinite"/>
+                        </stop>
+                    </linearGradient>
+                </defs>
+                <style>
+                    .logo-text-footer {
+                        font-family: 'Cormorant Garamond', Georgia, serif;
+                        font-size: 28px;
+                        font-weight: 500;
+                        font-style: italic;
+                        fill: url(#text-grad-footer);
+                        letter-spacing: 1px;
+                    }
+                    .flower-footer { animation: spin 20s linear infinite; }
+                    .petal-footer { fill: #ffffff; }
+                    .center-footer { fill: #ffd93d; }
+                </style>
+                <text x="10" y="32" class="logo-text-footer">À LA</text>
+                <g transform="translate(95, 22)">
+                    <g class="flower-footer">
+                        <g transform="rotate(0)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(45)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(90)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(135)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(180)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(225)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(270)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(315)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    </g>
+                    <circle class="center-footer" cx="0" cy="0" r="5"/>
+                </g>
+                <text x="130" y="32" class="logo-text-footer">FOLIE</text>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>

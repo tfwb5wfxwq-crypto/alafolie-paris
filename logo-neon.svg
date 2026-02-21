@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 40">
+    <defs>
+        <filter id="glow" x="-200%" y="-200%" width="500%" height="500%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
+        </filter>
+        <filter id="neon" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="0.4" result="blur"/>
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <style>
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .flower {
+            animation: spin 30s linear infinite;
+            transform-origin: 71px 21px;
+        }
+        .letter {
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: 22px;
+            filter: brightness(0.95);
+        }
+        .glow-circle {
+            opacity: 0.15;
+        }
+    </style>
+
+    <!-- Lettres À LA -->
+    <text class="letter" x="0" y="28" fill="#d946ef">À</text>
+    <text class="letter" x="18" y="28" fill="#f472b6">L</text>
+    <text class="letter" x="30" y="28" fill="#fb923c">A</text>
+    <text class="letter" x="48" y="28" fill="#4ade80">F</text>
+
+    <!-- Glow de la fleur -->
+    <g class="glow-circle" filter="url(#glow)">
+        <circle fill="#fff" cx="71" cy="21" r="7"/>
+    </g>
+
+    <!-- Fleur marguerite -->
+    <g class="flower" filter="url(#neon)">
+        <g transform="translate(71,21)">
+            <!-- 8 pétales blancs -->
+            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+            <!-- Centre jaune -->
+            <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
+        </g>
+    </g>
+
+    <!-- Lettres LIE -->
+    <text class="letter" x="80" y="28" fill="#22d3ee">L</text>
+    <text class="letter" x="92" y="28" fill="#a78bfa">I</text>
+    <text class="letter" x="100" y="28" fill="#ec4899">E</text>
+</svg>

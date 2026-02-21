@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>À la Folie - Infos Pratiques</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Cormorant+Garamond:ital,wght@0,400;1,500&family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @page { size: 148mm 210mm; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif; 
+            background: #f5f5f5; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            padding: 8mm; 
+        }
+        
+        .fiche {
+            width: 148mm;
+            height: 210mm;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            padding: 5mm 4mm;
+            display: flex;
+            flex-direction: column;
+            gap: 2mm;
+        }
+        
+        .logo-container {
+            text-align: center;
+        }
+        
+        .logo-container svg {
+            width: 75mm;
+            height: auto;
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 13pt;
+            text-align: center;
+            color: #333;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 6.5pt;
+            color: #666;
+        }
+        
+        .wifi-alert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2mm;
+        }
+
+        .wifi-box {
+            background: #ec407a;
+            color: white;
+            padding: 1.8mm;
+            border-radius: 3mm;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8mm;
+            align-items: stretch;
+        }
+
+        .wifi-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1mm;
+        }
+
+        .wifi-qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1mm;
+        }
+        
+        .wifi-box h3 {
+            font-size: 7.5pt;
+            margin-bottom: 0.5mm;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1.5mm;
+        }
+        
+        .wifi-icon,
+        .wifi-box h3 i {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+            font-size: 13px;
+        }
+        
+        .wifi-box p {
+            font-size: 6.5pt;
+            line-height: 1.3;
+        }
+
+        .wifi-qr {
+            width: 15mm;
+            height: 15mm;
+            background: linear-gradient(135deg, #fff, #ffe0f0);
+            border-radius: 2mm;
+            padding: 1mm;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        
+        .wifi-qr img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .alert-box {
+            background: #ec407a;
+            color: white;
+            padding: 1.8mm;
+            border-radius: 3mm;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .alert-box h4 {
+            font-size: 7.5pt;
+            margin-bottom: 0.5mm;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1mm;
+        }
+        
+        .alert-icon {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+        
+        .alert-box p {
+            font-size: 6.5pt;
+            line-height: 1.5;
+            margin-bottom: 0.8mm;
+            display: flex;
+            align-items: center;
+            gap: 1mm;
+        }
+        
+        .alert-box p svg,
+        .alert-box p i {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            margin-top: 0;
+            font-size: 16px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 2.5mm;
+            overflow: hidden;
+        }
+
+        .section-compact {
+        }
+
+        .section-compact .section-body {
+            padding: 2mm;
+        }
+
+        .section-compact .section-body p {
+            font-size: 6.5pt;
+            line-height: 1.4;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #fafafa, #f5f5f5);
+            padding: 1.2mm 2mm;
+            font-family: 'Playfair Display', serif;
+            font-size: 8.5pt;
+            color: #ec407a;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1mm;
+        }
+        
+        .section-icon {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+        
+        .section-body {
+            padding: 2mm;
+        }
+        
+        .section-body p {
+            font-size: 6.5pt;
+            line-height: 1.4;
+            color: #333;
+        }
+        
+        .section-body strong {
+            font-weight: 600;
+            color: #000;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2mm;
+        }
+        
+        .footer {
+        }
+
+        .footer-contact {
+            background: linear-gradient(135deg, #ec407a, #fb8c00);
+            border-radius: 4mm;
+            padding: 2mm;
+            text-align: center;
+            color: white;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8mm;
+            box-shadow: 0 2px 8px rgba(236,64,122,0.3);
+        }
+
+        .footer-contact .lea-name {
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2mm;
+        }
+
+        .footer-contact .phone {
+            font-size: 7.5pt;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2mm;
+        }
+
+        .footer-contact .site {
+            font-size: 6.5pt;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2mm;
+        }
+
+        .footer-contact .recommendation {
+            font-size: 5pt;
+            font-style: italic;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8mm;
+        }
+
+        .footer-icon {
+            width: 11px;
+            height: 11px;
+            flex-shrink: 0;
+        }
+
+        .footer-icon-small {
+            width: 9px;
+            height: 9px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche">
+        <div class="logo-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50">
+                <style>
+                    .neon-letter { font-family: 'Tenor Sans', sans-serif; font-size: 36px; font-weight: 600; }
+                    .petal { fill: #fff; }
+                    .center { fill: #ffd600; }
+                </style>
+                <text x="10" y="35" class="neon-letter" fill="#ff1744">À</text>
+                <text x="42" y="35" class="neon-letter" fill="#ff6f00">L</text>
+                <text x="68" y="35" class="neon-letter" fill="#ffb300">A</text>
+                <text x="106" y="35" class="neon-letter" fill="#00e676">F</text>
+                <g transform="translate(145, 24)">
+                    <g transform="rotate(0)"><ellipse class="petal" stroke="#e0e0e0" stroke-width="2.5" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(45)"><ellipse class="petal" stroke="#e0e0e0" stroke-width="2.5" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(90)"><ellipse class="petal" stroke="#e0e0e0" stroke-width="2.5" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(135)"><ellipse class="petal" stroke="#e0e0e0" stroke-width="2.5" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(180)"><ellipse class="petal" stroke="#e0e0e0" stroke-width="2.5" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(225)"><ellipse class="petal" stroke="#e0e0e0" stroke-width="2.5" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(270)"><ellipse class="petal" stroke="#e0e0e0" stroke-width="2.5" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(315)"><ellipse class="petal" stroke="#e0e0e0" stroke-width="2.5" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <circle class="center" stroke="#ffe566" stroke-width="2" cx="0" cy="0" r="5.5"/>
+                </g>
+                <text x="165" y="35" class="neon-letter" fill="#00acc1">L</text>
+                <text x="192" y="35" class="neon-letter" fill="#7c4dff">I</text>
+                <text x="208" y="35" class="neon-letter" fill="#f50057">E</text>
+            </svg>
+        </div>
+
+        <div class="wifi-alert-grid">
+            <div class="wifi-box">
+                <div class="wifi-content">
+                    <h3>
+                        <i class="fa-solid fa-wifi" style="color: white;"></i>
+                        WiFi
+                    </h3>
+                    <p><strong>Réseau :</strong> A-la-folie-WIFI<br>
+                    <strong>Code :</strong> welcomealafolie</p>
+                </div>
+                <div class="wifi-qr-container">
+                    <div class="wifi-qr">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=WIFI:T:WPA;S:A-la-folie-WIFI;P:welcomealafolie;;&color=ec407a" alt="QR">
+                    </div>
+                    <p style="font-size: 6pt; opacity: 0.9; display: flex; align-items: center; gap: 1mm;">
+                        <i class="fa-solid fa-camera" style="color: white; font-size: 9px;"></i>
+                        Scannez pour vous connecter
+                    </p>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <p>
+                    <i class="fa-solid fa-ban-smoking" style="color: white;"></i>
+                    <span><strong>Pas de cigarette dans tout le logement</strong></span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-volume-xmark" style="color: white;"></i>
+                    <span><strong>Pas de fête</strong></span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-utensils" style="color: white;"></i>
+                    <span>Cuisine : hotte allumée ou fenêtres ouvertes (détecteur fumée)</span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-droplet" style="color: white;"></i>
+                    <span>Chambre : pas de liquide sur bureau, mur rose fragile</span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-seedling" style="color: white;"></i>
+                    <span>Si la terre est sèche, mes petites plantes ont soif... n'hésitez pas <i class="fa-regular fa-face-smile" style="color: white; font-size: 10px;"></i></span>
+                </p>
+            </div>
+        </div>
+
+        <div class="section section-compact">
+            <div class="section-title">
+                <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                    <defs>
+                        <linearGradient id="key-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#d946ef"/>
+                            <stop offset="100%" stop-color="#ec4899"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="7" cy="7" r="4" stroke="url(#key-grad)" stroke-width="2.5"/>
+                    <path d="M11 11l9 9M17 14v3h3" stroke="url(#key-grad)" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                Accès
+            </div>
+            <div class="section-body">
+                <p><strong>Badge :</strong> grand portail extérieur (code <strong>42B9</strong>) · <strong>Interphone :</strong> Folie<br>
+                <strong>Porte appartement :</strong> lourde, bien tenir la poignée en fermant<br>
+                <svg viewBox="0 0 24 24" fill="none" style="width: 10px; height: 10px; display: inline-block; vertical-align: middle;">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="#ec407a"/>
+                    <line x1="12" y1="9" x2="12" y2="13" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="17" r="1" fill="white"/>
+                </svg>
+                <strong>Ne jamais laisser la clé dans la serrure intérieure (bloque)</strong></p>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="section">
+                <div class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="dish-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6bcb77"/>
+                                <stop offset="100%" stop-color="#4ade80"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="url(#dish-grad)" stroke-width="2.5"/>
+                        <circle cx="6.5" cy="6.5" r="1" fill="url(#dish-grad)"/>
+                        <circle cx="10" cy="6.5" r="1" fill="url(#dish-grad)"/>
+                        <rect x="5" y="10" width="14" height="10" rx="1" stroke="url(#dish-grad)" stroke-width="2"/>
+                        <path d="M9 14c0-1 1-2 3-2s3 1 3 2v4H9v-4z" stroke="url(#dish-grad)" stroke-width="1.5" fill="none"/>
+                        <line x1="8" y1="15" x2="16" y2="15" stroke="url(#dish-grad)" stroke-width="1" opacity="0.5"/>
+                    </svg>
+                    Lave-Vaisselle
+                </div>
+                <div class="section-body">
+                    <p><strong>Pastille :</strong> compartiment<br>
+                    <strong>Programme :</strong> Éco<br>
+                    <strong>Start :</strong>
+                    <svg viewBox="0 0 24 24" fill="none" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle;">
+                        <circle cx="12" cy="12" r="10" fill="#4ade80" opacity="0.9"/>
+                        <path d="M10 8l6 4-6 4z" fill="white"/>
+                    </svg>
+                    puis fermer la porte</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="wash-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4d96ff"/>
+                                <stop offset="100%" stop-color="#22d3ee"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="4" y="3" width="16" height="18" rx="2" stroke="url(#wash-grad)" stroke-width="2.5"/>
+                        <circle cx="12" cy="10" r="5" stroke="url(#wash-grad)" stroke-width="2"/>
+                        <path d="M10 8c1-1 3-1 4 0M10 12c1 1 3 1 4 0" stroke="url(#wash-grad)" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    Lave-linge
+                </div>
+                <div class="section-body">
+                    <p><strong>Lessive :</strong> droite<br>
+                    <strong>Assouplissant :</strong> gauche<br>
+                    <strong>Programme :</strong> Éco<br>
+                    <strong>Séchage :</strong> option Séchage + Lavage + Séchage</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="tv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#9b5de5"/>
+                                <stop offset="100%" stop-color="#a78bfa"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="6" width="20" height="13" rx="2" stroke="url(#tv-grad)" stroke-width="2.5"/>
+                        <path d="M8 22h8M12 19v3" stroke="url(#tv-grad)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                    TV & Son
+                </div>
+                <div class="section-body">
+                    <p><strong>Télécommande grise :</strong> Home → Netflix / Prime / Canal<br>
+                    <strong>TV en direct :</strong> disponible dans l'appli Canal<br>
+                    <strong>Son :</strong> télécommande blanche → Source → TV<br>
+                    <svg viewBox="0 0 24 24" fill="none" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle;">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="#ec407a"/>
+                        <line x1="12" y1="9" x2="12" y2="13" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="17" r="1" fill="white"/>
+                    </svg>
+                    <strong>Volume modéré le soir</strong></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="light-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffd93d"/>
+                                <stop offset="100%" stop-color="#fb923c"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="12" cy="12" r="5" stroke="url(#light-grad)" stroke-width="2.5"/>
+                        <path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="url(#light-grad)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                    Lumière
+                </div>
+                <div class="section-body">
+                    <p><strong>Télécommande</strong> (sous le buffet de la cuisine)<br>
+                    <strong>Bouton +</strong> : allume toutes les lumières (5 ambiances)<br>
+                    <strong>Bouton -</strong> : diminuer intensité<br>
+                    <strong>Bouton O</strong> : éteindre</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-compact">
+            <div class="section-title">
+                <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                    <defs>
+                        <linearGradient id="reco-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff6b6b"/>
+                            <stop offset="100%" stop-color="#ee5a6f"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M12 2l2.4 7.4h7.8l-6.3 4.6 2.4 7.4-6.3-4.6-6.3 4.6 2.4-7.4-6.3-4.6h7.8z" fill="url(#reco-grad)"/>
+                </svg>
+                Mes meilleures adresses
+            </div>
+            <div class="section-body" style="display: flex; flex-direction: column; align-items: center; gap: 1mm; padding: 2mm;">
+                <p style="text-align: center; font-size: 6pt; color: #ec407a; margin: 0; font-weight: 600; line-height: 1.3;">Restaurants · Bars · Activités</p>
+                <div style="background: linear-gradient(135deg, #fff, #ffe0f0); border-radius: 2mm; padding: 1mm; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://folie.paris/recommandations&color=ec407a" alt="QR Recommandations" style="width: 15mm; height: 15mm; display: block;">
+                </div>
+                <p style="text-align: center; font-size: 5.5pt; color: #666; margin: 0; line-height: 1.3; display: flex; align-items: center; gap: 1mm; justify-content: center;">
+                    <i class="fa-solid fa-camera" style="color: #ec407a; font-size: 9px;"></i>
+                    Scannez pour découvrir
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-contact">
+                <div class="lea-name">
+                    <svg class="footer-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2l2.4 7.4h7.8l-6.3 4.6 2.4 7.4-6.3-4.6-6.3 4.6 2.4-7.4-6.3-4.6h7.8z" fill="white" opacity="0.9"/>
+                    </svg>
+                    Lea
+                    <svg class="footer-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2l2.4 7.4h7.8l-6.3 4.6 2.4 7.4-6.3-4.6-6.3 4.6 2.4-7.4-6.3-4.6h7.8z" fill="white" opacity="0.9"/>
+                    </svg>
+                </div>
+                <div class="phone">
+                    <svg class="footer-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" fill="white"/>
+                    </svg>
+                    <span>06 20 20 20 36</span>
+                    <svg class="footer-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="white"/>
+                    </svg>
+                </div>
+                <div style="font-size: 6pt; opacity: 0.9;">24h/24 · 7j/7 · N'hésitez pas !</div>
+                <div class="site">
+                    <svg class="footer-icon-small" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="white" stroke-width="2"/>
+                    </svg>
+                    https://folie.paris
+                </div>
+                <div class="recommendation">
+                    <svg class="footer-icon-small" viewBox="0 0 24 24" fill="none">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="white" opacity="0.8"/>
+                    </svg>
+                    Si vous voulez me recommander
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

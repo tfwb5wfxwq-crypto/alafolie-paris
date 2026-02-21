@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>À la Folie - Infos Pratiques</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @page { size: 148mm 210mm; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #f5f5f5; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            padding: 10mm; 
+        }
+        
+        .fiche { 
+            width: 148mm; 
+            height: 210mm; 
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); 
+            padding: 8mm; 
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-container { 
+            text-align: center; 
+            margin-bottom: 3mm; 
+        }
+        
+        .logo-container svg { 
+            width: 60mm; 
+            height: auto; 
+        }
+        
+        h1 { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-style: italic;
+            font-size: 16pt; 
+            text-align: center; 
+            margin-bottom: 1mm; 
+            color: #333; 
+        }
+        
+        .subtitle { 
+            text-align: center; 
+            font-size: 7pt; 
+            color: #666; 
+            margin-bottom: 3mm; 
+        }
+        
+        .wifi-box { 
+            background: #ec407a; 
+            color: white; 
+            padding: 3mm; 
+            border-radius: 4mm; 
+            margin-bottom: 3mm; 
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3mm;
+            align-items: center;
+        }
+        
+        .wifi-box h3 { 
+            font-size: 10pt; 
+            margin-bottom: 1mm; 
+            font-weight: 600; 
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+        
+        .wifi-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+        
+        .wifi-box p { 
+            font-size: 8pt; 
+            line-height: 1.5; 
+        }
+        
+        .wifi-qr {
+            width: 15mm;
+            height: 15mm;
+            background: white;
+            border-radius: 2mm;
+            padding: 1mm;
+        }
+        
+        .wifi-qr img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .alert-box { 
+            background: #ec407a; 
+            color: white; 
+            padding: 3mm; 
+            border-radius: 4mm; 
+            margin-bottom: 3mm; 
+        }
+        
+        .alert-box h4 { 
+            font-size: 9pt; 
+            margin-bottom: 1.5mm; 
+            font-weight: 600; 
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+        
+        .alert-icon {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+        
+        .alert-box p { 
+            font-size: 7.5pt; 
+            line-height: 1.7; 
+            margin-bottom: 1.2mm;
+            display: flex;
+            align-items: flex-start;
+            gap: 2mm;
+        }
+        
+        .alert-box p svg {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+            margin-top: 0.5mm;
+        }
+        
+        .section { 
+            margin-bottom: 2.5mm; 
+            background: white; 
+            border-radius: 3mm; 
+            overflow: hidden;
+        }
+        
+        .section-title { 
+            background: linear-gradient(135deg, #fafafa, #f5f5f5); 
+            padding: 2mm 3mm; 
+            font-family: 'Playfair Display', serif; 
+            font-size: 10pt; 
+            color: #ec407a; 
+            font-weight: 600; 
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+        
+        .section-icon {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+        
+        .section-body { 
+            padding: 2.5mm 3mm; 
+        }
+        
+        .section-body p { 
+            font-size: 7.5pt; 
+            line-height: 1.7; 
+            color: #333; 
+        }
+        
+        .section-body strong {
+            font-weight: 600;
+            color: #000;
+        }
+        
+        .grid-2 { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 2.5mm; 
+        }
+        
+        .footer { 
+            margin-top: auto;
+            padding-top: 3mm;
+            border-top: 1px solid rgba(217,70,239,0.1);
+        }
+        
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 1.5mm;
+        }
+        
+        .footer-logo svg { 
+            width: 50mm; 
+            height: auto; 
+        }
+        
+        .footer-contact { 
+            text-align: center;
+            font-size: 7pt; 
+            color: #666; 
+            line-height: 1.4; 
+        }
+        
+        .footer-contact strong { 
+            color: #ec407a;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="fiche">
+        <div class="logo-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 45">
+                <defs>
+                    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#d946ef"/>
+                        <stop offset="50%" style="stop-color:#f472b6"/>
+                        <stop offset="100%" style="stop-color:#fb923c"/>
+                    </linearGradient>
+                </defs>
+                <style>
+                    .logo-text {
+                        font-family: 'Cormorant Garamond', Georgia, serif;
+                        font-size: 28px;
+                        font-weight: 500;
+                        font-style: italic;
+                        fill: url(#text-grad);
+                        letter-spacing: 1px;
+                    }
+                    .petal { fill: #ffffff; }
+                    .center { fill: #ffd93d; }
+                </style>
+                <text x="10" y="32" class="logo-text">À LA</text>
+                <g transform="translate(95, 22)">
+                    <g transform="rotate(0)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(45)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(90)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(135)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(180)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(225)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(270)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <g transform="rotate(315)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                    <circle class="center" cx="0" cy="0" r="5"/>
+                </g>
+                <text x="130" y="32" class="logo-text">FOLIE</text>
+            </svg>
+        </div>
+
+        <h1>INFOS PRATIQUES</h1>
+        <p class="subtitle">Merci de bien lire cette fiche avant de commencer votre séjour</p>
+
+        <div class="wifi-box">
+            <div>
+                <h3>
+                    <svg class="wifi-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="12" cy="20" r="1.5" fill="white"/>
+                    </svg>
+                    WiFi
+                </h3>
+                <p><strong>Réseau :</strong> A-la-folie-WIFI<br>
+                <strong>Code :</strong> welcomealafolie</p>
+            </div>
+            <div class="wifi-qr">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=WIFI:T:WPA;S:A-la-folie-WIFI;P:welcomealafolie;;" alt="QR Code WiFi">
+            </div>
+        </div>
+
+        <div class="alert-box">
+            <h4>
+                <svg class="alert-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+                    <line x1="12" y1="9" x2="12" y2="13" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="12" cy="17" r="1.2" fill="white"/>
+                </svg>
+                Quelques attentions importantes
+            </h4>
+            <p>
+                <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2.5"/>
+                    <line x1="4" y1="4" x2="20" y2="20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <ellipse cx="12" cy="12" rx="2" ry="6" fill="white"/>
+                    <path d="M9 10h6M9 14h6" stroke="#ec407a" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>Pas de cigarette dans la maison</span>
+            </p>
+            <p>
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M3 11h18M5 11c0 4 2 8 7 8s7-4 7-8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M8 6c0-1 1-2 2-2s2 1 2 2M14 6c0-1 1-2 2-2s2 1 2 2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="15" r="1" fill="white"/>
+                </svg>
+                <span>En cuisine : utilisez la hotte ou ouvrez les fenêtres (sinon détecteur de fumée)</span>
+            </p>
+            <p>
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M10 2v6c0 2-1 3-3 3H3" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M4 11v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="16" cy="16" r="2.5" stroke="white" stroke-width="2.5"/>
+                    <line x1="14" y1="14" x2="18" y2="18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <span>Dans la chambre : évitez verres ou bouteilles sur le bureau · Le mur rose est peint à la chaux → une goutte peut laisser une trace</span>
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                    <defs>
+                        <linearGradient id="key-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#d946ef"/>
+                            <stop offset="100%" stop-color="#ec4899"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="7" cy="7" r="4" stroke="url(#key-grad)" stroke-width="2.5"/>
+                    <path d="M11 11l9 9M17 14v3h3" stroke="url(#key-grad)" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                Accès
+            </div>
+            <div class="section-body">
+                <p><strong>Vigik vert :</strong> portail (code <strong>42D9</strong>)<br>
+                <strong>Porte :</strong> lourde ⚠️<br>
+                <strong>Interphone :</strong> Folie<br>
+                ⚠️ <strong>Ne jamais laisser les clés dans la serrure intérieure</strong></p>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="section">
+                <div class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="dish-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6bcb77"/>
+                                <stop offset="100%" stop-color="#4ade80"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="3" y="4" width="18" height="16" rx="2" stroke="url(#dish-grad)" stroke-width="2.5"/>
+                        <circle cx="12" cy="12" r="6" fill="none" stroke="url(#dish-grad)" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="3" fill="none" stroke="url(#dish-grad)" stroke-width="1.5"/>
+                        <path d="M12 7v2M12 13v2M9 12h2M13 12h2" stroke="url(#dish-grad)" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    Lave-Vaisselle
+                </div>
+                <div class="section-body">
+                    <p><strong>Pastille :</strong> compartiment<br>
+                    <strong>Programme :</strong> Éco<br>
+                    <strong>Start :</strong> ▶️ puis fermer la porte</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="wash-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4d96ff"/>
+                                <stop offset="100%" stop-color="#22d3ee"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="4" y="3" width="16" height="18" rx="2" stroke="url(#wash-grad)" stroke-width="2.5"/>
+                        <circle cx="12" cy="10" r="5" stroke="url(#wash-grad)" stroke-width="2"/>
+                        <path d="M10 8c1-1 3-1 4 0" stroke="url(#wash-grad)" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M10 12c1 1 3 1 4 0" stroke="url(#wash-grad)" stroke-width="1.5" stroke-linecap="round"/>
+                        <rect x="7" y="17" width="10" height="2" rx="1" fill="url(#wash-grad)"/>
+                    </svg>
+                    Lave-linge
+                </div>
+                <div class="section-body">
+                    <p><strong>Lessive :</strong> droite<br>
+                    <strong>Assouplissant :</strong> gauche<br>
+                    <strong>Programme :</strong> Éco<br>
+                    <strong>Séchage :</strong> option Séchage + Lavage + Séchage</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="tv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#9b5de5"/>
+                                <stop offset="100%" stop-color="#a78bfa"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="6" width="20" height="13" rx="2" stroke="url(#tv-grad)" stroke-width="2.5"/>
+                        <path d="M8 22h8" stroke="url(#tv-grad)" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="12" y1="19" x2="12" y2="22" stroke="url(#tv-grad)" stroke-width="2.5"/>
+                        <circle cx="9" cy="12" r="1" fill="url(#tv-grad)"/>
+                        <circle cx="15" cy="12" r="1" fill="url(#tv-grad)"/>
+                        <path d="M10 14c1 1 3 1 4 0" stroke="url(#tv-grad)" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    Télévision & Son
+                </div>
+                <div class="section-body">
+                    <p><strong>TV :</strong> télécommande grise → Home → Orange TV / Netflix<br>
+                    <strong>Son :</strong> télécommande blanche → Source → TV<br>
+                    ⚠️ <strong>Volume modéré le soir</strong></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="light-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffd93d"/>
+                                <stop offset="100%" stop-color="#fb923c"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="12" cy="12" r="5" stroke="url(#light-grad)" stroke-width="2.5"/>
+                        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="url(#light-grad)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                    Lumière
+                </div>
+                <div class="section-body">
+                    <p><strong>Télécommande</strong> (buffet) · 🔼🔽 allume (5 ambiances) · ↑↓ intensité · O éteindre</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                    <defs>
+                        <linearGradient id="plant-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4ade80"/>
+                            <stop offset="100%" stop-color="#6bcb77"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M12 22v-8" stroke="url(#plant-grad)" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M12 14c-3-2-6-6-4-9 1-2 4-1 5 1" stroke="url(#plant-grad)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <path d="M12 14c3-2 6-6 4-9-1-2-4-1-5 1" stroke="url(#plant-grad)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <path d="M12 16c-2-1-4-3-3-6" stroke="url(#plant-grad)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <path d="M12 16c2-1 4-3 3-6" stroke="url(#plant-grad)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <ellipse cx="12" cy="22" rx="3" ry="1" fill="url(#plant-grad)" opacity="0.3"/>
+                </svg>
+                Plantes
+            </div>
+            <div class="section-body">
+                <p>Si la terre est sèche, vous pouvez arroser légèrement. Merci de les chouchouter !</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 45">
+                    <defs>
+                        <linearGradient id="footer-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#d946ef;stop-opacity:0.7"/>
+                            <stop offset="50%" style="stop-color:#f472b6;stop-opacity:0.7"/>
+                            <stop offset="100%" style="stop-color:#fb923c;stop-opacity:0.7"/>
+                        </linearGradient>
+                    </defs>
+                    <style>
+                        .logo-text-footer {
+                            font-family: 'Cormorant Garamond', Georgia, serif;
+                            font-size: 28px;
+                            font-weight: 500;
+                            font-style: italic;
+                            fill: url(#footer-grad);
+                            letter-spacing: 1px;
+                        }
+                        .petal-footer { fill: #ddd; }
+                        .center-footer { fill: #ffd93d; }
+                    </style>
+                    <text x="10" y="32" class="logo-text-footer">À LA</text>
+                    <g transform="translate(95, 22)">
+                        <g transform="rotate(0)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(45)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(90)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(135)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(180)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(225)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(270)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <g transform="rotate(315)"><ellipse class="petal-footer" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+                        <circle class="center-footer" cx="0" cy="0" r="5"/>
+                    </g>
+                    <text x="130" y="32" class="logo-text-footer">FOLIE</text>
+                </svg>
+            </div>
+            <div class="footer-contact">
+                <strong>folie.paris</strong><br>
+                Contact : <strong>Léa</strong> 06 20 20 20 36
+            </div>
+        </div>
+    </div>
+</body>
+</html>

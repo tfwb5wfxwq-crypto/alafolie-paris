@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À la Folie | Appartement Jacuzzi Privatif Paris 11e</title>
+    <meta name="description" content="À la Folie : appartement d'exception avec jacuzzi privatif, home cinéma 4K et literie king-size au cœur de Paris 11e. 60m², Superhost 5.0★.">
+    <meta property="og:title" content="À la Folie | Jacuzzi Privatif Paris 11e">
+    <meta property="og:description" content="Appartement de luxe avec jacuzzi privatif, home cinéma et literie king-size. Paris 11e, Superhost 5.0★.">
+    <meta property="og:image" content="https://folie.paris/01.jpg">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #ffd93d;
+            --white: #fff;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--white);
+            background: #000;
+            line-height: 1.6;
+        }
+
+        /* VIDEO BACKGROUND */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .video-bg video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, transparent 0%, rgba(0,0,0,0.5) 100%);
+        }
+
+        /* PAGE STRUCTURE */
+        .page {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 100;
+        }
+
+        .logo-svg {
+            width: 200px;
+            height: auto;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .btn-airbnb {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: #FF5A5F;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-airbnb:hover {
+            background: #e8494e;
+            transform: translateY(-2px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 3rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1rem 2.5rem;
+            background: var(--gold);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(255, 217, 61, 0.3);
+        }
+
+        .hero-cta:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(255, 217, 61, 0.5);
+        }
+
+        /* CONTENT SECTION */
+        .content {
+            position: relative;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* LEA CARD */
+        .lea-card {
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .lea-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lea-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 2px solid var(--glass-border);
+        }
+
+        .lea-info h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .lea-badge {
+            display: inline-block;
+            background: rgba(255, 217, 61, 0.15);
+            color: var(--gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .lea-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .lea-text strong {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        /* GALLERY GRID */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1rem 0.8rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            margin-bottom: 3rem;
+        }
+
+        .cta-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-price span {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .cta-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--glass-border);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: #25D366;
+            color: #25D366;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .header-nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 2rem;
+            }
+
+            .lea-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- VIDEO BACKGROUND -->
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="alafolie.webm" type="video/webm">
+            <source src="alafolie.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- PAGE -->
+    <div class="page">
+        <!-- HEADER -->
+        <header class="header">
+            <img src="logo.svg" alt="À la Folie" class="logo-svg">
+            <nav class="header-nav">
+                <a href="#" class="nav-link">Accueil</a>
+                <a href="recommandations.html" class="nav-link">Recommandations</a>
+                <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn-airbnb">
+                    Réserver sur Airbnb
+                </a>
+            </nav>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <h1 class="hero-title">À la Folie</h1>
+            <p class="hero-subtitle">Votre cocon de luxe au cœur de Paris</p>
+            <a href="#details" class="hero-cta">Découvrir</a>
+        </section>
+
+        <!-- CONTENT -->
+        <div class="content" id="details">
+            <!-- LEA CARD -->
+            <div class="lea-card">
+                <div class="lea-header">
+                    <img src="lea.png" alt="Léa" class="lea-pic">
+                    <div class="lea-info">
+                        <h3>Léa, votre hôte</h3>
+                        <span class="lea-badge">Superhost 5.0★</span>
+                    </div>
+                </div>
+                <p class="lea-text">
+                    Bienvenue <strong>À la Folie</strong> ! Je suis ravie de vous accueillir dans mon appartement d'exception au cœur de Paris 11e.
+                    <strong>Jacuzzi privatif</strong>, <strong>home cinéma 4K</strong> et <strong>literie king-size</strong> vous attendent pour un séjour inoubliable.
+                    Que ce soit pour un <strong>weekend romantique</strong> ou une <strong>escapade urbaine</strong>, vous trouverez ici tout le confort nécessaire.
+                    Je reste disponible 24/7 pour rendre votre séjour parfait. 💛
+                </p>
+            </div>
+
+            <!-- GALLERY -->
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="01.jpg" alt="Jacuzzi">
+                    <div class="gallery-label">Jacuzzi privatif</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="02.jpg" alt="Home cinéma">
+                    <div class="gallery-label">Home cinéma 4K</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="03.jpg" alt="Chambre">
+                    <div class="gallery-label">Literie king-size</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="04.jpg" alt="Salon">
+                    <div class="gallery-label">Salon cosy</div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <div class="cta-price">
+                    <span>À partir de</span> 180€ <span>/nuit</span>
+                </div>
+                <p class="cta-subtitle">Profitez de notre appartement d'exception à Paris 11e</p>
+                <div class="cta-buttons">
+                    <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn-primary">
+                        Réserver sur Airbnb
+                    </a>
+                    <a href="https://wa.me/33756864414" target="_blank" class="btn-secondary">
+                        Contacter Léa
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#">Accueil</a>
+                <a href="recommandations.html">Recommandations</a>
+                <a href="https://airbnb.fr/h/a-la-folie" target="_blank">Airbnb</a>
+            </div>
+            <p class="footer-copyright">© 2026 À la Folie · Paris 11e</p>
+        </footer>
+    </div>
+</body>
+</html>

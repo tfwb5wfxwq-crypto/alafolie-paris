@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À la Folie - Guide Pratique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A5 portrait;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .page {
+            width: 148mm;
+            height: 210mm;
+            background: #ffffff;
+            position: relative;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        /* Gradient background subtil */
+        .page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(217,70,239,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(244,114,182,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(251,146,60,0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 12mm;
+        }
+
+        /* Logo header avec effet néon */
+        .logo-header {
+            text-align: center;
+            margin-bottom: 8mm;
+        }
+
+        .logo-header svg {
+            width: 70mm;
+            height: auto;
+            filter: drop-shadow(0 0 8px rgba(217,70,239,0.15));
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .flower {
+            animation: spin 30s linear infinite;
+            transform-origin: 71px 21px;
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 7.5pt;
+            color: #999;
+            margin-bottom: 7mm;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* Section avec photo + contenu */
+        .section {
+            margin-bottom: 5mm;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(250,250,250,0.95) 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+            padding: 3mm 4mm;
+            background: linear-gradient(135deg, #f8f8f8 0%, #fafafa 100%);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .section-icon {
+            width: 8mm;
+            height: 8mm;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: 10pt;
+            background: linear-gradient(135deg, #d946ef 0%, #f472b6 50%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .section-body {
+            padding: 3mm 4mm;
+        }
+
+        .section-body p,
+        .section-body ul {
+            font-size: 7.5pt;
+            line-height: 1.7;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .section-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section-body li {
+            margin-bottom: 1.5mm;
+            padding-left: 4mm;
+            position: relative;
+        }
+
+        .section-body li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 2mm;
+            width: 2mm;
+            height: 2mm;
+            background: linear-gradient(135deg, #d946ef 0%, #f472b6 100%);
+            border-radius: 50%;
+        }
+
+        .section-body strong {
+            font-weight: 500;
+            color: #222;
+        }
+
+        /* WiFi box spéciale */
+        .wifi-box {
+            background: linear-gradient(135deg, #d946ef 0%, #ec4899 100%);
+            color: white;
+            padding: 4mm;
+            border-radius: 8px;
+            margin-bottom: 5mm;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(217,70,239,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wifi-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+        }
+
+        .wifi-box-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .wifi-icon {
+            font-size: 16pt;
+            margin-bottom: 2mm;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .wifi-box h3 {
+            font-size: 10pt;
+            margin-bottom: 2mm;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .wifi-info {
+            font-size: 8.5pt;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .wifi-info strong {
+            font-weight: 500;
+        }
+
+        /* Alert box */
+        .alert-box {
+            background: linear-gradient(135deg, #ff4d6a 0%, #ec407a 100%);
+            color: white;
+            padding: 4mm;
+            border-radius: 8px;
+            margin-bottom: 5mm;
+            box-shadow: 0 3px 10px rgba(236,64,122,0.2);
+        }
+
+        .alert-box h4 {
+            font-size: 8.5pt;
+            margin-bottom: 2mm;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+
+        .alert-box ul {
+            list-style: none;
+            font-size: 7pt;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .alert-box li {
+            margin-bottom: 1mm;
+        }
+
+        /* Grid 2 colonnes pour sections compactes */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3mm;
+            margin-bottom: 5mm;
+        }
+
+        .grid-2 .section {
+            margin-bottom: 0;
+        }
+
+        /* Footer logo */
+        .logo-footer {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 4mm;
+        }
+
+        .logo-footer svg {
+            width: 60mm;
+            height: auto;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 6px rgba(217,70,239,0.1));
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .page {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="content">
+            <!-- Logo néon header -->
+            <div class="logo-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 40">
+                    <defs>
+                        <filter id="glow" x="-200%" y="-200%" width="500%" height="500%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+                        </filter>
+                        <filter id="neon" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="0.4" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <text x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;filter:brightness(0.95);">À</text>
+                    <text x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;filter:brightness(0.95);">L</text>
+                    <text x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;filter:brightness(0.95);">A</text>
+                    <text x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;filter:brightness(0.95);">F</text>
+                    <g opacity="0.12" filter="url(#glow)">
+                        <circle fill="#fff" cx="71" cy="21" r="7"/>
+                    </g>
+                    <g class="flower" filter="url(#neon)">
+                        <g transform="translate(71,21)">
+                            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                            <ellipse fill="#fff" stroke="rgba(255,255,255,0.8)" stroke-width="1" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                            <circle fill="#ffd93d" stroke="#ffe566" stroke-width="1" cx="0" cy="0" r="3.5"/>
+                        </g>
+                    </g>
+                    <text x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;filter:brightness(0.95);">L</text>
+                    <text x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;filter:brightness(0.95);">I</text>
+                    <text x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;filter:brightness(0.95);">E</text>
+                </svg>
+            </div>
+
+            <p class="tagline">Merci de lire ce guide avant votre séjour</p>
+
+            <!-- WiFi -->
+            <div class="wifi-box">
+                <div class="wifi-box-content">
+                    <div class="wifi-icon">📶</div>
+                    <h3>WiFi</h3>
+                    <div class="wifi-info">
+                        <strong>Réseau :</strong> A-la-folie-WIFI<br>
+                        <strong>Code :</strong> welcomealafolie
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alertes importantes -->
+            <div class="alert-box">
+                <h4>⚠️ Quelques attentions importantes</h4>
+                <ul>
+                    <li>🚭 Pas de cigarette dans la maison</li>
+                    <li>🍳 En cuisine : utilisez la hotte ou ouvrez les fenêtres</li>
+                    <li>🍷 Dans la chambre : évitez verres sur le bureau (mur à la chaux)</li>
+                </ul>
+            </div>
+
+            <!-- Accès -->
+            <div class="section">
+                <div class="section-header">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d946ef' stroke-width='2'%3E%3Crect x='3' y='11' width='18' height='11' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E" class="section-icon" alt="">
+                    <h2 class="section-title">Accès</h2>
+                </div>
+                <div class="section-body">
+                    <p><strong>Vigik vert :</strong> portail extérieur (code <strong>42D9</strong>)<br>
+                    <strong>Porte bâtiment :</strong> lourde ⚠️ attention aux doigts<br>
+                    <strong>Interphone :</strong> Folie<br>
+                    ⚠️ <strong>Ne jamais laisser les clés dans la serrure intérieure</strong></p>
+                </div>
+            </div>
+
+            <!-- Grid 2 colonnes -->
+            <div class="grid-2">
+                <div class="section">
+                    <div class="section-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f472b6' stroke-width='2'%3E%3Crect x='3' y='5' width='18' height='15' rx='2'/%3E%3Cpath d='M3 10h18'/%3E%3C/svg%3E" class="section-icon" alt="">
+                        <h2 class="section-title">Lave-Vaisselle</h2>
+                    </div>
+                    <div class="section-body">
+                        <ul>
+                            <li>1 pastille dans le compartiment</li>
+                            <li>Programme Éco 🌱</li>
+                            <li>▶️ Start + fermer porte</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fb923c' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M8 14s1.5 2 4 2 4-2 4-2'/%3E%3Cline x1='9' y1='9' x2='9.01' y2='9'/%3E%3Cline x1='15' y1='9' x2='15.01' y2='9'/%3E%3C/svg%3E" class="section-icon" alt="">
+                        <h2 class="section-title">Lave-linge</h2>
+                    </div>
+                    <div class="section-body">
+                        <ul>
+                            <li>Lessive à droite + assouplissant à gauche</li>
+                            <li>Programme Éco 🌱</li>
+                            <li><strong>Séchage :</strong> option Séchage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TV & Son -->
+            <div class="section">
+                <div class="section-header">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234ade80' stroke-width='2'%3E%3Crect x='2' y='7' width='20' height='15' rx='2' ry='2'/%3E%3Cpolyline points='17 2 12 7 7 2'/%3E%3C/svg%3E" class="section-icon" alt="">
+                    <h2 class="section-title">Télévision & Son</h2>
+                </div>
+                <div class="section-body">
+                    <ul>
+                        <li><strong>Étape 1 :</strong> TV (télécommande grise + Power) → Home → Orange TV / Netflix / Prime</li>
+                        <li><strong>Étape 2 :</strong> Son (télécommande blanche + Source → TV)</li>
+                        <li>⚠️ Volume puissant → <strong>merci de rester modéré le soir</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Grid 2 colonnes -->
+            <div class="grid-2">
+                <div class="section">
+                    <div class="section-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3C/svg%3E" class="section-icon" alt="">
+                        <h2 class="section-title">Lumière</h2>
+                    </div>
+                    <div class="section-body">
+                        <p><strong>Télécommande</strong> (buffet cuisine)<br>
+                        🔼 🔽 allume tout (5 ambiances)<br>
+                        ↑↓ intensité · O éteindre</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a78bfa' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E" class="section-icon" alt="">
+                        <h2 class="section-title">Plantes</h2>
+                    </div>
+                    <div class="section-body">
+                        <p>Si terre sèche, arroser légèrement 🌱<br>
+                        Merci de les chouchouter 💧</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer logo -->
+            <div class="logo-footer">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 40">
+                    <text x="0" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#d946ef;opacity:0.8;">À</text>
+                    <text x="18" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#f472b6;opacity:0.8;">L</text>
+                    <text x="30" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#fb923c;opacity:0.8;">A</text>
+                    <text x="48" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#4ade80;opacity:0.8;">F</text>
+                    <g transform="translate(71,21)" opacity="0.8">
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.4" ry="3.5"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(45)"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(90)"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(135)"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(180)"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(225)"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(270)"/>
+                        <ellipse fill="#fff" cx="0" cy="-5" rx="1.4" ry="3.5" transform="rotate(315)"/>
+                        <circle fill="#ffd93d" cx="0" cy="0" r="3.5"/>
+                    </g>
+                    <text x="80" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#22d3ee;opacity:0.8;">L</text>
+                    <text x="92" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#a78bfa;opacity:0.8;">I</text>
+                    <text x="100" y="28" style="font-family:'Tenor Sans',sans-serif;font-size:22px;fill:#ec4899;opacity:0.8;">E</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

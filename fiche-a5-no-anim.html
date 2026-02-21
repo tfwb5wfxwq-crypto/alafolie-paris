@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À la Folie - Guide Pratique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Cormorant+Garamond:ital,wght@0,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: 148mm 210mm;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10mm;
+        }
+
+        .page {
+            width: 148mm;
+            height: 210mm;
+            background: linear-gradient(135deg, #fffbf7 0%, #fff5f9 50%, #fffbf7 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 60px rgba(0,0,0,0.15);
+        }
+
+        /* Decorative gradient blobs */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(217,70,239,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(251,146,60,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 10mm;
+        }
+
+        /* Logo header avec fond pour visibilité */
+        .logo-header {
+            text-align: center;
+            margin-bottom: 4mm;
+            background: rgba(255,255,255,0.6);
+            padding: 3mm;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-header svg {
+            width: 60mm;
+            height: auto;
+            filter: drop-shadow(0 2px 8px rgba(217,70,239,0.15));
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .flower {
+            transform-origin: 71px 21px;
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 7pt;
+            color: #999;
+            margin-bottom: 4mm;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        /* WiFi avec QR */
+        .wifi-section {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3mm;
+            background: linear-gradient(135deg, #d946ef 0%, #ec4899 100%);
+            color: white;
+            padding: 3mm 4mm;
+            border-radius: 8px;
+            margin-bottom: 3mm;
+            box-shadow: 0 4px 16px rgba(217,70,239,0.25);
+            align-items: center;
+        }
+
+        .wifi-info h3 {
+            font-size: 10pt;
+            margin-bottom: 1mm;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+
+        .wifi-details {
+            font-size: 7.5pt;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .wifi-details strong {
+            font-weight: 500;
+        }
+
+        .wifi-qr {
+            width: 16mm;
+            height: 16mm;
+            background: white;
+            border-radius: 5px;
+            padding: 1.5mm;
+        }
+
+        .wifi-qr img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Alert box */
+        .alert-box {
+            background: linear-gradient(135deg, #ff4d6a 0%, #ec407a 100%);
+            color: white;
+            padding: 3mm;
+            border-radius: 7px;
+            margin-bottom: 3mm;
+            box-shadow: 0 3px 12px rgba(236,64,122,0.2);
+        }
+
+        .alert-box h4 {
+            font-size: 8pt;
+            margin-bottom: 1.5mm;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .alert-box ul {
+            list-style: none;
+            font-size: 6.5pt;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .alert-box li {
+            margin-bottom: 0.5mm;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 2.5mm;
+            background: white;
+            border-radius: 7px;
+            overflow: hidden;
+            border: 1px solid rgba(217,70,239,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+            padding: 2mm 3mm;
+            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .section-icon {
+            width: 6mm;
+            height: 6mm;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 9pt;
+            background: linear-gradient(135deg, #d946ef 0%, #f472b6 50%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
+        }
+
+        .section-body {
+            padding: 2mm 3mm;
+            background: white;
+        }
+
+        .section-body p,
+        .section-body ul {
+            font-size: 6.5pt;
+            line-height: 1.6;
+            color: #333;
+            font-weight: 400;
+        }
+
+        .section-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section-body li {
+            margin-bottom: 0.8mm;
+            padding-left: 3mm;
+            position: relative;
+        }
+
+        .section-body li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ec4899;
+            font-weight: 600;
+        }
+
+        .section-body strong {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Grid 2 colonnes */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5mm;
+            margin-bottom: 2.5mm;
+        }
+
+        .grid-2 .section {
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding-top: 3mm;
+            border-top: 1px solid rgba(217,70,239,0.1);
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 2mm;
+        }
+
+        .footer-logo svg {
+            width: 45mm;
+            height: auto;
+        }
+
+        .footer-contact {
+            text-align: center;
+            font-size: 6.5pt;
+            color: #666;
+            line-height: 1.8;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .footer-contact strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .footer-contact a {
+            color: #d946ef;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-site {
+            font-size: 7pt;
+            color: #999;
+            margin-top: 1mm;
+            font-style: italic;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .page {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="content">
+            <!-- Logo header avec fond -->
+            <div class="logo-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 40">
+                    <defs>
+                        <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#d946ef">
