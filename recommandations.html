@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommandations | À la Folie</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #ffd93d;
+            --white: #fff;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--white);
+            background: #0a0a0f;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .header {
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo-svg {
+            width: 200px;
+            height: auto;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,77,106,0.1) 0%, rgba(77,150,255,0.1) 100%);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* CONTENT */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        /* CARDS GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255, 217, 61, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-category {
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .card-address {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-distance {
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        .card-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: var(--gold);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .card-link:hover {
+            background: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+        }
+
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--white);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <img src="logo.svg" alt="À la Folie" class="logo-svg">
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1 class="hero-title">Nos Recommandations</h1>
+        <p class="hero-subtitle">Les meilleures adresses du quartier sélectionnées par Léa</p>
+    </section>
+
+    <!-- CONTENT -->
+    <div class="content">
+        <!-- RESTAURANTS -->
+        <section class="section">
+            <h2 class="section-title">🍽️ Restaurants</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🍕</div>
+                    <h3 class="card-title">Pizzeria Popolare</h3>
+                    <p class="card-category">Italien</p>
+                    <p class="card-description">
+                        Pizzas au feu de bois exceptionnelles dans une ambiance conviviale. Parfait pour un dîner décontracté.
+                    </p>
+                    <p class="card-address">111 Rue Réaumur, 75002 Paris</p>
+                    <p class="card-distance">🚶 15 min à pied</p>
+                    <a href="https://maps.google.com/?q=Pizzeria+Popolare+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🥐</div>
+                    <h3 class="card-title">Breizh Café</h3>
+                    <p class="card-category">Crêperie</p>
+                    <p class="card-description">
+                        Les meilleures crêpes bretonnes de Paris. Incontournable pour un brunch ou déjeuner gourmand.
+                    </p>
+                    <p class="card-address">109 Rue Vieille du Temple, 75003 Paris</p>
+                    <p class="card-distance">🚶 10 min à pied</p>
+                    <a href="https://maps.google.com/?q=Breizh+Cafe+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🍜</div>
+                    <h3 class="card-title">East Mamma</h3>
+                    <p class="card-category">Italien</p>
+                    <p class="card-description">
+                        Cuisine italienne authentique dans un cadre chaleureux. Les pâtes fraîches sont un must !
+                    </p>
+                    <p class="card-address">133 Rue du Faubourg Saint-Antoine, 75011 Paris</p>
+                    <p class="card-distance">🚶 8 min à pied</p>
+                    <a href="https://maps.google.com/?q=East+Mamma+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAFÉS & BRUNCH -->
+        <section class="section">
+            <h2 class="section-title">☕ Cafés & Brunch</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">☕</div>
+                    <h3 class="card-title">KB CaféShop</h3>
+                    <p class="card-category">Café & Brunch</p>
+                    <p class="card-description">
+                        Coffee shop cosy avec excellent café et brunch healthy. Parfait pour commencer la journée.
+                    </p>
+                    <p class="card-address">53 Avenue Parmentier, 75011 Paris</p>
+                    <p class="card-distance">🚶 5 min à pied</p>
+                    <a href="https://maps.google.com/?q=KB+CafeShop+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🥞</div>
+                    <h3 class="card-title">Holybelly</h3>
+                    <p class="card-category">Brunch</p>
+                    <p class="card-description">
+                        LE spot brunch du quartier. Pancakes légendaires et ambiance décontractée. Arrivez tôt !
+                    </p>
+                    <p class="card-address">5 Rue Lucien Sampaix, 75010 Paris</p>
+                    <p class="card-distance">🚶 20 min à pied</p>
+                    <a href="https://maps.google.com/?q=Holybelly+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BARS & SORTIES -->
+        <section class="section">
+            <h2 class="section-title">🍸 Bars & Sorties</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🍹</div>
+                    <h3 class="card-title">Candelaria</h3>
+                    <p class="card-category">Bar à cocktails</p>
+                    <p class="card-description">
+                        Bar clandestin caché derrière une taqueria. Cocktails exceptionnels dans une ambiance intimiste.
+                    </p>
+                    <p class="card-address">52 Rue de Saintonge, 75003 Paris</p>
+                    <p class="card-distance">🚶 15 min à pied</p>
+                    <a href="https://maps.google.com/?q=Candelaria+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎵</div>
+                    <h3 class="card-title">La Bellevilloise</h3>
+                    <p class="card-category">Bar & Concerts</p>
+                    <p class="card-description">
+                        Lieu culturel mythique avec concerts, expos et terrasse. Ambiance festive garantie.
+                    </p>
+                    <p class="card-address">19-21 Rue Boyer, 75020 Paris</p>
+                    <p class="card-distance">🚇 15 min en métro</p>
+                    <a href="https://maps.google.com/?q=La+Bellevilloise+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🍷</div>
+                    <h3 class="card-title">Le Baron Rouge</h3>
+                    <p class="card-category">Bar à vin</p>
+                    <p class="card-description">
+                        Cave authentique pour déguster du bon vin avec plateaux de charcuterie. Très parisien !
+                    </p>
+                    <p class="card-address">1 Rue Théophile Roussel, 75012 Paris</p>
+                    <p class="card-distance">🚶 12 min à pied</p>
+                    <a href="https://maps.google.com/?q=Le+Baron+Rouge+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- À VISITER -->
+        <section class="section">
+            <h2 class="section-title">🎨 À Visiter</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎭</div>
+                    <h3 class="card-title">Place des Vosges</h3>
+                    <p class="card-category">Monument historique</p>
+                    <p class="card-description">
+                        La plus ancienne place de Paris. Idéale pour une balade romantique dans le Marais.
+                    </p>
+                    <p class="card-address">Place des Vosges, 75004 Paris</p>
+                    <p class="card-distance">🚶 15 min à pied</p>
+                    <a href="https://maps.google.com/?q=Place+des+Vosges+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🌳</div>
+                    <h3 class="card-title">Canal Saint-Martin</h3>
+                    <p class="card-category">Promenade</p>
+                    <p class="card-description">
+                        Balade bucolique le long du canal. Parfait pour un pique-nique au coucher du soleil.
+                    </p>
+                    <p class="card-address">Canal Saint-Martin, 75010 Paris</p>
+                    <p class="card-distance">🚶 20 min à pied</p>
+                    <a href="https://maps.google.com/?q=Canal+Saint+Martin+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🏛️</div>
+                    <h3 class="card-title">Musée Picasso</h3>
+                    <p class="card-category">Musée</p>
+                    <p class="card-description">
+                        Collection exceptionnelle d'œuvres de Picasso dans un hôtel particulier magnifique.
+                    </p>
+                    <p class="card-address">5 Rue de Thorigny, 75003 Paris</p>
+                    <p class="card-distance">🚶 18 min à pied</p>
+                    <a href="https://maps.google.com/?q=Musee+Picasso+Paris" target="_blank" class="card-link">Voir sur Maps</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+        <p style="margin-top: 1rem; color: rgba(255,255,255,0.4); font-size: 0.85rem;">© 2026 À la Folie · Paris 11e</p>
+    </footer>
+</body>
+</html>

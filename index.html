@@ -4,356 +4,793 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À la Folie | Appartement Jacuzzi Privatif Paris 11e</title>
-    <meta name="description" content="À la Folie : appartement d'exception avec jacuzzi privatif, home cinéma 4K et literie king-size au cœur de Paris 11e. 60m², Superhost 5.0★.">
-    <meta property="og:title" content="À la Folie | Jacuzzi Privatif Paris 11e">
-    <meta property="og:description" content="Appartement de luxe avec jacuzzi privatif, home cinéma et literie king-size. Paris 11e, Superhost 5.0★.">
-    <meta property="og:image" content="https://folie.paris/01.jpg">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23ffd93d' cx='50' cy='50' r='12'/></svg>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--gold:#d4af37;--white:#fff;--gray:#aaa;--gray-d:#666;--airbnb:#FF5A5F;--glass:rgba(255,255,255,0.06);--gb:rgba(255,255,255,0.1)}
-        html,body{height:100%;overflow:hidden}
-        body{font-family:'Inter',-apple-system,sans-serif;color:var(--white);font-weight:300;line-height:1.5}
-        ::selection{background:var(--gold);color:#000}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* BG: dark + animated color blobs */
-        .bg{position:fixed;inset:0;background:#080810;z-index:0;overflow:hidden}
-        .blob{position:absolute;border-radius:50%;filter:blur(120px)}
-        .b1{width:50vmax;height:50vmax;background:rgba(255,77,106,0.13);top:-15%;left:-10%;animation:d1 25s ease-in-out infinite}
-        .b2{width:45vmax;height:45vmax;background:rgba(77,150,255,0.13);bottom:-15%;right:-10%;animation:d2 30s ease-in-out infinite}
-        .b3{width:35vmax;height:35vmax;background:rgba(0,200,180,0.1);top:35%;left:45%;animation:d3 22s ease-in-out infinite}
-        @keyframes d1{0%,100%{transform:translate(0,0)}33%{transform:translate(20vw,10vh)}66%{transform:translate(5vw,25vh)}}
-        @keyframes d2{0%,100%{transform:translate(0,0)}33%{transform:translate(-15vw,-10vh)}66%{transform:translate(-20vw,-5vh)}}
-        @keyframes d3{0%,100%{transform:translate(0,0)}33%{transform:translate(-15vw,8vh)}66%{transform:translate(10vw,-12vh)}}
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow: hidden;
+        }
 
-        .page{position:relative;z-index:2;height:100vh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
         /* HEADER */
-        .hdr{display:flex;justify-content:space-between;align-items:center;padding:0.7rem 2rem;backdrop-filter:blur(20px);background:rgba(0,0,0,0.2);border-bottom:1px solid var(--gb)}
-        .logo-svg{width:clamp(140px,18vw,240px);height:auto;display:block}
-        .hdr-r{display:flex;align-items:center;gap:0.8rem}
-        .ab{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(0,0,0,0.3);backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:50px;padding:0.2rem 0.7rem 0.2rem 0.2rem;text-decoration:none;color:var(--white);font-size:0.65rem;transition:all 0.3s}
-        .ab:hover{border-color:rgba(255,90,95,0.4)}
-        .ab-i{width:22px;height:22px;border-radius:50%;overflow:hidden}
-        .ab-i img{width:100%;height:100%;object-fit:cover}
-        .ab strong{color:var(--gold)}
-        .btn-cal{display:flex;align-items:center;gap:0.35rem;padding:0.45rem 1rem;background:var(--gold);color:#000;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;border-radius:6px;transition:all 0.3s;cursor:pointer;border:none}
-        .btn-cal:hover{background:var(--white)}
-        .btn-cal svg{width:12px;height:12px}
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 100;
+        }
 
-        /* MAIN */
-        .mn{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;padding:1rem 2rem;overflow:hidden}
-        .col-l{display:flex;flex-direction:column;gap:0.7rem;overflow:hidden}
-        .col-r{display:flex;flex-direction:column;gap:0.7rem;overflow:hidden}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
 
-        /* Léa */
-        .lea{display:flex;gap:0.7rem;align-items:flex-start;background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:14px;padding:0.7rem}
-        .lea-pic{width:46px;height:46px;border-radius:12px;object-fit:cover;flex-shrink:0}
-        .lea-info{flex:1}
-        .lea-top{display:flex;align-items:center;gap:0.4rem;margin-bottom:0.1rem}
-        .lea-top strong{font-size:0.72rem;font-weight:500}
-        .lea-tag{font-size:0.48rem;color:var(--gold);background:rgba(212,175,55,0.12);padding:0.1rem 0.35rem;border-radius:8px}
-        .lea-txt{font-size:0.7rem;color:var(--gray);line-height:1.55}
-        .lea-txt b{color:var(--white);font-weight:400}
+        .logo:hover .flower {
+            animation: spin 3s linear infinite;
+        }
 
-        /* Pills */
-        .pp{display:flex;flex-wrap:wrap;gap:0.25rem}
-        .pp span{padding:0.15rem 0.5rem;border:1px solid rgba(255,255,255,0.12);border-radius:50px;font-size:0.55rem;color:var(--gray);background:rgba(255,255,255,0.03);cursor:default;transition:all 0.2s}
-        .pp span:hover{color:var(--white);border-color:rgba(255,255,255,0.25)}
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #ffd93d;
+        }
 
-        /* Photos */
-        .pg{flex:1;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:0.4rem;min-height:0;border-radius:12px;overflow:hidden}
-        .pg-big{grid-row:1/3;border-radius:10px;overflow:hidden;cursor:pointer;position:relative}
-        .pg-big img,.pg-sm img{width:100%;height:100%;object-fit:cover;transition:opacity 0.4s}
-        .pg-sm{border-radius:10px;overflow:hidden;cursor:pointer;position:relative}
-        .pg-lbl{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 0.5rem 0.3rem;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.7rem;color:rgba(255,255,255,0.8)}
-        .pg-c{position:absolute;top:0.3rem;right:0.3rem;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);border-radius:20px;padding:0.1rem 0.4rem;font-size:0.45rem;color:rgba(255,255,255,0.6)}
+        .flower {
+            width: 28px;
+            height: 28px;
+            animation: spin 20s linear infinite;
+        }
 
-        /* CTA */
-        .cta-card{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:14px;padding:1.2rem;text-align:center}
-        .cta-price{font-family:'Cormorant Garamond',serif;font-size:2.4rem;margin-bottom:0.05rem}
-        .cta-price span{font-size:0.95rem;color:var(--gray)}
-        .cta-sub{font-size:0.65rem;color:var(--gray);margin-bottom:0.9rem}
-        .cta-btn{display:flex;align-items:center;justify-content:center;gap:0.4rem;width:100%;padding:0.65rem;background:var(--gold);color:#000;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;border-radius:10px;transition:all 0.3s;cursor:pointer;border:none;margin-bottom:0.45rem}
-        .cta-btn:hover{background:var(--white);transform:translateY(-1px)}
-        .cta-airbnb{display:flex;align-items:center;justify-content:center;gap:0.4rem;width:100%;padding:0.6rem;background:var(--airbnb);color:white;text-decoration:none;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;border-radius:10px;transition:all 0.3s;margin-bottom:0.35rem}
-        .cta-airbnb:hover{background:#e8494e;transform:translateY(-1px)}
-        .cta-airbnb img{width:14px;height:14px;border-radius:2px}
-        .cta-wa{display:flex;align-items:center;justify-content:center;gap:0.35rem;width:100%;padding:0.55rem;background:transparent;border:1px solid var(--gb);color:var(--white);text-decoration:none;font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;border-radius:10px;transition:all 0.3s}
-        .cta-wa:hover{border-color:#25D366;color:#25D366}
-        .cta-wa svg{width:12px;height:12px;fill:currentColor}
+        .nav a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
 
-        /* Reviews */
-        .rv{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:12px;padding:0.6rem;overflow:hidden;flex:1}
-        .rv-l{font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.25rem}
-        .rv-s{position:relative;height:60px;overflow:hidden}
-        .rv-i{position:absolute;inset:0;opacity:0;transform:translateY(6px);transition:opacity 0.5s,transform 0.5s}
-        .rv-i.on{opacity:1;transform:translateY(0)}
-        .rv-t{font-size:0.62rem;color:var(--gray);font-style:italic;line-height:1.5;margin-bottom:0.15rem}
-        .rv-a{font-size:0.5rem;color:var(--gray-d)}
-        .rv-a strong{color:var(--white);font-weight:400}
-        .rv-d{display:flex;justify-content:center;gap:0.2rem;margin-top:0.15rem}
-        .rv-d span{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.1);transition:all 0.3s}
-        .rv-d span.on{background:var(--gold);width:12px;border-radius:3px}
+        .nav a:hover {
+            color: #ffd93d;
+        }
 
-        /* Footer */
-        .ft{padding:0.35rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(0,0,0,0.15);border-top:1px solid var(--gb)}
-        .ft a{color:var(--gray-d);text-decoration:none;font-size:0.5rem;transition:color 0.3s;margin-right:0.8rem}
-        .ft a:hover{color:var(--gold)}
-        .ft>span{color:rgba(255,255,255,0.12);font-size:0.45rem}
+        /* LAYOUT */
+        .grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            height: calc(100vh - 100px);
+            padding-top: 60px;
+        }
 
-        /* Modal */
-        .modal{display:none;position:fixed;inset:0;z-index:500;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px)}
-        .modal.on{display:flex}
-        .modal-card{background:rgba(15,15,25,0.97);backdrop-filter:blur(40px);border:1px solid var(--gb);border-radius:20px;padding:2rem;max-width:700px;width:90vw;max-height:85vh;overflow-y:auto;position:relative}
-        .modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border:1px solid var(--gb);background:transparent;color:var(--white);font-size:1rem;cursor:pointer;border-radius:50%;transition:all 0.3s}
-        .modal-close:hover{border-color:var(--gold);color:var(--gold)}
-        .modal-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;margin-bottom:0.3rem}
-        .modal-sub{color:var(--gray);font-size:0.78rem;margin-bottom:1.5rem}
-        .m-cn{display:flex;justify-content:center;gap:0.6rem;margin-bottom:0.75rem}
-        .m-cn button{width:28px;height:28px;border:1px solid var(--gb);background:transparent;color:var(--white);cursor:pointer;border-radius:50%;font-size:0.75rem;transition:all 0.3s}
-        .m-cn button:hover:not(:disabled){border-color:var(--gold);color:var(--gold)}
-        .m-cn button:disabled{opacity:0.3;cursor:not-allowed}
-        .m-cg{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
-        .cal-month{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;text-align:center;margin-bottom:0.4rem}
-        .cal-week{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:0.2rem}
-        .cal-week span{font-size:0.5rem;color:var(--gray-d);text-transform:uppercase}
-        .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-        .day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:0.82rem;border-radius:50%;cursor:pointer;transition:all 0.15s;color:var(--gray)}
-        .day:hover:not(.off):not(.blocked){background:var(--gold);color:#000}
-        .day.off{color:rgba(255,255,255,0.12);cursor:default}
-        .day.blocked{color:rgba(255,255,255,0.12);text-decoration:line-through;cursor:not-allowed}
-        .day.today{border:1px solid var(--gold);color:var(--gold)}
-        .day.start,.day.end{background:var(--gold);color:#000;font-weight:500}
-        .day.range{background:rgba(212,175,55,0.2);color:var(--white);border-radius:0}
-        .m-price{background:rgba(255,255,255,0.03);border:1px solid var(--gb);border-radius:12px;padding:1.25rem;text-align:center}
-        .m-price .price-label{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem}
-        .m-price .price-amount{font-family:'Cormorant Garamond',serif;font-size:2.2rem}
-        .m-price .price-amount span{font-size:0.95rem;color:var(--gray)}
-        .m-price .price-night{color:var(--gray);font-size:0.72rem;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--gb)}
-        .m-price .price-dates{margin-bottom:0.75rem}
-        .m-price .price-date-row{display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.03);font-size:0.72rem}
-        .m-price .price-date-row span:first-child{color:var(--gray)}
-        .m-btns{display:flex;gap:0.5rem;margin-top:1rem}
-        .m-btns a{flex:1;display:flex;align-items:center;justify-content:center;gap:0.35rem;padding:0.7rem;border-radius:10px;text-decoration:none;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:all 0.3s}
-        .m-bb{background:var(--airbnb);color:white}
-        .m-bb:hover{background:#e8494e}
-        .m-bb img{width:14px;height:14px;border-radius:2px}
-        .m-bw{background:transparent;border:1px solid var(--gb);color:var(--white)}
-        .m-bw:hover{border-color:#25D366;color:#25D366}
-        .m-bw svg{width:12px;height:12px;fill:currentColor}
+        /* LEFT */
+        .left {
+            padding: 2rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background: linear-gradient(135deg, rgba(255,245,255,0.5) 0%, rgba(240,249,255,0.5) 100%);
+        }
 
-        /* Lightbox */
-        .lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.95);align-items:center;justify-content:center}
-        .lb.on{display:flex}
-        .lb img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px}
-        .lb-x{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:white;font-size:1.2rem;cursor:pointer;border-radius:50%}
-        .lb-n{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.4);color:white;font-size:1.1rem;cursor:pointer;border-radius:50%}
-        .lb-p{left:1.5rem}.lb-nx{right:1.5rem}
-        .lb-t{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,0.5)}
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #ff4d6a, #ff8c42, #ffd93d, #6bcb77, #4d96ff, #9b5de5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.3rem;
+        }
 
-        @media(max-width:768px){
-            html,body{overflow:auto;height:auto}
-            .page{height:auto;min-height:100vh}
-            .hdr{padding:0.6rem 1rem}
-            .logo-svg{width:120px}
-            .mn{grid-template-columns:1fr;padding:0.5rem 1rem;overflow:visible}
-            .col-l,.col-r{overflow:visible}
-            .pg{min-height:220px;flex:none}
-            .ft{padding:0.35rem 1rem}
-            .ab{display:none}
-            .m-cg{grid-template-columns:1fr}
-            .m-btns{flex-direction:column}
+        .hero p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #666;
+        }
+
+        .lea {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            padding: 1.2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .lea img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .lea h3 {
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .lea span {
+            background: rgba(255,217,61,0.2);
+            color: #d4af37;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .lea-text {
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .lea-text strong {
+            color: #ff4d6a;
+        }
+        .cta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .btn {
+            padding: 0.85rem;
+            border-radius: 50px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-calendar {
+            background: linear-gradient(135deg, #ff4d6a, #4d96ff);
+            color: white;
+            box-shadow: 0 4px 15px rgba(77,150,255,0.3);
+        }
+
+        .btn-calendar:hover {
+            opacity: 0.9;
+        }
+
+        .btn-airbnb {
+            background: #FF5A5F;
+            color: white;
+        }
+
+        .btn-airbnb:hover {
+            opacity: 0.9;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            opacity: 0.9;
+        }
+
+        /* RIGHT */
+        .right {
+            position: relative;
+            background: #1a1a1a;
+        }
+
+        .video {
+            position: absolute;
+            inset: 0;
+        }
+
+        .video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7) 100%);
+        }
+
+        .video-text {
+            position: absolute;
+            bottom: 3rem;
+            left: 2rem;
+            right: 2rem;
+            color: white;
+        }
+
+        .video-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .video-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.4);
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(15px);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 950px;
+            width: 90vw;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #f5f5f5;
+            color: #333;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: #ff4d6a;
+            color: white;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+
+        .modal-subtitle {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .cal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
+        .cal-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .cal-nav button {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #333;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .cal-nav button:hover {
+            border-color: #ff4d6a;
+            color: #ff4d6a;
+        }
+
+        .cal-month {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #333;
+        }
+
+        .cal-week {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .cal-week span {
+            font-size: 0.7rem;
+            color: #999;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .cal-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #333;
+        }
+
+        .day:not(.off):not(.blocked):hover {
+            background: rgba(255,77,106,0.1);
+        }
+
+        .day.off {
+            color: #ddd;
+            cursor: default;
+        }
+
+        .day.blocked {
+            color: #ddd;
+            text-decoration: line-through;
+            cursor: not-allowed;
+        }
+
+        .day.today {
+            border: 2px solid #ff4d6a;
+        }
+
+        .day.selected {
+            background: #ff4d6a;
+            color: white;
+            font-weight: 600;
+        }
+
+        .day.range {
+            background: rgba(255,77,106,0.15);
+        }
+
+        .price-summary {
+            background: rgba(255, 217, 61, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 217, 61, 0.3);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            flex-shrink: 0;
+            margin-top: 1.5rem;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .price-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .price-row.total {
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding-top: 0.8rem;
+            border-top: 2px solid rgba(0,0,0,0.1);
+            margin-top: 0.8rem;
+            color: #333;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #FF5A5F, #ff7a7d);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            flex-shrink: 0;
+        }
+
+        .modal-btn:hover:not(:disabled) {
+            opacity: 0.9;
+        }
+
+        .modal-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* FOOTER */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(30px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            z-index: 100;
+        }
+
+        .footer a {
+            color: #25D366;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer a:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-<div class="bg">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
-</div>
-
-<div class="page">
-    <header class="hdr">
-        <!-- LOGO: copie exacte de logo.svg -->
-        <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 45">
-            <defs>
-                <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:#ff4d6a">
-                        <animate attributeName="stop-color" values="#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff;#9b5de5;#ff4d6a" dur="8s" repeatCount="indefinite"/>
-                    </stop>
-                    <stop offset="50%" style="stop-color:#6bcb77">
-                        <animate attributeName="stop-color" values="#6bcb77;#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77" dur="8s" repeatCount="indefinite"/>
-                    </stop>
-                    <stop offset="100%" style="stop-color:#4d96ff">
-                        <animate attributeName="stop-color" values="#4d96ff;#9b5de5;#ff4d6a;#ff8c42;#ffd93d;#6bcb77;#4d96ff" dur="8s" repeatCount="indefinite"/>
-                    </stop>
-                </linearGradient>
-            </defs>
-            <style>
-                @keyframes spin {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                }
-                .logo-text {
-                    font-family: 'Cormorant Garamond', Georgia, serif;
-                    font-size: 28px;
-                    font-weight: 500;
-                    font-style: italic;
-                    fill: url(#text-grad);
-                    letter-spacing: 1px;
-                }
-                .flower {
-                    animation: spin 20s linear infinite;
-                }
-                .petal {
-                    fill: #ffffff;
-                }
-                .center {
-                    fill: #ffd93d;
-                }
-            </style>
-            <text x="10" y="32" class="logo-text">À LA</text>
-            <g transform="translate(95, 22)">
-                <g class="flower">
-                    <g transform="rotate(0)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
-                    <g transform="rotate(45)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
-                    <g transform="rotate(90)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
-                    <g transform="rotate(135)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
-                    <g transform="rotate(180)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
-                    <g transform="rotate(225)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
-                    <g transform="rotate(270)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
-                    <g transform="rotate(315)"><ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8"/></g>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-text">À LA F</span>
+            <svg class="flower" viewBox="0 0 40 40">
+                <g transform="translate(20,20)">
+                    <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
+                    <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
+                    <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
+                    <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
+                    <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
+                    <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
+                    <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
+                    <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+                    <circle fill="#ffd93d" cx="0" cy="0" r="5"/>
                 </g>
-                <circle class="center" cx="0" cy="0" r="5"/>
-            </g>
-            <text x="130" y="32" class="logo-text">FOLIE</text>
-        </svg>
-        <div class="hdr-r">
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="ab"><span class="ab-i"><img src="https://cdn-icons-png.freepik.com/512/4494/4494647.png" alt="Airbnb"></span>Superhost <strong>★ 5.0</strong></a>
-            <button class="btn-cal" onclick="openModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Réserver</button>
+            </svg>
+            <span class="logo-text">LIE</span>
         </div>
+        <nav class="nav">
+            <a href="#">Accueil</a>
+            <a href="photos.html">Photos</a>
+            <a href="recommandations.html">Recommandations</a>
+        </nav>
     </header>
 
-    <div class="mn">
-        <div class="col-l">
+    <div class="grid">
+        <!-- LEFT -->
+        <div class="left">
+            <div class="hero">
+                <h1>À la Folie</h1>
+                <p>Votre cocon de luxe au cœur de Paris</p>
+            </div>
+
             <div class="lea">
-                <img src="lea.png" alt="Léa" class="lea-pic">
-                <div class="lea-info">
-                    <div class="lea-top"><strong>Léa</strong><span class="lea-tag">Superhost</span></div>
-                    <p class="lea-txt">Bienvenue <b>À la Folie</b>, notre appartement avec <b>jacuzzi privatif</b> au cœur du <b>11e arrondissement de Paris</b>. Home cinéma 4K, literie king-size, WC japonais — chaque détail est pensé pour une <b>escapade romantique</b> inoubliable.</p>
+                <div style="width: 100%;">
+                    <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 0.8rem;">
+                        <img src="lea.png" alt="Léa">
+                        <div>
+                            <h3>Léa, votre hôte</h3>
+                            <span>Superhost 5.0★</span>
+                        </div>
+                    </div>
+                    <p class="lea-text">
+                        Bienvenue <strong>À la Folie</strong> ! Jacuzzi privatif, home cinéma et tout le confort pour un séjour inoubliable. Disponible 24/7 💛
+                    </p>
                 </div>
             </div>
-            <div class="pp">
-                <span>Jacuzzi privatif</span><span>Home cinéma 4K</span><span>60m²</span><span>King-size</span><span>WC japonais</span><span>WiFi fibre</span><span>Netflix</span><span>Nespresso</span><span>Climatisation</span>
-            </div>
-            <div class="pg" id="photoGrid">
-                <div class="pg-big" onclick="openLb(0)"><img id="ph0" src="01.jpg" alt="Salon jacuzzi Paris"><div class="pg-lbl" id="phl0">Le Salon</div><div class="pg-c" id="phc">1 / 8</div></div>
-                <div class="pg-sm" onclick="openLb(1)"><img id="ph1" src="02.jpg" alt="Jacuzzi privatif"><div class="pg-lbl" id="phl1">Le Jacuzzi</div></div>
-                <div class="pg-sm" onclick="openLb(2)"><img id="ph2" src="03.jpg" alt="Chambre king-size"><div class="pg-lbl" id="phl2">La Chambre</div></div>
+
+            <div class="cta">
+                <button class="btn btn-calendar" onclick="openModal()">📅 Voir les disponibilités</button>
+                <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                        <path d="M12 0c1.04 0 2.04.32 2.85.91 1.88 1.36 2.46 3.96 2.46 5.61 0 .74-.17 1.48-.43 2.16-.43 1.12-1.1 2.11-1.96 2.92-.26.24-.54.46-.83.65-.65.44-1.35.7-2.09.7-.72 0-1.42-.26-2.05-.7-.28-.2-.57-.41-.83-.65-.87-.81-1.53-1.8-1.96-2.92-.26-.68-.43-1.42-.43-2.16 0-1.65.58-4.25 2.46-5.61C9.96.32 10.96 0 12 0zm7.27 7.71c.04.11.09.2.13.28.5 1.05.78 2.22.78 3.45 0 3.59-2.33 6.62-5.55 7.71-.46.15-.94.26-1.44.33-.24.02-.48.04-.72.04h-.06c-.24 0-.48-.02-.72-.04-.5-.07-.98-.17-1.44-.33C7.06 18.06 4.73 15.03 4.73 11.44c0-1.23.28-2.4.78-3.45.04-.09.09-.17.13-.28.87.57 1.87.98 2.96 1.2.24.04.48.09.74.11.22.02.44.02.65.02h.07c.22 0 .43 0 .65-.02.26-.02.5-.07.74-.11 1.09-.22 2.09-.63 2.96-1.2z"/>
+                    </svg>
+                    Réserver sur Airbnb
+                </a>
+                <a href="https://wa.me/33620202036" target="_blank" class="btn btn-whatsapp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Contacter Léa
+                </a>
             </div>
         </div>
 
-        <div class="col-r">
-            <div class="cta-card">
-                <div class="cta-price">139€ <span>/ nuit</span></div>
-                <p class="cta-sub">Jacuzzi privatif · Paris 11e</p>
-                <button class="cta-btn" onclick="openModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Voir les disponibilités</button>
-                <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="cta-airbnb"><img src="https://cdn-icons-png.freepik.com/512/4494/4494647.png" alt="">Réserver sur Airbnb</a>
-                <a href="https://wa.me/33756864414" target="_blank" class="cta-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Contacter Léa</a>
-            </div>
-            <div class="rv">
-                <p class="rv-l">★★★★★ Avis 5.0</p>
-                <div class="rv-s">
-                    <div class="rv-i on"><p class="rv-t">"Séjour exceptionnel ! L'appartement est magnifique. Le jacuzzi est un vrai plus."</p><p class="rv-a"><strong>Olivier</strong> · Jan 2026</p></div>
-                    <div class="rv-i"><p class="rv-t">"Tout était parfait. Literie incroyable, propreté impeccable. Léa est formidable."</p><p class="rv-a"><strong>Noah</strong> · Déc 2025</p></div>
-                    <div class="rv-i"><p class="rv-t">"Une vraie parenthèse de luxe. Home cinéma et jacuzzi rendent ce lieu unique."</p><p class="rv-a"><strong>Emily</strong> · Nov 2025</p></div>
-                    <div class="rv-i"><p class="rv-t">"Emplacement parfait dans le 11e. Merci Léa pour les petites attentions !"</p><p class="rv-a"><strong>Sophie</strong> · Oct 2025</p></div>
+        <!-- RIGHT -->
+        <div class="right">
+            <div class="video">
+                <video autoplay muted loop playsinline>
+                    <source src="alafolie.webm" type="video/webm">
+                    <source src="alafolie.mp4" type="video/mp4">
+                </video>
+                <div class="overlay"></div>
+                <div class="video-text">
+                    <h2>Paris 11e</h2>
+                    <p>
+                        ✨ Jacuzzi privatif<br>
+                        🎬 Home cinéma 4K<br>
+                        🛏️ Literie king-size<br>
+                        📐 60m² d'exception
+                    </p>
                 </div>
-                <div class="rv-d"><span class="on"></span><span></span><span></span><span></span></div>
             </div>
         </div>
     </div>
 
-    <footer class="ft">
-        <div><a href="https://airbnb.fr/h/a-la-folie" target="_blank">Airbnb</a><a href="https://wa.me/33756864414" target="_blank">WhatsApp</a><a href="tel:+33756864414">07 56 86 44 14</a></div>
-        <span>&copy; 2026 À la Folie · Paris</span>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <span>© 2026 À la Folie · Paris 11e</span>
+        <a href="https://wa.me/33620202036" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            06 20 20 20 36
+        </a>
     </footer>
-</div>
 
-<!-- CALENDAR MODAL -->
-<div class="modal" id="calModal">
-    <div class="modal-card">
-        <button class="modal-close" onclick="closeModal()">×</button>
-        <h2 class="modal-title">Réservez votre séjour</h2>
-        <p class="modal-sub">Sélectionnez vos dates pour voir les disponibilités et le prix</p>
-        <div class="m-cn"><button id="prevBtn" onclick="prevMonth()">&#8592;</button><button id="nextBtn" onclick="nextMonth()">&#8594;</button></div>
-        <div class="m-cg"><div class="cal" id="cal1"></div><div class="cal" id="cal2"></div></div>
-        <div class="m-price" id="priceContent">
-            <span class="price-label">À partir de</span>
-            <div class="price-amount">139€ <span>/ nuit</span></div>
-            <p class="price-night">Sélectionnez vos dates ci-dessus</p>
-        </div>
-        <div class="m-btns">
-            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="m-bb" id="bookBtn"><img src="https://cdn-icons-png.freepik.com/512/4494/4494647.png" alt="">Réserver sur Airbnb</a>
-            <a href="https://wa.me/33756864414" target="_blank" class="m-bw" id="waBtn"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Contacter Léa</a>
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h2 class="modal-title">Réservez votre séjour</h2>
+            <p class="modal-subtitle">Sélectionnez vos dates d'arrivée et de départ</p>
+
+            <div class="cal-grid">
+                <div id="cal1"></div>
+                <div id="cal2"></div>
+            </div>
+
+            <div class="price-summary" id="priceBox" style="opacity: 0; pointer-events: none;">
+                <div class="price-row">
+                    <span>Arrivée : <strong id="checkIn">-</strong></span>
+                    <span>Départ : <strong id="checkOut">-</strong></span>
+                </div>
+                <div class="price-row total">
+                    <span id="nightsLabel">-</span>
+                    <strong id="totalPrice">-</strong>
+                </div>
+            </div>
+
+            <button class="modal-btn" id="airbnbBtn" onclick="goToAirbnb()" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                    <path d="M12 0c1.04 0 2.04.32 2.85.91 1.88 1.36 2.46 3.96 2.46 5.61 0 .74-.17 1.48-.43 2.16-.43 1.12-1.1 2.11-1.96 2.92-.26.24-.54.46-.83.65-.65.44-1.35.7-2.09.7-.72 0-1.42-.26-2.05-.7-.28-.2-.57-.41-.83-.65-.87-.81-1.53-1.8-1.96-2.92-.26-.68-.43-1.42-.43-2.16 0-1.65.58-4.25 2.46-5.61C9.96.32 10.96 0 12 0zm7.27 7.71c.04.11.09.2.13.28.5 1.05.78 2.22.78 3.45 0 3.59-2.33 6.62-5.55 7.71-.46.15-.94.26-1.44.33-.24.02-.48.04-.72.04h-.06c-.24 0-.48-.02-.72-.04-.5-.07-.98-.17-1.44-.33C7.06 18.06 4.73 15.03 4.73 11.44c0-1.23.28-2.4.78-3.45.04-.09.09-.17.13-.28.87.57 1.87.98 2.96 1.2.24.04.48.09.74.11.22.02.44.02.65.02h.07c.22 0 .43 0 .65-.02.26-.02.5-.07.74-.11 1.09-.22 2.09-.63 2.96-1.2z"/>
+                </svg>
+                Réserver sur Airbnb
+            </button>
         </div>
     </div>
-</div>
 
-<!-- LIGHTBOX -->
-<div class="lb" id="lb">
-    <button class="lb-x" onclick="closeLb()">×</button>
-    <button class="lb-n lb-p" onclick="lbP()">&#8592;</button>
-    <button class="lb-n lb-nx" onclick="lbN()">&#8594;</button>
-    <img id="lbi" src="" alt="">
-    <div class="lb-t" id="lbt"></div>
-</div>
+    <script>
+        // Smooth flower animation
+        const flower = document.querySelector('.flower');
+        let isSpinning = false;
 
-<script>
-const P=[{s:'01.jpg',n:'Le Salon'},{s:'02.jpg',n:'Le Jacuzzi'},{s:'03.jpg',n:'La Chambre'},{s:'04.jpg',n:'Salle de Bain'},{s:'07.jpg',n:'Home Cinéma'},{s:'08.jpg',n:'La Cuisine'},{s:'09.jpg',n:'Les Détails'},{s:'11.jpg',n:"L'Ambiance"}];
-let li=0;
-function openLb(i){li=i;document.getElementById('lbi').src=P[i].s;document.getElementById('lbt').textContent=P[i].n;document.getElementById('lb').classList.add('on');}
-function closeLb(){document.getElementById('lb').classList.remove('on');}
-function lbN(){openLb((li+1)%P.length);}
-function lbP(){openLb((li-1+P.length)%P.length);}
-document.getElementById('lb').onclick=e=>{if(e.target===e.currentTarget)closeLb();};
+        flower.addEventListener('click', (e) => {
+            e.preventDefault();
+            isSpinning = !isSpinning;
+            if (isSpinning) {
+                flower.style.animation = 'spin 3s linear infinite';
+            } else {
+                flower.style.animation = 'spin 20s linear infinite';
+            }
+        });
 
-function openModal(){document.getElementById('calModal').classList.add('on');}
-function closeModal(){document.getElementById('calModal').classList.remove('on');}
-document.getElementById('calModal').onclick=e=>{if(e.target===e.currentTarget)closeModal();};
+        const modal = document.getElementById('modal');
+        let month1 = new Date();
+        let month2 = new Date(month1.getFullYear(), month1.getMonth() + 1, 1);
+        const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                       'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+        const pricePerNight = 180;
+        let selected = [];
+        let airbnbUrl = 'https://airbnb.fr/h/a-la-folie';
 
-document.onkeydown=e=>{
-    if(document.getElementById('lb').classList.contains('on')){if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')lbN();if(e.key==='ArrowLeft')lbP();}
-    if(document.getElementById('calModal').classList.contains('on')&&e.key==='Escape')closeModal();
-};
+        function openModal() {
+            modal.classList.add('show');
+            renderCals();
+        }
 
-let pi=0;const sets=[[0,1,2],[1,2,3],[2,3,4],[3,4,5],[4,5,6],[5,6,7],[6,7,0],[7,0,1]];
-function rotPh(){pi=(pi+1)%sets.length;const s=sets[pi];
-['ph0','ph1','ph2'].forEach((id,i)=>{const el=document.getElementById(id);el.style.opacity='0';setTimeout(()=>{el.src=P[s[i]].s;el.style.opacity='1';},300);});
-['phl0','phl1','phl2'].forEach((id,i)=>{document.getElementById(id).textContent=P[s[i]].n;});
-document.getElementById('phc').textContent=`${s[0]+1} / ${P.length}`;
-document.querySelector('.pg-big').onclick=()=>openLb(s[0]);document.querySelectorAll('.pg-sm')[0].onclick=()=>openLb(s[1]);document.querySelectorAll('.pg-sm')[1].onclick=()=>openLb(s[2]);}
-setInterval(rotPh,3500);
+        function closeModal() {
+            modal.classList.remove('show');
+        }
 
-let ri=0;const sl=document.querySelectorAll('.rv-i'),dt=document.querySelectorAll('.rv-d span');
-setInterval(()=>{sl[ri].classList.remove('on');dt[ri].classList.remove('on');ri=(ri+1)%sl.length;sl[ri].classList.add('on');dt[ri].classList.add('on');},4000);
+        function renderCals() {
+            renderCal('cal1', month1, -1);
+            renderCal('cal2', month2, 1);
+        }
 
-const API='https://xhpsdbmajanmoztijbnx.supabase.co/functions/v1/folie-pricing',KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ',LISTING='1503490402342628075',MO=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],DA=['Lu','Ma','Me','Je','Ve','Sa','Di'];
-let m1=new Date(),m2=new Date(m1.getFullYear(),m1.getMonth()+1,1),start=null,end=null,blocked=[];
-async function fetchBlocked(){try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${KEY}`},body:JSON.stringify({get_calendar:true})});const d=await r.json();if(d.blocked)blocked=d.blocked;}catch(e){}render();}
-function isBlocked(d){const s=d.toISOString().split('T')[0];return blocked.some(b=>s>=b.start&&s<b.end);}
-function render(){renderCal('cal1',m1);renderCal('cal2',m2);const t=new Date();t.setHours(0,0,0,0);document.getElementById('prevBtn').disabled=m1<=t;}
-function renderCal(id,date){const el=document.getElementById(id),y=date.getFullYear(),m=date.getMonth(),t=new Date();t.setHours(0,0,0,0);const f=new Date(y,m,1),l=new Date(y,m+1,0);let sd=f.getDay()-1;if(sd<0)sd=6;let h=`<div class="cal-month">${MO[m]} ${y}</div><div class="cal-week">${DA.map(d=>`<span>${d}</span>`).join('')}</div><div class="cal-days">`;for(let i=0;i<sd;i++)h+=`<div class="day off"></div>`;for(let d=1;d<=l.getDate();d++){const c=new Date(y,m,d),ds=c.toISOString().split('T')[0],p=c<t,b=isBlocked(c),it=c.getTime()===t.getTime();let cl='day';if(p)cl+=' off';else if(b)cl+=' blocked';if(it)cl+=' today';if(start&&c.getTime()===start.getTime())cl+=' start';if(end&&c.getTime()===end.getTime())cl+=' end';if(start&&end&&c>start&&c<end)cl+=' range';h+=`<div class="${cl}" ${!p&&!b?`onclick="pick('${ds}')"`:''}>${d}</div>`;}h+='</div>';el.innerHTML=h;}
-function pick(ds){const d=new Date(ds);if(!start||(start&&end)){start=d;end=null;}else if(d>start){end=d;fetchPrice();}else{start=d;end=null;}render();}
-async function fetchPrice(){const ci=start.toISOString().split('T')[0],co=end.toISOString().split('T')[0],n=Math.round((end-start)/864e5);document.getElementById('priceContent').innerHTML=`<span class="price-label">Chargement...</span>`;try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${KEY}`},body:JSON.stringify({check_in:ci,check_out:co,guests:2})});const d=await r.json();if(d.available){document.getElementById('priceContent').innerHTML=`<span class="price-label">Total pour ${n} nuit${n>1?'s':''}</span><div class="price-amount">${d.pricing?.total||'—'}€</div><p class="price-night">${d.pricing?.per_night_avg||'—'}€ par nuit en moyenne</p><div class="price-dates"><div class="price-date-row"><span>Arrivée</span><span>${start.toLocaleDateString('fr-FR')}</span></div><div class="price-date-row"><span>Départ</span><span>${end.toLocaleDateString('fr-FR')}</span></div></div>`;document.getElementById('bookBtn').href=`https://www.airbnb.fr/rooms/${LISTING}?check_in=${ci}&check_out=${co}&guests=2`;document.getElementById('waBtn').href=`https://wa.me/33756864414?text=${encodeURIComponent(`Bonjour Léa ! Je voudrais réserver du ${start.toLocaleDateString('fr-FR')} au ${end.toLocaleDateString('fr-FR')}`)}`;} else{document.getElementById('priceContent').innerHTML=`<span class="price-label" style="color:#ff6b6b">Non disponible</span><p class="price-night">Ces dates sont déjà réservées</p>`;}}catch(e){document.getElementById('priceContent').innerHTML=`<span class="price-label">Erreur</span>`;}}
-function prevMonth(){m1.setMonth(m1.getMonth()-1);m2.setMonth(m2.getMonth()-1);render();}
-function nextMonth(){m1.setMonth(m1.getMonth()+1);m2.setMonth(m2.getMonth()+1);render();}
-fetchBlocked();
-</script>
+        function renderCal(id, date, dir) {
+            const container = document.getElementById(id);
+            const year = date.getFullYear();
+            const month = date.getMonth();
+
+            let html = `
+                <div class="cal-nav">
+                    <button onclick="changeMonth(${dir})">${dir < 0 ? '‹' : ''}</button>
+                    <div class="cal-month">${months[month]} ${year}</div>
+                    <button onclick="changeMonth(${dir})">${dir > 0 ? '›' : ''}</button>
+                </div>
+                <div class="cal-week">
+                    <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                </div>
+                <div class="cal-days">
+            `;
+
+            const first = new Date(year, month, 1).getDay();
+            const days = new Date(year, month + 1, 0).getDate();
+            const offset = first === 0 ? 6 : first - 1;
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            // Empty
+            for (let i = 0; i < offset; i++) {
+                html += '<div class="day off"></div>';
+            }
+
+            // Days
+            for (let d = 1; d <= days; d++) {
+                const dateObj = new Date(year, month, d);
+                const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                let cls = 'day';
+
+                if (dateObj < today) cls += ' blocked';
+                if (dateObj.getTime() === today.getTime()) cls += ' today';
+                if (selected.includes(dateStr)) cls += ' selected';
+
+                if (selected.length === 2) {
+                    const [s1, s2] = selected.sort();
+                    if (dateStr > s1 && dateStr < s2) cls += ' range';
+                }
+
+                const onclick = dateObj >= today ? `onclick="selectDate('${dateStr}')"` : '';
+                html += `<div class="${cls}" ${onclick}>${d}</div>`;
+            }
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        function selectDate(dateStr) {
+            const clickedDate = new Date(dateStr);
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            if (clickedDate < today) return;
+
+            if (selected.length === 0) {
+                selected.push(dateStr);
+            } else if (selected.length === 1) {
+                const first = new Date(selected[0]);
+                if (clickedDate > first) {
+                    selected.push(dateStr);
+                    selected.sort();
+                } else {
+                    selected = [dateStr];
+                }
+            } else {
+                selected = [dateStr];
+            }
+
+            updatePrice();
+            renderCals();
+        }
+
+        function updatePrice() {
+            const priceBox = document.getElementById('priceBox');
+            const btn = document.getElementById('airbnbBtn');
+
+            if (selected.length === 2) {
+                const checkIn = new Date(selected[0]);
+                const checkOut = new Date(selected[1]);
+                const nights = Math.ceil((checkOut - checkIn) / (1000*60*60*24));
+                const total = nights * pricePerNight;
+
+                document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
+                document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
+                document.getElementById('nightsLabel').textContent = `${nights} nuit${nights>1?'s':''} × ${pricePerNight}€`;
+                document.getElementById('totalPrice').textContent = `${total}€`;
+
+                priceBox.style.opacity = '1';
+                priceBox.style.pointerEvents = 'auto';
+                btn.disabled = false;
+
+                airbnbUrl = `https://airbnb.fr/h/a-la-folie?check_in=${selected[0]}&check_out=${selected[1]}`;
+            } else {
+                priceBox.style.opacity = '0';
+                priceBox.style.pointerEvents = 'none';
+                btn.disabled = true;
+            }
+        }
+
+        function changeMonth(dir) {
+            month1.setMonth(month1.getMonth() + dir);
+            month2 = new Date(month1.getFullYear(), month1.getMonth() + 1, 1);
+            renderCals();
+        }
+
+        function goToAirbnb() {
+            window.open(airbnbUrl, '_blank');
+        }
+
+        modal.onclick = (e) => {
+            if (e.target === modal) closeModal();
+        };
+    </script>
 </body>
 </html>
