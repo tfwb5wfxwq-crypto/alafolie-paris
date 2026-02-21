@@ -89,7 +89,7 @@
         /* LAYOUT */
         .grid {
             display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
+            grid-template-columns: 1fr 1fr;
             height: calc(100vh - 140px);
             padding-top: 70px;
         }
@@ -101,7 +101,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            background: linear-gradient(135deg, rgba(255,245,255,0.5) 0%, rgba(240,249,255,0.5) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(250,250,252,0.95) 100%);
         }
 
         .hero h1 {
@@ -500,23 +500,50 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 2.5rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: rgba(255,255,255,0.7);
             z-index: 100;
         }
 
-        .footer a {
+        .footer-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-whatsapp {
             color: #25D366;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             display: flex;
             align-items: center;
             gap: 0.5rem;
             transition: opacity 0.3s;
         }
 
-        .footer a:hover {
+        .footer-whatsapp:hover {
             opacity: 0.8;
+        }
+
+        .footer-airbnb {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            background: #FF5A5F;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .footer-airbnb:hover {
+            background: #e8494e;
+            transform: translateY(-1px);
         }
     </style>
 </head>
@@ -622,13 +649,22 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <span>© 2026 À la Folie · Paris 11e</span>
-        <a href="https://wa.me/33620202036" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            06 20 20 20 36
-        </a>
+        <div class="footer-left">
+            <span>© 2026 À la Folie</span>
+            <span style="opacity: 0.5; margin: 0 0.5rem;">·</span>
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" style="color: rgba(255,255,255,0.6); text-decoration: none;">Paris 11e</a>
+        </div>
+        <div class="footer-right">
+            <a href="https://wa.me/33620202036" target="_blank" class="footer-whatsapp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                06 20 20 20 36
+            </a>
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="footer-airbnb">
+                Réserver sur Airbnb
+            </a>
+        </div>
     </footer>
 
     <!-- MODAL -->
@@ -678,17 +714,58 @@
             }
         });
 
+        // PriceLabs API via Supabase Edge Function
+        const API_URL = 'https://xhpsdbmajanmoztijbnx.supabase.co/functions/v1/folie-pricing';
+        const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocHNkYm1hamFubW96dGlqYm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NTY2MjksImV4cCI6MjA4NTMzMjYyOX0.HwFRHULHBBQlWoOwD9lMav5Icjlfe92o1QZspxI_2DQ';
+        const LISTING_ID = '1503490402342628075';
+
         const modal = document.getElementById('modal');
         let month1 = new Date();
         let month2 = new Date(month1.getFullYear(), month1.getMonth() + 1, 1);
         const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
                        'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-        const pricePerNight = 180;
+        let pricePerNight = 180; // Default fallback
+        let pricingData = {};
+        let blockedDates = [];
         let selected = [];
         let airbnbUrl = 'https://airbnb.fr/h/a-la-folie';
 
-        function openModal() {
+        // Fetch pricing from PriceLabs API
+        async function fetchPricing() {
+            try {
+                const checkIn = new Date().toISOString().split('T')[0];
+                const checkOut = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        listing_id: LISTING_ID,
+                        check_in: checkIn,
+                        check_out: checkOut,
+                        guests: 2
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.pricing) pricingData = data.pricing;
+                    if (data.blocked) blockedDates = data.blocked;
+                    console.log('Pricing data loaded:', data);
+                } else {
+                    console.log('API unavailable, using default price');
+                }
+            } catch (e) {
+                console.log('Pricing API error:', e);
+            }
+        }
+
+        async function openModal() {
             modal.classList.add('show');
+            await fetchPricing();
             renderCals();
         }
 
