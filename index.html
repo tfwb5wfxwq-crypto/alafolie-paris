@@ -611,7 +611,7 @@
             <div class="cta">
                 <button class="btn btn-calendar" onclick="openModal()">📅 Voir les disponibilités</button>
                 <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
                         <path d="M12 0c1.04 0 2.04.32 2.85.91 1.88 1.36 2.46 3.96 2.46 5.61 0 .74-.17 1.48-.43 2.16-.43 1.12-1.1 2.11-1.96 2.92-.26.24-.54.46-.83.65-.65.44-1.35.7-2.09.7-.72 0-1.42-.26-2.05-.7-.28-.2-.57-.41-.83-.65-.87-.81-1.53-1.8-1.96-2.92-.26-.68-.43-1.42-.43-2.16 0-1.65.58-4.25 2.46-5.61C9.96.32 10.96 0 12 0zm7.27 7.71c.04.11.09.2.13.28.5 1.05.78 2.22.78 3.45 0 3.59-2.33 6.62-5.55 7.71-.46.15-.94.26-1.44.33-.24.02-.48.04-.72.04h-.06c-.24 0-.48-.02-.72-.04-.5-.07-.98-.17-1.44-.33C7.06 18.06 4.73 15.03 4.73 11.44c0-1.23.28-2.4.78-3.45.04-.09.09-.17.13-.28.87.57 1.87.98 2.96 1.2.24.04.48.09.74.11.22.02.44.02.65.02h.07c.22 0 .43 0 .65-.02.26-.02.5-.07.74-.11 1.09-.22 2.09-.63 2.96-1.2z"/>
                     </svg>
                     Réserver sur Airbnb
@@ -662,6 +662,9 @@
                 06 20 20 20 36
             </a>
             <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="footer-airbnb">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white" style="margin-right: 0.4rem;">
+                    <path d="M12 0c1.04 0 2.04.32 2.85.91 1.88 1.36 2.46 3.96 2.46 5.61 0 .74-.17 1.48-.43 2.16-.43 1.12-1.1 2.11-1.96 2.92-.26.24-.54.46-.83.65-.65.44-1.35.7-2.09.7-.72 0-1.42-.26-2.05-.7-.28-.2-.57-.41-.83-.65-.87-.81-1.53-1.8-1.96-2.92-.26-.68-.43-1.42-.43-2.16 0-1.65.58-4.25 2.46-5.61C9.96.32 10.96 0 12 0zm7.27 7.71c.04.11.09.2.13.28.5 1.05.78 2.22.78 3.45 0 3.59-2.33 6.62-5.55 7.71-.46.15-.94.26-1.44.33-.24.02-.48.04-.72.04h-.06c-.24 0-.48-.02-.72-.04-.5-.07-.98-.17-1.44-.33C7.06 18.06 4.73 15.03 4.73 11.44c0-1.23.28-2.4.78-3.45.04-.09.09-.17.13-.28.87.57 1.87.98 2.96 1.2.24.04.48.09.74.11.22.02.44.02.65.02h.07c.22 0 .43 0 .65-.02.26-.02.5-.07.74-.11 1.09-.22 2.09-.63 2.96-1.2z"/>
+                </svg>
                 Réserver sur Airbnb
             </a>
         </div>
@@ -691,7 +694,7 @@
             </div>
 
             <button class="modal-btn" id="airbnbBtn" onclick="goToAirbnb()" disabled>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
                     <path d="M12 0c1.04 0 2.04.32 2.85.91 1.88 1.36 2.46 3.96 2.46 5.61 0 .74-.17 1.48-.43 2.16-.43 1.12-1.1 2.11-1.96 2.92-.26.24-.54.46-.83.65-.65.44-1.35.7-2.09.7-.72 0-1.42-.26-2.05-.7-.28-.2-.57-.41-.83-.65-.87-.81-1.53-1.8-1.96-2.92-.26-.68-.43-1.42-.43-2.16 0-1.65.58-4.25 2.46-5.61C9.96.32 10.96 0 12 0zm7.27 7.71c.04.11.09.2.13.28.5 1.05.78 2.22.78 3.45 0 3.59-2.33 6.62-5.55 7.71-.46.15-.94.26-1.44.33-.24.02-.48.04-.72.04h-.06c-.24 0-.48-.02-.72-.04-.5-.07-.98-.17-1.44-.33C7.06 18.06 4.73 15.03 4.73 11.44c0-1.23.28-2.4.78-3.45.04-.09.09-.17.13-.28.87.57 1.87.98 2.96 1.2.24.04.48.09.74.11.22.02.44.02.65.02h.07c.22 0 .43 0 .65-.02.26-.02.5-.07.74-.11 1.09-.22 2.09-.63 2.96-1.2z"/>
                 </svg>
                 Réserver sur Airbnb
@@ -812,7 +815,9 @@
                 const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
                 let cls = 'day';
 
-                if (dateObj < today) cls += ' blocked';
+                // Check if date is blocked (past or from API)
+                const isBlocked = dateObj < today || blockedDates.includes(dateStr);
+                if (isBlocked) cls += ' blocked';
                 if (dateObj.getTime() === today.getTime()) cls += ' today';
                 if (selected.includes(dateStr)) cls += ' selected';
 
@@ -821,7 +826,7 @@
                     if (dateStr > s1 && dateStr < s2) cls += ' range';
                 }
 
-                const onclick = dateObj >= today ? `onclick="selectDate('${dateStr}')"` : '';
+                const onclick = !isBlocked ? `onclick="selectDate('${dateStr}')"` : '';
                 html += `<div class="${cls}" ${onclick}>${d}</div>`;
             }
 
@@ -862,11 +867,28 @@
                 const checkIn = new Date(selected[0]);
                 const checkOut = new Date(selected[1]);
                 const nights = Math.ceil((checkOut - checkIn) / (1000*60*60*24));
-                const total = nights * pricePerNight;
+
+                // Calculate total using dynamic pricing if available
+                let total = 0;
+                let avgPrice = pricePerNight;
+
+                if (Object.keys(pricingData).length > 0) {
+                    // Sum up prices for each night from API data
+                    for (let i = 0; i < nights; i++) {
+                        const nightDate = new Date(checkIn);
+                        nightDate.setDate(nightDate.getDate() + i);
+                        const dateStr = nightDate.toISOString().split('T')[0];
+                        total += pricingData[dateStr] || pricePerNight;
+                    }
+                    avgPrice = Math.round(total / nights);
+                } else {
+                    // Fallback to fixed price
+                    total = nights * pricePerNight;
+                }
 
                 document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
                 document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
-                document.getElementById('nightsLabel').textContent = `${nights} nuit${nights>1?'s':''} × ${pricePerNight}€`;
+                document.getElementById('nightsLabel').textContent = `${nights} nuit${nights>1?'s':''} × ${avgPrice}€ moy.`;
                 document.getElementById('totalPrice').textContent = `${total}€`;
 
                 priceBox.style.opacity = '1';
