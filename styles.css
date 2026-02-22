@@ -17,8 +17,12 @@ body {
     to { transform: rotate(360deg); }
 }
 
-@keyframes spin-fast {
-    to { transform: rotate(360deg); }
+@keyframes spin-accelerate {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(180deg); }
+    50% { transform: rotate(540deg); }
+    75% { transform: rotate(1080deg); }
+    100% { transform: rotate(1800deg); }
 }
 
 /* HEADER */
@@ -59,7 +63,7 @@ body {
 }
 
 .logo:hover .flower {
-    animation: spin-fast 0.8s linear infinite;
+    animation: spin-accelerate 4s ease-in infinite;
 }
 
 .logo-text {
@@ -169,11 +173,14 @@ body {
 }
 
 .footer a[href*="airbnb"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(255, 90, 95, 0.4);
+    transform: translateY(-2px) scale(1.05);
+    background: #FF5A5F !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 30px rgba(255, 90, 95, 0.5);
 }
 
 .footer a[href*="airbnb"]:hover img {
+    filter: brightness(0) invert(1);
     transform: rotate(5deg) scale(1.1);
 }
 
