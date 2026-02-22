@@ -862,11 +862,16 @@
                 if (response.ok) {
                     const data = await response.json();
                     console.log('✅ Pricing data loaded:', data);
-                    console.log('📊 pricingData structure:', data.pricing);
-                    console.log('🚫 blockedDates:', data.blocked);
+                    console.log('🔑 All keys:', Object.keys(data));
+                    console.log('📊 Full data:', JSON.stringify(data, null, 2));
 
+                    // L'Edge Function retourne directement les données, pas dans data.pricing
+                    // On doit adapter selon le vrai format
                     if (data.pricing) pricingData = data.pricing;
                     if (data.blocked) blockedDates = data.blocked;
+
+                    console.log('📊 pricingData after:', pricingData);
+                    console.log('🚫 blockedDates after:', blockedDates);
                 } else {
                     const errorText = await response.text();
                     console.error('❌ API Error:', response.status, errorText);
