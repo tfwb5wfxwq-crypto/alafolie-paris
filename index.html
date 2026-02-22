@@ -148,9 +148,6 @@
             filter: brightness(1.1);
         }
 
-        .btn-airbnb:hover img {
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
-        }
 
         .btn-whatsapp {
             background: #25D366;
@@ -518,10 +515,27 @@
             <div class="lea">
                 <div style="width: 100%;">
                     <div style="display: flex; gap: 1.2rem; align-items: center; margin-bottom: 1rem;">
-                        <img src="lea.png" alt="Lea" style="width: 90px; height: 90px;">
+                        <img src="lea.png" alt="Lea" style="width: 90px; height: 90px; object-fit: cover; object-position: center 20%;">
                         <div>
-                            <h3 style="font-size: 1.6rem; margin-bottom: 0.3rem;">Lea, votre hôte</h3>
-                            <span style="font-size: 0.95rem;">Superhost 5.0★</span>
+                            <h3 style="font-size: 1.6rem; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.5rem; color: #ff4d6a;">
+                                Lea, votre hôte
+                                <svg viewBox="0 0 40 40" style="width: 20px; height: 20px; filter: drop-shadow(0 0 4px rgba(255,77,106,0.4));">
+                                    <g transform="translate(20,20)">
+                                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
+                                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
+                                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
+                                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
+                                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
+                                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
+                                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
+                                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+                                        <circle fill="#ffd93d" cx="0" cy="0" r="5"/>
+                                    </g>
+                                </svg>
+                            </h3>
+                            <span style="font-size: 0.95rem; background: linear-gradient(135deg, #ffd93d, #ffed4e); color: #333; padding: 0.3rem 0.8rem; border-radius: 12px; font-weight: 600; display: inline-block; box-shadow: 0 2px 8px rgba(255, 217, 61, 0.3); transition: all 0.3s; cursor: default;">
+                                Superhost 5.0★
+                            </span>
                         </div>
                     </div>
                     <p class="lea-text" style="font-size: 0.95rem; line-height: 1.65;">
@@ -530,9 +544,6 @@
                         Idéal pour un <strong>weekend romantique</strong> ou une <strong>escapade luxe à Paris</strong>.
                         Dispo 24/7 ! 🌸
                     </p>
-                    <div style="margin-top: 1rem; font-family: 'Brush Script MT', cursive, 'Cormorant Garamond', serif; font-size: 1.4rem; color: #ff4d6a; font-style: italic;">
-                        — Lea
-                    </div>
                 </div>
             </div>
 
