@@ -573,6 +573,45 @@
             gap: 0.7rem;
         }
 
+        /* FOOTER OVERRIDE for index.html */
+        .footer {
+            height: 100px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border-top: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer a {
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        /* FOOTER WhatsApp hover */
+        .footer a[href^="https://wa.me"] {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer a[href^="https://wa.me"]:hover {
+            transform: scale(1.05);
+        }
+
+        /* FOOTER Airbnb button hover */
+        .footer a[href*="airbnb"] {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer a[href*="airbnb"]:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 40px rgba(255, 56, 92, 0.6);
+            filter: brightness(1.1);
+        }
+
+        .footer a[href*="airbnb"]:hover img {
+            transform: scale(1.1) rotate(-3deg);
+        }
+
         /* MOBILE */
         @media (max-width: 768px) {
             body {
@@ -892,7 +931,8 @@
                     </div>
                     <p class="lea-text" style="font-size: 0.95rem; line-height: 1.65;">
                         <span class="lea-text-full">
-                            Bienvenue dans mon <strong>appartement d'exception</strong>.
+                            Bienvenue dans mon <strong>appartement d'exception</strong> situé au cœur du <strong>Paris 11e</strong>, entre <strong>Bastille et République</strong> (<strong>métro Voltaire 3 min</strong>, République 8 min).
+                            <strong>Jacuzzi privatif</strong>, <strong>home cinéma 4K</strong> Netflix, <strong>literie king-size</strong> et <strong>toilette japonaise</strong>.
                             Idéal pour un <strong>weekend romantique</strong> ou une <strong>escapade luxe à Paris</strong>.
                             Dispo 24/7 ! 🌸
                         </span>
