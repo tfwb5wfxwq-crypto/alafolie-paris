@@ -285,9 +285,9 @@
             z-index: 50;
         }
 
-        .video-text h2 {
+        .video-text h1, .video-text h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
             text-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
@@ -739,7 +739,7 @@
                 right: 0.6rem;
             }
 
-            .video-text h2 {
+            .video-text h1, .video-text h2 {
                 font-size: 1.8rem;
                 margin-bottom: 0.7rem;
                 line-height: 1.2;
@@ -1008,7 +1008,7 @@
                 bottom: 95px;
             }
 
-            .video-text h2 {
+            .video-text h1, .video-text h2 {
                 font-size: 1.2rem;
             }
 
@@ -1113,9 +1113,61 @@
                 left: 120%;
             }
         }
+
+        /* Loading Screen */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0f1f 100%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .page-loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-flower {
+            width: 120px;
+            height: 120px;
+            filter: drop-shadow(0 0 30px rgba(255,255,255,0.6));
+            animation: flower-spin 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes flower-spin {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+                filter: drop-shadow(0 0 30px rgba(255,255,255,0.6));
+            }
+            50% {
+                transform: rotate(180deg) scale(1.1);
+                filter: drop-shadow(0 0 50px rgba(255,217,61,0.8));
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <svg class="loader-flower" viewBox="0 0 40 40">
+            <g transform="translate(20,20)">
+                <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
+                <ellipse fill="#ffd93d" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
+                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
+                <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
+                <ellipse fill="#ffd93d" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
+                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
+                <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
+                <ellipse fill="#ffd93d" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+                <circle fill="#ffd93d" cx="0" cy="0" r="4.5"/>
+            </g>
+        </svg>
+    </div>
+
     <!-- HEADER -->
     <header class="header">
         <a href="/" style="text-decoration: none;">
@@ -1223,7 +1275,7 @@
                 </video>
                 <div class="overlay"></div>
                 <div class="video-text">
-                    <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.8);">Appartement Jacuzzi Privatif Paris 11e<br><span style="font-size: 0.7em; opacity: 0.9;">Oberkampf · Bastille · République</span></h1>
+                    <h1>Appartement Jacuzzi Privatif Paris 11e<br><span>Oberkampf · Bastille · République</span></h1>
                     <p style="display: flex; flex-direction: column; gap: 0.6rem;">
                         <span style="display: flex; align-items: center; gap: 0.7rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1702,6 +1754,14 @@
         modal.onclick = (e) => {
             if (e.target === modal) closeModal();
         };
+
+        // Hide page loader when everything is loaded
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('pageLoader');
+            setTimeout(() => {
+                loader.classList.add('hide');
+            }, 300); // Small delay for smooth transition
+        });
     </script>
 </body>
 </html>
