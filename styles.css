@@ -187,15 +187,13 @@ body {
 }
 
 .footer a[href*="airbnb"]:hover {
-    transform: translateY(-2px) scale(1.05);
-    background: #FFFFFF !important;
-    color: #ff385c !important;
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 10px 35px rgba(255, 56, 92, 0.6);
+    filter: brightness(1.2);
 }
 
 .footer a[href*="airbnb"]:hover img {
-    filter: none;
-    transform: rotate(5deg) scale(1.1);
+    transform: scale(1.1) rotate(3deg);
 }
 
 /* Animations */
