@@ -834,14 +834,12 @@
         let blockedDates = [];
         let selected = [];
         let airbnbUrl = 'https://airbnb.fr/h/a-la-folie';
+        let conflictRanges = []; // Réservations qui bloquent des dates
 
-        // Fetch pricing from PriceLabs API
-        async function fetchPricing() {
+        // Fetch availability from Supabase Edge Function
+        async function fetchPricing(checkIn, checkOut) {
             try {
-                const checkIn = new Date().toISOString().split('T')[0];
-                const checkOut = new Date(Date.now() + 86400000).toISOString().split('T')[0];
-
-                console.log('🔄 Fetching pricing...', { checkIn, checkOut, LISTING_ID });
+                console.log('🔄 Checking availability...', { checkIn, checkOut, LISTING_ID });
 
                 const response = await fetch(API_URL, {
                     method: 'POST',
@@ -857,46 +855,21 @@
                     })
                 });
 
+                // Reset pour chaque nouvelle vérification
+                blockedDates = [];
+                conflictRanges = [];
+
                 console.log('📡 API Response Status:', response.status);
 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('✅ RAW API Response:', data);
-                    console.log('🔑 Keys:', Object.keys(data));
-                    console.log('📊 JSON:', JSON.stringify(data, null, 2));
+                    console.log('✅ Availability check:', data.available ? '✓ Dispo' : '✗ Pas dispo', data);
 
-                    // Essayer différents formats de réponse
-                    if (data.pricing) {
-                        pricingData = data.pricing;
-                    } else if (data.daily_prices) {
-                        pricingData = data.daily_prices;
-                    } else if (data.prices) {
-                        pricingData = data.prices;
-                    } else if (data.nights && typeof data.price === 'number') {
-                        // Format simple : un prix pour toute la période
-                        const checkInDate = new Date(data.check_in);
-                        for (let i = 0; i < data.nights; i++) {
-                            const d = new Date(checkInDate);
-                            d.setDate(d.getDate() + i);
-                            const dateStr = d.toISOString().split('T')[0];
-                            pricingData[dateStr] = Math.round(data.price / data.nights);
-                        }
-                    }
-
-                    if (data.blocked) {
-                        blockedDates = data.blocked;
-                    } else if (data.blocked_dates) {
-                        blockedDates = data.blocked_dates;
-                    } else if (data.unavailable) {
-                        blockedDates = data.unavailable;
-                    }
-
-                    console.log('💰 Mapped pricingData:', pricingData);
-                    console.log('🚫 Mapped blockedDates:', blockedDates);
-                    console.log('📏 pricingData has', Object.keys(pricingData).length, 'dates');
+                    return data;
                 } else {
                     const errorText = await response.text();
                     console.error('❌ API Error:', response.status, errorText);
+                    return null;
                 }
             } catch (e) {
                 console.error('❌ Pricing API exception:', e.message, e);
@@ -905,7 +878,6 @@
 
         async function openModal() {
             modal.classList.add('show');
-            await fetchPricing();
             renderCals();
         }
 
@@ -996,7 +968,7 @@
             renderCals();
         }
 
-        function updatePrice() {
+        async function updatePrice() {
             const priceBox = document.getElementById('priceBox');
             const btn = document.getElementById('airbnbBtn');
 
@@ -1005,34 +977,37 @@
                 const checkOut = new Date(selected[1]);
                 const nights = Math.ceil((checkOut - checkIn) / (1000*60*60*24));
 
-                console.log('💰 Calculating price for', nights, 'nights');
-                console.log('💰 pricingData available:', Object.keys(pricingData).length, 'dates');
+                // Vérifier la disponibilité avec l'API
+                const availData = await fetchPricing(selected[0], selected[1]);
 
-                // Calculate total using dynamic pricing if available
-                let total = 0;
-                let avgPrice = pricePerNight;
+                if (availData && !availData.available) {
+                    // Période non disponible - afficher le conflit
+                    console.log('⛔ Période non disponible:', availData.conflict);
 
-                if (Object.keys(pricingData).length > 0) {
-                    // Sum up prices for each night from API data
-                    for (let i = 0; i < nights; i++) {
-                        const nightDate = new Date(checkIn);
-                        nightDate.setDate(nightDate.getDate() + i);
-                        const dateStr = nightDate.toISOString().split('T')[0];
-                        const nightPrice = pricingData[dateStr] || pricePerNight;
-                        console.log(`💰 ${dateStr}: ${nightPrice}€`);
-                        total += nightPrice;
+                    document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
+                    document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
+                    document.getElementById('nightsLabel').innerHTML = `<span style="color: #ff4d6a;">⛔ Période déjà réservée</span>`;
+                    document.getElementById('totalPrice').innerHTML = `<a href="${availData.airbnb_url}" target="_blank" style="color: #4dd4d4; text-decoration: underline;">Voir sur Airbnb</a>`;
+
+                    priceBox.style.opacity = '1';
+                    priceBox.style.pointerEvents = 'auto';
+                    btn.disabled = true;
+
+                    // Afficher les alternatives si disponibles
+                    if (availData.alternatives && availData.alternatives.length > 0) {
+                        console.log('💡 Alternatives:', availData.alternatives);
                     }
-                    avgPrice = Math.round(total / nights);
-                    console.log('💰 Using API prices - Total:', total, 'Avg:', avgPrice);
-                } else {
-                    // Fallback to fixed price
-                    total = nights * pricePerNight;
-                    console.log('💰 Using fallback price:', pricePerNight, '× ', nights, '=', total);
+
+                    return;
                 }
+
+                // Période disponible - calculer le prix
+                const total = nights * pricePerNight;
+                console.log('💰 Prix calculé:', nights, 'nuits ×', pricePerNight, '€ =', total, '€');
 
                 document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
                 document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
-                document.getElementById('nightsLabel').textContent = `${nights} nuit${nights>1?'s':''} × ${avgPrice}€ moy.`;
+                document.getElementById('nightsLabel').textContent = `${nights} nuit${nights>1?'s':''} × ${pricePerNight}€`;
                 document.getElementById('totalPrice').textContent = `${total}€`;
 
                 priceBox.style.opacity = '1';
