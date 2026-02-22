@@ -125,48 +125,7 @@ body {
     transform: translateY(-2px) scale(1.05);
 }
 
-/* FOOTER */
-.footer {
-    min-height: 80px;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(30px);
-    border-top: 1px solid rgba(255,255,255,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem 3rem;
-    z-index: 100;
-}
-
-.footer-left {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.footer-center {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-}
-
-.footer-right {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-end;
-}
-
-.footer.fixed {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.footer.static {
-    margin-top: 4rem;
-}
+/* FOOTER - styles déplacés dans index.html pour éviter conflits */
 
 /* Footer WhatsApp hover */
 .footer a[href^="https://wa.me"] {
