@@ -21,21 +21,81 @@
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             color: var(--white);
-            background: #0a0a0f;
+            background: #000;
             line-height: 1.6;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* HEADER */
         .header {
-            padding: 1.5rem 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            background: #000;
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .logo-svg {
-            width: 200px;
-            height: auto;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .logo:hover .flower {
+            animation: spin 3s linear infinite;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            display: flex;
+            gap: 0.05rem;
+        }
+
+        .logo-text span {
+            display: inline-block;
+        }
+
+        /* Neon colors */
+        .neon-a1 { color: #ff4d6a; text-shadow: 0 0 10px #ff4d6a, 0 0 20px #ff4d6a; }
+        .neon-l1 { color: #ff8c42; text-shadow: 0 0 10px #ff8c42, 0 0 20px #ff8c42; }
+        .neon-a2 { color: #ffd93d; text-shadow: 0 0 10px #ffd93d, 0 0 20px #ffd93d; }
+        .neon-f { color: #6bcb77; text-shadow: 0 0 10px #6bcb77, 0 0 20px #6bcb77; }
+        .neon-l2 { color: #4dd4d4; text-shadow: 0 0 10px #4dd4d4, 0 0 20px #4dd4d4; }
+        .neon-i { color: #9b5de5; text-shadow: 0 0 10px #9b5de5, 0 0 20px #9b5de5; }
+        .neon-e { color: #ff4dc4; text-shadow: 0 0 10px #ff4dc4, 0 0 20px #ff4dc4; }
+
+        .flower {
+            width: 28px;
+            height: 28px;
+            animation: spin 20s linear infinite;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: #ffd93d;
         }
 
         /* HERO */
@@ -155,23 +215,15 @@
 
         /* FOOTER */
         .footer {
-            padding: 2rem;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--glass-border);
+            height: 60px;
+            background: #000;
+            backdrop-filter: blur(30px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
             margin-top: 4rem;
-        }
-
-        .back-link {
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        .back-link:hover {
-            color: var(--white);
         }
 
         /* MOBILE */
@@ -185,7 +237,40 @@
 <body>
     <!-- HEADER -->
     <header class="header">
-        <img src="logo.svg" alt="À la Folie" class="logo-svg">
+        <a href="/" style="text-decoration: none;">
+            <div class="logo">
+                <div class="logo-text">
+                    <span class="neon-a1">À</span>
+                </div>
+                <div class="logo-text">
+                    <span class="neon-l1">L</span><span class="neon-a2">A</span>
+                </div>
+                <div class="logo-text">
+                    <span class="neon-f">F</span>
+                </div>
+                <svg class="flower" viewBox="0 0 40 40" style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));">
+                    <g transform="translate(20,20)">
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+                        <circle fill="#ffd93d" cx="0" cy="0" r="5"/>
+                    </g>
+                </svg>
+                <div class="logo-text">
+                    <span class="neon-l2">L</span><span class="neon-i">I</span><span class="neon-e">E</span>
+                </div>
+            </div>
+        </a>
+        <nav class="nav">
+            <a href="/">Accueil</a>
+            <a href="/photos">Photos</a>
+            <a href="/recommandations" class="active">Recommandations</a>
+        </nav>
     </header>
 
     <!-- HERO -->
@@ -355,8 +440,37 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <a href="index.html" class="back-link">← Retour à l'accueil</a>
-        <p style="margin-top: 1rem; color: rgba(255,255,255,0.4); font-size: 0.85rem;">© 2026 À la Folie · Paris 11e</p>
+        <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">© 2026 À la Folie · Paris 11e</span>
+        <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <a href="https://wa.me/33620202036" target="_blank" style="color: #25D366; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                06 20 20 20 36
+            </a>
+            <a href="https://airbnb.fr/h/a-la-folie" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: rgba(255,90,95,0.1); border-radius: 50px; text-decoration: none; color: #fff; font-size: 0.85rem; transition: all 0.3s;">
+                <img src="airbnb-logo.png" alt="Airbnb" style="width: 20px; height: 20px; border-radius: 50%;">
+                Réserver
+            </a>
+        </div>
     </footer>
+
+    <script>
+        // Smooth flower animation
+        const flower = document.querySelector('.flower');
+        if (flower) {
+            let isSpinning = false;
+            flower.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                isSpinning = !isSpinning;
+                if (isSpinning) {
+                    flower.style.animation = 'spin 3s linear infinite';
+                } else {
+                    flower.style.animation = 'spin 20s linear infinite';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
