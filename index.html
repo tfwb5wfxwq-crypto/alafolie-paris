@@ -36,7 +36,7 @@
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            height: calc(100vh - 170px);
+            min-height: calc(100vh - 170px);
             padding-top: 70px;
         }
 
@@ -167,11 +167,13 @@
         /* RIGHT */
         .right {
             position: relative;
+            background: #000;
         }
 
         .video {
             position: absolute;
             inset: 0;
+            bottom: -100px;
         }
 
         .video video {
@@ -485,6 +487,29 @@
             cursor: not-allowed;
         }
 
+        .modal-btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #2ee876) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        .modal-btn-whatsapp:hover {
+            box-shadow:
+                0 0 0 4px rgba(37, 211, 102, 0.4),
+                0 0 40px rgba(37, 211, 102, 0.6),
+                0 0 70px rgba(37, 211, 102, 0.3) !important;
+            background: linear-gradient(135deg, #2ee876, #3bff8a) !important;
+        }
+
+        .modal-btn-airbnb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
         /* FOOTER */
         .footer {
             position: fixed;
@@ -672,9 +697,7 @@
         <!-- Droite: Bouton Airbnb + Copyright -->
         <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem;">
             <a href="https://airbnb.fr/h/a-la-folie" target="_blank" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 1.5rem; background: linear-gradient(135deg, #FF5A5F, #ff7a7d); border-radius: 50px; text-decoration: none; color: #fff; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink: 0;">
-                    <path d="M12 0C9.4 0 7.3 2.1 7.3 4.7c0 3.5 4.7 9.3 4.7 9.3s4.7-5.8 4.7-9.3C16.7 2.1 14.6 0 12 0zm0 6.5c-1 0-1.8-.8-1.8-1.8S11 2.9 12 2.9s1.8.8 1.8 1.8S13 6.5 12 6.5zM20.8 13.5c-2.6 0-4.8 2.1-4.8 4.8 0 3.5 4.8 5.7 4.8 5.7s4.8-2.2 4.8-5.7c0-2.6-2.1-4.8-4.8-4.8zm0 6.5c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zM3.2 13.5c-2.6 0-4.8 2.1-4.8 4.8 0 3.5 4.8 5.7 4.8 5.7s4.8-2.2 4.8-5.7c0-2.6-2.1-4.8-4.8-4.8zm0 6.5c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8S5 17.2 5 18.2s-.8 1.8-1.8 1.8z"/>
-                </svg>
+                <img src="airbnb-logo.png" alt="Airbnb" style="width: 20px; height: 20px;">
                 Réserver
             </a>
             <span style="color: rgba(255,255,255,0.4); font-size: 0.7rem;">© 2026 À la Folie · Superhost 5.0★</span>
@@ -794,20 +817,20 @@
         }
 
         function renderCals() {
-            renderCal('cal1', month1, -1);
-            renderCal('cal2', month2, 1);
+            renderCal('cal1', month1, true);
+            renderCal('cal2', month2, false);
         }
 
-        function renderCal(id, date, dir) {
+        function renderCal(id, date, showNav) {
             const container = document.getElementById(id);
             const year = date.getFullYear();
             const month = date.getMonth();
 
             let html = `
                 <div class="cal-nav">
-                    <button onclick="changeMonth(${dir})">${dir < 0 ? '‹' : ''}</button>
+                    ${showNav ? '<button onclick="changeMonth(-1)">‹</button>' : '<div></div>'}
                     <div class="cal-month">${months[month]} ${year}</div>
-                    <button onclick="changeMonth(${dir})">${dir > 0 ? '›' : ''}</button>
+                    ${showNav ? '<button onclick="changeMonth(1)">›</button>' : '<div></div>'}
                 </div>
                 <div class="cal-week">
                     <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
