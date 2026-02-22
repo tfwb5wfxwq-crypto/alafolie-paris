@@ -863,7 +863,9 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('✅ Availability check:', data.available ? '✓ Dispo' : '✗ Pas dispo', data);
+                    console.log('✅ API Response:', data);
+                    console.log('💰 Pricing data:', data.pricing);
+                    console.log('🔐 Available:', data.available);
 
                     return data;
                 } else {
@@ -977,43 +979,49 @@
                 const checkOut = new Date(selected[1]);
                 const nights = Math.ceil((checkOut - checkIn) / (1000*60*60*24));
 
-                // Vérifier la disponibilité avec l'API
+                // Vérifier la disponibilité et récupérer les prix avec l'API
                 const availData = await fetchPricing(selected[0], selected[1]);
 
-                if (availData && !availData.available) {
-                    // Période non disponible - afficher le conflit
+                if (!availData) {
+                    console.error('❌ Pas de réponse API');
+                    return;
+                }
+
+                // Calculer le prix (utiliser PriceLabs si dispo, sinon fallback)
+                let total, avgPrice;
+                if (availData.pricing) {
+                    total = availData.pricing.total;
+                    avgPrice = availData.pricing.per_night_avg;
+                    console.log('💰 Prix PriceLabs:', total, '€ (moy:', avgPrice, '€/nuit)');
+                } else {
+                    total = nights * pricePerNight;
+                    avgPrice = pricePerNight;
+                    console.log('💰 Prix fallback:', total, '€ (moy:', avgPrice, '€/nuit)');
+                }
+
+                document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
+                document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
+
+                if (availData.available) {
+                    // Période disponible
+                    document.getElementById('nightsLabel').textContent = `${nights} nuit${nights>1?'s':''} × ${avgPrice}€ moy.`;
+                    document.getElementById('totalPrice').textContent = `${total}€`;
+                    btn.disabled = false;
+                } else {
+                    // Période non disponible - afficher quand même les prix + le conflit
                     console.log('⛔ Période non disponible:', availData.conflict);
-
-                    document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
-                    document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
-                    document.getElementById('nightsLabel').innerHTML = `<span style="color: #ff4d6a;">⛔ Période déjà réservée</span>`;
-                    document.getElementById('totalPrice').innerHTML = `<a href="${availData.airbnb_url}" target="_blank" style="color: #4dd4d4; text-decoration: underline;">Voir sur Airbnb</a>`;
-
-                    priceBox.style.opacity = '1';
-                    priceBox.style.pointerEvents = 'auto';
+                    document.getElementById('nightsLabel').innerHTML = `<span style="color: #ff4d6a;">⛔ Déjà réservé</span><br><span style="font-size: 0.8em; color: #666;">(Prix indicatif: ${nights} × ${avgPrice}€)</span>`;
+                    document.getElementById('totalPrice').innerHTML = `<span style="text-decoration: line-through; color: #999;">${total}€</span><br><a href="${availData.airbnb_url}" target="_blank" style="color: #4dd4d4; font-size: 0.85em; text-decoration: underline;">Voir sur Airbnb</a>`;
                     btn.disabled = true;
 
                     // Afficher les alternatives si disponibles
                     if (availData.alternatives && availData.alternatives.length > 0) {
                         console.log('💡 Alternatives:', availData.alternatives);
                     }
-
-                    return;
                 }
-
-                // Période disponible - calculer le prix
-                const total = nights * pricePerNight;
-                console.log('💰 Prix calculé:', nights, 'nuits ×', pricePerNight, '€ =', total, '€');
-
-                document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
-                document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
-                document.getElementById('nightsLabel').textContent = `${nights} nuit${nights>1?'s':''} × ${pricePerNight}€`;
-                document.getElementById('totalPrice').textContent = `${total}€`;
 
                 priceBox.style.opacity = '1';
                 priceBox.style.pointerEvents = 'auto';
-                btn.disabled = false;
-
                 airbnbUrl = `https://airbnb.fr/h/a-la-folie?check_in=${selected[0]}&check_out=${selected[1]}`;
             } else {
                 priceBox.style.opacity = '0';
