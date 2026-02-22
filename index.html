@@ -23,6 +23,95 @@
 
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="canonical" href="https://folie.paris/">
+
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Léa - Superhost Airbnb">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="geo.region" content="FR-75">
+    <meta name="geo.placename" content="Paris 11e">
+    <meta name="geo.position" content="48.8566;2.3522">
+    <meta name="ICBM" content="48.8566, 2.3522">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "À la Folie",
+      "description": "Appartement d'exception 60m² avec jacuzzi privatif, home cinéma 4K et literie king-size au cœur de Paris 11e",
+      "url": "https://folie.paris",
+      "image": [
+        "https://folie.paris/01.jpg",
+        "https://folie.paris/02.jpg",
+        "https://folie.paris/03.jpg"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Paris 11e",
+        "addressLocality": "Paris",
+        "addressRegion": "Île-de-France",
+        "postalCode": "75011",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.8566,
+        "longitude": 2.3522
+      },
+      "telephone": "+33620202036",
+      "priceRange": "€€€",
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "5.0",
+        "bestRating": "5"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Jacuzzi privatif",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Home cinéma 4K",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Literie king-size",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Toilette japonaise",
+          "value": true
+        }
+      ],
+      "numberOfRooms": 1,
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 60,
+        "unitCode": "MTK"
+      },
+      "maximumAttendeeCapacity": 4,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "50",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://airbnb.fr/h/a-la-folie",
+        "priceCurrency": "EUR",
+        "price": "180",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-02-22"
+      }
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -247,18 +336,12 @@
                 rgba(30, 20, 40, 0.98) 100%);
             backdrop-filter: blur(60px) saturate(200%);
             -webkit-backdrop-filter: blur(60px) saturate(200%);
-            border: 2px solid transparent;
-            border-image: linear-gradient(135deg,
-                rgba(255, 77, 106, 0.3) 0%,
-                rgba(138, 43, 226, 0.4) 25%,
-                rgba(255, 105, 180, 0.4) 50%,
-                rgba(138, 43, 226, 0.4) 75%,
-                rgba(255, 77, 106, 0.3) 100%) 1;
+            border: 2px solid rgba(255, 77, 106, 0.3);
             border-radius: 24px;
             padding: 1.5rem;
-            max-width: 850px;
-            width: 95vw;
-            max-height: 85vh;
+            max-width: 700px;
+            width: 92vw;
+            max-height: 75vh;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -543,15 +626,9 @@
             margin-top: 0.6rem;
         }
 
-        .modal-btn:hover:not(:disabled) {
+        .modal-btn:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 12px 40px rgba(255, 56, 92, 0.5);
-        }
-
-        .modal-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            filter: grayscale(0.6);
         }
 
         .modal-btn-whatsapp {
@@ -843,7 +920,7 @@
 
             .modal-content {
                 padding: 1.2rem;
-                max-height: 88vh;
+                max-height: 80vh;
                 border-radius: 20px;
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
@@ -1083,11 +1160,11 @@
             <div class="lea">
                 <div style="width: 100%;">
                     <div style="display: flex; gap: 1.2rem; align-items: center; margin-bottom: 1rem;">
-                        <img src="lea.png" alt="Lea" style="width: 90px; height: 90px; object-fit: cover; object-position: center 20%;">
+                        <img src="lea.png" alt="Léa, hôte Superhost Airbnb Paris 11e - Appartement jacuzzi privatif" style="width: 90px; height: 90px; object-fit: cover; object-position: center 20%;">
                         <div>
-                            <h3 style="font-size: 1.6rem; margin-bottom: 0.3rem; color: #ff4d6a;">
-                                Lea, votre hôte
-                            </h3>
+                            <h2 style="font-size: 1.6rem; margin-bottom: 0.3rem; color: #ff4d6a;">
+                                Lea, votre hôte Superhost
+                            </h2>
                             <span style="font-size: 0.95rem; background: rgba(255,217,61,0.2); color: #d4af37; padding: 0.3rem 0.8rem; border-radius: 12px; font-weight: 600; display: inline-block; transition: all 0.3s; cursor: default;">
                                 Superhost 5.0★
                             </span>
@@ -1112,7 +1189,7 @@
             <div class="cta">
                 <!-- Bouton principal Airbnb -->
                 <a href="https://airbnb.fr/h/a-la-folie" target="_blank" class="btn btn-airbnb">
-                    <img src="airbnb-logo.png" alt="Airbnb" style="width: 28px; height: 28px; border-radius: 50%;">
+                    <img src="airbnb-logo.png" alt="Réserver sur Airbnb - Appartement jacuzzi Paris 11e" style="width: 28px; height: 28px; border-radius: 50%;">
                     Réserver sur Airbnb
                 </a>
 
@@ -1146,7 +1223,7 @@
                 </video>
                 <div class="overlay"></div>
                 <div class="video-text">
-                    <h2>Paris 11e<br><span style="font-size: 0.7em; opacity: 0.9;">Oberkampf · Bastille · République</span></h2>
+                    <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.8);">Appartement Jacuzzi Privatif Paris 11e<br><span style="font-size: 0.7em; opacity: 0.9;">Oberkampf · Bastille · République</span></h1>
                     <p style="display: flex; flex-direction: column; gap: 0.6rem;">
                         <span style="display: flex; align-items: center; gap: 0.7rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1220,7 +1297,7 @@
         <!-- Droite: Bouton Airbnb + Copyright -->
         <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem;">
             <a href="https://airbnb.fr/h/a-la-folie" target="_blank" style="display: flex; align-items: center; gap: 0.7rem; padding: 0.75rem 2rem; background: #ff385c; border-radius: 50px; text-decoration: none; color: #FFFFFF; font-size: 1rem; font-weight: 600; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255, 56, 92, 0.3); position: relative; overflow: hidden;" class="airbnb-btn">
-                <img src="airbnb-logo.png" alt="Airbnb" style="width: 28px; height: 28px; transition: all 0.3s;">
+                <img src="airbnb-logo.png" alt="Réserver sur Airbnb - Appartement jacuzzi Paris 11e" style="width: 28px; height: 28px; transition: all 0.3s;">
                 Réserver
                 <span class="shine"></span>
             </a>
@@ -1252,8 +1329,8 @@
             </div>
 
             <div class="modal-buttons">
-                <button class="modal-btn modal-btn-airbnb" id="airbnbBtn" onclick="goToAirbnb()" disabled>
-                    <img src="airbnb-logo.png" alt="Airbnb" style="width: 24px; height: 24px;">
+                <button class="modal-btn modal-btn-airbnb" id="airbnbBtn" onclick="goToAirbnb()">
+                    <img src="airbnb-logo.png" alt="Réserver sur Airbnb - Appartement jacuzzi Paris 11e" style="width: 24px; height: 24px;">
                     <span>Réserver</span>
                 </button>
                 <a href="https://wa.me/33620202036" target="_blank" class="modal-btn modal-btn-whatsapp" style="text-decoration: none;">
@@ -1559,7 +1636,7 @@
                     document.getElementById('totalPrice').innerHTML = `<span style="color: #999; font-style: italic;">-</span>`;
                     priceBox.style.opacity = '1';
                     priceBox.style.pointerEvents = 'auto';
-                    btn.disabled = true;
+                    // btn.disabled = true; // Toujours actif
                     return;
                 }
 
@@ -1586,13 +1663,13 @@
                     // Période disponible
                     document.getElementById('nightsLabel').innerHTML = `${nights} nuit${nights>1?'s':''} × ${avgPrice}€`;
                     document.getElementById('totalPrice').innerHTML = `${total}€<span style="font-size: 0.75rem; color: #999; display: block; margin-top: 0.3rem;">+ frais de plateforme</span>`;
-                    btn.disabled = false;
+                    // btn.disabled = false; // Toujours actif
                 } else {
                     // Période non disponible - afficher quand même les prix + le conflit
                     console.log('⛔ Période non disponible:', availData.conflict);
                     document.getElementById('nightsLabel').innerHTML = `<span style="color: #ff4d6a;">⛔ Déjà réservé</span><br><span style="font-size: 0.8em; color: #666;">(Prix indicatif: ${nights} × ${avgPrice}€)</span>`;
                     document.getElementById('totalPrice').innerHTML = `<span style="text-decoration: line-through; color: #999;">${total}€</span><br><a href="${availData.airbnb_url}" target="_blank" style="color: #4dd4d4; font-size: 0.85em; text-decoration: underline;">Voir sur Airbnb</a>`;
-                    btn.disabled = true;
+                    // btn.disabled = true; // Toujours actif
 
                     // Afficher les alternatives si disponibles
                     if (availData.alternatives && availData.alternatives.length > 0) {
@@ -1617,7 +1694,9 @@
         }
 
         function goToAirbnb() {
-            window.open(airbnbUrl, '_blank');
+            // Si pas de dates, ouvrir Airbnb sans paramètres
+            const url = airbnbUrl || 'https://airbnb.fr/h/a-la-folie';
+            window.open(url, '_blank');
         }
 
         modal.onclick = (e) => {

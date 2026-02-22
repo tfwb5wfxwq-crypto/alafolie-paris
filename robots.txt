@@ -1,0 +1,21 @@
+# robots.txt pour folie.paris
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://folie.paris/sitemap.xml
+
+# Optimisation crawl budget
+Crawl-delay: 0
+
+# Pages importantes
+Allow: /
+Allow: /photos
+Allow: /recommandations
+
+# Fichiers statiques
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.svg$
+Allow: /*.webm$
+Allow: /*.mp4$
