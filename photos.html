@@ -282,6 +282,65 @@
             }
         }
 
+        /* FOOTER MOBILE */
+        @media (max-width: 768px) {
+            .footer {
+                height: 100px !important;
+                display: grid !important;
+                grid-template-columns: 1fr auto auto !important;
+                align-items: center !important;
+                gap: 1rem !important;
+                padding: 1rem 1.2rem !important;
+                background: rgba(0, 0, 0, 0.85) !important;
+                backdrop-filter: blur(40px) saturate(180%) !important;
+                -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+                border-top: 1px solid rgba(255,255,255,0.15) !important;
+            }
+
+            .footer > div:first-child {
+                display: none !important;
+            }
+
+            .footer > div:nth-child(2) {
+                display: flex !important;
+                justify-content: center !important;
+                grid-column: 1 / 2 !important;
+            }
+
+            .footer .whatsapp-link {
+                font-size: 1rem !important;
+                gap: 0.6rem !important;
+            }
+
+            .footer .whatsapp-link svg {
+                width: 20px !important;
+                height: 20px !important;
+            }
+
+            .footer > div:last-child {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: flex-end !important;
+                grid-column: 3 / 4 !important;
+            }
+
+            .footer > div:last-child > span {
+                display: none !important;
+            }
+
+            .footer .airbnb-btn {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 0.95rem !important;
+                gap: 0.6rem !important;
+            }
+
+            .footer .airbnb-btn img {
+                width: 26px !important;
+                height: 26px !important;
+            }
+        }
+
         /* FOOTER EFFECTS */
         .whatsapp-link:hover {
             transform: scale(1.08);
