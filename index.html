@@ -1101,34 +1101,29 @@
                     return;
                 }
 
-                // Calculer le prix (utiliser PriceLabs si dispo, sinon fallback)
-                let totalHT, totalTTC, avgPrice;
-                const TAXE_SEJOUR_PARIS = 0.0665; // ~6.65% taxe de séjour parisienne
+                // Afficher le prix de BASE (HT) pour que les frais Airbnb soient visibles sur leur site
+                let priceBase, avgPrice;
 
                 if (availData.pricing) {
-                    totalHT = availData.pricing.total;
-                    totalTTC = Math.round(totalHT * (1 + TAXE_SEJOUR_PARIS));
-                    avgPrice = Math.round(totalTTC / nights);
-                    console.log('💰 Prix PriceLabs HT:', totalHT, '€');
-                    console.log('💰 Taxes (~6.65%):', Math.round(totalHT * TAXE_SEJOUR_PARIS), '€');
-                    console.log('💰 Prix TTC:', totalTTC, '€ (moy:', avgPrice, '€/nuit)');
-                    console.log('⚠️ Note: Prix peut différer d\'Airbnb à cause des réductions appliquées');
+                    priceBase = availData.pricing.total; // Prix HT PriceLabs
+                    avgPrice = Math.round(priceBase / nights);
+                    console.log('💰 Prix de base (HT):', priceBase, '€');
+                    console.log('💡 Les frais Airbnb seront ajoutés sur leur site');
                 } else {
-                    totalHT = nights * pricePerNight;
-                    totalTTC = Math.round(totalHT * (1 + TAXE_SEJOUR_PARIS));
-                    avgPrice = Math.round(totalTTC / nights);
-                    console.log('💰 Prix fallback TTC:', totalTTC, '€ (moy:', avgPrice, '€/nuit)');
+                    priceBase = nights * pricePerNight;
+                    avgPrice = Math.round(priceBase / nights);
+                    console.log('💰 Prix fallback:', priceBase, '€');
                 }
 
-                const total = totalTTC;
+                const total = priceBase;
 
                 document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
                 document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
 
                 if (availData.available) {
                     // Période disponible
-                    document.getElementById('nightsLabel').innerHTML = `${nights} nuit${nights>1?'s':''} × ${avgPrice}€ moy.<br><span style="font-size: 0.7rem; color: #999; font-style: italic;">TTC (avec taxes ~6.65%)</span>`;
-                    document.getElementById('totalPrice').innerHTML = `${total}€<span style="font-size: 0.7rem; color: #ff8c42; display: block; margin-top: 0.3rem; font-weight: 600;">Prix indicatif - Voir Airbnb pour prix final</span>`;
+                    document.getElementById('nightsLabel').innerHTML = `${nights} nuit${nights>1?'s':''} × ${avgPrice}€`;
+                    document.getElementById('totalPrice').innerHTML = `${total}€<span style="font-size: 0.75rem; color: #999; display: block; margin-top: 0.3rem;">+ frais de plateforme</span>`;
                     btn.disabled = false;
                 } else {
                     // Période non disponible - afficher quand même les prix + le conflit
