@@ -1084,8 +1084,17 @@
                     console.log('⚠️ Durée insuffisante:', nights, 'nuits, minimum:', minStayRequired);
                     document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
                     document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
-                    document.getElementById('nightsLabel').innerHTML = `<span style="color: #ff8c42;">⚠️ Minimum ${minStayRequired} nuit${minStayRequired>1?'s':''}</span><br><span style="font-size: 0.8em; color: #666;">(Vous avez sélectionné ${nights} nuit${nights>1?'s':''})</span>`;
-                    document.getElementById('totalPrice').innerHTML = `<span style="color: #999;">Sélection invalide</span>`;
+                    document.getElementById('nightsLabel').innerHTML = `
+                        <div style="background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%); padding: 0.8rem; border-radius: 12px; border: 2px solid #ff8c42;">
+                            <div style="font-size: 0.95rem; color: #ff8c42; font-weight: 600; margin-bottom: 0.3rem;">
+                                ⚠️ Séjour minimum : ${minStayRequired} nuit${minStayRequired>1?'s':''}
+                            </div>
+                            <div style="font-size: 0.8rem; color: #666;">
+                                Vous avez sélectionné ${nights} nuit${nights>1?'s':''}
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('totalPrice').innerHTML = `<span style="color: #999; font-style: italic;">-</span>`;
                     priceBox.style.opacity = '1';
                     priceBox.style.pointerEvents = 'auto';
                     btn.disabled = true;
@@ -1109,8 +1118,8 @@
 
                 if (availData.available) {
                     // Période disponible
-                    document.getElementById('nightsLabel').textContent = `${nights} nuit${nights>1?'s':''} × ${avgPrice}€ moy.`;
-                    document.getElementById('totalPrice').textContent = `${total}€`;
+                    document.getElementById('nightsLabel').innerHTML = `${nights} nuit${nights>1?'s':''} × ${avgPrice}€ moy.<br><span style="font-size: 0.7rem; color: #999; font-style: italic;">Prix estimé, voir détail sur Airbnb</span>`;
+                    document.getElementById('totalPrice').innerHTML = `${total}€<span style="font-size: 0.75rem; color: #999; display: block; margin-top: 0.2rem;">≈ estimé</span>`;
                     btn.disabled = false;
                 } else {
                     // Période non disponible - afficher quand même les prix + le conflit
