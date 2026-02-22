@@ -156,10 +156,25 @@ async function getPricing(checkIn: string, checkOut: string): Promise<{ prices: 
 
     const data = await response.json();
 
+    // Log complete response to see what PriceLabs returns
+    console.log("📊 PriceLabs full response:", JSON.stringify(data, null, 2));
+
     if (data && data.length > 0 && data[0].data) {
-      const prices = data[0].data;
+      const listingData = data[0];
+      const prices = listingData.data;
       const total = prices.reduce((sum: number, day: any) => sum + (day.price || 0), 0);
-      return { prices, total };
+
+      // Check if PriceLabs returns rules/restrictions
+      console.log("🔍 Listing data keys:", Object.keys(listingData));
+
+      return {
+        prices,
+        total,
+        // Include any additional data from PriceLabs
+        min_nights: listingData.min_nights,
+        restrictions: listingData.restrictions,
+        rules: listingData.rules
+      };
     }
 
     return null;
@@ -234,7 +249,11 @@ serve(async (req) => {
       response.pricing = {
         total: pricing.total,
         per_night_avg: Math.round(pricing.total / nights),
-        breakdown: pricing.prices
+        breakdown: pricing.prices,
+        // Include rules/restrictions if PriceLabs provides them
+        min_nights: pricing.min_nights,
+        restrictions: pricing.restrictions,
+        rules: pricing.rules
       };
     }
 

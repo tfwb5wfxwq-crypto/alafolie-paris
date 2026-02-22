@@ -832,6 +832,7 @@
         let pricePerNight = 180; // Default fallback
         let pricingData = {};
         let blockedDates = [];
+        let minStayByDate = {}; // min_stay pour chaque date depuis PriceLabs
         let selected = [];
         let airbnbUrl = 'https://airbnb.fr/h/a-la-folie';
         let conflictRanges = []; // Réservations qui bloquent des dates
@@ -1023,15 +1024,36 @@
                 }
 
                 // Calculer le prix (utiliser PriceLabs si dispo, sinon fallback)
-                let total, avgPrice;
+                let total, avgPrice, minStayRequired = 1;
                 if (availData.pricing) {
                     total = availData.pricing.total;
                     avgPrice = availData.pricing.per_night_avg;
+
+                    // Récupérer le min_stay depuis le breakdown
+                    if (availData.pricing.breakdown && availData.pricing.breakdown.length > 0) {
+                        // Prendre le MAX des min_stay sur la période
+                        minStayRequired = Math.max(...availData.pricing.breakdown.map(day => day.min_stay || 1));
+                        console.log('📏 Min stay requis:', minStayRequired, 'nuits');
+                    }
+
                     console.log('💰 Prix PriceLabs:', total, '€ (moy:', avgPrice, '€/nuit)');
                 } else {
                     total = nights * pricePerNight;
                     avgPrice = pricePerNight;
                     console.log('💰 Prix fallback:', total, '€ (moy:', avgPrice, '€/nuit)');
+                }
+
+                // Vérifier si la durée respecte le min_stay
+                if (nights < minStayRequired) {
+                    console.log('⚠️ Durée insuffisante:', nights, 'nuits, minimum requis:', minStayRequired);
+                    document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
+                    document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
+                    document.getElementById('nightsLabel').innerHTML = `<span style="color: #ff8c42;">⚠️ Minimum ${minStayRequired} nuit${minStayRequired>1?'s':''}</span><br><span style="font-size: 0.8em; color: #666;">(Vous avez sélectionné ${nights} nuit${nights>1?'s':''})</span>`;
+                    document.getElementById('totalPrice').innerHTML = `<span style="color: #999;">Sélection invalide</span>`;
+                    priceBox.style.opacity = '1';
+                    priceBox.style.pointerEvents = 'auto';
+                    btn.disabled = true;
+                    return;
                 }
 
                 document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
