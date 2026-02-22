@@ -282,7 +282,7 @@
             }
         }
 
-        /* FOOTER MOBILE */
+        /* FOOTER MOBILE - Override styles.css */
         @media (max-width: 768px) {
             .footer {
                 height: 100px !important;
@@ -295,6 +295,9 @@
                 backdrop-filter: blur(40px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
                 border-top: 1px solid rgba(255,255,255,0.15) !important;
+                box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1) !important;
+                flex-direction: unset !important;
+                justify-content: unset !important;
             }
 
             .footer > div:first-child {
@@ -305,14 +308,18 @@
                 display: flex !important;
                 justify-content: center !important;
                 grid-column: 1 / 2 !important;
+                width: auto !important;
             }
 
-            .footer .whatsapp-link {
+            .footer > div:nth-child(2) a {
+                display: flex !important;
+                color: #25D366 !important;
+                text-decoration: none !important;
                 font-size: 1rem !important;
                 gap: 0.6rem !important;
             }
 
-            .footer .whatsapp-link svg {
+            .footer > div:nth-child(2) a svg {
                 width: 20px !important;
                 height: 20px !important;
             }
@@ -329,13 +336,17 @@
                 display: none !important;
             }
 
-            .footer .airbnb-btn {
+            .footer > div:last-child a {
                 padding: 0.75rem 1.5rem !important;
                 font-size: 0.95rem !important;
                 gap: 0.6rem !important;
+                display: flex !important;
+                align-items: center !important;
+                width: auto !important;
+                justify-content: unset !important;
             }
 
-            .footer .airbnb-btn img {
+            .footer > div:last-child a img {
                 width: 26px !important;
                 height: 26px !important;
             }
