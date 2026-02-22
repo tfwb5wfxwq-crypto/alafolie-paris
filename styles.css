@@ -127,17 +127,34 @@ body {
 
 /* FOOTER */
 .footer {
-    min-height: 100px;
-    background: rgba(0, 0, 0, 0.4);
+    min-height: 80px;
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(30px);
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    z-index: 100;
+}
+
+.footer-left {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-center {
+    display: flex;
+    gap: 1.5rem;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1.5rem 2.5rem;
-    z-index: 100;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
 }
 
 .footer.fixed {
