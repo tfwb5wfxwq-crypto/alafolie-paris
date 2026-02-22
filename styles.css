@@ -30,20 +30,20 @@ body {
     padding: 0 2.5rem;
     background: linear-gradient(135deg,
         rgba(0, 0, 0, 0.9) 0%,
-        rgba(40, 20, 60, 0.85) 50%,
+        rgba(20, 10, 30, 0.88) 50%,
         rgba(0, 0, 0, 0.9) 100%);
     backdrop-filter: blur(40px) saturate(180%);
     -webkit-backdrop-filter: blur(40px) saturate(180%);
     border-bottom: 2px solid transparent;
     border-image: linear-gradient(90deg,
-        rgba(255,90,95,0.3) 0%,
-        rgba(138,43,226,0.5) 25%,
-        rgba(255,105,180,0.5) 50%,
-        rgba(138,43,226,0.5) 75%,
-        rgba(255,90,95,0.3) 100%) 1;
+        rgba(255,90,95,0.2) 0%,
+        rgba(138,43,226,0.35) 25%,
+        rgba(255,105,180,0.35) 50%,
+        rgba(138,43,226,0.35) 75%,
+        rgba(255,90,95,0.2) 100%) 1;
     box-shadow:
-        0 4px 30px rgba(138, 43, 226, 0.15),
-        0 8px 60px rgba(255, 90, 95, 0.1),
+        0 4px 30px rgba(138, 43, 226, 0.08),
+        0 8px 60px rgba(255, 90, 95, 0.05),
         inset 0 1px 0 rgba(255,255,255,0.1);
     z-index: 100;
 }
