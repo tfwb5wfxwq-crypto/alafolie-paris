@@ -21,7 +21,9 @@
     <meta property="twitter:description" content="Appartement d'exception 60m² avec jacuzzi privatif, home cinéma 4K et literie king-size au cœur de Paris 11e. Superhost 5.0★">
     <meta property="twitter:image" content="https://folie.paris/01.jpg">
 
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
     <link rel="canonical" href="https://folie.paris/">
 
     <!-- SEO Meta Tags -->
@@ -1114,26 +1116,26 @@
             }
         }
 
-        /* Loading Screen */
-        .page-loader {
-            position: fixed;
+        /* API Loading Flower (in modal) */
+        .api-loader {
+            position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a0f1f 100%);
-            z-index: 9999;
-            display: flex;
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 10;
+            display: none;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            border-radius: 24px;
         }
 
-        .page-loader.hide {
-            opacity: 0;
-            visibility: hidden;
+        .api-loader.show {
+            display: flex;
         }
 
         .loader-flower {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             filter: drop-shadow(0 0 30px rgba(255,255,255,0.6));
             animation: flower-spin 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
@@ -1151,23 +1153,6 @@
     </style>
 </head>
 <body>
-    <!-- Page Loader -->
-    <div class="page-loader" id="pageLoader">
-        <svg class="loader-flower" viewBox="0 0 40 40">
-            <g transform="translate(20,20)">
-                <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
-                <ellipse fill="#ffd93d" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
-                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
-                <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
-                <ellipse fill="#ffd93d" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
-                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
-                <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
-                <ellipse fill="#ffd93d" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
-                <circle fill="#ffd93d" cx="0" cy="0" r="4.5"/>
-            </g>
-        </svg>
-    </div>
-
     <!-- HEADER -->
     <header class="header">
         <a href="/" style="text-decoration: none;">
@@ -1360,6 +1345,23 @@
     <!-- MODAL -->
     <div class="modal" id="modal">
         <div class="modal-content">
+            <!-- API Loader -->
+            <div class="api-loader" id="apiLoader">
+                <svg class="loader-flower" viewBox="0 0 40 40">
+                    <g transform="translate(20,20)">
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
+                        <ellipse fill="#ffd93d" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
+                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
+                        <ellipse fill="#ffd93d" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
+                        <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
+                        <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
+                        <ellipse fill="#ffd93d" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+                        <circle fill="#ffd93d" cx="0" cy="0" r="4.5"/>
+                    </g>
+                </svg>
+            </div>
+
             <button class="modal-close" onclick="closeModal()">×</button>
             <h2 class="modal-title">Réservez votre séjour</h2>
             <p class="modal-subtitle">Sélectionnez vos dates d'arrivée et de départ</p>
@@ -1635,8 +1637,12 @@
         async function updatePrice() {
             const priceBox = document.getElementById('priceBox');
             const btn = document.getElementById('airbnbBtn');
+            const loader = document.getElementById('apiLoader');
 
             if (selected.length === 2) {
+                // Show loader
+                loader.classList.add('show');
+
                 const checkIn = new Date(selected[0]);
                 const checkOut = new Date(selected[1]);
                 const nights = Math.ceil((checkOut - checkIn) / (1000*60*60*24));
@@ -1646,6 +1652,7 @@
 
                 if (!availData) {
                     console.error('❌ Pas de réponse API');
+                    loader.classList.remove('show');
                     return;
                 }
 
@@ -1689,6 +1696,7 @@
                     priceBox.style.opacity = '1';
                     priceBox.style.pointerEvents = 'auto';
                     // btn.disabled = true; // Toujours actif
+                    loader.classList.remove('show');
                     return;
                 }
 
@@ -1732,10 +1740,14 @@
                 priceBox.style.opacity = '1';
                 priceBox.style.pointerEvents = 'auto';
                 airbnbUrl = `https://airbnb.fr/h/a-la-folie?check_in=${selected[0]}&check_out=${selected[1]}`;
+
+                // Hide loader
+                loader.classList.remove('show');
             } else {
                 priceBox.style.opacity = '0';
                 priceBox.style.pointerEvents = 'none';
                 btn.disabled = true;
+                loader.classList.remove('show');
             }
         }
 
@@ -1754,14 +1766,6 @@
         modal.onclick = (e) => {
             if (e.target === modal) closeModal();
         };
-
-        // Hide page loader when everything is loaded
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('pageLoader');
-            setTimeout(() => {
-                loader.classList.add('hide');
-            }, 300); // Small delay for smooth transition
-        });
     </script>
 </body>
 </html>
