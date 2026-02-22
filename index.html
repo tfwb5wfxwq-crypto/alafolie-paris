@@ -123,52 +123,33 @@
         .btn-calendar {
             background: linear-gradient(135deg, #ff4d6a, #4d96ff);
             color: white;
-            box-shadow: 0 4px 15px rgba(77,150,255,0.3);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-calendar:hover {
-            box-shadow: 0 0 0 3px rgba(77,150,255,0.3), 0 0 30px rgba(77,150,255,0.5), 0 0 50px rgba(77,150,255,0.3);
-            background: linear-gradient(135deg, #ff5a7d, #5da3ff);
+            box-shadow:
+                0 0 0 3px rgba(77, 150, 255, 0.5),
+                0 0 25px rgba(77, 150, 255, 0.6),
+                0 0 50px rgba(77, 150, 255, 0.3);
+            filter: brightness(1.1);
         }
 
         .btn-airbnb {
             background: #FF5A5F;
             color: white;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-airbnb::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn-airbnb:hover::before {
-            width: 300px;
-            height: 300px;
         }
 
         .btn-airbnb:hover {
             box-shadow:
-                0 0 0 4px rgba(255, 90, 95, 0.4),
-                0 0 40px rgba(255, 90, 95, 0.6),
-                0 0 70px rgba(255, 90, 95, 0.3);
-            animation: airbnb-glow 1.5s ease-in-out infinite;
+                0 0 0 3px rgba(255, 90, 95, 0.5),
+                0 0 25px rgba(255, 90, 95, 0.6),
+                0 0 50px rgba(255, 90, 95, 0.3);
+            filter: brightness(1.1);
         }
 
         .btn-airbnb:hover img {
-            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
-            animation: logo-spin 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
         }
 
         .btn-whatsapp {
@@ -178,29 +159,11 @@
         }
 
         .btn-whatsapp:hover {
-            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.3), 0 0 30px rgba(37, 211, 102, 0.6), 0 0 50px rgba(37, 211, 102, 0.3);
-            background: #28e070;
-        }
-
-        @keyframes airbnb-glow {
-            0%, 100% {
-                box-shadow:
-                    0 8px 30px rgba(255, 90, 95, 0.6),
-                    0 0 40px rgba(255, 90, 95, 0.4),
-                    0 0 60px rgba(255, 90, 95, 0.2);
-            }
-            50% {
-                box-shadow:
-                    0 8px 40px rgba(255, 90, 95, 0.8),
-                    0 0 60px rgba(255, 90, 95, 0.6),
-                    0 0 80px rgba(255, 90, 95, 0.4);
-            }
-        }
-
-        @keyframes logo-spin {
-            0%, 100% { transform: rotate(0deg) scale(1); }
-            25% { transform: rotate(-5deg) scale(1.1); }
-            75% { transform: rotate(5deg) scale(1.1); }
+            box-shadow:
+                0 0 0 3px rgba(37, 211, 102, 0.5),
+                0 0 25px rgba(37, 211, 102, 0.6),
+                0 0 50px rgba(37, 211, 102, 0.3);
+            filter: brightness(1.1);
         }
 
         /* RIGHT */
@@ -565,23 +528,10 @@
                         Bienvenue dans mon <strong>appartement d'exception</strong> situé au cœur du <strong>Paris 11e</strong>, entre <strong>Bastille et République</strong> (<strong>métro Voltaire 3 min</strong>, République 8 min).
                         <strong>Jacuzzi privatif</strong>, <strong>home cinéma 4K</strong> Netflix, <strong>literie king-size</strong> et <strong>toilette japonaise</strong>.
                         Idéal pour un <strong>weekend romantique</strong> ou une <strong>escapade luxe à Paris</strong>.
-                        Dispo 24/7 !
+                        Dispo 24/7 ! 🌸
                     </p>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-family: 'Brush Script MT', cursive, 'Cormorant Garamond', serif; font-size: 1.5rem; color: #ff4d6a;">
-                        <span>Lea</span>
-                        <svg viewBox="0 0 40 40" style="width: 24px; height: 24px; filter: drop-shadow(0 0 4px rgba(255,77,106,0.4));">
-                            <g transform="translate(20,20)">
-                                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
-                                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
-                                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
-                                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
-                                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
-                                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
-                                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
-                                <ellipse fill="#ff4d6a" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
-                                <circle fill="#ffd93d" cx="0" cy="0" r="5"/>
-                            </g>
-                        </svg>
+                    <div style="margin-top: 1rem; font-family: 'Brush Script MT', cursive, 'Cormorant Garamond', serif; font-size: 1.4rem; color: #ff4d6a; font-style: italic;">
+                        — Lea
                     </div>
                 </div>
             </div>
