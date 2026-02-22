@@ -7,14 +7,10 @@
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg,
-        rgba(10, 10, 20, 1) 0%,
-        rgba(20, 10, 30, 1) 50%,
-        rgba(10, 10, 20, 1) 100%);
-    color: #fff;
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #333;
     line-height: 1.6;
-    min-height: 100vh;
 }
 
 @keyframes spin {
