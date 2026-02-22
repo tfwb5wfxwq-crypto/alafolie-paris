@@ -792,6 +792,8 @@
                 const checkIn = new Date().toISOString().split('T')[0];
                 const checkOut = new Date(Date.now() + 86400000).toISOString().split('T')[0];
 
+                console.log('🔄 Fetching pricing...', { checkIn, checkOut, LISTING_ID });
+
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
@@ -806,16 +808,19 @@
                     })
                 });
 
+                console.log('📡 API Response Status:', response.status);
+
                 if (response.ok) {
                     const data = await response.json();
                     if (data.pricing) pricingData = data.pricing;
                     if (data.blocked) blockedDates = data.blocked;
-                    console.log('Pricing data loaded:', data);
+                    console.log('✅ Pricing data loaded:', data);
                 } else {
-                    console.log('API unavailable, using default price');
+                    const errorText = await response.text();
+                    console.error('❌ API Error:', response.status, errorText);
                 }
             } catch (e) {
-                console.log('Pricing API error:', e);
+                console.error('❌ Pricing API exception:', e.message, e);
             }
         }
 
