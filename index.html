@@ -6,84 +6,11 @@
     <title>À la Folie | Appartement Jacuzzi Privatif Paris 11e</title>
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        /* Page-specific styles for home */
         body {
-            font-family: 'Inter', sans-serif;
-            background: #000;
             overflow: hidden;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* HEADER */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 2.5rem;
-            background: #000;
-            backdrop-filter: blur(30px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            z-index: 100;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.2rem;
-        }
-
-        .logo:hover .flower {
-            animation: spin 3s linear infinite;
-        }
-
-        .logo-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            display: flex;
-            gap: 0.05rem;
-        }
-
-        .logo-text span {
-            display: inline-block;
-        }
-
-        /* Neon colors for each letter */
-        .neon-a1 { color: #ff4d6a; text-shadow: 0 0 10px #ff4d6a, 0 0 20px #ff4d6a; }
-        .neon-l1 { color: #ff8c42; text-shadow: 0 0 10px #ff8c42, 0 0 20px #ff8c42; }
-        .neon-a2 { color: #ffd93d; text-shadow: 0 0 10px #ffd93d, 0 0 20px #ffd93d; }
-        .neon-f { color: #6bcb77; text-shadow: 0 0 10px #6bcb77, 0 0 20px #6bcb77; }
-        .neon-l2 { color: #4dd4d4; text-shadow: 0 0 10px #4dd4d4, 0 0 20px #4dd4d4; }
-        .neon-i { color: #9b5de5; text-shadow: 0 0 10px #9b5de5, 0 0 20px #9b5de5; }
-        .neon-e { color: #ff4dc4; text-shadow: 0 0 10px #ff4dc4, 0 0 20px #ff4dc4; }
-
-        .flower {
-            width: 28px;
-            height: 28px;
-            animation: spin 20s linear infinite;
-        }
-
-        .nav a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin-left: 2rem;
-            transition: color 0.3s;
-        }
-
-        .nav a:hover, .nav a.active {
-            color: #ffd93d;
         }
 
         /* LAYOUT */
