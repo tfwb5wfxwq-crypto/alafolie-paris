@@ -882,9 +882,10 @@
         async function openModal() {
             modal.classList.add('show');
 
-            // Récupérer les dates bloquées depuis l'API
+            // Récupérer les dates bloquées ET les règles PriceLabs (min_stay) pour les 90 prochains jours
             try {
-                const response = await fetch(API_URL, {
+                // 1. Dates bloquées depuis iCal
+                const blockedResponse = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -893,10 +894,9 @@
                     body: JSON.stringify({ get_calendar: true })
                 });
 
-                if (response.ok) {
-                    const data = await response.json();
+                if (blockedResponse.ok) {
+                    const data = await blockedResponse.json();
                     if (data.blocked && data.blocked.length > 0) {
-                        // Générer toutes les dates entre start et end pour chaque période bloquée
                         blockedDates = [];
                         for (const period of data.blocked) {
                             const start = new Date(period.start);
@@ -908,11 +908,46 @@
                                 current.setDate(current.getDate() + 1);
                             }
                         }
-                        console.log('🚫 Dates bloquées chargées:', blockedDates.length, 'dates');
+                        console.log('🚫 Dates bloquées:', blockedDates.length, 'dates');
+                    }
+                }
+
+                // 2. Règles PriceLabs (min_stay) pour les 90 prochains jours
+                const today = new Date();
+                const in90Days = new Date(today.getTime() + 90 * 24 * 60 * 60 * 1000);
+
+                const pricingResponse = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        check_in: today.toISOString().split('T')[0],
+                        check_out: in90Days.toISOString().split('T')[0],
+                        guests: 2
+                    })
+                });
+
+                if (pricingResponse.ok) {
+                    const pricingData = await pricingResponse.json();
+                    if (pricingData.pricing && pricingData.pricing.breakdown) {
+                        minStayByDate = {};
+                        for (const day of pricingData.pricing.breakdown) {
+                            minStayByDate[day.date] = day.min_stay || 1;
+                        }
+                        console.log('📏 Min stay chargé pour', Object.keys(minStayByDate).length, 'dates');
+
+                        // Afficher la distribution des min_stay
+                        const minStayCounts = {};
+                        Object.values(minStayByDate).forEach(stay => {
+                            minStayCounts[stay] = (minStayCounts[stay] || 0) + 1;
+                        });
+                        console.log('📊 Distribution min_stay:', minStayCounts);
                     }
                 }
             } catch (e) {
-                console.error('Erreur chargement dates bloquées:', e);
+                console.error('Erreur chargement données:', e);
             }
 
             renderCals();
@@ -1023,29 +1058,30 @@
                     return;
                 }
 
-                // Calculer le prix (utiliser PriceLabs si dispo, sinon fallback)
-                let total, avgPrice, minStayRequired = 1;
-                if (availData.pricing) {
-                    total = availData.pricing.total;
-                    avgPrice = availData.pricing.per_night_avg;
-
-                    // Récupérer le min_stay depuis le breakdown
-                    if (availData.pricing.breakdown && availData.pricing.breakdown.length > 0) {
-                        // Prendre le MAX des min_stay sur la période
-                        minStayRequired = Math.max(...availData.pricing.breakdown.map(day => day.min_stay || 1));
-                        console.log('📏 Min stay requis:', minStayRequired, 'nuits');
+                // Calculer le min_stay requis depuis les données pré-chargées
+                let minStayRequired = 1;
+                if (Object.keys(minStayByDate).length > 0) {
+                    // Calculer le MAX des min_stay sur la période sélectionnée
+                    const datesInRange = [];
+                    let current = new Date(checkIn);
+                    while (current < checkOut) {
+                        datesInRange.push(current.toISOString().split('T')[0]);
+                        current.setDate(current.getDate() + 1);
                     }
 
-                    console.log('💰 Prix PriceLabs:', total, '€ (moy:', avgPrice, '€/nuit)');
-                } else {
-                    total = nights * pricePerNight;
-                    avgPrice = pricePerNight;
-                    console.log('💰 Prix fallback:', total, '€ (moy:', avgPrice, '€/nuit)');
+                    const minStaysForRange = datesInRange
+                        .map(d => minStayByDate[d])
+                        .filter(ms => ms !== undefined);
+
+                    if (minStaysForRange.length > 0) {
+                        minStayRequired = Math.max(...minStaysForRange);
+                        console.log('📏 Min stay pour cette période:', minStayRequired, 'nuits (dates:', datesInRange.length, ')');
+                    }
                 }
 
-                // Vérifier si la durée respecte le min_stay
+                // Vérifier si la durée respecte le min_stay AVANT de calculer le prix
                 if (nights < minStayRequired) {
-                    console.log('⚠️ Durée insuffisante:', nights, 'nuits, minimum requis:', minStayRequired);
+                    console.log('⚠️ Durée insuffisante:', nights, 'nuits, minimum:', minStayRequired);
                     document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
                     document.getElementById('checkOut').textContent = checkOut.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
                     document.getElementById('nightsLabel').innerHTML = `<span style="color: #ff8c42;">⚠️ Minimum ${minStayRequired} nuit${minStayRequired>1?'s':''}</span><br><span style="font-size: 0.8em; color: #666;">(Vous avez sélectionné ${nights} nuit${nights>1?'s':''})</span>`;
@@ -1054,6 +1090,18 @@
                     priceBox.style.pointerEvents = 'auto';
                     btn.disabled = true;
                     return;
+                }
+
+                // Calculer le prix (utiliser PriceLabs si dispo, sinon fallback)
+                let total, avgPrice;
+                if (availData.pricing) {
+                    total = availData.pricing.total;
+                    avgPrice = availData.pricing.per_night_avg;
+                    console.log('💰 Prix PriceLabs:', total, '€ (moy:', avgPrice, '€/nuit)');
+                } else {
+                    total = nights * pricePerNight;
+                    avgPrice = pricePerNight;
+                    console.log('💰 Prix fallback:', total, '€ (moy:', avgPrice, '€/nuit)');
                 }
 
                 document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
