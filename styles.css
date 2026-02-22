@@ -149,6 +149,69 @@ body {
     margin-top: 4rem;
 }
 
+/* Footer WhatsApp hover */
+.footer a[href^="https://wa.me"] {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.footer a[href^="https://wa.me"]:hover {
+    text-shadow: 0 0 20px rgba(37, 211, 102, 0.8), 0 0 40px rgba(37, 211, 102, 0.4);
+    letter-spacing: 0.08em;
+}
+
+.footer a[href^="https://wa.me"]:hover svg {
+    filter: drop-shadow(0 0 12px rgba(37, 211, 102, 0.9));
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Footer Airbnb button hover - BRILLE */
+.footer a[href*="airbnb"] {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.footer a[href*="airbnb"]:hover {
+    background: rgba(255, 90, 95, 0.25) !important;
+    box-shadow:
+        0 0 0 3px rgba(255, 90, 95, 0.4),
+        0 0 30px rgba(255, 90, 95, 0.7),
+        0 0 60px rgba(255, 90, 95, 0.4);
+    animation: glow-pulse 1.5s ease-in-out infinite;
+}
+
+.footer a[href*="airbnb"]:hover img {
+    filter: drop-shadow(0 0 10px rgba(255, 90, 95, 0.9));
+    animation: rotate-subtle 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 0 3px rgba(255, 90, 95, 0.4),
+            0 0 30px rgba(255, 90, 95, 0.7),
+            0 0 60px rgba(255, 90, 95, 0.4);
+    }
+    50% {
+        box-shadow:
+            0 0 0 5px rgba(255, 90, 95, 0.5),
+            0 0 50px rgba(255, 90, 95, 0.9),
+            0 0 90px rgba(255, 90, 95, 0.5);
+    }
+}
+
+@keyframes rotate-subtle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
 /* HERO SECTION */
 .hero {
     padding: 4rem 2rem 3rem;
