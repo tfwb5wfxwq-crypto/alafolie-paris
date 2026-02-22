@@ -861,17 +861,39 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('✅ Pricing data loaded:', data);
-                    console.log('🔑 All keys:', Object.keys(data));
-                    console.log('📊 Full data:', JSON.stringify(data, null, 2));
+                    console.log('✅ RAW API Response:', data);
+                    console.log('🔑 Keys:', Object.keys(data));
+                    console.log('📊 JSON:', JSON.stringify(data, null, 2));
 
-                    // L'Edge Function retourne directement les données, pas dans data.pricing
-                    // On doit adapter selon le vrai format
-                    if (data.pricing) pricingData = data.pricing;
-                    if (data.blocked) blockedDates = data.blocked;
+                    // Essayer différents formats de réponse
+                    if (data.pricing) {
+                        pricingData = data.pricing;
+                    } else if (data.daily_prices) {
+                        pricingData = data.daily_prices;
+                    } else if (data.prices) {
+                        pricingData = data.prices;
+                    } else if (data.nights && typeof data.price === 'number') {
+                        // Format simple : un prix pour toute la période
+                        const checkInDate = new Date(data.check_in);
+                        for (let i = 0; i < data.nights; i++) {
+                            const d = new Date(checkInDate);
+                            d.setDate(d.getDate() + i);
+                            const dateStr = d.toISOString().split('T')[0];
+                            pricingData[dateStr] = Math.round(data.price / data.nights);
+                        }
+                    }
 
-                    console.log('📊 pricingData after:', pricingData);
-                    console.log('🚫 blockedDates after:', blockedDates);
+                    if (data.blocked) {
+                        blockedDates = data.blocked;
+                    } else if (data.blocked_dates) {
+                        blockedDates = data.blocked_dates;
+                    } else if (data.unavailable) {
+                        blockedDates = data.unavailable;
+                    }
+
+                    console.log('💰 Mapped pricingData:', pricingData);
+                    console.log('🚫 Mapped blockedDates:', blockedDates);
+                    console.log('📏 pricingData has', Object.keys(pricingData).length, 'dates');
                 } else {
                     const errorText = await response.text();
                     console.error('❌ API Error:', response.status, errorText);
