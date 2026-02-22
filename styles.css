@@ -55,21 +55,7 @@ body {
 }
 
 .logo:hover .flower {
-    animation: spin-fast 3s ease-out infinite;
-}
-
-@keyframes spin-fast {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(36deg); }
-    20% { transform: rotate(108deg); }
-    30% { transform: rotate(216deg); }
-    40% { transform: rotate(360deg); }
-    50% { transform: rotate(540deg); }
-    60% { transform: rotate(756deg); }
-    70% { transform: rotate(1008deg); }
-    80% { transform: rotate(1296deg); }
-    90% { transform: rotate(1620deg); }
-    100% { transform: rotate(1980deg); }
+    animation: spin 0.6s linear infinite;
 }
 
 .logo-text {
