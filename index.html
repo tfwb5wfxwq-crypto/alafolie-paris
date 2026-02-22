@@ -258,7 +258,7 @@
             padding: 1.5rem;
             max-width: 850px;
             width: 95vw;
-            max-height: 90vh;
+            max-height: 85vh;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -267,7 +267,7 @@
                 0 0 60px rgba(255, 77, 106, 0.15),
                 inset 0 1px 0 rgba(255,255,255,0.1);
             animation: modal-scale-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            overflow: hidden;
+            overflow-y: auto;
         }
 
         @keyframes modal-scale-in {
@@ -836,9 +836,10 @@
 
             .modal-content {
                 padding: 1.2rem;
-                max-height: 92vh;
+                max-height: 88vh;
                 border-radius: 20px;
-                overflow: hidden;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .modal-close {
