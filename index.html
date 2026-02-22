@@ -757,19 +757,25 @@
                 padding: 0.8rem;
             }
 
-            /* Footer mobile - léger et discret */
+            /* Footer mobile - léger et discret avec effet glass */
             .footer {
                 height: 65px !important;
-                display: flex !important;
-                flex-direction: row !important;
-                justify-content: space-between !important;
+                display: grid !important;
+                grid-template-columns: 1fr auto auto !important;
                 align-items: center !important;
                 gap: 1rem !important;
                 padding: 0.8rem 1rem !important;
                 position: fixed !important;
                 bottom: 0 !important;
-                background: rgba(0, 0, 0, 0.9) !important;
-                backdrop-filter: blur(30px) !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                background: rgba(0, 0, 0, 0.85) !important;
+                backdrop-filter: blur(40px) saturate(180%) !important;
+                -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+                border-top: 1px solid rgba(255,255,255,0.15) !important;
+                box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1) !important;
+                z-index: 1002 !important;
             }
 
             /* Hide location */
@@ -777,9 +783,11 @@
                 display: none !important;
             }
 
-            /* WhatsApp number - show compact */
+            /* WhatsApp number - center */
             .footer > div:nth-child(2) {
                 display: flex !important;
+                justify-content: center !important;
+                grid-column: 1 / 2 !important;
             }
 
             .footer .whatsapp-link {
@@ -792,11 +800,13 @@
                 height: 18px !important;
             }
 
-            /* Airbnb button - compact */
+            /* Airbnb button - right */
             .footer > div:last-child {
                 display: flex !important;
                 flex-direction: row !important;
                 align-items: center !important;
+                justify-content: flex-end !important;
+                grid-column: 3 / 4 !important;
             }
 
             .footer > div:last-child > span {
