@@ -880,6 +880,40 @@
 
         async function openModal() {
             modal.classList.add('show');
+
+            // Récupérer les dates bloquées depuis l'API
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({ get_calendar: true })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.blocked && data.blocked.length > 0) {
+                        // Générer toutes les dates entre start et end pour chaque période bloquée
+                        blockedDates = [];
+                        for (const period of data.blocked) {
+                            const start = new Date(period.start);
+                            const end = new Date(period.end);
+                            let current = new Date(start);
+
+                            while (current < end) {
+                                blockedDates.push(current.toISOString().split('T')[0]);
+                                current.setDate(current.getDate() + 1);
+                            }
+                        }
+                        console.log('🚫 Dates bloquées chargées:', blockedDates.length, 'dates');
+                    }
+                }
+            } catch (e) {
+                console.error('Erreur chargement dates bloquées:', e);
+            }
+
             renderCals();
         }
 
@@ -950,7 +984,8 @@
             const today = new Date();
             today.setHours(0,0,0,0);
 
-            if (clickedDate < today) return;
+            // Empêcher la sélection des dates passées ou bloquées
+            if (clickedDate < today || blockedDates.includes(dateStr)) return;
 
             if (selected.length === 0) {
                 selected.push(dateStr);
