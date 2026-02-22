@@ -861,9 +861,12 @@
 
                 if (response.ok) {
                     const data = await response.json();
+                    console.log('✅ Pricing data loaded:', data);
+                    console.log('📊 pricingData structure:', data.pricing);
+                    console.log('🚫 blockedDates:', data.blocked);
+
                     if (data.pricing) pricingData = data.pricing;
                     if (data.blocked) blockedDates = data.blocked;
-                    console.log('✅ Pricing data loaded:', data);
                 } else {
                     const errorText = await response.text();
                     console.error('❌ API Error:', response.status, errorText);
@@ -975,6 +978,9 @@
                 const checkOut = new Date(selected[1]);
                 const nights = Math.ceil((checkOut - checkIn) / (1000*60*60*24));
 
+                console.log('💰 Calculating price for', nights, 'nights');
+                console.log('💰 pricingData available:', Object.keys(pricingData).length, 'dates');
+
                 // Calculate total using dynamic pricing if available
                 let total = 0;
                 let avgPrice = pricePerNight;
@@ -985,12 +991,16 @@
                         const nightDate = new Date(checkIn);
                         nightDate.setDate(nightDate.getDate() + i);
                         const dateStr = nightDate.toISOString().split('T')[0];
-                        total += pricingData[dateStr] || pricePerNight;
+                        const nightPrice = pricingData[dateStr] || pricePerNight;
+                        console.log(`💰 ${dateStr}: ${nightPrice}€`);
+                        total += nightPrice;
                     }
                     avgPrice = Math.round(total / nights);
+                    console.log('💰 Using API prices - Total:', total, 'Avg:', avgPrice);
                 } else {
                     // Fallback to fixed price
                     total = nights * pricePerNight;
+                    console.log('💰 Using fallback price:', pricePerNight, '× ', nights, '=', total);
                 }
 
                 document.getElementById('checkIn').textContent = checkIn.toLocaleDateString('fr-FR', {day: 'numeric', month: 'short'});
