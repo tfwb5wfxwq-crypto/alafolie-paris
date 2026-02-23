@@ -82,6 +82,24 @@
             border-color: rgba(255, 77, 106, 0.3);
         }
 
+        .card-image {
+            width: calc(100% + 4rem);
+            margin: -2rem -2rem 1.5rem -2rem;
+            border-radius: 16px 16px 0 0;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
         .card-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -400,6 +418,9 @@
             <h2 class="section-title">☕ Cafés & Brunch</h2>
             <div class="cards-grid">
                 <div class="card">
+                    <div class="card-image">
+                        <img src="kape-ube.jpg" alt="Ube latte violet avec latte art - Kapé café philippin Paris" loading="lazy">
+                    </div>
                     <div class="card-icon">🇵🇭</div>
                     <h3 class="card-title">Kapé</h3>
                     <p class="card-category">Café Philippin</p>
@@ -412,6 +433,9 @@
                 </div>
 
                 <div class="card">
+                    <div class="card-image">
+                        <img src="cafe-mericourt.jpg" alt="Brunch vegan Café Méricourt - shakshuka, pancakes, café - Paris 11e" loading="lazy">
+                    </div>
                     <div class="card-icon">🌱</div>
                     <h3 class="card-title">Café Méricourt</h3>
                     <p class="card-category">Café Vegan • Sans Gluten</p>
