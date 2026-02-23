@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <style>
+    .bg { fill: #1a1a2e; }
     .petal { fill: #ffffff; }
     .petal-alt { fill: #ffd93d; }
     .petal-pink { fill: #ff4d6a; }
     .center { fill: #ffd93d; }
   </style>
 
-  <g transform="translate(20, 20)">
+  <!-- Fond rond -->
+  <circle class="bg" cx="50" cy="50" r="50"/>
+
+  <!-- Marguerite centrée -->
+  <g transform="translate(50, 50)">
     <!-- 8 petals alternating white/yellow/pink -->
-    <ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
-    <ellipse class="petal-alt" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
-    <ellipse class="petal-pink" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
-    <ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
-    <ellipse class="petal-alt" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
-    <ellipse class="petal-pink" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
-    <ellipse class="petal" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
-    <ellipse class="petal-alt" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+    <ellipse class="petal" cx="0" cy="-15" rx="5" ry="12" transform="rotate(0)"/>
+    <ellipse class="petal-alt" cx="0" cy="-15" rx="5" ry="12" transform="rotate(45)"/>
+    <ellipse class="petal-pink" cx="0" cy="-15" rx="5" ry="12" transform="rotate(90)"/>
+    <ellipse class="petal" cx="0" cy="-15" rx="5" ry="12" transform="rotate(135)"/>
+    <ellipse class="petal-alt" cx="0" cy="-15" rx="5" ry="12" transform="rotate(180)"/>
+    <ellipse class="petal-pink" cx="0" cy="-15" rx="5" ry="12" transform="rotate(225)"/>
+    <ellipse class="petal" cx="0" cy="-15" rx="5" ry="12" transform="rotate(270)"/>
+    <ellipse class="petal-alt" cx="0" cy="-15" rx="5" ry="12" transform="rotate(315)"/>
 
     <!-- Yellow center -->
-    <circle class="center" cx="0" cy="0" r="4.5"/>
+    <circle class="center" cx="0" cy="0" r="7"/>
   </g>
 </svg>
