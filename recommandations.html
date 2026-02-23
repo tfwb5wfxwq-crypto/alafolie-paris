@@ -13,235 +13,140 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            background: linear-gradient(135deg,
-                rgba(10, 10, 20, 1) 0%,
-                rgba(20, 10, 30, 1) 50%,
-                rgba(10, 10, 20, 1) 100%);
+            background: #ffffff;
             min-height: 100vh;
             font-family: 'Outfit', sans-serif;
+            padding-top: 70px;
+            padding-bottom: 100px;
         }
 
         /* HERO */
         .hero {
-            padding: 10rem 2rem 5rem;
+            padding: 6rem 2rem 4rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle,
-                rgba(77, 150, 255, 0.15) 0%,
-                transparent 70%);
-            animation: pulse-glow 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
-            50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+            background: #fafafa;
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #4dd4d4 50%, #ffd93d 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            animation: hero-slide-in 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes hero-slide-in {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 0.5rem;
+            color: #2c2c2c;
+            letter-spacing: -0.02em;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 300;
-            letter-spacing: 0.05em;
-            position: relative;
-            animation: hero-slide-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 400;
         }
 
         /* CONTENT */
         .content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 3rem 2rem 10rem;
+            padding: 3rem 2rem 4rem;
         }
 
         .section {
             margin-bottom: 5rem;
-            animation: section-fade-in 0.8s ease-out;
-        }
-
-        @keyframes section-fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 3px solid transparent;
-            border-image: linear-gradient(90deg,
-                rgba(255, 217, 61, 0.5),
-                rgba(255, 140, 66, 0.5),
-                transparent) 1;
-            color: #fff;
-            text-shadow: 0 2px 20px rgba(255, 217, 61, 0.3);
+            color: #2c2c2c;
         }
 
         /* CARDS */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .card {
-            background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.05) 0%,
-                rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(30px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 2.5rem;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 24px;
-            background: linear-gradient(135deg,
-                rgba(255, 217, 61, 0.3),
-                rgba(255, 140, 66, 0.3));
-            opacity: 0;
-            transition: opacity 0.4s;
-            z-index: -1;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(255, 217, 61, 0.5);
-            box-shadow:
-                0 20px 60px rgba(255, 217, 61, 0.2),
-                0 0 80px rgba(255, 217, 61, 0.1);
-        }
-
-        .card:hover::before {
-            opacity: 1;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            border-color: rgba(255, 77, 106, 0.3);
         }
 
         .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 4px 15px rgba(255, 217, 61, 0.3));
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .card-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-            color: #fff;
-            text-shadow: 0 2px 15px rgba(255, 255, 255, 0.2);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c2c2c;
         }
 
         .card-category {
-            font-size: 0.9rem;
-            color: #ffd93d;
+            font-size: 0.85rem;
+            color: #ff4d6a;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
             font-weight: 600;
         }
 
         .card-description {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .card-address {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 0.5rem;
         }
 
         .card-distance {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #4dd4d4;
             font-weight: 500;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .card-link {
             display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #ffd93d, #ffed4e);
-            color: #000;
+            margin-top: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, #ff4d6a, #ff6b85);
+            color: #fff;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 20px rgba(255, 217, 61, 0.3);
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 77, 106, 0.3);
         }
 
         .card-link:hover {
-            background: linear-gradient(135deg, #ffed4e, #ffd93d);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 30px rgba(255, 217, 61, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 77, 106, 0.4);
         }
 
         /* MOBILE */
         @media (max-width: 768px) {
-            body {
-                padding-bottom: 120px;
-            }
-
             .hero {
-                padding: 7rem 1.5rem 3rem;
-            }
-
-            .content {
-                padding-bottom: 120px;
-            }
-
-            .section {
-                margin-bottom: 3rem;
+                padding: 5rem 1.5rem 3rem;
             }
 
             .section-title {
@@ -251,34 +156,11 @@
 
             .cards-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .card {
-                padding: 2rem;
-                border-radius: 20px;
-            }
-
-            .card-icon {
-                font-size: 2.5rem;
-            }
-
-            .card-title {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .card {
                 padding: 1.5rem;
-            }
-
-            .card-title {
-                font-size: 1.3rem;
             }
         }
 
