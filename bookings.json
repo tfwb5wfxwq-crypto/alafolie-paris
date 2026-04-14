@@ -10,11 +10,6 @@
     "checkout": "2026-04-22"
   },
   {
-    "name": "Michelle",
-    "checkin": "2026-04-16",
-    "checkout": "2026-04-19"
-  },
-  {
     "name": "Mark",
     "checkin": "2026-04-20",
     "checkout": "2026-04-29"
@@ -23,11 +18,6 @@
     "name": "Ellen",
     "checkin": "2026-04-21",
     "checkout": "2026-04-29"
-  },
-  {
-    "name": "Line",
-    "checkin": "2026-04-23",
-    "checkout": "2026-04-30"
   },
   {
     "name": "Becky",
