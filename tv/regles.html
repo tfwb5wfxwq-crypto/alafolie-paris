@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=1920, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>À La Folie — Règles de la maison</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100vw; height: 100vh; overflow: hidden; background: #04040a; font-family: 'Outfit', sans-serif; color: #fff; cursor: none; }
@@ -21,11 +21,11 @@
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
     /* ── PAGE ── */
-    .page { position:relative;z-index:1;width:100vw;height:100vh;display:grid;grid-template-rows:auto 1fr auto;padding:3vh 4.5vw;animation:pageIn .65s ease both; }
+    .page { position:relative;z-index:1;width:100vw;height:100vh;display:grid;grid-template-rows:auto 1fr auto;padding:2.5vh 4.5vw;animation:pageIn .65s ease both; }
     @keyframes pageIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
 
     /* ── HEADER ── */
-    .header { display:flex;align-items:center;justify-content:space-between;padding-bottom:2vh;border-bottom:1px solid rgba(255,255,255,0.055);margin-bottom:2.5vh; }
+    .header { display:flex;align-items:center;justify-content:space-between;padding-bottom:1.8vh;border-bottom:1px solid rgba(255,255,255,0.055);margin-bottom:2vh; }
     .header-left { display:flex;align-items:center;gap:1.8vw; }
     .back-btn { display:flex;align-items:center;gap:0.6vw;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:.7vw;padding:.75vh 1.2vw;font-size:.82vw;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;transition:all .2s;cursor:default; }
     .back-btn:hover,.back-btn:focus { background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.16);color:rgba(255,255,255,0.82);outline:none; }
@@ -38,15 +38,15 @@
     .header-title { font-size:.75vw;font-weight:300;color:rgba(255,255,255,.22);letter-spacing:.3em;text-transform:uppercase; }
 
     /* ── SPLIT LAYOUT ── */
-    .split { display:grid;grid-template-columns:22vw 1fr;gap:2vw;height:100%; }
+    .split { display:grid;grid-template-columns:20vw 1fr;gap:2vw;height:100%; }
 
     /* ── SIDEBAR ── */
-    .sidebar { display:flex;flex-direction:column;gap:.6vh; }
+    .sidebar { display:flex;flex-direction:column;gap:.5vh; }
     .sidebar-label { font-size:.58vw;font-weight:300;color:rgba(255,255,255,.18);letter-spacing:.28em;text-transform:uppercase;margin-bottom:.6vh;padding-left:.5vw; }
 
     .cat-btn {
       display:flex;align-items:center;gap:.9vw;
-      padding:1.1vh 1vw;
+      padding:1vh 1vw;
       border-radius:.8vw;
       border:1px solid transparent;
       background:transparent;
@@ -59,71 +59,187 @@
       background:var(--c);border-radius:0 2px 2px 0;opacity:0;transition:opacity .2s;
     }
     .cat-btn:hover,.cat-btn:focus { background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08);outline:none; }
-    .cat-btn.active {
-      background:rgba(255,255,255,.07);
-      border-color:rgba(255,255,255,.1);
-    }
+    .cat-btn.active { background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1); }
     .cat-btn.active::before { opacity:1; }
 
     .cat-btn-icon {
-      width:2.4vw;height:2.4vw;border-radius:25%;
+      width:2.2vw;height:2.2vw;border-radius:25%;
       display:flex;align-items:center;justify-content:center;
       background:var(--ibg);flex-shrink:0;
+      font-size:1.1vw;
       transition:transform .18s ease;
     }
-    .cat-btn-icon svg { width:52%;height:52%; }
     .cat-btn.active .cat-btn-icon { transform:scale(1.08); }
-
-    .cat-btn-label { font-size:.82vw;font-weight:500;color:rgba(255,255,255,.5);transition:color .2s; }
+    .cat-btn-label { font-size:.8vw;font-weight:500;color:rgba(255,255,255,.5);transition:color .2s; }
     .cat-btn.active .cat-btn-label,
     .cat-btn:hover .cat-btn-label,
     .cat-btn:focus .cat-btn-label { color:rgba(255,255,255,.9); }
-
-    .cat-btn-arrow { margin-left:auto;opacity:0;transition:opacity .15s,transform .15s; }
-    .cat-btn-arrow svg { width:.65vw;height:.65vw; }
-    .cat-btn.active .cat-btn-arrow { opacity:.4;transform:translateX(2px); }
+    .cat-btn-arrow { margin-left:auto;opacity:0;transition:opacity .15s,transform .15s;font-size:.6vw;color:rgba(255,255,255,.4); }
+    .cat-btn.active .cat-btn-arrow { opacity:1;transform:translateX(2px); }
 
     /* ── CONTENT PANEL ── */
     .content-panel {
       background:rgba(255,255,255,.038);
       border:1px solid rgba(255,255,255,.07);
       border-radius:1.4vw;
-      padding:3.5vh 2.8vw;
+      padding:2.5vh 2.2vw;
       position:relative;overflow:hidden;
-      display:flex;flex-direction:column;gap:2.5vh;
+      display:flex;flex-direction:column;gap:0;
     }
     .content-panel::before {
       content:'';position:absolute;top:0;left:0;right:0;height:2px;
       background:var(--panel-accent,rgba(255,255,255,.08));
     }
-    .content-panel::after {
-      content:'';position:absolute;top:-50%;left:-20%;width:60%;height:70%;
-      background:var(--panel-glow,transparent);filter:blur(60px);opacity:.07;pointer-events:none;
+
+    /* ── CONTENT HEADER ── */
+    .content-head {
+      display:flex;align-items:center;gap:1vw;
+      padding-bottom:1.8vh;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      margin-bottom:2vh;
+      flex-shrink:0;
+    }
+    .content-head-emoji { font-size:2vw;line-height:1; }
+    .content-title { font-size:1.4vw;font-weight:700;color:rgba(255,255,255,.92); }
+    .content-subtitle { font-size:.7vw;font-weight:300;color:rgba(255,255,255,.28);margin-top:.2vh; }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display:grid;
+      grid-template-columns:repeat(var(--cols, 3), 1fr);
+      gap:1vw;
+      flex:1;
+      align-content:start;
     }
 
-    .content-head { display:flex;align-items:center;gap:1.2vw;padding-bottom:2vh;border-bottom:1px solid rgba(255,255,255,.06); }
-    .content-icon { width:3.5vw;height:3.5vw;border-radius:26%;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
-    .content-icon svg { width:52%;height:52%; }
-    .content-title { font-size:1.5vw;font-weight:700;color:rgba(255,255,255,.92); }
-
-    .content-items { display:flex;flex-direction:column;gap:0; }
-    .content-item {
-      display:flex;align-items:flex-start;gap:1vw;
-      padding:1.5vh 0;
-      border-bottom:1px solid rgba(255,255,255,.045);
-      animation:itemSlide .35s var(--di,0s) cubic-bezier(.22,1,.36,1) both;
+    .rule-card {
+      background:rgba(255,255,255,.042);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:1vw;
+      padding:1.6vh 1.2vw;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:.7vh;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      animation:cardIn .4s var(--di,0s) cubic-bezier(.22,1,.36,1) both;
+      transition:border-color .2s, background .2s;
+      min-height:12vh;
     }
-    .content-item:last-child { border-bottom:none; }
-    @keyframes itemSlide { from{opacity:0;transform:translateX(-12px)} to{opacity:1;transform:none} }
-    .item-dot { width:5px;height:5px;border-radius:50%;background:var(--panel-color,rgba(255,255,255,.25));flex-shrink:0;margin-top:.65em; }
-    .item-text { font-size:.95vw;font-weight:300;color:rgba(255,255,255,.65);line-height:1.55; }
-    .item-text strong { color:rgba(255,255,255,.9);font-weight:600; }
-    .item-text .warn { color:#ffd93d;font-weight:600; }
-    .item-text .ok   { color:#6bcb77;font-weight:600; }
-    .item-text .bad  { color:#ff4d6a;font-weight:600; }
+    @keyframes cardIn { from{opacity:0;transform:scale(.92) translateY(8px)} to{opacity:1;transform:none} }
+
+    /* Carte interdiction (rouge) */
+    .rule-card.forbidden {
+      border-color:rgba(255,77,106,.2);
+      background:rgba(255,77,106,.06);
+    }
+    .rule-card.forbidden::after {
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(circle at 50% 0%, rgba(255,77,106,.08), transparent 70%);
+      pointer-events:none;
+    }
+
+    /* Carte avertissement (jaune) */
+    .rule-card.warning {
+      border-color:rgba(255,217,61,.2);
+      background:rgba(255,217,61,.05);
+    }
+
+    /* Carte info (neutre) */
+    .rule-card.info {
+      border-color:rgba(255,255,255,.1);
+    }
+
+    /* Carte OK (verte) */
+    .rule-card.ok-card {
+      border-color:rgba(107,203,119,.2);
+      background:rgba(107,203,119,.05);
+    }
+
+    /* ── PICTOGRAMME ── */
+    .pic-wrap {
+      position:relative;
+      display:flex;align-items:center;justify-content:center;
+      width:4.5vw;height:4.5vw;
+      border-radius:50%;
+      background:var(--pic-bg, rgba(255,255,255,.07));
+      flex-shrink:0;
+    }
+    .pic-emoji { font-size:2vw;line-height:1; }
+    /* Croix rouge "interdit" */
+    .pic-wrap.no::after {
+      content:'';
+      position:absolute;
+      inset:-2px;
+      border-radius:50%;
+      border:2.5px solid #ff4d6a;
+    }
+    .pic-wrap.no::before {
+      content:'';
+      position:absolute;
+      width:105%;height:2.5px;
+      background:#ff4d6a;
+      transform:rotate(45deg);
+      border-radius:2px;
+      box-shadow:0 0 8px rgba(255,77,106,.6);
+    }
+
+    /* Badge interdit top-right */
+    .forbidden-badge {
+      position:absolute;top:.6vh;right:.7vw;
+      font-size:1.2vw;line-height:1;
+      filter:drop-shadow(0 0 4px rgba(255,77,106,.6));
+    }
+
+    .card-label {
+      font-size:.78vw;
+      font-weight:700;
+      color:rgba(255,255,255,.88);
+      line-height:1.2;
+      letter-spacing:.01em;
+    }
+    .card-sublabel {
+      font-size:.62vw;
+      font-weight:300;
+      color:rgba(255,255,255,.38);
+      line-height:1.3;
+    }
+    .card-label.red { color:#ff4d6a; }
+    .card-label.yellow { color:#ffd93d; }
+    .card-label.green { color:#6bcb77; }
+
+    /* ── LARGE CARD (2 cols) ── */
+    .rule-card.wide {
+      grid-column: span 2;
+      flex-direction:row;
+      justify-content:flex-start;
+      text-align:left;
+      gap:1.2vw;
+      padding:1.4vh 1.6vw;
+    }
+    .rule-card.wide .card-text { display:flex;flex-direction:column;gap:.3vh; }
+    .rule-card.wide .card-label { font-size:.85vw; }
+    .rule-card.wide .card-sublabel { font-size:.68vw; }
+
+    /* ── INLINE CODE ── */
+    .code-chip {
+      display:inline-block;
+      background:rgba(255,217,61,.14);
+      border:1px solid rgba(255,217,61,.25);
+      border-radius:.4vw;
+      padding:.15vh .5vw;
+      font-size:.82vw;
+      font-weight:700;
+      color:#ffd93d;
+      letter-spacing:.05em;
+      font-family:'Outfit', monospace;
+    }
 
     /* ── FOOTER ── */
-    .footer { display:flex;align-items:center;justify-content:space-between;padding-top:1.8vh;border-top:1px solid rgba(255,255,255,.05); }
+    .footer { display:flex;align-items:center;justify-content:space-between;padding-top:1.5vh;border-top:1px solid rgba(255,255,255,.05); }
     .footer-contact { display:flex;align-items:center;gap:.6vw; }
     .contact-label { font-size:.55vw;font-weight:300;color:rgba(255,255,255,.2);letter-spacing:.18em;text-transform:uppercase; }
     .contact-val { font-size:.9vw;font-weight:600;color:#25D366; }
@@ -169,51 +285,39 @@
       <div class="sidebar-label">Catégories</div>
 
       <div class="cat-btn active" data-key="essential" tabindex="0" style="--c:#ff4d6a;--ibg:rgba(255,77,106,.14)" onclick="select('essential')">
-        <div class="cat-btn-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ff4d6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-        </div>
+        <div class="cat-btn-icon">🚫</div>
         <span class="cat-btn-label">Règles essentielles</span>
-        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        <span class="cat-btn-arrow">▶</span>
       </div>
 
       <div class="cat-btn" data-key="acces" tabindex="0" style="--c:#ffd93d;--ibg:rgba(255,217,61,.14)" onclick="select('acces')">
-        <div class="cat-btn-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ffd93d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-        </div>
+        <div class="cat-btn-icon">🔑</div>
         <span class="cat-btn-label">Accès & Codes</span>
-        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        <span class="cat-btn-arrow">▶</span>
       </div>
 
       <div class="cat-btn" data-key="tv" tabindex="0" style="--c:#9b5de5;--ibg:rgba(155,93,229,.14)" onclick="select('tv')">
-        <div class="cat-btn-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#9b5de5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
-        </div>
+        <div class="cat-btn-icon">📺</div>
         <span class="cat-btn-label">TV & Son</span>
-        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        <span class="cat-btn-arrow">▶</span>
       </div>
 
       <div class="cat-btn" data-key="cuisine" tabindex="0" style="--c:#6bcb77;--ibg:rgba(107,203,119,.14)" onclick="select('cuisine')">
-        <div class="cat-btn-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#6bcb77" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
-        </div>
+        <div class="cat-btn-icon">🍳</div>
         <span class="cat-btn-label">Cuisine</span>
-        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        <span class="cat-btn-arrow">▶</span>
       </div>
 
       <div class="cat-btn" data-key="lumieres" tabindex="0" style="--c:#ff8c42;--ibg:rgba(255,140,66,.14)" onclick="select('lumieres')">
-        <div class="cat-btn-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ff8c42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/><circle cx="12" cy="12" r="5"/></svg>
-        </div>
+        <div class="cat-btn-icon">💡</div>
         <span class="cat-btn-label">Lumières</span>
-        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        <span class="cat-btn-arrow">▶</span>
       </div>
 
       <div class="cat-btn" data-key="depart" tabindex="0" style="--c:#4dd4d4;--ibg:rgba(77,212,212,.14)" onclick="select('depart')">
-        <div class="cat-btn-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#4dd4d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        </div>
+        <div class="cat-btn-icon">🌿</div>
         <span class="cat-btn-label">Plantes & Départ</span>
-        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        <span class="cat-btn-arrow">▶</span>
       </div>
     </div>
 
@@ -243,105 +347,136 @@
 <script>
 const DATA = {
   essential: {
-    title:'Règles essentielles', color:'#ff4d6a',
-    accent:'linear-gradient(90deg,#ff4d6a,#ff8c42)',
-    ibg:'rgba(255,77,106,.18)',
-    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#ff4d6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>`,
-    items:[
-      '<span class="bad">Cigarette strictement interdite</span> dans tout le logement',
-      '<span class="bad">Pas de fête</span> ni rassemblement bruyant',
-      'Volume modéré après <strong>22h</strong> — voisins à respecter',
-      'Chambre : <strong>pas de liquide</strong> sur le bureau (mur rose fragile)',
+    title: 'Règles essentielles',
+    emoji: '🚫',
+    accent: 'linear-gradient(90deg,#ff4d6a,#ff8c42)',
+    cols: 3,
+    cards: [
+      { type:'forbidden', pic:'🚬', picBg:'rgba(255,77,106,.12)', label:'Cigarette interdite', sub:'Dans tout le logement', badge:'🚭' },
+      { type:'forbidden', pic:'🎉', picBg:'rgba(255,77,106,.12)', label:'Pas de fête', sub:'Ni rassemblement bruyant', badge:'❌' },
+      { type:'warning',   pic:'🔊', picBg:'rgba(255,217,61,.12)',  label:'Volume modéré', sub:'Après 22h — voisins', badge:null },
+      { type:'info',      pic:'💧', picBg:'rgba(77,212,212,.1)',   label:'Pas de liquide', sub:'Bureau chambre (mur fragile)', badge:null },
+      { type:'ok-card',   pic:'✨', picBg:'rgba(107,203,119,.1)',  label:'Bienvenue !', sub:'Merci de respecter les lieux', badge:null },
+      { type:'info',      pic:'🛁', picBg:'rgba(155,93,229,.1)',   label:'Jacuzzi privatif', sub:'Votre espace détente', badge:null },
     ]
   },
   acces: {
-    title:'Accès & Codes', color:'#ffd93d',
-    accent:'linear-gradient(90deg,#ffd93d,#ff8c42)',
-    ibg:'rgba(255,217,61,.18)',
-    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#ffd93d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>`,
-    items:[
-      'Grand portail : <strong>badge</strong> — code boîtier <strong>42B9</strong>',
-      'Interphone : chercher <strong>Folie</strong>',
-      'Porte d\'entrée lourde — bien tenir la poignée',
-      '<span class="warn">Ne jamais laisser la clé dans la serrure intérieure</span>',
+    title: 'Accès & Codes',
+    emoji: '🔑',
+    accent: 'linear-gradient(90deg,#ffd93d,#ff8c42)',
+    cols: 2,
+    cards: [
+      { type:'info', wide:true, pic:'🚪', picBg:'rgba(255,217,61,.12)', label:'Grand portail', sub:'Badge magnétique · Code boîtier <span class="code-chip">42B9</span>' },
+      { type:'info', wide:true, pic:'📟', picBg:'rgba(255,217,61,.12)', label:'Interphone', sub:'Chercher <strong style="color:#ffd93d">Folie</strong> dans la liste' },
+      { type:'warning', wide:true, pic:'⚠️', picBg:'rgba(255,140,66,.12)', label:'Porte d\'entrée lourde', sub:'Bien tenir la poignée en entrant' },
+      { type:'forbidden', wide:true, pic:'🔒', picBg:'rgba(255,77,106,.12)', label:'Clé intérieure', sub:'Ne jamais laisser dans la serrure côté intérieur' },
     ]
   },
   tv: {
-    title:'TV & Son', color:'#9b5de5',
-    accent:'linear-gradient(90deg,#9b5de5,#4dd4d4)',
-    ibg:'rgba(155,93,229,.18)',
-    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#9b5de5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>`,
-    items:[
-      '<strong>Télécommande grise :</strong> bouton Home → Netflix, Prime, Canal+',
-      'Chaînes en direct : <strong>appli Canal+</strong> sur la TV',
-      '<strong>Son via la barre :</strong> télécommande blanche → Source → TV',
-      'Volume modéré après <strong>22h</strong>',
+    title: 'TV & Son',
+    emoji: '📺',
+    accent: 'linear-gradient(90deg,#9b5de5,#4dd4d4)',
+    cols: 2,
+    cards: [
+      { type:'info', wide:true, pic:'🎮', picBg:'rgba(155,93,229,.12)', label:'Télécommande grise', sub:'Bouton Home → Netflix, Prime, Canal+' },
+      { type:'info', wide:true, pic:'📡', picBg:'rgba(77,212,212,.12)',  label:'TV en direct', sub:'Appli Canal+ sur la TV Fire Stick' },
+      { type:'info', wide:true, pic:'🔈', picBg:'rgba(155,93,229,.12)', label:'Barre de son', sub:'Télécommande blanche → Source → TV' },
+      { type:'warning', wide:true, pic:'🌙', picBg:'rgba(255,217,61,.12)', label:'Après 22h', sub:'Volume modéré — merci pour les voisins' },
     ]
   },
   cuisine: {
-    title:'Cuisine', color:'#6bcb77',
-    accent:'linear-gradient(90deg,#6bcb77,#4dd4d4)',
-    ibg:'rgba(107,203,119,.18)',
-    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#6bcb77" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`,
-    items:[
-      '<strong>Hotte allumée</strong> ou fenêtres ouvertes lors de la cuisson (détecteur fumée)',
-      '<strong>Couverts en bois uniquement</strong> dans les casseroles antiadhésives',
-      '<strong>Lave-vaisselle :</strong> pastille dans le tiroir — programme <strong>ECO</strong>',
-      '<strong>Lave-linge :</strong> lessive tiroir WASH (II) — programme <strong>Eco 40-60</strong>',
+    title: 'Cuisine',
+    emoji: '🍳',
+    accent: 'linear-gradient(90deg,#6bcb77,#4dd4d4)',
+    cols: 2,
+    cards: [
+      { type:'warning', wide:true, pic:'💨', picBg:'rgba(107,203,119,.12)', label:'Cuisson → Hotte allumée', sub:'Ou fenêtres ouvertes · Détecteur de fumée' },
+      { type:'forbidden', wide:true, pic:'🥄', picBg:'rgba(255,77,106,.12)', label:'Couverts en bois uniquement', sub:'Dans les casseroles antiadhésives' },
+      { type:'ok-card', wide:true, pic:'🍽️', picBg:'rgba(107,203,119,.12)', label:'Lave-vaisselle', sub:'Pastille dans le tiroir · Programme ECO' },
+      { type:'ok-card', wide:true, pic:'👕', picBg:'rgba(77,212,212,.12)',  label:'Lave-linge', sub:'Lessive tiroir WASH (II) · Eco 40-60' },
     ]
   },
   lumieres: {
-    title:'Lumières', color:'#ff8c42',
-    accent:'linear-gradient(90deg,#ff8c42,#ffd93d)',
-    ibg:'rgba(255,140,66,.18)',
-    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#ff8c42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/><circle cx="12" cy="12" r="5"/></svg>`,
-    items:[
-      '<strong>Télécommande</strong> rangée sous le buffet de la cuisine',
-      '<strong>Bouton +</strong> — allume toutes les lumières (5 ambiances)',
-      '<strong>Bouton −</strong> — diminue l\'intensité',
-      '<strong>Bouton O</strong> — éteint tout',
+    title: 'Lumières',
+    emoji: '💡',
+    accent: 'linear-gradient(90deg,#ff8c42,#ffd93d)',
+    cols: 2,
+    cards: [
+      { type:'info', wide:true, pic:'📦', picBg:'rgba(255,140,66,.12)', label:'Télécommande lumières', sub:'Rangée sous le buffet de la cuisine' },
+      { type:'ok-card', wide:true, pic:'＋', picBg:'rgba(107,203,119,.12)', label:'Bouton +', sub:'Allume toutes les lumières · 5 ambiances' },
+      { type:'info', wide:true, pic:'➖', picBg:'rgba(255,140,66,.12)', label:'Bouton −', sub:'Diminue l\'intensité lumineuse' },
+      { type:'info', wide:true, pic:'⭕', picBg:'rgba(255,77,106,.1)',   label:'Bouton O', sub:'Éteint tout' },
     ]
   },
   depart: {
-    title:'Plantes & Départ', color:'#4dd4d4',
-    accent:'linear-gradient(90deg,#4dd4d4,#9b5de5)',
-    ibg:'rgba(77,212,212,.18)',
-    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#4dd4d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>`,
-    items:[
-      'Si terre sèche : <span class="ok">arroser légèrement</span> les petites plantes',
-      'Au départ : <strong>fenêtres fermées</strong> et lumières éteintes',
-      'Laisser la <strong>clé sur le plan de travail</strong>',
-      'Merci de laisser l\'appartement propre et rangé',
+    title: 'Plantes & Départ',
+    emoji: '🌿',
+    accent: 'linear-gradient(90deg,#4dd4d4,#9b5de5)',
+    cols: 3,
+    cards: [
+      { type:'ok-card', pic:'🪴', picBg:'rgba(107,203,119,.12)', label:'Plantes', sub:'Terre sèche → arroser légèrement' },
+      { type:'info',    pic:'🪟', picBg:'rgba(77,212,212,.1)',   label:'Fenêtres', sub:'Toutes fermées au départ' },
+      { type:'info',    pic:'💡', picBg:'rgba(255,140,66,.1)',   label:'Lumières', sub:'Toutes éteintes' },
+      { type:'ok-card', pic:'🗝️', picBg:'rgba(107,203,119,.12)', label:'Clé', sub:'Sur le plan de travail' },
+      { type:'ok-card', pic:'🧹', picBg:'rgba(107,203,119,.12)', label:'Propre & rangé', sub:'Merci beaucoup 🙏' },
+      { type:'info',    pic:'👋', picBg:'rgba(155,93,229,.1)',   label:'Bon voyage !', sub:'À bientôt à Paris' },
     ]
   }
 };
+
+function renderCard(c, i) {
+  const wideClass = c.wide ? 'wide' : '';
+  const typeClass = c.type || 'info';
+  const delay = `${i * 0.05}s`;
+  const noClass = c.type === 'forbidden' ? 'no' : '';
+
+  const badgeHtml = c.badge ? `<span class="forbidden-badge">${c.badge}</span>` : '';
+  const labelColorClass = c.type === 'forbidden' ? 'red' : c.type === 'warning' ? 'yellow' : c.type === 'ok-card' ? 'green' : '';
+
+  if (c.wide) {
+    return `
+      <div class="rule-card ${typeClass} wide" style="--di:${delay}">
+        <div class="pic-wrap ${noClass}" style="--pic-bg:${c.picBg}">
+          <span class="pic-emoji">${c.pic}</span>
+        </div>
+        <div class="card-text">
+          <div class="card-label ${labelColorClass}">${c.label}</div>
+          <div class="card-sublabel">${c.sub}</div>
+        </div>
+        ${badgeHtml}
+      </div>`;
+  }
+
+  return `
+    <div class="rule-card ${typeClass}" style="--di:${delay}">
+      ${badgeHtml}
+      <div class="pic-wrap ${noClass}" style="--pic-bg:${c.picBg}">
+        <span class="pic-emoji">${c.pic}</span>
+      </div>
+      <div class="card-label ${labelColorClass}">${c.label}</div>
+      <div class="card-sublabel">${c.sub}</div>
+    </div>`;
+}
 
 function select(key) {
   const d = DATA[key];
   const panel = document.getElementById('contentPanel');
 
-  // Sidebar
   document.querySelectorAll('.cat-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.key === key);
   });
 
-  // Panel styles
   panel.style.setProperty('--panel-accent', d.accent);
-  panel.style.setProperty('--panel-color', d.color);
-  panel.style.setProperty('--panel-glow', d.color);
 
-  // Render
   panel.innerHTML = `
     <div class="content-head">
-      <div class="content-icon" style="background:${d.ibg}">${d.icon}</div>
-      <div class="content-title">${d.title}</div>
+      <span class="content-head-emoji">${d.emoji}</span>
+      <div>
+        <div class="content-title">${d.title}</div>
+      </div>
     </div>
-    <div class="content-items">
-      ${d.items.map((t,i) => `
-        <div class="content-item" style="--di:${i*0.07}s">
-          <div class="item-dot"></div>
-          <div class="item-text">${t}</div>
-        </div>`).join('')}
+    <div class="card-grid" style="--cols:${d.cols}">
+      ${d.cards.map((c, i) => renderCard(c, i)).join('')}
     </div>`;
 }
 
@@ -366,7 +501,7 @@ document.addEventListener('keydown', e => {
       document.activeElement.click();
     }
   } else if (e.key === 'Escape' || e.key === 'Backspace') {
-    window.location.href = 'tv.html';
+    window.location.href = './';
   }
 });
 
