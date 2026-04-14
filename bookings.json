@@ -1,15 +1,5 @@
 [
   {
-    "name": "Alice",
-    "checkin": "2026-02-15",
-    "checkout": "2027-02-05"
-  },
-  {
-    "name": "Paola",
-    "checkin": "2026-03-26",
-    "checkout": "2027-01-01"
-  },
-  {
     "name": "Nina",
     "checkin": "2026-04-15",
     "checkout": "2026-04-22"
