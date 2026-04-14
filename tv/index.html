@@ -389,34 +389,41 @@
     el.addEventListener('mouseenter', () => { const t=Date.now(); if(t-last>80){playTick();last=t;} });
   });
 
+  // Langues supportées : fr, en, es, zh, ja, ko, ar
+  // Tout ce qui n'est pas 'fr' ou une langue connue → fallback anglais
   const TV_T = {
-    welcome:  { fr: 'Bienvenue',                   en: 'Welcome'               },
-    apps:     { fr: 'Applications disponibles',    en: 'Available apps'        },
-    rules:    { fr: 'Règles de la maison',          en: 'House rules'           },
-    tvLive:   { fr: 'TV en direct',                en: 'Live TV'               },
-    leaLabel: { fr: 'Lea · WhatsApp 24h/24',       en: 'Lea · WhatsApp 24/7'   }
+    welcome:  { fr:'Bienvenue', en:'Welcome', es:'Bienvenido', zh:'欢迎', ja:'いらっしゃいませ', ko:'어서 오세요', ar:'أهلاً وسهلاً' },
+    apps:     { fr:'Applications disponibles', en:'Available apps', es:'Apps disponibles', zh:'可用应用', ja:'アプリ一覧', ko:'앱 목록', ar:'التطبيقات المتاحة' },
+    rules:    { fr:'Règles de la maison', en:'House rules', es:'Normas del hogar', zh:'房屋规则', ja:'ハウスルール', ko:'하우스 규칙', ar:'قواعد المنزل' },
+    tvLive:   { fr:'TV en direct', en:'Live TV', es:'TV en directo', zh:'直播电视', ja:'ライブTV', ko:'실시간 TV', ar:'تلفاز مباشر' },
+    leaLabel: { fr:'Lea · WhatsApp 24h/24', en:'Lea · WhatsApp 24/7', es:'Lea · WhatsApp 24/7', zh:'Lea · WhatsApp随时联系', ja:'Lea · WhatsApp 24時間', ko:'Lea · WhatsApp 24/7', ar:'Lea · واتساب ٢٤/٧' }
   };
 
   function applyTVLang(l, name) {
-    document.documentElement.lang = l;
+    // Fallback : toute langue non mappée → anglais
+    const eff = TV_T.welcome[l] ? l : 'en';
+    document.documentElement.lang = eff;
+
     const wl = document.querySelector('.welcome-label');
-    if (wl) wl.textContent = TV_T.welcome[l];
+    if (wl) wl.textContent = TV_T.welcome[eff];
     const al = document.querySelector('.apps-label');
-    if (al) al.textContent = TV_T.apps[l];
-    const rl = document.querySelector('.app-name:last-of-type');
-    // target rules tile specifically
+    if (al) al.textContent = TV_T.apps[eff];
     document.querySelectorAll('.app-name').forEach(el => {
-      if (el.textContent.includes('Règles') || el.textContent.includes('House'))
-        el.textContent = TV_T.rules[l];
+      if (el.textContent.includes('Règles') || el.textContent.includes('House') ||
+          el.textContent.includes('rules') || el.textContent.includes('Normas'))
+        el.textContent = TV_T.rules[eff];
     });
     document.querySelectorAll('.app-subtitle').forEach(el => {
-      if (el.textContent.includes('direct') || el.textContent.includes('Live'))
-        el.textContent = TV_T.tvLive[l];
+      if (el.textContent.includes('direct') || el.textContent.includes('Live') ||
+          el.textContent.includes('directo'))
+        el.textContent = TV_T.tvLive[eff];
     });
     const ll = document.querySelector('.info-label');
-    if (ll) ll.textContent = TV_T.leaLabel[l];
-    // Clock locale
-    const clockLocale = l === 'fr' ? 'fr-FR' : 'en-GB';
+    if (ll) ll.textContent = TV_T.leaLabel[eff];
+
+    // Horloge dans la bonne locale
+    const localeMap = { fr:'fr-FR', en:'en-GB', es:'es-ES', zh:'zh-CN', ja:'ja-JP', ko:'ko-KR', ar:'ar-SA' };
+    const clockLocale = localeMap[eff] || 'en-GB';
     clearInterval(window._tickInterval);
     function tick() {
       const n = new Date();
@@ -425,7 +432,7 @@
     }
     tick();
     window._tickInterval = setInterval(tick, 1000);
-    // Guest name
+
     if (name) document.getElementById('guestName').textContent = name + ' \uD83D\uDC4B';
   }
 
