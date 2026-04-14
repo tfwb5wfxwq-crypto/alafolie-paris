@@ -413,8 +413,24 @@
     el.addEventListener('mouseenter', () => { const t = Date.now(); if(t-lastFocus>80){playTick();lastFocus=t;} });
   });
 
+  /* ── Prénom invité depuis config.json ── */
+  (async () => {
+    try {
+      const r = await fetch('/config.json?t=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return;
+      const cfg = await r.json();
+      if (cfg.name && cfg.checkin && cfg.checkout) {
+        const today = new Date().toISOString().slice(0,10);
+        if (today >= cfg.checkin && today <= cfg.checkout) {
+          document.getElementById('guestName').textContent = cfg.name + ' \uD83D\uDC4B';
+        }
+      }
+    } catch(e) {}
+  })();
+
+  // Fallback param URL (test manuel : ?nom=Marie)
   const nom = new URLSearchParams(window.location.search).get('nom');
-  if (nom) document.getElementById('guestName').textContent = nom + ' 👋';
+  if (nom) document.getElementById('guestName').textContent = nom + ' \uD83D\uDC4B';
 
   new QRCode(document.getElementById('qrcode'), {
     text: 'WIFI:T:WPA;S:A-la-folie-WIFI;P:welcomealafolie;;',
