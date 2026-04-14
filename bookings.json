@@ -1,1 +1,152 @@
-[]
+[
+  {
+    "name": "Alice",
+    "checkin": "2026-02-15",
+    "checkout": "2027-02-05"
+  },
+  {
+    "name": "Paola",
+    "checkin": "2026-03-26",
+    "checkout": "2027-01-01"
+  },
+  {
+    "name": "Nina",
+    "checkin": "2026-04-15",
+    "checkout": "2026-04-22"
+  },
+  {
+    "name": "Michelle",
+    "checkin": "2026-04-16",
+    "checkout": "2026-04-19"
+  },
+  {
+    "name": "Mark",
+    "checkin": "2026-04-20",
+    "checkout": "2026-04-29"
+  },
+  {
+    "name": "Ellen",
+    "checkin": "2026-04-21",
+    "checkout": "2026-04-29"
+  },
+  {
+    "name": "Line",
+    "checkin": "2026-04-23",
+    "checkout": "2026-04-30"
+  },
+  {
+    "name": "Becky",
+    "checkin": "2026-04-30",
+    "checkout": "2026-05-04"
+  },
+  {
+    "name": "Laura",
+    "checkin": "2026-05-07",
+    "checkout": "2026-05-12"
+  },
+  {
+    "name": "Ian",
+    "checkin": "2026-05-13",
+    "checkout": "2026-05-17"
+  },
+  {
+    "name": "Shelia",
+    "checkin": "2026-05-22",
+    "checkout": "2026-05-29"
+  },
+  {
+    "name": "Madi",
+    "checkin": "2026-09-12",
+    "checkout": "2026-09-25"
+  },
+  {
+    "name": "Ekaterina",
+    "checkin": "2026-09-26",
+    "checkout": "2026-10-07"
+  },
+  {
+    "name": "Tamas",
+    "checkin": "2026-10-08",
+    "checkout": "2026-10-15"
+  },
+  {
+    "name": "Jean-francois",
+    "checkin": "2026-10-27",
+    "checkout": "2026-10-30"
+  },
+  {
+    "name": "Alex",
+    "checkin": "2026-11-15",
+    "checkout": "2026-11-16"
+  },
+  {
+    "name": "Olivier",
+    "checkin": "2026-11-16",
+    "checkout": "2026-11-17"
+  },
+  {
+    "name": "Neha",
+    "checkin": "2026-11-25",
+    "checkout": "2026-12-02"
+  },
+  {
+    "name": "Julie",
+    "checkin": "2026-11-27",
+    "checkout": "2026-11-29"
+  },
+  {
+    "name": "Emily",
+    "checkin": "2026-11-29",
+    "checkout": "2026-11-30"
+  },
+  {
+    "name": "Frank",
+    "checkin": "2026-12-02",
+    "checkout": "2026-12-03"
+  },
+  {
+    "name": "Mark",
+    "checkin": "2026-12-24",
+    "checkout": "2027-01-01"
+  },
+  {
+    "name": "Samy",
+    "checkin": "2026-12-26",
+    "checkout": "2026-12-27"
+  },
+  {
+    "name": "Noah",
+    "checkin": "2026-12-27",
+    "checkout": "2026-12-28"
+  },
+  {
+    "name": "Etienne",
+    "checkin": "2026-12-28",
+    "checkout": "2026-12-31"
+  },
+  {
+    "name": "Maura",
+    "checkin": "2026-12-31",
+    "checkout": "2027-01-01"
+  },
+  {
+    "name": "Stephanie",
+    "checkin": "2027-01-04",
+    "checkout": "2027-01-12"
+  },
+  {
+    "name": "Stephanie",
+    "checkin": "2027-01-06",
+    "checkout": "2027-01-12"
+  },
+  {
+    "name": "Michele",
+    "checkin": "2027-01-14",
+    "checkout": "2027-01-17"
+  },
+  {
+    "name": "Olaf",
+    "checkin": "2027-01-17",
+    "checkout": "2027-01-29"
+  }
+]
