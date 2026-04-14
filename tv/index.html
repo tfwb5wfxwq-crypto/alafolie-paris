@@ -389,18 +389,61 @@
     el.addEventListener('mouseenter', () => { const t=Date.now(); if(t-last>80){playTick();last=t;} });
   });
 
-  /* Prénom depuis /config.json */
+  const TV_T = {
+    welcome:  { fr: 'Bienvenue',                   en: 'Welcome'               },
+    apps:     { fr: 'Applications disponibles',    en: 'Available apps'        },
+    rules:    { fr: 'Règles de la maison',          en: 'House rules'           },
+    tvLive:   { fr: 'TV en direct',                en: 'Live TV'               },
+    leaLabel: { fr: 'Lea · WhatsApp 24h/24',       en: 'Lea · WhatsApp 24/7'   }
+  };
+
+  function applyTVLang(l, name) {
+    document.documentElement.lang = l;
+    const wl = document.querySelector('.welcome-label');
+    if (wl) wl.textContent = TV_T.welcome[l];
+    const al = document.querySelector('.apps-label');
+    if (al) al.textContent = TV_T.apps[l];
+    const rl = document.querySelector('.app-name:last-of-type');
+    // target rules tile specifically
+    document.querySelectorAll('.app-name').forEach(el => {
+      if (el.textContent.includes('Règles') || el.textContent.includes('House'))
+        el.textContent = TV_T.rules[l];
+    });
+    document.querySelectorAll('.app-subtitle').forEach(el => {
+      if (el.textContent.includes('direct') || el.textContent.includes('Live'))
+        el.textContent = TV_T.tvLive[l];
+    });
+    const ll = document.querySelector('.info-label');
+    if (ll) ll.textContent = TV_T.leaLabel[l];
+    // Clock locale
+    const clockLocale = l === 'fr' ? 'fr-FR' : 'en-GB';
+    clearInterval(window._tickInterval);
+    function tick() {
+      const n = new Date();
+      document.getElementById('clockTime').textContent = n.toLocaleTimeString(clockLocale,{hour:'2-digit',minute:'2-digit'});
+      document.getElementById('clockDate').textContent = n.toLocaleDateString(clockLocale,{weekday:'long',day:'numeric',month:'long'});
+    }
+    tick();
+    window._tickInterval = setInterval(tick, 1000);
+    // Guest name
+    if (name) document.getElementById('guestName').textContent = name + ' \uD83D\uDC4B';
+  }
+
+  /* Prénom + langue depuis /config.json */
   (async () => {
     try {
       const r = await fetch('/config.json?t=' + Date.now(), { cache: 'no-store' });
-      if (!r.ok) return;
+      if (!r.ok) { applyTVLang('fr', null); return; }
       const cfg = await r.json();
+      const l = (cfg.lang && (cfg.lang === 'en' || cfg.lang === 'fr')) ? cfg.lang : 'fr';
+      let guestName = null;
       if (cfg.name && cfg.checkin && cfg.checkout) {
         const today = new Date().toISOString().slice(0,10);
         if (today >= cfg.checkin && today <= cfg.checkout)
-          document.getElementById('guestName').textContent = cfg.name + ' \uD83D\uDC4B';
+          guestName = cfg.name;
       }
-    } catch(e) {}
+      applyTVLang(l, guestName);
+    } catch(e) { applyTVLang('fr', null); }
   })();
   const nom = new URLSearchParams(window.location.search).get('nom');
   if (nom) document.getElementById('guestName').textContent = nom + ' \uD83D\uDC4B';
@@ -412,13 +455,6 @@
     colorDark: '#000', colorLight: '#fff',
     correctLevel: QRCode.CorrectLevel.M
   });
-
-  function tick() {
-    const n = new Date();
-    document.getElementById('clockTime').textContent = n.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
-    document.getElementById('clockDate').textContent = n.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
-  }
-  tick(); setInterval(tick, 1000);
 </script>
 </body>
 </html>

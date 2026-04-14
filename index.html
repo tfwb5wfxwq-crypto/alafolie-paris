@@ -1766,5 +1766,120 @@
             if (e.target === modal) closeModal();
         };
     </script>
+
+    <!-- i18n -->
+    <script>
+    (function(){
+      const T = {
+        h1:        { fr:'Appartement Jacuzzi Privatif Paris 11e', en:'Private Jacuzzi Apartment Paris 11th' },
+        feat1:     { fr:'Jacuzzi privatif',    en:'Private Jacuzzi'   },
+        feat2:     { fr:'Home cinéma 4K',      en:'4K Home Cinema'    },
+        feat3:     { fr:'Literie king-size',   en:'King-size bed'     },
+        feat4:     { fr:'Toilette japonaise',  en:'Japanese toilet'   },
+        feat5:     { fr:"60m² d'exception",    en:'650 sq ft of luxury'},
+        btnAirbnb: { fr:'Réserver sur Airbnb', en:'Book on Airbnb'    },
+        btnCal:    { fr:'Disponibilités',      en:'Availability'      },
+        hostTitle: { fr:'Lea, votre hôte Superhost', en:'Lea, your Superhost' },
+        leaFull: {
+          fr: 'Bienvenue dans mon <strong>appartement d\'exception</strong> situé au cœur du <strong>Paris 11e</strong>, entre <strong>Bastille et République</strong> (<strong>métro Voltaire 3 min</strong>, République 8 min). <strong>Jacuzzi privatif</strong>, <strong>home cinéma 4K</strong> Netflix, <strong>literie king-size</strong> et <strong>toilette japonaise</strong>. Idéal pour un <strong>weekend romantique</strong> ou une <strong>escapade luxe à Paris</strong>. Dispo 24/7 ! 🌸',
+          en: 'Welcome to my <strong>exceptional apartment</strong> in the heart of <strong>Paris 11th</strong>, between <strong>Bastille and République</strong> (<strong>Voltaire metro 3 min</strong>, République 8 min). <strong>Private Jacuzzi</strong>, <strong>4K home cinema</strong> Netflix, <strong>king-size bed</strong> and <strong>Japanese toilet</strong>. Perfect for a <strong>romantic weekend</strong> or a <strong>luxury Parisian escape</strong>. Available 24/7 ! 🌸'
+        },
+        leaMobile: {
+          fr: 'Appartement <strong>d\'exception Paris 11e</strong> (Bastille-République). <strong>Jacuzzi privatif</strong>, <strong>home cinéma 4K</strong>. Idéal <strong>weekend romantique</strong> ! 🌸',
+          en: '<strong>Exceptional apartment Paris 11th</strong> (Bastille-République). <strong>Private Jacuzzi</strong>, <strong>4K home cinema</strong>. Perfect <strong>romantic weekend</strong> ! 🌸'
+        },
+        modalTitle: { fr:'Réservez votre séjour',                          en:'Book your stay'                          },
+        modalSub:   { fr:"Sélectionnez vos dates d'arrivée et de départ",  en:'Select your check-in and check-out dates' },
+        arriv:      { fr:'Arrivée : ',   en:'Check-in: '  },
+        depart:     { fr:'Départ : ',    en:'Check-out: ' },
+        talkLea:    { fr:'Parler avec Lea', en:'Talk to Lea' },
+        footerBtn:  { fr:'Réserver',     en:'Book'        }
+      };
+
+      let cur = 'fr';
+
+      function setTxtNode(el, val) {
+        if (!el) return;
+        const nodes = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim());
+        if (nodes.length) nodes[0].textContent = ' ' + val;
+        else el.prepend(document.createTextNode(' ' + val));
+      }
+
+      function apply(l) {
+        cur = l;
+        document.documentElement.lang = l;
+
+        // h1
+        const h1 = document.querySelector('.video-text h1');
+        if (h1 && h1.firstChild && h1.firstChild.nodeType === 3)
+          h1.firstChild.textContent = T.h1[l];
+
+        // features
+        const feats = [T.feat1,T.feat2,T.feat3,T.feat4,T.feat5];
+        document.querySelectorAll('.video-text > p > span').forEach((s,i) => {
+          if (feats[i]) setTxtNode(s, feats[i][l]);
+        });
+
+        // CTA buttons
+        const bA = document.querySelector('.btn-airbnb');
+        if (bA) setTxtNode(bA, T.btnAirbnb[l]);
+        const bC = document.querySelector('.btn-calendar');
+        if (bC) setTxtNode(bC, T.btnCal[l]);
+
+        // Host title
+        const h2 = document.querySelector('h2[style*="#ff4d6a"]');
+        if (h2) h2.textContent = T.hostTitle[l];
+
+        // Bio
+        const lf = document.querySelector('.lea-text-full');
+        if (lf) lf.innerHTML = T.leaFull[l];
+        const lm = document.querySelector('.lea-text-mobile');
+        if (lm) lm.innerHTML = T.leaMobile[l];
+
+        // Modal
+        const mt = document.querySelector('.modal-title');
+        if (mt) mt.textContent = T.modalTitle[l];
+        const ms = document.querySelector('.modal-subtitle');
+        if (ms) ms.textContent = T.modalSub[l];
+
+        // Price box labels
+        document.querySelectorAll('.price-row span').forEach(s => {
+          const fn = s.firstChild;
+          if (!fn || fn.nodeType !== 3) return;
+          const txt = fn.textContent;
+          if (txt.includes('Arrivée') || txt.includes('Check-in'))
+            fn.textContent = T.arriv[l];
+          else if (txt.includes('Départ') || txt.includes('Check-out'))
+            fn.textContent = T.depart[l];
+        });
+
+        // Modal WA button
+        const wa = document.querySelector('.modal-btn-whatsapp span');
+        if (wa) wa.textContent = T.talkLea[l];
+
+        // Footer book button
+        const fb = document.querySelector('.airbnb-btn');
+        if (fb) setTxtNode(fb, T.footerBtn[l]);
+
+        // Toggle
+        const btn = document.getElementById('langToggle');
+        if (btn) btn.textContent = l === 'fr' ? '🇬🇧' : '🇫🇷';
+
+        localStorage.setItem('folie_lang', l);
+      }
+
+      // Toggle button
+      const btn = document.createElement('button');
+      btn.id = 'langToggle';
+      btn.style.cssText = 'position:fixed;top:16px;right:16px;z-index:9999;background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.18);border-radius:20px;padding:5px 11px;font-size:18px;cursor:pointer;backdrop-filter:blur(12px);transition:opacity 0.2s;line-height:1.4;';
+      btn.addEventListener('click', () => apply(cur === 'fr' ? 'en' : 'fr'));
+      document.body.appendChild(btn);
+
+      // Detect language
+      const stored = localStorage.getItem('folie_lang');
+      const detected = stored || ((navigator.language || 'fr').toLowerCase().startsWith('fr') ? 'fr' : 'en');
+      apply(detected);
+    })();
+    </script>
 </body>
 </html>
