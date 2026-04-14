@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, initial-scale=1">
+  <title>À La Folie — Règles de la maison</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100vw; height: 100vh; overflow: hidden; background: #04040a; font-family: 'Outfit', sans-serif; color: #fff; cursor: none; }
+
+    /* ── FOND ── */
+    .bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); animation: floatOrb linear infinite; }
+    .orb1 { width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(155,93,229,0.12), transparent 70%); top:-15%;left:-15%; animation-duration:32s; }
+    .orb2 { width: 42vw; height: 42vw; background: radial-gradient(circle, rgba(77,212,212,0.09), transparent 70%); bottom:-10%;right:-10%; animation-duration:40s; animation-delay:-14s; }
+    .orb3 { width: 30vw; height: 30vw; background: radial-gradient(circle, rgba(255,77,106,0.08), transparent 70%); top:40%;left:40%; animation-duration:26s; animation-delay:-7s; }
+    @keyframes floatOrb { 0%{transform:translate(0,0)scale(1)}33%{transform:translate(3vw,-2vh)scale(1.04)}66%{transform:translate(-2vw,4vh)scale(0.97)}100%{transform:translate(0,0)scale(1)} }
+    .grain { position:fixed;inset:0;z-index:0;opacity:0.02;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    /* ── PAGE ── */
+    .page { position:relative;z-index:1;width:100vw;height:100vh;display:grid;grid-template-rows:auto 1fr auto;padding:3vh 4.5vw;animation:pageIn .65s ease both; }
+    @keyframes pageIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+
+    /* ── HEADER ── */
+    .header { display:flex;align-items:center;justify-content:space-between;padding-bottom:2vh;border-bottom:1px solid rgba(255,255,255,0.055);margin-bottom:2.5vh; }
+    .header-left { display:flex;align-items:center;gap:1.8vw; }
+    .back-btn { display:flex;align-items:center;gap:0.6vw;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:.7vw;padding:.75vh 1.2vw;font-size:.82vw;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;transition:all .2s;cursor:default; }
+    .back-btn:hover,.back-btn:focus { background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.16);color:rgba(255,255,255,0.82);outline:none; }
+    .back-btn svg { width:.85vw;height:.85vw; }
+    .header-sep { width:1px;height:2vw;background:rgba(255,255,255,0.07); }
+    .logo { display:flex;align-items:center;gap:3px;font-weight:800;font-size:2vw;letter-spacing:.06em;line-height:1; }
+    .na1{color:#ff4d6a;text-shadow:0 0 14px #ff4d6a} .nl1{color:#ff8c42;text-shadow:0 0 14px #ff8c42} .na2{color:#ffd93d;text-shadow:0 0 14px #ffd93d} .nf{color:#6bcb77;text-shadow:0 0 14px #6bcb77} .nl2{color:#4dd4d4;text-shadow:0 0 14px #4dd4d4} .ni{color:#9b5de5;text-shadow:0 0 14px #9b5de5} .ne{color:#ff4dc4;text-shadow:0 0 14px #ff4dc4}
+    .flower-svg { width:2vw;height:2vw;filter:drop-shadow(0 0 7px rgba(255,255,255,.8));animation:spinFlower 20s linear infinite; }
+    @keyframes spinFlower { to{transform:rotate(360deg)} }
+    .header-title { font-size:.75vw;font-weight:300;color:rgba(255,255,255,.22);letter-spacing:.3em;text-transform:uppercase; }
+
+    /* ── SPLIT LAYOUT ── */
+    .split { display:grid;grid-template-columns:22vw 1fr;gap:2vw;height:100%; }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display:flex;flex-direction:column;gap:.6vh; }
+    .sidebar-label { font-size:.58vw;font-weight:300;color:rgba(255,255,255,.18);letter-spacing:.28em;text-transform:uppercase;margin-bottom:.6vh;padding-left:.5vw; }
+
+    .cat-btn {
+      display:flex;align-items:center;gap:.9vw;
+      padding:1.1vh 1vw;
+      border-radius:.8vw;
+      border:1px solid transparent;
+      background:transparent;
+      cursor:default;
+      transition:background .2s,border-color .2s,transform .18s cubic-bezier(.34,1.56,.64,1);
+      position:relative;overflow:hidden;
+    }
+    .cat-btn::before {
+      content:'';position:absolute;left:0;top:0;bottom:0;width:2.5px;
+      background:var(--c);border-radius:0 2px 2px 0;opacity:0;transition:opacity .2s;
+    }
+    .cat-btn:hover,.cat-btn:focus { background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08);outline:none; }
+    .cat-btn.active {
+      background:rgba(255,255,255,.07);
+      border-color:rgba(255,255,255,.1);
+    }
+    .cat-btn.active::before { opacity:1; }
+
+    .cat-btn-icon {
+      width:2.4vw;height:2.4vw;border-radius:25%;
+      display:flex;align-items:center;justify-content:center;
+      background:var(--ibg);flex-shrink:0;
+      transition:transform .18s ease;
+    }
+    .cat-btn-icon svg { width:52%;height:52%; }
+    .cat-btn.active .cat-btn-icon { transform:scale(1.08); }
+
+    .cat-btn-label { font-size:.82vw;font-weight:500;color:rgba(255,255,255,.5);transition:color .2s; }
+    .cat-btn.active .cat-btn-label,
+    .cat-btn:hover .cat-btn-label,
+    .cat-btn:focus .cat-btn-label { color:rgba(255,255,255,.9); }
+
+    .cat-btn-arrow { margin-left:auto;opacity:0;transition:opacity .15s,transform .15s; }
+    .cat-btn-arrow svg { width:.65vw;height:.65vw; }
+    .cat-btn.active .cat-btn-arrow { opacity:.4;transform:translateX(2px); }
+
+    /* ── CONTENT PANEL ── */
+    .content-panel {
+      background:rgba(255,255,255,.038);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:1.4vw;
+      padding:3.5vh 2.8vw;
+      position:relative;overflow:hidden;
+      display:flex;flex-direction:column;gap:2.5vh;
+    }
+    .content-panel::before {
+      content:'';position:absolute;top:0;left:0;right:0;height:2px;
+      background:var(--panel-accent,rgba(255,255,255,.08));
+    }
+    .content-panel::after {
+      content:'';position:absolute;top:-50%;left:-20%;width:60%;height:70%;
+      background:var(--panel-glow,transparent);filter:blur(60px);opacity:.07;pointer-events:none;
+    }
+
+    .content-head { display:flex;align-items:center;gap:1.2vw;padding-bottom:2vh;border-bottom:1px solid rgba(255,255,255,.06); }
+    .content-icon { width:3.5vw;height:3.5vw;border-radius:26%;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+    .content-icon svg { width:52%;height:52%; }
+    .content-title { font-size:1.5vw;font-weight:700;color:rgba(255,255,255,.92); }
+
+    .content-items { display:flex;flex-direction:column;gap:0; }
+    .content-item {
+      display:flex;align-items:flex-start;gap:1vw;
+      padding:1.5vh 0;
+      border-bottom:1px solid rgba(255,255,255,.045);
+      animation:itemSlide .35s var(--di,0s) cubic-bezier(.22,1,.36,1) both;
+    }
+    .content-item:last-child { border-bottom:none; }
+    @keyframes itemSlide { from{opacity:0;transform:translateX(-12px)} to{opacity:1;transform:none} }
+    .item-dot { width:5px;height:5px;border-radius:50%;background:var(--panel-color,rgba(255,255,255,.25));flex-shrink:0;margin-top:.65em; }
+    .item-text { font-size:.95vw;font-weight:300;color:rgba(255,255,255,.65);line-height:1.55; }
+    .item-text strong { color:rgba(255,255,255,.9);font-weight:600; }
+    .item-text .warn { color:#ffd93d;font-weight:600; }
+    .item-text .ok   { color:#6bcb77;font-weight:600; }
+    .item-text .bad  { color:#ff4d6a;font-weight:600; }
+
+    /* ── FOOTER ── */
+    .footer { display:flex;align-items:center;justify-content:space-between;padding-top:1.8vh;border-top:1px solid rgba(255,255,255,.05); }
+    .footer-contact { display:flex;align-items:center;gap:.6vw; }
+    .contact-label { font-size:.55vw;font-weight:300;color:rgba(255,255,255,.2);letter-spacing:.18em;text-transform:uppercase; }
+    .contact-val { font-size:.9vw;font-weight:600;color:#25D366; }
+    .clock { text-align:right; }
+    .clock-time { font-size:1.9vw;font-weight:200;color:rgba(255,255,255,.32);font-variant-numeric:tabular-nums; }
+    .clock-date { font-size:.58vw;font-weight:300;color:rgba(255,255,255,.14);letter-spacing:.14em;text-transform:capitalize; }
+  </style>
+</head>
+<body>
+<div class="bg"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grain"></div>
+
+<div class="page">
+  <div class="header">
+    <div class="header-left">
+      <a class="back-btn" href="tv.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        Retour
+      </a>
+      <div class="header-sep"></div>
+      <div class="logo">
+        <span class="na1">À</span><span style="display:flex;gap:1px"><span class="nl1">L</span><span class="na2">A</span></span><span class="nf">F</span>
+        <svg class="flower-svg" viewBox="0 0 40 40"><g transform="translate(20,20)">
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+          <circle fill="#ffd93d" cx="0" cy="0" r="5"/>
+        </g></svg>
+        <span style="display:flex;gap:1px"><span class="nl2">L</span><span class="ni">I</span><span class="ne">E</span></span>
+      </div>
+    </div>
+    <div class="header-title">Règles de la maison</div>
+  </div>
+
+  <div class="split">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-label">Catégories</div>
+
+      <div class="cat-btn active" data-key="essential" tabindex="0" style="--c:#ff4d6a;--ibg:rgba(255,77,106,.14)" onclick="select('essential')">
+        <div class="cat-btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff4d6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        </div>
+        <span class="cat-btn-label">Règles essentielles</span>
+        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </div>
+
+      <div class="cat-btn" data-key="acces" tabindex="0" style="--c:#ffd93d;--ibg:rgba(255,217,61,.14)" onclick="select('acces')">
+        <div class="cat-btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffd93d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+        </div>
+        <span class="cat-btn-label">Accès & Codes</span>
+        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </div>
+
+      <div class="cat-btn" data-key="tv" tabindex="0" style="--c:#9b5de5;--ibg:rgba(155,93,229,.14)" onclick="select('tv')">
+        <div class="cat-btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9b5de5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+        </div>
+        <span class="cat-btn-label">TV & Son</span>
+        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </div>
+
+      <div class="cat-btn" data-key="cuisine" tabindex="0" style="--c:#6bcb77;--ibg:rgba(107,203,119,.14)" onclick="select('cuisine')">
+        <div class="cat-btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6bcb77" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+        </div>
+        <span class="cat-btn-label">Cuisine</span>
+        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </div>
+
+      <div class="cat-btn" data-key="lumieres" tabindex="0" style="--c:#ff8c42;--ibg:rgba(255,140,66,.14)" onclick="select('lumieres')">
+        <div class="cat-btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff8c42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/><circle cx="12" cy="12" r="5"/></svg>
+        </div>
+        <span class="cat-btn-label">Lumières</span>
+        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </div>
+
+      <div class="cat-btn" data-key="depart" tabindex="0" style="--c:#4dd4d4;--ibg:rgba(77,212,212,.14)" onclick="select('depart')">
+        <div class="cat-btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4dd4d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </div>
+        <span class="cat-btn-label">Plantes & Départ</span>
+        <span class="cat-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content-panel" id="contentPanel">
+      <!-- rempli par JS -->
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-contact">
+      <svg width="1.9vw" height="1.9vw" viewBox="0 0 24 24" fill="#25D366">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      <div>
+        <div class="contact-label">Lea · WhatsApp 24h/24</div>
+        <div class="contact-val">06 20 20 20 36</div>
+      </div>
+    </div>
+    <div class="clock">
+      <div class="clock-time" id="clockTime">--:--</div>
+      <div class="clock-date" id="clockDate"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  essential: {
+    title:'Règles essentielles', color:'#ff4d6a',
+    accent:'linear-gradient(90deg,#ff4d6a,#ff8c42)',
+    ibg:'rgba(255,77,106,.18)',
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#ff4d6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>`,
+    items:[
+      '<span class="bad">Cigarette strictement interdite</span> dans tout le logement',
+      '<span class="bad">Pas de fête</span> ni rassemblement bruyant',
+      'Volume modéré après <strong>22h</strong> — voisins à respecter',
+      'Chambre : <strong>pas de liquide</strong> sur le bureau (mur rose fragile)',
+    ]
+  },
+  acces: {
+    title:'Accès & Codes', color:'#ffd93d',
+    accent:'linear-gradient(90deg,#ffd93d,#ff8c42)',
+    ibg:'rgba(255,217,61,.18)',
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#ffd93d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>`,
+    items:[
+      'Grand portail : <strong>badge</strong> — code boîtier <strong>42B9</strong>',
+      'Interphone : chercher <strong>Folie</strong>',
+      'Porte d\'entrée lourde — bien tenir la poignée',
+      '<span class="warn">Ne jamais laisser la clé dans la serrure intérieure</span>',
+    ]
+  },
+  tv: {
+    title:'TV & Son', color:'#9b5de5',
+    accent:'linear-gradient(90deg,#9b5de5,#4dd4d4)',
+    ibg:'rgba(155,93,229,.18)',
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#9b5de5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>`,
+    items:[
+      '<strong>Télécommande grise :</strong> bouton Home → Netflix, Prime, Canal+',
+      'Chaînes en direct : <strong>appli Canal+</strong> sur la TV',
+      '<strong>Son via la barre :</strong> télécommande blanche → Source → TV',
+      'Volume modéré après <strong>22h</strong>',
+    ]
+  },
+  cuisine: {
+    title:'Cuisine', color:'#6bcb77',
+    accent:'linear-gradient(90deg,#6bcb77,#4dd4d4)',
+    ibg:'rgba(107,203,119,.18)',
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#6bcb77" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`,
+    items:[
+      '<strong>Hotte allumée</strong> ou fenêtres ouvertes lors de la cuisson (détecteur fumée)',
+      '<strong>Couverts en bois uniquement</strong> dans les casseroles antiadhésives',
+      '<strong>Lave-vaisselle :</strong> pastille dans le tiroir — programme <strong>ECO</strong>',
+      '<strong>Lave-linge :</strong> lessive tiroir WASH (II) — programme <strong>Eco 40-60</strong>',
+    ]
+  },
+  lumieres: {
+    title:'Lumières', color:'#ff8c42',
+    accent:'linear-gradient(90deg,#ff8c42,#ffd93d)',
+    ibg:'rgba(255,140,66,.18)',
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#ff8c42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/><circle cx="12" cy="12" r="5"/></svg>`,
+    items:[
+      '<strong>Télécommande</strong> rangée sous le buffet de la cuisine',
+      '<strong>Bouton +</strong> — allume toutes les lumières (5 ambiances)',
+      '<strong>Bouton −</strong> — diminue l\'intensité',
+      '<strong>Bouton O</strong> — éteint tout',
+    ]
+  },
+  depart: {
+    title:'Plantes & Départ', color:'#4dd4d4',
+    accent:'linear-gradient(90deg,#4dd4d4,#9b5de5)',
+    ibg:'rgba(77,212,212,.18)',
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#4dd4d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>`,
+    items:[
+      'Si terre sèche : <span class="ok">arroser légèrement</span> les petites plantes',
+      'Au départ : <strong>fenêtres fermées</strong> et lumières éteintes',
+      'Laisser la <strong>clé sur le plan de travail</strong>',
+      'Merci de laisser l\'appartement propre et rangé',
+    ]
+  }
+};
+
+function select(key) {
+  const d = DATA[key];
+  const panel = document.getElementById('contentPanel');
+
+  // Sidebar
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.key === key);
+  });
+
+  // Panel styles
+  panel.style.setProperty('--panel-accent', d.accent);
+  panel.style.setProperty('--panel-color', d.color);
+  panel.style.setProperty('--panel-glow', d.color);
+
+  // Render
+  panel.innerHTML = `
+    <div class="content-head">
+      <div class="content-icon" style="background:${d.ibg}">${d.icon}</div>
+      <div class="content-title">${d.title}</div>
+    </div>
+    <div class="content-items">
+      ${d.items.map((t,i) => `
+        <div class="content-item" style="--di:${i*0.07}s">
+          <div class="item-dot"></div>
+          <div class="item-text">${t}</div>
+        </div>`).join('')}
+    </div>`;
+}
+
+// Init
+select('essential');
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  const btns = [...document.querySelectorAll('.cat-btn')];
+  const active = document.querySelector('.cat-btn.active');
+  const idx = btns.indexOf(active);
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+    e.preventDefault();
+    const next = btns[(idx + 1) % btns.length];
+    next.click(); next.focus();
+  } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    const prev = btns[(idx - 1 + btns.length) % btns.length];
+    prev.click(); prev.focus();
+  } else if (e.key === 'Enter') {
+    if (document.activeElement && document.activeElement.classList.contains('cat-btn')) {
+      document.activeElement.click();
+    }
+  } else if (e.key === 'Escape' || e.key === 'Backspace') {
+    window.location.href = 'tv.html';
+  }
+});
+
+// Horloge
+function tick() {
+  const n = new Date();
+  document.getElementById('clockTime').textContent = n.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('clockDate').textContent = n.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+}
+tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>
