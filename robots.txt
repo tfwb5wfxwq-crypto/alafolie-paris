@@ -3,6 +3,8 @@ User-agent: *
 Allow: /
 Disallow: /tv/
 Disallow: /config.json
+Disallow: /bookings.json
+Disallow: /folie-cal-464293ad36d5c37a.ics
 
 # Sitemap
 Sitemap: https://folie.paris/sitemap.xml
