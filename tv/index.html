@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=1920, initial-scale=1">
+  <title>À La Folie — Bienvenue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+      background: #04040a;
+      font-family: 'Outfit', sans-serif;
+      color: #fff;
+      cursor: none;
+    }
+
+    .bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.14; animation: floatOrb linear infinite; }
+    .orb1 { width: 55vw; height: 55vw; background: radial-gradient(circle, #ff4d6a, transparent 70%); top: -20%; left: -15%; animation-duration: 28s; }
+    .orb2 { width: 45vw; height: 45vw; background: radial-gradient(circle, #9b5de5, transparent 70%); top: 30%; right: -20%; animation-duration: 35s; animation-delay: -8s; }
+    .orb3 { width: 40vw; height: 40vw; background: radial-gradient(circle, #4dd4d4, transparent 70%); bottom: -15%; left: 20%; animation-duration: 30s; animation-delay: -14s; }
+    .orb4 { width: 28vw; height: 28vw; background: radial-gradient(circle, #ffd93d, transparent 70%); top: 10%; right: 30%; animation-duration: 22s; animation-delay: -5s; opacity: 0.08; }
+    @keyframes floatOrb {
+      0%   { transform: translate(0,0) scale(1); }
+      25%  { transform: translate(4vw,-3vh) scale(1.05); }
+      50%  { transform: translate(-3vw,5vh) scale(0.95); }
+      75%  { transform: translate(5vw,2vh) scale(1.08); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+
+    .grain { position: fixed; inset: 0; z-index: 0; opacity: 0.025; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .page {
+      position: relative; z-index: 1;
+      width: 100vw; height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 3.5vh 5vw;
+      animation: pageIn 1s ease both;
+    }
+    @keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 2.5vh;
+    }
+
+    .logo { display: flex; align-items: center; gap: 3px; font-weight: 800; font-size: 3.4vw; letter-spacing: 0.06em; line-height: 1; }
+    .na1 { color: #ff4d6a; text-shadow: 0 0 18px #ff4d6a, 0 0 45px rgba(255,77,106,0.3); }
+    .nl1 { color: #ff8c42; text-shadow: 0 0 18px #ff8c42, 0 0 45px rgba(255,140,66,0.3); }
+    .na2 { color: #ffd93d; text-shadow: 0 0 18px #ffd93d, 0 0 45px rgba(255,217,61,0.3); }
+    .nf  { color: #6bcb77; text-shadow: 0 0 18px #6bcb77, 0 0 45px rgba(107,203,119,0.3); }
+    .nl2 { color: #4dd4d4; text-shadow: 0 0 18px #4dd4d4, 0 0 45px rgba(77,212,212,0.3); }
+    .ni  { color: #9b5de5; text-shadow: 0 0 18px #9b5de5, 0 0 45px rgba(155,93,229,0.3); }
+    .ne  { color: #ff4dc4; text-shadow: 0 0 18px #ff4dc4, 0 0 45px rgba(255,77,196,0.3); }
+
+    .flower-svg { width: 3.3vw; height: 3.3vw; filter: drop-shadow(0 0 10px rgba(255,255,255,0.8)) drop-shadow(0 0 25px rgba(255,217,61,0.4)); animation: spinFlower 20s linear infinite; }
+    @keyframes spinFlower { to { transform: rotate(360deg); } }
+
+    .welcome { text-align: right; animation: fadeSlide 1.2s 0.3s ease both; }
+    @keyframes fadeSlide { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+    .welcome-label { font-size: 0.8vw; font-weight: 300; color: rgba(255,255,255,0.28); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.4vh; }
+    .welcome-name { font-size: 2.8vw; font-weight: 700; background: linear-gradient(110deg, #ff8c42, #ffd93d, #6bcb77, #4dd4d4, #9b5de5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* ── CENTRE ── */
+    .center { display: flex; align-items: center; gap: 4vw; }
+
+    .apps-wrap { flex: 1; display: flex; flex-direction: column; gap: 1.8vh; }
+    .apps-label { font-size: 0.68vw; font-weight: 300; color: rgba(255,255,255,0.18); letter-spacing: 0.28em; text-transform: uppercase; }
+
+    .apps-main {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4vw;
+    }
+
+    .apps-secondary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4vw;
+      width: calc(75% - 0.35vw);
+      margin: 0 auto;
+    }
+
+    .app-link {
+      display: contents;
+      text-decoration: none;
+      outline: none;
+    }
+    .app-link:focus { outline: none; }
+
+    /* ══ EFFET FOCUS + HOVER — style premium ══ */
+    .app-link:focus .app-tile,
+    .app-link:hover .app-tile {
+      animation-play-state: paused;
+    }
+    .app-link:focus .app-icon-wrap,
+    .app-link:hover .app-icon-wrap {
+      transform: scale(1.09) translateY(-4px);
+      box-shadow:
+        0 28px 60px rgba(0,0,0,0.85),
+        0 8px 24px rgba(0,0,0,0.5),
+        0 0 0 1.5px rgba(255,255,255,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+      filter: brightness(1.14) saturate(1.08);
+    }
+    /* Tuile claire YouTube : assombrir + anneau sombre prononcé */
+    .app-link:focus .app-icon-wrap.light,
+    .app-link:hover .app-icon-wrap.light {
+      box-shadow:
+        0 28px 60px rgba(0,0,0,0.85),
+        0 8px 24px rgba(0,0,0,0.5),
+        0 0 0 3px rgba(0,0,0,0.55);
+      filter: brightness(0.88) saturate(1.1);
+    }
+    .app-link:focus .app-name,
+    .app-link:hover .app-name {
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* Tuile */
+    .app-tile { display: flex; flex-direction: column; align-items: center; gap: 0.9vh; }
+    .app-tile:nth-child(odd)  { animation: floatTile 6.5s ease-in-out infinite; }
+    .app-tile:nth-child(even) { animation: floatTile 6.5s ease-in-out infinite 2.8s; }
+    .app-tile:nth-child(3n)   { animation: floatTile 7.5s ease-in-out infinite 1.5s; }
+    @keyframes floatTile { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+    .app-icon-wrap {
+      width: 100%; aspect-ratio: 1;
+      border-radius: 22%;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.3);
+      animation: tileIn 0.65s var(--delay,0s) ease both;
+      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.22s ease,
+                  filter 0.22s ease;
+    }
+    .app-icon-wrap::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 48%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.18), transparent);
+      pointer-events: none; z-index: 2;
+    }
+    .app-icon-wrap.light::after {
+      background: linear-gradient(to bottom, rgba(255,255,255,0.12), transparent);
+    }
+    @keyframes tileIn { from { opacity: 0; transform: scale(0.75) translateY(18px); } to { opacity: 1; transform: none; } }
+
+    .app-icon-wrap img {
+      width: 68%; height: auto;
+      position: relative; z-index: 1;
+      object-fit: contain;
+    }
+    .app-icon-wrap svg.icon { width: 62%; height: 62%; position: relative; z-index: 1; }
+
+    .app-name { font-size: 0.7vw; font-weight: 400; color: rgba(255,255,255,0.5); letter-spacing: 0.02em; text-align: center; white-space: nowrap; transition: color 0.18s, font-weight 0.18s; }
+    .app-subtitle { font-size: 0.55vw; font-weight: 300; color: rgba(255,255,255,0.28); letter-spacing: 0.04em; text-align: center; margin-top: -0.3vh; white-space: nowrap; }
+
+    /* ── WiFi ── */
+    .wifi-block {
+      display: flex; flex-direction: column; align-items: center; gap: 1.4vh;
+      min-width: 11vw; max-width: 12.5vw;
+      animation: fadeSlide 1s 0.4s ease both;
+    }
+    .wifi-label {
+      display: flex; align-items: center; gap: 0.4vw;
+      font-size: 0.55vw; font-weight: 300;
+      color: rgba(77,212,212,0.6);
+      letter-spacing: 0.35em; text-transform: uppercase;
+    }
+    .wifi-qr-frame {
+      background: #ffffff;
+      padding: 0.45vw;
+      border-radius: 0.7vw;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08),
+                  0 10px 50px rgba(0,0,0,0.6),
+                  0 0 60px rgba(77,212,212,0.06);
+      animation: qrPulse 5s ease-in-out infinite;
+    }
+    @keyframes qrPulse {
+      0%,100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 50px rgba(0,0,0,0.6), 0 0 30px rgba(77,212,212,0); }
+      50%      { box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 10px 50px rgba(0,0,0,0.6), 0 0 50px rgba(77,212,212,0.2); }
+    }
+    #qrcode { display: block; border-radius: 0.3vw; overflow: hidden; }
+    .wifi-network {
+      display: flex; align-items: center; gap: 0.4vw;
+      font-size: 0.78vw; font-weight: 700;
+      color: rgba(255,255,255,0.82);
+    }
+    .wifi-pass {
+      font-size: 0.68vw; font-weight: 300;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.04em; text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    .footer { display: flex; align-items: center; justify-content: space-between; padding-top: 2vh; border-top: 1px solid rgba(255,255,255,0.05); }
+    .info-item { display: flex; align-items: center; gap: 0.7vw; }
+    .info-label { font-size: 0.58vw; font-weight: 300; color: rgba(255,255,255,0.22); letter-spacing: 0.18em; text-transform: uppercase; }
+    .info-val   { font-size: 0.95vw; font-weight: 600; }
+    .clock { text-align: right; }
+    .clock-time { font-size: 2.6vw; font-weight: 200; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+    .clock-date { font-size: 0.65vw; font-weight: 300; color: rgba(255,255,255,0.18); letter-spacing: 0.14em; text-transform: capitalize; }
+  </style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="orb orb3"></div><div class="orb orb4"></div>
+</div>
+<div class="grain"></div>
+
+<div class="page">
+
+  <div class="header">
+    <div class="logo">
+      <span class="na1">À</span>
+      <span style="display:flex;gap:1px"><span class="nl1">L</span><span class="na2">A</span></span>
+      <span class="nf">F</span>
+      <svg class="flower-svg" viewBox="0 0 40 40">
+        <g transform="translate(20,20)">
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(0)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(45)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(90)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(135)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(180)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(225)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(270)"/>
+          <ellipse fill="#fff" cx="0" cy="-10" rx="3.5" ry="8" transform="rotate(315)"/>
+          <circle fill="#ffd93d" cx="0" cy="0" r="5"/>
+        </g>
+      </svg>
+      <span style="display:flex;gap:1px"><span class="nl2">L</span><span class="ni">I</span><span class="ne">E</span></span>
+    </div>
+    <div class="welcome">
+      <div class="welcome-label">Bienvenue</div>
+      <div class="welcome-name" id="guestName">chez vous 👋</div>
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="apps-wrap">
+      <div class="apps-label">Applications disponibles</div>
+
+      <div class="apps-main">
+
+        <a class="app-link" href="intent://www.netflix.com#Intent;package=com.netflix.mediaclient;scheme=https;end">
+          <div class="app-tile">
+            <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#0a0a0a,#141414,#0d0d0d);--delay:0.07s">
+              <img src="logos-tv/netflix-real.png" alt="Netflix">
+            </div>
+            <div class="app-name">Netflix</div>
+          </div>
+        </a>
+
+        <a class="app-link" href="intent://www.youtube.com#Intent;package=com.amazon.firetv.youtube;scheme=https;end">
+          <div class="app-tile">
+            <div class="app-icon-wrap light" style="--bg:#f5f5f5;--delay:0.14s;border:1px solid rgba(0,0,0,0.06);">
+              <img src="logos-tv/youtube-real.png" alt="YouTube">
+            </div>
+            <div class="app-name">YouTube</div>
+          </div>
+        </a>
+
+        <a class="app-link" href="intent://www.amazon.com/gp/video/storefront/#Intent;package=com.amazon.amazonvideo.livingroom;scheme=https;end">
+          <div class="app-tile">
+            <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#00111c,#00204c,#004e8c);--delay:0.21s">
+              <img src="logos-tv/primevideo-real.png" alt="Prime Video" style="width:80%;height:auto;">
+            </div>
+            <div class="app-name">Prime Video</div>
+          </div>
+        </a>
+
+        <a class="app-link" href="intent://www.canalplus.com#Intent;package=com.canal.android.canal;scheme=https;end">
+          <div class="app-tile">
+            <div class="app-icon-wrap" style="--bg:#000000;--delay:0.28s">
+              <img src="logos-tv/canal-real.png" alt="Canal+" style="width:85%;height:85%;object-fit:contain;border-radius:12%;">
+            </div>
+            <div class="app-name">Canal+</div>
+            <div class="app-subtitle">TV en direct</div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="apps-secondary">
+
+        <a class="app-link" href="intent://www.disneyplus.com#Intent;package=com.disney.disneyplus;scheme=https;end">
+          <div class="app-tile">
+            <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#02041a,#030a35,#050f5a);--delay:0.35s">
+              <img src="logos-tv/disney-real.png" alt="Disney+" style="filter:brightness(0) invert(1);width:72%;">
+            </div>
+            <div class="app-name">Disney+</div>
+          </div>
+        </a>
+
+        <a class="app-link" href="intent://open.spotify.com#Intent;package=com.spotify.tv.android;scheme=https;end">
+          <div class="app-tile">
+            <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#060e05,#0d1c0a,#0f2211);--delay:0.42s">
+              <img src="logos-tv/spotify-real.png" alt="Spotify">
+            </div>
+            <div class="app-name">Spotify</div>
+          </div>
+        </a>
+
+        <a class="app-link" href="regles.html">
+          <div class="app-tile">
+            <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#100a1e,#1a1030,#221440);--delay:0.49s">
+              <svg class="icon" viewBox="0 0 256 256" fill="white">
+                <path d="M224,128a8,8,0,0,1-8,8H128a8,8,0,0,1,0-16h88A8,8,0,0,1,224,128Zm-8-56H128a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16Zm0,112H128a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16ZM82.34,42.34l-42,42a8,8,0,0,1-11.32,0l-18-18A8,8,0,0,1,22.34,55l12,12L66,30.34A8,8,0,1,1,82.34,42.34Zm0,64-42,42a8,8,0,0,1-11.32,0l-18-18a8,8,0,1,1,11.32-11.32L34,131.31l37-37A8,8,0,1,1,82.34,106.34Zm0,64-42,42a8,8,0,0,1-11.32,0l-18-18a8,8,0,1,1,11.32-11.32L34,195.31l37-37A8,8,0,1,1,82.34,170.34Z"/>
+              </svg>
+            </div>
+            <div class="app-name">Règles de la maison</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="wifi-block">
+      <div class="wifi-label">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(77,212,212,0.7)" stroke-width="2.5" stroke-linecap="round">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="rgba(77,212,212,0.7)" stroke="none"/>
+        </svg>
+        Wi-Fi
+      </div>
+      <div class="wifi-qr-frame">
+        <div id="qrcode"></div>
+      </div>
+      <div class="wifi-network">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(77,212,212,0.8)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="rgba(77,212,212,0.8)" stroke="none"/>
+        </svg>
+        A-la-folie-WIFI
+      </div>
+      <div class="wifi-pass">welcomealafolie</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="info-item">
+      <svg width="2.2vw" height="2.2vw" viewBox="0 0 24 24" style="flex-shrink:0;width:2.2vw;height:2.2vw" fill="#25D366">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      <div>
+        <div class="info-label">Lea · WhatsApp 24h/24</div>
+        <div class="info-val" style="color:#25D366">06 20 20 20 36</div>
+      </div>
+    </div>
+    <div class="clock">
+      <div class="clock-time" id="clockTime">--:--</div>
+      <div class="clock-date" id="clockDate"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let audioCtx = null;
+  function playTick() {
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.connect(g); g.connect(audioCtx.destination);
+      o.type = 'sine';
+      o.frequency.setValueAtTime(900, audioCtx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.04);
+      g.gain.setValueAtTime(0.06, audioCtx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.06);
+      o.start(); o.stop(audioCtx.currentTime + 0.07);
+    } catch(e) {}
+  }
+  document.querySelectorAll('.app-link').forEach(el => {
+    let last = 0;
+    el.addEventListener('focus',      () => { const t=Date.now(); if(t-last>80){playTick();last=t;} });
+    el.addEventListener('mouseenter', () => { const t=Date.now(); if(t-last>80){playTick();last=t;} });
+  });
+
+  /* Prénom depuis /config.json */
+  (async () => {
+    try {
+      const r = await fetch('/config.json?t=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return;
+      const cfg = await r.json();
+      if (cfg.name && cfg.checkin && cfg.checkout) {
+        const today = new Date().toISOString().slice(0,10);
+        if (today >= cfg.checkin && today <= cfg.checkout)
+          document.getElementById('guestName').textContent = cfg.name + ' \uD83D\uDC4B';
+      }
+    } catch(e) {}
+  })();
+  const nom = new URLSearchParams(window.location.search).get('nom');
+  if (nom) document.getElementById('guestName').textContent = nom + ' \uD83D\uDC4B';
+
+  new QRCode(document.getElementById('qrcode'), {
+    text: 'WIFI:T:WPA;S:A-la-folie-WIFI;P:welcomealafolie;;',
+    width: Math.round(window.innerWidth * 0.082),
+    height: Math.round(window.innerWidth * 0.082),
+    colorDark: '#000', colorLight: '#fff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+
+  function tick() {
+    const n = new Date();
+    document.getElementById('clockTime').textContent = n.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('clockDate').textContent = n.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 # robots.txt pour folie.paris
 User-agent: *
 Allow: /
+Disallow: /tv/
+Disallow: /config.json
 
 # Sitemap
 Sitemap: https://folie.paris/sitemap.xml
