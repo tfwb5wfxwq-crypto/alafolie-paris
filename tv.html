@@ -420,8 +420,12 @@
       if (!r.ok) return;
       const cfg = await r.json();
       if (cfg.name && cfg.checkin && cfg.checkout) {
-        const today = new Date().toISOString().slice(0,10);
-        if (today >= cfg.checkin && today <= cfg.checkout) {
+        const now = new Date();
+        const today = now.toISOString().slice(0,10);
+        const hour = now.getHours();
+        const afterCheckin   = today > cfg.checkin  || (today === cfg.checkin  && hour >= 15);
+        const beforeCheckout = today < cfg.checkout || (today === cfg.checkout && hour < 11);
+        if (afterCheckin && beforeCheckout) {
           document.getElementById('guestName').textContent = cfg.name + ' \uD83D\uDC4B';
         }
       }
