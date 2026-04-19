@@ -481,6 +481,11 @@
     return best;
   }
 
+  // Curseur Fire TV → focus au survol
+  links.forEach(el => {
+    el.addEventListener('mouseover', () => el.focus());
+  });
+
   document.addEventListener('keydown', e => {
     const dirMap = { ArrowLeft:'left', ArrowRight:'right', ArrowUp:'up', ArrowDown:'down' };
     const dir = dirMap[e.key];
