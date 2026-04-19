@@ -511,6 +511,9 @@
     openFocused();
   };
 
+  // Appelé depuis le natif Android (BACK) — pas d'action sur la page d'accueil
+  window.dpadBack = function() {};
+
   // Fallback clavier navigateur
   document.addEventListener('keydown', e => {
     const dirMap = { ArrowLeft:'left', ArrowRight:'right', ArrowUp:'up', ArrowDown:'down' };
