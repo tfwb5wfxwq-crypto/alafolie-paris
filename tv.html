@@ -458,42 +458,27 @@
   const links = Array.from(document.querySelectorAll('.app-link'));
   let focusedIdx = 0;
 
+  // Grille fixe: row0=[0,1,2,3] row1=[4,5,6]
+  const nav = [
+    { left:-1, right:1,  up:-1, down:4 }, // 0 Netflix
+    { left:0,  right:2,  up:-1, down:5 }, // 1 YouTube
+    { left:1,  right:3,  up:-1, down:6 }, // 2 Prime Video
+    { left:2,  right:-1, up:-1, down:6 }, // 3 Canal+
+    { left:-1, right:5,  up:0,  down:-1 }, // 4 Disney+
+    { left:4,  right:6,  up:1,  down:-1 }, // 5 Spotify
+    { left:5,  right:-1, up:2,  down:-1 }, // 6 Règles
+  ];
+
   function setFocused(idx) {
+    if (idx < 0 || idx >= links.length) return;
     links.forEach(el => el.classList.remove('focused'));
-    focusedIdx = Math.max(0, Math.min(idx, links.length - 1));
+    focusedIdx = idx;
     links[focusedIdx].classList.add('focused');
-    links[focusedIdx].scrollIntoView({ block: 'nearest' });
-  }
-
-  function getCenter(el) {
-    const r = el.getBoundingClientRect();
-    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-  }
-
-  function nearest(idx, dir) {
-    const cc = getCenter(links[idx]);
-    let best = -1, bestScore = Infinity;
-    links.forEach((el, i) => {
-      if (i === idx) return;
-      const c = getCenter(el);
-      const dx = c.x - cc.x, dy = c.y - cc.y;
-      let inDir = false;
-      if (dir === 'left'  && dx < -20) inDir = true;
-      if (dir === 'right' && dx >  20) inDir = true;
-      if (dir === 'up'    && dy < -20) inDir = true;
-      if (dir === 'down'  && dy >  20) inDir = true;
-      if (!inDir) return;
-      const primary   = (dir === 'left' || dir === 'right') ? Math.abs(dx) : Math.abs(dy);
-      const secondary = (dir === 'left' || dir === 'right') ? Math.abs(dy) : Math.abs(dx);
-      const score = primary + secondary * 2;
-      if (score < bestScore) { bestScore = score; best = i; }
-    });
-    return best;
   }
 
   // Appelé depuis le natif Android
   window.dpadNav = function(dir) {
-    const next = nearest(focusedIdx, dir);
+    const next = (nav[focusedIdx] || {})[dir];
     if (next >= 0) setFocused(next);
   };
 
