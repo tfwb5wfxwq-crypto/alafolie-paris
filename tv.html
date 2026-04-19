@@ -270,7 +270,7 @@
       <div class="apps-main">
 
         <!-- Netflix -->
-        <a class="app-link" href="intent://www.netflix.com#Intent;package=com.netflix.ninja;scheme=https;end">
+        <a class="app-link" href="#" data-pkg="com.netflix.ninja">
           <div class="app-tile">
             <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#0a0a0a,#141414,#0d0d0d);--delay:0.07s">
               <img src="logos-tv/netflix-real.png" alt="Netflix">
@@ -280,7 +280,7 @@
         </a>
 
         <!-- YouTube -->
-        <a class="app-link" href="intent://www.youtube.com#Intent;package=com.amazon.firetv.youtube;scheme=https;end">
+        <a class="app-link" href="#" data-pkg="com.amazon.firetv.youtube">
           <div class="app-tile">
             <div class="app-icon-wrap light" style="--bg:#f5f5f5;--delay:0.14s; border: 1px solid rgba(0,0,0,0.06);">
               <img src="logos-tv/youtube-real.png" alt="YouTube">
@@ -290,7 +290,7 @@
         </a>
 
         <!-- Prime Video -->
-        <a class="app-link" href="intent://www.amazon.com/gp/video/storefront/#Intent;package=com.amazon.amazonvideo.livingroom;scheme=https;end">
+        <a class="app-link" href="#" data-pkg="com.amazon.amazonvideo.livingroom">
           <div class="app-tile">
             <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#00111c,#00204c,#004e8c);--delay:0.21s">
               <img src="logos-tv/primevideo-real.png" alt="Prime Video" style="width:80%; height:auto;">
@@ -300,7 +300,7 @@
         </a>
 
         <!-- Canal+ -->
-        <a class="app-link" href="intent://www.canalplus.com#Intent;package=com.canal.android.canal;scheme=https;end">
+        <a class="app-link" href="#" data-pkg="com.canal.android.canal">
           <div class="app-tile">
             <div class="app-icon-wrap" style="--bg:#000000;--delay:0.28s">
               <img src="logos-tv/canal-real.png" alt="Canal+" style="width:85%;height:85%;object-fit:contain;border-radius:12%;">
@@ -316,7 +316,7 @@
       <div class="apps-secondary">
 
         <!-- Disney+ -->
-        <a class="app-link" href="intent://www.disneyplus.com#Intent;package=com.disney.disneyplus;scheme=https;end">
+        <a class="app-link" href="#" data-pkg="com.disney.disneyplus">
           <div class="app-tile">
             <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#02041a,#030a35,#050f5a);--delay:0.35s">
               <!-- Logo officiel Disney+ rendu blanc sur fond bleu foncé -->
@@ -327,7 +327,7 @@
         </a>
 
         <!-- Spotify -->
-        <a class="app-link" href="intent://open.spotify.com#Intent;package=com.spotify.tv.android;scheme=https;end">
+        <a class="app-link" href="#" data-pkg="com.spotify.tv.android">
           <div class="app-tile">
             <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#060e05,#0d1c0a,#0f2211);--delay:0.42s">
               <img src="logos-tv/spotify-real.png" alt="Spotify">
@@ -337,7 +337,7 @@
         </a>
 
         <!-- Règles de la maison -->
-        <a class="app-link" href="regles.html">
+        <a class="app-link" href="regles.html" data-pkg="regles">
           <div class="app-tile">
             <div class="app-icon-wrap" style="--bg:linear-gradient(150deg,#100a1e,#1a1030,#221440);--delay:0.49s">
               <!-- Phosphor "list-checks" icon -->
@@ -469,6 +469,19 @@
     { left:5,  right:-1, up:2,  down:-1 }, // 6 Règles
   ];
 
+  function openFocused() {
+    const link = links[focusedIdx];
+    const pkg = link.dataset.pkg;
+    if (pkg === 'regles') {
+      window.location.href = 'regles.html';
+    } else if (pkg && window.Android && window.Android.openApp) {
+      window.Android.openApp(pkg);
+    } else if (pkg) {
+      // fallback intent:// pour test navigateur
+      window.location.href = 'intent://launch#Intent;package=' + pkg + ';end';
+    }
+  }
+
   function setFocused(idx) {
     if (idx < 0 || idx >= links.length) return;
     links.forEach(el => el.classList.remove('focused'));
@@ -478,10 +491,24 @@
     playTick();
   }
 
-  // Appelé depuis le natif Android
+  // Clic souris/touch → aussi via openFocused
+  links.forEach((el, i) => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      setFocused(i);
+      openFocused();
+    });
+  });
+
+  // Appelé depuis le natif Android (flèches)
   window.dpadNav = function(dir) {
     const next = (nav[focusedIdx] || {})[dir];
     if (next >= 0) setFocused(next);
+  };
+
+  // Appelé depuis le natif Android (SELECT/OK)
+  window.dpadSelect = function() {
+    openFocused();
   };
 
   // Fallback clavier navigateur
@@ -489,7 +516,7 @@
     const dirMap = { ArrowLeft:'left', ArrowRight:'right', ArrowUp:'up', ArrowDown:'down' };
     const dir = dirMap[e.key];
     if (dir) { e.preventDefault(); window.dpadNav(dir); }
-    if (e.key === 'Enter') links[focusedIdx].click();
+    if (e.key === 'Enter') openFocused();
   });
 
   // Focus initial
