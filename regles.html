@@ -347,7 +347,22 @@ function select(key) {
 // Init
 select('essential');
 
-// Keyboard nav
+// Navigation DPAD (appelé par AccessibilityService natif)
+window.dpadNav = function(dir) {
+  const btns = [...document.querySelectorAll('.cat-btn')];
+  const active = document.querySelector('.cat-btn.active');
+  const idx = btns.indexOf(active);
+  if (dir === 'down' || dir === 'right') {
+    const next = btns[(idx + 1) % btns.length];
+    next.click(); next.focus();
+  } else if (dir === 'up' || dir === 'left') {
+    const prev = btns[(idx - 1 + btns.length) % btns.length];
+    prev.click(); prev.focus();
+  }
+};
+window.dpadSelect = function() { /* pas d'action sur cette page */ };
+
+// Keyboard nav (fallback clavier)
 document.addEventListener('keydown', e => {
   const btns = [...document.querySelectorAll('.cat-btn')];
   const active = document.querySelector('.cat-btn.active');
