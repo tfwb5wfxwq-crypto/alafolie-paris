@@ -98,6 +98,9 @@
       outline: none;
     }
     .app-link:focus { outline: none; }
+    .app-link.focused .app-tile { transform: scale(1.08); }
+    .app-link.focused .app-icon-wrap { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 8px 40px rgba(0,0,0,0.6); }
+    .app-link.focused .app-name { opacity: 1; }
 
     /* ══ EFFET FOCUS + HOVER — style premium ══ */
     .app-link:focus .app-tile,
@@ -451,52 +454,59 @@
   }
   tick(); setInterval(tick, 1000);
 
-  /* ── Navigation DPAD (Fire TV) ── */
+  /* ── Navigation DPAD (Fire TV) — via injection native ── */
   const links = Array.from(document.querySelectorAll('.app-link'));
-  links.forEach(el => el.setAttribute('tabindex', '0'));
+  let focusedIdx = 0;
 
-  function getRect(el) { return el.getBoundingClientRect(); }
-  function center(r) { return { x: r.left + r.width/2, y: r.top + r.height/2 }; }
+  function setFocused(idx) {
+    links.forEach(el => el.classList.remove('focused'));
+    focusedIdx = Math.max(0, Math.min(idx, links.length - 1));
+    links[focusedIdx].classList.add('focused');
+    links[focusedIdx].scrollIntoView({ block: 'nearest' });
+  }
 
-  function nearest(current, dir) {
-    const cr = getRect(current);
-    const cc = center(cr);
-    let best = null, bestScore = Infinity;
-    links.forEach(el => {
-      if (el === current) return;
-      const r = getRect(el);
-      const c = center(r);
+  function getCenter(el) {
+    const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+
+  function nearest(idx, dir) {
+    const cc = getCenter(links[idx]);
+    let best = -1, bestScore = Infinity;
+    links.forEach((el, i) => {
+      if (i === idx) return;
+      const c = getCenter(el);
       const dx = c.x - cc.x, dy = c.y - cc.y;
       let inDir = false;
-      if (dir === 'left'  && dx < -10) inDir = true;
-      if (dir === 'right' && dx >  10) inDir = true;
-      if (dir === 'up'    && dy < -10) inDir = true;
-      if (dir === 'down'  && dy >  10) inDir = true;
+      if (dir === 'left'  && dx < -20) inDir = true;
+      if (dir === 'right' && dx >  20) inDir = true;
+      if (dir === 'up'    && dy < -20) inDir = true;
+      if (dir === 'down'  && dy >  20) inDir = true;
       if (!inDir) return;
       const primary   = (dir === 'left' || dir === 'right') ? Math.abs(dx) : Math.abs(dy);
       const secondary = (dir === 'left' || dir === 'right') ? Math.abs(dy) : Math.abs(dx);
       const score = primary + secondary * 2;
-      if (score < bestScore) { bestScore = score; best = el; }
+      if (score < bestScore) { bestScore = score; best = i; }
     });
     return best;
   }
 
-  // Curseur Fire TV → focus au survol
-  links.forEach(el => {
-    el.addEventListener('mouseover', () => el.focus());
-  });
+  // Appelé depuis le natif Android
+  window.dpadNav = function(dir) {
+    const next = nearest(focusedIdx, dir);
+    if (next >= 0) setFocused(next);
+  };
 
+  // Fallback clavier navigateur
   document.addEventListener('keydown', e => {
     const dirMap = { ArrowLeft:'left', ArrowRight:'right', ArrowUp:'up', ArrowDown:'down' };
     const dir = dirMap[e.key];
-    if (!dir) return;
-    e.preventDefault();
-    const current = document.activeElement;
-    const target = links.includes(current) ? nearest(current, dir) : links[0];
-    if (target) target.focus();
+    if (dir) { e.preventDefault(); window.dpadNav(dir); }
+    if (e.key === 'Enter') links[focusedIdx].click();
   });
 
-  window.addEventListener('load', () => { if (links[0]) links[0].focus(); });
+  // Focus initial
+  setFocused(0);
 </script>
 </body>
 </html>
