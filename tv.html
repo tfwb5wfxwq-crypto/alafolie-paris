@@ -450,6 +450,48 @@
     document.getElementById('clockDate').textContent = n.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
   }
   tick(); setInterval(tick, 1000);
+
+  /* ── Navigation DPAD (Fire TV) ── */
+  const links = Array.from(document.querySelectorAll('.app-link'));
+  links.forEach(el => el.setAttribute('tabindex', '0'));
+
+  function getRect(el) { return el.getBoundingClientRect(); }
+  function center(r) { return { x: r.left + r.width/2, y: r.top + r.height/2 }; }
+
+  function nearest(current, dir) {
+    const cr = getRect(current);
+    const cc = center(cr);
+    let best = null, bestScore = Infinity;
+    links.forEach(el => {
+      if (el === current) return;
+      const r = getRect(el);
+      const c = center(r);
+      const dx = c.x - cc.x, dy = c.y - cc.y;
+      let inDir = false;
+      if (dir === 'left'  && dx < -10) inDir = true;
+      if (dir === 'right' && dx >  10) inDir = true;
+      if (dir === 'up'    && dy < -10) inDir = true;
+      if (dir === 'down'  && dy >  10) inDir = true;
+      if (!inDir) return;
+      const primary   = (dir === 'left' || dir === 'right') ? Math.abs(dx) : Math.abs(dy);
+      const secondary = (dir === 'left' || dir === 'right') ? Math.abs(dy) : Math.abs(dx);
+      const score = primary + secondary * 2;
+      if (score < bestScore) { bestScore = score; best = el; }
+    });
+    return best;
+  }
+
+  document.addEventListener('keydown', e => {
+    const dirMap = { ArrowLeft:'left', ArrowRight:'right', ArrowUp:'up', ArrowDown:'down' };
+    const dir = dirMap[e.key];
+    if (!dir) return;
+    e.preventDefault();
+    const current = document.activeElement;
+    const target = links.includes(current) ? nearest(current, dir) : links[0];
+    if (target) target.focus();
+  });
+
+  window.addEventListener('load', () => { if (links[0]) links[0].focus(); });
 </script>
 </body>
 </html>
