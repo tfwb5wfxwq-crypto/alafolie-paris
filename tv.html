@@ -474,6 +474,7 @@
     links.forEach(el => el.classList.remove('focused'));
     focusedIdx = idx;
     links[focusedIdx].classList.add('focused');
+    links[focusedIdx].focus({ preventScroll: true });
     playTick();
   }
 
