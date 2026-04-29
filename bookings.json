@@ -34,5 +34,10 @@
     "checkout": "2026-06-05",
     "name": "Brooke",
     "lang": "en"
+  },
+  {
+    "checkin": "2026-06-09",
+    "checkout": "2026-06-16",
+    "name": ""
   }
 ]
