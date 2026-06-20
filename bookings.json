@@ -1,5 +1,11 @@
 [
   {
+    "checkin": "2026-07-06",
+    "checkout": "2026-07-12",
+    "name": "Katie",
+    "lang": "fr"
+  },
+  {
     "checkin": "2026-07-17",
     "checkout": "2026-07-28",
     "name": "Jassim",
